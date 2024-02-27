@@ -69,6 +69,7 @@ function Home() {
                     <div className="leftIcons">
                         <BsListTask className="icon" />
                         <TbApps className="icon" />
+                        <p>test</p>
                     </div>
                 </div>
             </div>
