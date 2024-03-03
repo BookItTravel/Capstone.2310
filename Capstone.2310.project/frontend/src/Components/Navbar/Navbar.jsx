@@ -15,7 +15,7 @@ function Navbar() {
                 <div className="navBar">
                     <ul className='navLists flex'>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Home</a>
+                            <a href="/" className='navLink'>Home</a>
                         </li>
                         <li className='navItem'>
                             <a href="#" className='navLink'>Packages</a>
@@ -36,7 +36,10 @@ function Navbar() {
                             <a href="#" className='navLink'>Contact</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Login/Register</a>
+                            <a href="/login" className='navLink'>Login</a>
+                        </li>
+                        <li className='navItem'>
+                            <a href="/register" className='navLink'>Register</a>
                         </li>
                         <button className='btn'>
                             <a href="#">BOOK NOW</a>

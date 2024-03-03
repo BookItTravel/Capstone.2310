@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+// import "./login.css"
 
-// import axios from '../api/axios';
+import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
@@ -15,8 +16,8 @@ const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -25,14 +26,14 @@ const Login = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [username, password])
+    }, [user, pwd])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ username, password }),
+                JSON.stringify({ user, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -42,9 +43,9 @@ const Login = () => {
             //console.log(JSON.stringify(response));
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ username, password, roles, accessToken });
-            setUsername('');
-            setPassword('');
+            setAuth({ user, pwd, roles, accessToken });
+            setUser('');
+            setPwd('');
             navigate(from, { replace: true });
         } catch (err) {
             if (!err?.response) {
@@ -81,7 +82,7 @@ const Login = () => {
                 <input
                     type="password"
                     id="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPwd(e.target.value)}
                     value={pwd}
                     required
                 />
