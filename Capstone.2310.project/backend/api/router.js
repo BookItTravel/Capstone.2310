@@ -9,8 +9,8 @@ const router = express.Router();
 
 // Create Amadeus API client
 const amadeus = new Amadeus({
-  clientId: process.env.API_KEY,
-  clientSecret: process.env.API_SECRET,
+  clientId: "lAlAlBiMkYkbEuKbg3EpKj0MpfmVsnUQ",
+  clientSecret:"OmWyr5GBpgBSdGfr"
 });
 
 const API = "api";
