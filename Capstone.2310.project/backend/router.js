@@ -3,12 +3,12 @@ const Amadeus = require("amadeus");
 const express = require("express");
 
 // Create Amadeus API client
-const amadeus = new Amadeus({
-    clientId: API_KEY,
-    clientSecret: API_SECRET,
-  });
+// const amadeus = new Amadeus({
+//     clientId: API_KEY,
+//     clientSecret: API_SECRET,
+//   });
 
-// Create router
-const router = express.Router();
-// ...
-module.exports = router;
+// // Create router
+// const router = express.Router();
+// // ...
+// module.exports = router;``

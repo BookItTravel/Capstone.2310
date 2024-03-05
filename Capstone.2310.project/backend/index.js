@@ -35,7 +35,7 @@ app.use((req, res, next) => {
   });
 
 // Apply router
-app.use("/", router);
+app.use("/api", require("./api"));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
