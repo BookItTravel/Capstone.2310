@@ -75,7 +75,7 @@ const updateUser = async (user_id, fields = {}) => {
   try {
     const {
       rows: [user],
-    } = await db.query(
+    } = await client.query(
       `
       UPDATE users
       SET ${setString}
@@ -94,7 +94,7 @@ const updateUser = async (user_id, fields = {}) => {
 // Retrieve all Users
 const getAllUsers = async () => {
   try {
-    const { rows } = await db.query(`
+    const { rows } = await client.query(`
             SELECT user_id, username, firstName, lastName, email, phone, passportNumber
             FROM users;
         `);
@@ -109,7 +109,7 @@ const getUserById = async (user_id) => {
   try {
     const {
       rows: [user],
-    } = await db.query(`
+    } = await client.query(`
             SELECT user_id, username, firstName, lastName, email, phone, passportNumber
             FROM users;
             WHERE id=${user_id}
@@ -132,7 +132,7 @@ const getUserByUsername = async (username) => {
   try {
     const {
       rows: [user],
-    } = await db.query(
+    } = await client.query(
       `
             SELECT *
             FROM users
@@ -149,7 +149,7 @@ const getUserByUsername = async (username) => {
 // Delete a user from the database
 const deleteUser = async (username) => {
   try {
-    const result = await db.query(
+    const result = await client.query(
       `
             DELETE FROM users
             WHERE username=$1
@@ -175,7 +175,7 @@ const addToCart = async (user_id, product_id, quantity) => {
     try {
         const {
           rows: [cartItem],
-        } = await db.query(
+        } = await client.query(
           `
                 INSERT INTO shopping_cart(user_id, product_id, quantity)
                 VALUES($1, $2, $3)
@@ -196,7 +196,7 @@ const removeFromCart = async (user_id, product_id) => {
     try {
         const {
           rows: [cartItem],
-        } = await db.query(
+        } = await client.query(
           `
                 DELETE FROM shopping_cart
                 WHERE user_id=$1 AND product_id=$2
@@ -215,7 +215,7 @@ const updateCart = async (user_id, product_id, newQuantity) => {
     try {
         const {
           rows: [cartItem],
-        } = await db.query(
+        } = await client.query(
           `
                 UPDATE shopping_cart
                 SET quantity=$1
@@ -235,7 +235,7 @@ const updateCart = async (user_id, product_id, newQuantity) => {
 // Place an order
 const placeOrder = async (user_id, product_id, quantity) => {
     try {
-        const { rows: [order] } = await db.query(`
+        const { rows: [order] } = await client.query(`
             INSERT INTO order (user_id, product_id, quantity)
             VALUES ($1, $2, $3)
             RETURNING *;
@@ -249,7 +249,7 @@ const placeOrder = async (user_id, product_id, quantity) => {
 // Retrieve order history based on user_id
 const getOrderHistoryByUserId = async (user_id) => {
     try {
-        const { rows } = await db.query(`
+        const { rows } = await client.query(`
             SELECT *
             FROM orders
             WHERE user_id=$1;
