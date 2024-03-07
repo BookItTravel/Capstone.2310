@@ -1,5 +1,5 @@
 
-const { API_KEY, API_SECRET } = require("../config");
+const { CLIENT_ID, CLIENT_SECRET } = process.env;
 const Amadeus = require("amadeus");
 const express = require("express");
 
@@ -9,8 +9,8 @@ const router = express.Router();
 
 // Create Amadeus API client
 const amadeus = new Amadeus({
-  clientId: process.env.API_KEY,
-  clientSecret: process.env.API_SECRET,
+  clientId: CLIENT_ID,
+  clientSecret: CLIENT_SECRET,
 });
 
 const API = "api";
@@ -103,7 +103,7 @@ router.get(`/flight-search`, (req, res) => {
 
 // City search suggestions
 router.get(`/${API}/search`, async (req, res) => {
-  try {nb
+  try {
     const { keyword } = req.body;
     const response = await amadeus.referenceData.locations.get({
       keyword,
@@ -115,5 +115,21 @@ router.get(`/${API}/search`, async (req, res) => {
     await res.json(err);
   }
 });
+
+
+// POI
+router.get(`/reference-data/locations/pois`, async (req, res)=> {
+ try {
+  const { latitude, longitude } = req.body;
+  const response = await  amadeus.referenceData.locations.pointsOfInterest.get({
+         latitude, longitude
+  });
+  await res.json(JSON.parse(response.body));
+} catch (err) {
+  await res.json(err);
+}
+});
+
+router.get(``)
 
 module.exports = router;
