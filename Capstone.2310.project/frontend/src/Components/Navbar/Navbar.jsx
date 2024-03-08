@@ -1,5 +1,7 @@
-import './navbar.css'
+import './navbar.scss'
 import { MdOutlineTravelExplore } from 'react-icons/md';
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { TbGridDots } from 'react-icons/tb';
 function Navbar() {
 
     return (
@@ -8,7 +10,7 @@ function Navbar() {
 
                 <div className="logoDiv">
                     <a href="#" className='logo flex'>
-                        <h1><MdOutlineTravelExplore className="icon" /> Travel.</h1>
+                        <h1><MdOutlineTravelExplore className="icon" /> Book It.</h1>
                     </a>
                 </div>
 
@@ -40,9 +42,14 @@ function Navbar() {
                         </button>
                     </ul>
                     <div className="closeNavbar">
-
+                        <AiFillCloseCircle className="icon" />
                     </div>
                 </div>
+
+                <div className="toggleNavbar">
+                    <TbGridDots className="icon" />
+                </div>
+
             </header>
         </section>
     )
