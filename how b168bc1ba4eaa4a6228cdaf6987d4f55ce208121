@@ -1,0 +1,237 @@
+[33mcommit b168bc1ba4eaa4a6228cdaf6987d4f55ce208121[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/landing_page[m[33m, [m[1;31morigin/feature/landing_page[m[33m, [m[1;31morigin/develop_1[m[33m, [m[1;32mdevelop_1[m[33m)[m
+Merge: 97c9aeb b8ae8b1
+Author: lilytava2510 <tavarezlily10@gmail.com>
+Date:   Thu Mar 7 21:49:12 2024 -0500
+
+    merged with login
+
+[33mcommit b8ae8b1c0c9b81db332e2af81d9808a9a7b82361[m[33m ([m[1;31morigin/feature/register_login-2[m[33m)[m
+Author: PWilliams <101930211+518BW@users.noreply.github.com>
+Date:   Thu Mar 7 21:17:51 2024 -0500
+
+    Delete Capstone.2310.project/frontend/src/Components/Navbar/Navbar.jsx
+
+[33mcommit 3d6e1e504c9d313b8aed1314ded43f7511a42b7c[m
+Author: PWilliams <101930211+518BW@users.noreply.github.com>
+Date:   Thu Mar 7 21:17:15 2024 -0500
+
+    Delete Capstone.2310.project/frontend/src/api/axios.js
+
+[33mcommit 97c9aeb984a6966c6982fb1f25e314b66fe1e4b4[m
+Merge: 1bcbe2a 056d1e5
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Thu Mar 7 21:03:29 2024 -0500
+
+    test
+
+[33mcommit 1bcbe2a4ebf7cf9c5dc5ed42dc45fd7a1a67b780[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Thu Mar 7 20:36:36 2024 -0500
+
+    initial commit landing page, footer ,cards done
+
+[33mcommit e2a79cb2a8bcb4c35b0ff13d77a74ecf6497160e[m
+Author: Your Name <portia894@gmail.com>
+Date:   Thu Mar 7 20:22:25 2024 -0500
+
+    register and login updated
+
+[33mcommit 056d1e5f9693f4d299276c7e71ddfc15ab31779e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 4afc42a 4a3dadd
+Author: lilytava2510 <42839204+lilytava2510@users.noreply.github.com>
+Date:   Thu Mar 7 20:22:23 2024 -0500
+
+    Merge pull request #7 from mj-brown/feature/api
+    
+    Feature/api
+
+[33mcommit 4a3daddbd2f21bf76e73937c843d90035682ec04[m[33m ([m[1;31morigin/feature/api[m[33m)[m
+Author: mj-brown <brown8mj5@gmail.com>
+Date:   Wed Mar 6 19:01:51 2024 -1000
+
+    worked on cleaning up routes and .env
+
+[33mcommit acca81d671040ac45c007bd09b6d781410792aec[m
+Author: mj-brown <brown8mj5@gmail.com>
+Date:   Wed Mar 6 17:16:46 2024 -1000
+
+    updated .gitignore
+
+[33mcommit 7f6314b6c876436db742c441607140512e199bb2[m
+Author: mj-brown <brown8mj5@gmail.com>
+Date:   Wed Mar 6 17:02:25 2024 -1000
+
+    safe backend
+
+[33mcommit aa463d0008f40ad20e6c89e55ca06a08de0c4329[m
+Author: lilytava2510 <tavarezlily10@gmail.com>
+Date:   Mon Mar 4 20:51:14 2024 -0500
+
+    created api calls for flight, destination, airports, hotels
+
+[33mcommit 22d7dcbe2ec1d812f2076d7d2bff4aed1ad6f264[m
+Author: lilytava2510 <tavarezlily10@gmail.com>
+Date:   Tue Feb 27 01:47:06 2024 -0500
+
+    just backend base code, added a few dependencies, and script
+
+[33mcommit a4870f3f188b43389d117d16752e24f722426bec[m
+Author: lilytava2510 <tavarezlily10@gmail.com>
+Date:   Tue Feb 27 01:46:05 2024 -0500
+
+    just backend base code
+
+[33mcommit 4afc42a4470be0ecc4acfddcacb9e6eb1dd17dc6[m
+Merge: a093179 5a5e49f
+Author: Matt <143063215+mj-brown@users.noreply.github.com>
+Date:   Wed Mar 6 17:04:02 2024 -1000
+
+    Merge pull request #8 from mj-brown/feature/@gitignore
+    
+    add .gitignore
+
+[33mcommit 5a5e49fc3ecaac680711e8834c4c1c0e137e5fdf[m
+Author: mj-brown <brown8mj5@gmail.com>
+Date:   Wed Mar 6 15:48:07 2024 -1000
+
+    add .gitignore
+
+[33mcommit 60fdc51985823ba7ab3dc8cadcaf322506964a07[m
+Author: Your Name <portia894@gmail.com>
+Date:   Sun Mar 3 13:42:59 2024 -0500
+
+    added browser routes to app.jsx; updated navbar w/routes to login/register
+
+[33mcommit a093179cc2c955e6b1c826efac021fa61b6562aa[m
+Merge: a56980d eef3eed
+Author: PWilliams <101930211+518BW@users.noreply.github.com>
+Date:   Sun Mar 3 08:08:45 2024 -0500
+
+    Merge pull request #3 from mj-brown/feature/register_login
+    
+    updated file structure...i think
+
+[33mcommit eef3eedb55e10e787ee261518da937e9e10c06d7[m[33m ([m[1;31morigin/feature/register_login[m[33m)[m
+Author: Your Name <portia894@gmail.com>
+Date:   Sun Mar 3 08:05:12 2024 -0500
+
+    updated file structure...i think
+
+[33mcommit a56980d2ddf502dd2194c70e96384d10903b749e[m
+Merge: d8fde51 b36e4bb
+Author: PWilliams <101930211+518BW@users.noreply.github.com>
+Date:   Sun Mar 3 07:56:57 2024 -0500
+
+    Merge pull request #2 from mj-brown/feature/register_login
+    
+    Feature/register login
+
+[33mcommit b36e4bbd4d8e9558698069c712027612f5242308[m
+Merge: 1f250c4 335c3ca
+Author: Your Name <portia894@gmail.com>
+Date:   Sun Mar 3 07:51:29 2024 -0500
+
+    Merge branch 'main' into feature/register_login
+
+[33mcommit 1f250c448154c72811ddaac369248a0040565483[m
+Author: Your Name <portia894@gmail.com>
+Date:   Sun Mar 3 07:12:33 2024 -0500
+
+    login/register update; added link to navbar
+
+[33mcommit 7f39310335ff59b552bda51586ae629384e1fe2a[m
+Author: Your Name <portia894@gmail.com>
+Date:   Sun Mar 3 06:34:22 2024 -0500
+
+    register/login update
+
+[33mcommit d68d86be4f9df3bfc777d51564b5865c0217b724[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Thu Feb 29 20:41:25 2024 -0500
+
+    new test push
+
+[33mcommit 539162e8708ed70f962e54ca58cd7216f1c40ec4[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Thu Feb 29 20:37:51 2024 -0500
+
+    test commit
+
+[33mcommit d8fde517a60c406964f78802e8ceba94a6a53adf[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Mon Feb 26 21:06:16 2024 -0500
+
+    test in the footer
+
+[33mcommit 335c3cad06c9b1785da10b71310cda30df4608c8[m
+Author: mj-brown <brown8mj5@gmail.com>
+Date:   Mon Feb 26 15:28:49 2024 -1000
+
+    updated file structure
+
+[33mcommit 6573c0f69866ef46c00cc4039508c9feef125c9f[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Mon Feb 26 19:20:15 2024 -0500
+
+    testing new repo
+
+[33mcommit e809cbbd9bc4675db6da405f1a224d06f6fd47e7[m
+Merge: 9c82427 b8d983a
+Author: Matt <143063215+mj-brown@users.noreply.github.com>
+Date:   Mon Feb 26 14:09:57 2024 -1000
+
+    Merge branch 'main' into feature/landing_page
+
+[33mcommit 9c82427d8bede6cfcfb0590fdecd2d2c3ba76e8b[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Mon Feb 26 19:05:53 2024 -0500
+
+    styled inputs and adding icons
+
+[33mcommit b8d983a07dc7859c315a21561cdc83e1fe08c406[m
+Author: mj-brown <brown8mj5@gmail.com>
+Date:   Mon Feb 26 13:23:38 2024 -1000
+
+    test commit
+
+[33mcommit 74dbb3db7119deb4f5f853892d54563124e9e925[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Mon Feb 26 01:05:09 2024 -0500
+
+    inputs in position
+
+[33mcommit 959041587f8b2dd2608599b85912e5a15f761ed2[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Sat Feb 24 23:37:19 2024 -0500
+
+    video working as intended
+
+[33mcommit ea688d39506fe4279d664d4d5af28dbe89a87bf2[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Sat Feb 24 18:53:45 2024 -0500
+
+    added Navbar,Main,Home,Footer comps
+
+[33mcommit c622643428ce703e0138d4fb7aaaa27463d95a65[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Sat Feb 24 18:11:32 2024 -0500
+
+    set up react app files
+
+[33mcommit df15059660812da773c2e6935404a1c180fb831a[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Sat Feb 24 18:03:25 2024 -0500
+
+    initial commit on feature/landing_page
+
+[33mcommit 5a97fe949f743ec8049c6e97244f677dff93c711[m
+Author: Hinson7886 <JonHinsonfx@gmail.com>
+Date:   Sat Feb 24 18:00:50 2024 -0500
+
+    initial commit
+
+[33mcommit c68fadf1274d54b65f1581fbc45fd50989aef770[m
+Author: lilytava2510 <42839204+lilytava2510@users.noreply.github.com>
+Date:   Thu Feb 22 19:21:17 2024 -0500
+
+    Initial commit

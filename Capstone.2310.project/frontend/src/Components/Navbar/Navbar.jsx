@@ -37,6 +37,9 @@ function Navbar() {
                         <li className='navItem'>
                             <a href="#" className='navLink'>Contact</a>
                         </li>
+                        <li className='navItem'>
+                            <a href="#" className='navLink'>Login/Register</a>
+                        </li>
                         <button className='btn'>
                             <a href="#">BOOK NOW</a>
                         </button>
