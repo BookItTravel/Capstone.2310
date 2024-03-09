@@ -12,15 +12,11 @@ function App() {
 
   return (
     <>
+
       <Navbar />
       <Home />
-      {/* <Main />
+      <Main />
       <Footer />
-      <h1>Hello from app comp</h1> */}
-
-
-
-
     </>
   )
 }
