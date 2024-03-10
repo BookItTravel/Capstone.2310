@@ -1,11 +1,10 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
 const router = express.Router();
 const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername } = require('../db/db_methods');
 const SALT_COUNT = 10;
-
-const JWT_SECRET = 'your_jwt_secret'; // Need to replace with a secret key
 
 // GET /api/users
 router.get('/', async (req, res, next) => {
