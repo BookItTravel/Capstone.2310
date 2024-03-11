@@ -1,6 +1,5 @@
-// import video from ''
-// import airplane from ''
-import Flight_Search from '../Flight_Search/Flight_Search'
+import airplane from '../../assets/airplane.jpg';
+import Flight_Search from '../Flight_Search/Flight_Search';
 
 function Flight_Main() {
     return (
@@ -15,13 +14,12 @@ function Flight_Main() {
                     <video src="video" autoPlay muted loop className="video"></video>
                 </div>
 
-                <img src="airplane" className="'plane" alt="" />
+                <img src={airplane} className="plane" alt="" />
             </div>
 
             <Flight_Search />
         </div>
-    )
-
+    );
 }
 
-export default Flight_Main
+export default Flight_Main;

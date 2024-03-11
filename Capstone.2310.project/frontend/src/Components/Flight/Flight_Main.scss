@@ -1,4 +1,4 @@
-:root {
+flight_main.scss:root {
     --PrimaryColor: hsl(199, 100%, 33%);
     --SecondaryColor: hsl(187, 85%, 43%);
     --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
@@ -10,96 +10,6 @@
     --inputColor: rgb(239, 239, 239);
     --bodyColor: rgb(240, 240, 246);
     --cardBG: rgb(225, 225, 235);
-}
-
-body {
-    font-variant: var(--whiteColor);
-}
-
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style: none;
-    cursor: pointer;
-}
-
-.section {
-    padding: 4rem 0 2rem;
-}
-
-.container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-.icon {
-    font-size: 1.3rem;
-    cursor: pointer;
-}
-
-.none {
-    display: none;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.grid {
-    display: grid;
-    align-items: center;
-}
-
-.btn {
-    padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    color: var(--whiteColor);
-
-    a {
-        color: var(--whiteColor);
-        font-weight: 500;
-    }
-
-    &:hover {
-        background: var(--PrimaryColor);
-    }
-}
-
-img,
-video {
-
-    width: 100%;
-    height: auto;
-}
-
-input {
-    font-size: 100%;
-    color: var(--greyText);
-}
-
-p {
-    font-size: 13px;
-    color: var(--greyText);
-    line-height: 22px;
-}
-
-h4 {
-    padding: 1rem 0;
-    font-weight: 700;
-    color: var(--blackColor);
-}
-
-h2 {
-    font-size: 25px;
-    padding: 1rem 0;
-    color: var(--blackColor);
 }
 
 .home {
@@ -127,9 +37,14 @@ h2 {
             width: 100%;
 
             .video {
-                position: absolute;
-                width: 100%;
+                border-radius: 10rem;
+
             }
+        }
+
+        .plane {
+            // position: absolute;
+            width: 100%;
         }
     }
 }
