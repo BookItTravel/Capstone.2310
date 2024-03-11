@@ -1,5 +1,7 @@
 import airplane from '../../assets/airplane.jpg';
 import Flight_Search from '../Flight_Search/Flight_Search';
+// import './footer.scss'
+import './Flight_Main.scss'
 
 function Flight_Main() {
     return (
