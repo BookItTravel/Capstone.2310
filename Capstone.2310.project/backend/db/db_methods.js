@@ -304,5 +304,6 @@ module.exports = {
   updateCart,
   placeOrder,
   getOrderHistoryByUserId,
+  addTraveler
   //getProductInfo,
 };
