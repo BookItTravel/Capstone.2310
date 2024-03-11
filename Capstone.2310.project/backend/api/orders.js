@@ -5,8 +5,8 @@ const { placeOrder, getOrderHistoryByUserId } = require('../db/db_methods');
 // POST /api/orders
 router.post('/', async (req, res, next) => {
     try {
-        const { user_id, product_id, quantity } = req.body;
-        const order = await placeOrder(user_id, product_id, quantity);
+        const { user_id, traveler_id, quantity } = req.body;
+        const order = await placeOrder(user_id, traveler_id, quantity);
         res.status(201).send({ order });
     } catch (error) {
         next(error);
