@@ -1,8 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-
 body {
+  font-variant: var(--whiteColor);
   background: var(--bodyColor);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.section {
+  padding: 4rem 0 2rem;
+}
+
+
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+
+.icon {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+}
+
+.btn {
+  padding: .7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
+
+  a {
+    color: var(--whiteColor);
+    font-weight: 500;
+  }
+
+  &:hover {
+    background: var(--PrimaryColor);
+  }
+}
+
+
+img,
+video {
+
+  width: 100%;
+  height: auto;
+}
+
+input {
+  font-size: 100%;
+  color: var(--greyText);
+}
+
+p {
+  font-size: 13px;
+  color: var(--greyText);
+  line-height: 22px;
+}
+
+h4 {
+  padding: 1rem 0;
+  font-weight: 700;
+  color: var(--blackColor);
+}
+
+h2 {
+  font-size: 25px;
+  padding: 1rem 0;
+  color: var(--blackColor);
 }
 
 .poppins-light {
@@ -17,7 +106,6 @@ body {
   font-style: normal;
 }
 
-
 * {
   padding: 0;
   margin: 0;
@@ -25,70 +113,8 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-
-
 html {
   scroll-behavior: smooth;
-}
-
-a {
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-}
-
-.section {
-  padding: 4rem 0 2rem;
-}
-
-.container {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.icon {
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-}
-
-.grid {
-  display: grid;
-  align-items: center;
-}
-
-.btn {
-  padding: .6rem 1.5rem;
-  background-color: rgb(33, 237, 237);
-  border-radius: 3rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.btn a {
-  color: var(--whiteColor);
-  font-weight: 500;
-}
-
-.btn:hover {
-  background: var(--secondaryColor);
-}
-
-img,
-video {
-  width: 100%;
-  height: auto;
-}
-
-input {
-  font-size: 100%;
 }
 
 :root {

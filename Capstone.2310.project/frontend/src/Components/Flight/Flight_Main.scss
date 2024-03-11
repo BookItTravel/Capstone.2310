@@ -12,96 +12,6 @@ flight_main.scss:root {
     --cardBG: rgb(225, 225, 235);
 }
 
-body {
-    font-variant: var(--whiteColor);
-}
-
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style: none;
-    cursor: pointer;
-}
-
-.section {
-    padding: 4rem 0 2rem;
-}
-
-.container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-.icon {
-    font-size: 1.3rem;
-    cursor: pointer;
-}
-
-.none {
-    display: none;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-}
-
-.grid {
-    display: grid;
-    align-items: center;
-}
-
-.btn {
-    padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    color: var(--whiteColor);
-
-    a {
-        color: var(--whiteColor);
-        font-weight: 500;
-    }
-
-    &:hover {
-        background: var(--PrimaryColor);
-    }
-}
-
-img,
-video {
-
-    width: 100%;
-    height: auto;
-}
-
-input {
-    font-size: 100%;
-    color: var(--greyText);
-}
-
-p {
-    font-size: 13px;
-    color: var(--greyText);
-    line-height: 22px;
-}
-
-h4 {
-    padding: 1rem 0;
-    font-weight: 700;
-    color: var(--blackColor);
-}
-
-h2 {
-    font-size: 25px;
-    padding: 1rem 0;
-    color: var(--blackColor);
-}
-
 .home {
     padding-top: 10rem;
     text-align: center;
@@ -135,6 +45,362 @@ h2 {
         .plane {
             // position: absolute;
             width: 100%;
+        }
+    }
+}
+
+.search {
+    .sectionContainer {
+        width: 100%;
+        padding: 1.5rem;
+        border: 2px solid var(--greyText);
+        border-radius: 16px;
+        row-gap: 2rem;
+
+        .btns {
+            background: var(--SecondaryColor);
+            padding: .5rem;
+            border-radius: 1rem;
+            flex-direction: column;
+            width: 100%;
+            margin: auto;
+
+
+            .singleBtn {
+                padding: .8rem 1.5rem;
+                font-size: 13px;
+                border-radius: 3rem;
+                width: 80%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+                /* Add margin-bottom to create space between buttons */
+                display: inline-block;
+                /* Add this property to make each button an inline-block element */
+
+
+
+                &:hover {
+                    background: var(--PrimaryColor);
+                    color: var(--whiteColor);
+                    font-weight: 500;
+                    transition: .4s ease;
+                }
+            }
+
+            .active {
+                background: var(--PrimaryColor);
+                color: var(--whiteColor);
+                font-weight: 500;
+            }
+        }
+
+        .searchInputs {
+            width: 100%;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .singleInput {
+                .iconDiv {
+                    padding: 16px 10px;
+                    border-radius: 3rem;
+                    background: var(--SecondaryColor);
+                    margin-right: 1rem;
+
+                    .icon {
+                        color: var(--blackColor);
+                        opacity: .7;
+                    }
+                }
+
+                .texts {
+                    h4 {
+                        padding-top: 0;
+                        padding-bottom: .7rem;
+                        color: var(--blackColor);
+                        font-weight: 700;
+                    }
+
+                    input {
+                        width: 95%;
+                        border: none;
+                        outline: none;
+                        background: transparent;
+
+                        &::placeholder {
+                            font-size: 12px;
+                            opacity: .5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .home {
+        padding-top: 12rem;
+    }
+
+    .search {
+        .sectionContainer {
+            .searchInputs {
+                display: grid;
+                grid-template-columns: repeat(2.1fr);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 570px) {
+    .home {
+        .mainText {
+            width: 80%;
+        }
+
+        .homeImages {
+            .video {
+                border-radius: 15rem;
+            }
+
+            .plane {
+                position: absolute;
+                width: 95%;
+                top: -8%;
+            }
+        }
+
+    }
+
+    .search {
+        .sectionContainer {
+            .btns {
+                border-radius: 3rem;
+                flex-direction: row;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .home {
+        .mainText {
+            width: 80%;
+        }
+
+        .homeImages {
+            .videoDiv {
+                width: 80%;
+
+                .video {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 15rem;
+                }
+            }
+
+            .plane {
+                width: 95%;
+                top: -8%;
+            }
+        }
+    }
+
+    .search {
+        .sectionContainer {
+            .btn {
+                border-radius: 3rem;
+                flex-direction: row;
+            }
+
+            .searchInputs {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .search {
+        .sectionContainer {
+            .btns {
+                width: 70%;
+                border-radius: 3rem;
+                flex-direction: row;
+            }
+
+            .searchInputs {
+                grid-template-columns: repeat(4, 1fr);
+
+                .singleInput {
+                    .texts {
+                        input {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .home {
+        padding-top: 13rem;
+
+        .mainText {
+            width: 70%;
+            padding-bottom: 1.5rem;
+            font-size: 22px;
+            line-height: 4rem;
+        }
+    }
+
+    .search {
+        .sectionContainer {
+            .searchInputs {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .section {
+        padding: 6rem 0 4rem;
+    }
+
+    .container {
+        width: 75%;
+        margin: auto;
+    }
+
+    .home {
+        .mainText {
+            width: 60%;
+            font-size: 25px;
+            line-height: 4rem;
+        }
+
+        .homeImages {
+            .videDiv {
+                width: 90%;
+                height: 300px;
+
+                .video {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 15rem;
+                }
+            }
+
+            .plane {
+                width: 100%;
+                top: -10;
+            }
+        }
+    }
+
+    .search {
+        .sectionContainer {
+            .btns {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1106px) {
+    p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .section {
+        padding: 6rem 0 4rem;
+    }
+
+    .container {
+        width: 75%;
+        margin: auto;
+    }
+
+    .home {
+        .mainText {
+            width: 60%;
+            font-size: 25px;
+            line-height: 4rem;
+        }
+
+        .homeImages {
+            .videDiv {
+                width: 90%;
+                height: 300px;
+
+                .video {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 15rem;
+                }
+            }
+
+            .plane {
+                width: 100%;
+                top: -10;
+            }
+        }
+    }
+
+    .search {
+        .sectionContainer {
+            .btns {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .home {
+
+
+        .homeImages {
+            .plane {
+                width: 90%;
+                top: -30;
+            }
+        }
+    }
+
+    .search {
+        .sectionContainer {
+            .btns {
+                width: 50%;
+            }
         }
     }
 }

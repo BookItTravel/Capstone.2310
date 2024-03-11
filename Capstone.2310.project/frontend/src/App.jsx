@@ -17,9 +17,10 @@ function App() {
 
       <Navbar />
       <Home />
-      <Flight_Main />
+
       <Main />
       <Footer />
+      <Flight_Main />
     </>
   )
 }

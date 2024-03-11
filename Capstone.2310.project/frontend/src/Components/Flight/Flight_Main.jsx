@@ -1,7 +1,9 @@
-import airplane from '../../assets/airplane.jpg';
+// Flight_Main.jsx
+
+import video from '../../assets/clouds_final.mp4';
+import airplane from '../../assets/airplane5.png';
 import Flight_Search from '../Flight_Search/Flight_Search';
-// import './footer.scss'
-import './Flight_Main.scss'
+import './Flight_Main.scss';
 
 function Flight_Main() {
     return (
@@ -12,11 +14,12 @@ function Flight_Main() {
             </div>
 
             <div className="homeImages flex">
+                <img src={airplane} className="plane" alt="" />
                 <div className="videoDiv">
-                    <video src="video" autoPlay muted loop className="video"></video>
+                    {/* <video src={video} autoPlay muted loop className="video"></video> */}
                 </div>
 
-                <img src={airplane} className="plane" alt="" />
+
             </div>
 
             <Flight_Search />
