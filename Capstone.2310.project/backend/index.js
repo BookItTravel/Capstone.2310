@@ -17,8 +17,8 @@ app.use("/users", require("./api/users"));
 app.use("/cart", require("./api/cart"));
 app.use("/orders", require("./api/orders"));
 
-const client = require('./db/index');
-client.connect();
+// const client = require('./db/index');
+// client.connect();
 
 // Logging middleware
 app.use(morgan("dev"));

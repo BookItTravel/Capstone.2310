@@ -2,6 +2,9 @@
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 const Amadeus = require("amadeus");
 const express = require("express");
+const cache = require('../cache/node-cache')
+
+
 
 
 // Create router
@@ -15,24 +18,31 @@ const amadeus = new Amadeus({
 
 const API = "api";
 
+
+
 //Flight
-router.get(`/flight-search`, (req, res) => {
+router.get(`/flight-search`, cache(300), (req, res, next ) => {
+ 
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
     // Find the cheapest flights
     amadeus.shopping.flightOffersSearch.get({
-        originLocationCode,
-        destinationLocationCode,
-        departureDate,
-         adults
+      originLocationCode,
+      destinationLocationCode,
+      departureDate,
+      adults
     }).then(function (response) {
-        res.send(response.result);
+      res.send(response.result);
+      const flights = response.result.data
+ 
+        //console.log("resonse", response.result.data)
+        //console.log("flights", flights)
     }).catch(function (response) {
         res.send(response);
     });
     });
 
     // Airports search
-  router.get(`/city-and-airport-search/:parameter`, (req, res) => {
+  router.get(`/city-and-airport-search/:parameter`, cache(300), (req, res) => {
         const parameter = req.params.parameter;
         // Which cities or airports start with ’r'?
         amadeus.referenceData.locations
@@ -53,7 +63,7 @@ router.get(`/flight-search`, (req, res) => {
   //HOTEL 
 
  // gettting location
-  router.get(`/search-location`, async (req, res) => {
+  router.get(`/search-location`, cache(300), async (req, res) => {
     try {
       const { keyword } = req.body;
       const response = await amadeus.referenceData.locations.get({
@@ -66,17 +76,20 @@ router.get(`/flight-search`, (req, res) => {
     }
   });
 
-  router.get(`/city-hotels`, async (req, res) => {
+  router.get(`/city-hotels`, cache(300), async (req, res) => {
     try {
       const { cityCode } = req.query;
       const response = await amadeus.referenceData.locations.hotels.byCity.get({
         cityCode
       })
+      // client.setEx(cityCode, 3600, hotels)
       if (!response){
         return res.status(400).json({error: "No response" })
       }
-      res.json(JSON.parse(response.body));
-  
+      res.json(JSON.parse(response.body.data.name));
+      console.log("response.body",response.body)
+      const hotels = response.body.data;
+      console.log("hotels",hotels);
     } catch (err) {
       res.json(err);
     }
@@ -85,7 +98,7 @@ router.get(`/flight-search`, (req, res) => {
 
 
     // Confirming the offer
-    router.get(`/hotel-offers`, async (req, res) => {
+    router.get(`/hotel-offers`, cache(300), async (req, res) => {
       try {
         const { hotelId } = req.body;
         const response = await amadeus.referenceData.locations.hotels.byHotels.get({
@@ -102,7 +115,7 @@ router.get(`/flight-search`, (req, res) => {
 
 
 // City search suggestions
-router.get(`/${API}/search`, async (req, res) => {
+router.get(`/${API}/search`, cache(300), async (req, res) => {
   try {
     const { keyword } = req.body;
     const response = await amadeus.referenceData.locations.get({
@@ -118,7 +131,7 @@ router.get(`/${API}/search`, async (req, res) => {
 
 
 // POI
-router.get(`/reference-data/locations/pois`, async (req, res)=> {
+router.get(`/reference-data/locations/pois`, cache(300), async (req, res)=> {
  try {
   const { latitude, longitude } = req.body;
   const response = await  amadeus.referenceData.locations.pointsOfInterest.get({
