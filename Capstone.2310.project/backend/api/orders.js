@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { placeOrder, getOrderHistoryByUserId } = require('../db/db_methods');
 
-// POST /api/orders
+// POST /orders
 router.post('/', async (req, res, next) => {
     try {
         const { user_id, traveler_id, quantity } = req.body;
@@ -13,7 +13,7 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-// GET /api/orders/:user_id
+// GET /orders/:user_id
 router.get('/:user_id', async (req, res, next) => {
     try {
         const { user_id } = req.params;

@@ -32,8 +32,7 @@ router.get(`/flight-search`, cache(300), (req, res, next ) => {
       adults
     }).then(function (response) {
       res.send(response.result);
-      const flights = response.result.data
- 
+
         //console.log("resonse", response.result.data)
         //console.log("flights", flights)
     }).catch(function (response) {
@@ -82,14 +81,11 @@ router.get(`/flight-search`, cache(300), (req, res, next ) => {
       const response = await amadeus.referenceData.locations.hotels.byCity.get({
         cityCode
       })
-      // client.setEx(cityCode, 3600, hotels)
       if (!response){
         return res.status(400).json({error: "No response" })
       }
-      res.json(JSON.parse(response.body.data.name));
-      console.log("response.body",response.body)
-      const hotels = response.body.data;
-      console.log("hotels",hotels);
+      res.json(JSON.parse(response.body));
+  
     } catch (err) {
       res.json(err);
     }

@@ -7,7 +7,7 @@ const SALT_COUNT = 10;
 
 const JWT_SECRET = 'your_jwt_secret'; // Need to replace with a secret key
 
-// GET /api/users
+// GET /users
 router.get('/', async (req, res, next) => {
     try {
         const users = await getAllUsers();
@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// GET /api/users/:user_id
+// GET /users/:user_id
 router.get('/:user_id', async (req, res, next) => {
     try {
         const user = await getUserById(req.params.user_id);
@@ -31,7 +31,7 @@ router.get('/:user_id', async (req, res, next) => {
     }
 });
 
-// PATCH /api/users/:user_id
+// PATCH /users/:user_id
 router.patch('/:user_id', async (req, res, next) => {
     try {
         const user = await updateUser(req.params.user_id, req.body);
@@ -45,7 +45,7 @@ router.patch('/:user_id', async (req, res, next) => {
     }
 });
 
-// DELETE /api/users/:user_id
+// DELETE /users/:user_id
 router.delete('/:user_id', async (req, res, next) => {
     try {
         const user = await deleteUser(req.params.user_id);
@@ -59,7 +59,7 @@ router.delete('/:user_id', async (req, res, next) => {
     }
 });
 
-// POST /api/users/login
+// POST /users/login
 router.post('/login', async (req, res, next) => {
     try {
         const { username, password } = req.body;
@@ -78,7 +78,7 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
-// POST /api/users/register
+// POST /users/register
 router.post('/register', async (req, res, next) => {
     try {
         const { username, password, firstName, lastName, email, phone, passportNumber } = req.body;

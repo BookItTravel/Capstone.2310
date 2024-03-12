@@ -1,17 +1,17 @@
-const db = require("../db/index");
+const client = require("../db/index");
 
 const seed = async () => {
   console.log("Seeding the database");
   try {
     // Clear the database
-    await db.query(`
+    await client.query(`
             DROP TABLE IF EXISTS orders;
             DROP TABLE IF EXISTS shopping_cart;
             DROP TABLE IF EXISTS traveler;
             DROP TABLE IF EXISTS users;
         `);
     // Recreate tables
-    await db.query(`
+    await client.query(`
       CREATE TABLE users (
         user_id SERIAL PRIMARY KEY,
         username VARCHAR(50) UNIQUE NOT NULL,

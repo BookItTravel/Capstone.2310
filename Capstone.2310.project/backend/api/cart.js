@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { addToCart, removeFromCart, updateCart } = require('../db/db_methods');
 
-// POST /api/cart
+// POST /cart
 router.post('/', async (req, res, next) => {
     try {
         const { user_id, traveler_id, quantity } = req.body;
@@ -13,7 +13,7 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-// DELETE /api/cart/:user_id/:traveler_id
+// DELETE /cart/:user_id/:traveler_id
 router.delete('/:user_id/:traveler_id', async (req, res, next) => {
     try {
         const { user_id, traveler_id } = req.params;
@@ -28,7 +28,7 @@ router.delete('/:user_id/:traveler_id', async (req, res, next) => {
     }
 });
 
-//PATCH /api/cart/:user_id/:product_id
+//PATCH /cart/:user_id/:product_id
 router.patch('/:user_id/:traveler_id', async (req, res, next) => {
     try {
         const { user_id, traveler_id } = req.params;
