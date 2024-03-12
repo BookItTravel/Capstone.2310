@@ -7,6 +7,7 @@ const cors = require('cors');
 // const bodyParser = require('body-parser');
 const morgan = require('morgan');
 //const path = require('path');
+const { JWT_SECRET } = process.env;
 
 // Apply JSON parsing middleware
 app.use(express.json());
@@ -25,27 +26,21 @@ client.connect();
 app.use(morgan("dev"));
 app.use(cors());
 
-// Apply JSON parsing middleware
-// app.use(bodyParser.json());
-app.use(express.json());
-
 
 // Check requests for a token and attach the decoded id to the request
-// app.use((req, res, next) => {
-//   const auth = req.headers.authorization;
-//   const token = auth?.startsWith("Bearer ") ? auth.slice(7) : null;
+app.use((req, res, next) => {
+  const auth = req.headers.authorization;
+  const token = auth?.startsWith("Bearer ") ? auth.slice(7) : null;
 
-//   try {
-//     req.user = verify(token, process.env.JWT);
-//   } catch {
-//     req.user = null;
-//   }
+  try {
+    req.user = jwt.verify(token, JWT_SECRET);
+  } catch {
+    req.user = null;
+  }
 
-//   next();
-// });
-app.get("/", (req, res, next) => {
-  res.send("hello");
+  next();
 });
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
