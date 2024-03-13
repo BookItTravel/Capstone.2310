@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './main.scss'
+import './main.css'
 import img from '../../assets/img.jpg'
 import img2 from '../../assets/img2.jpg'
 import img3 from '../../assets/img3.jpg'

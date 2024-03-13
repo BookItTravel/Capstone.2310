@@ -1,5 +1,5 @@
 
-import '../Flight_Search/Flight_Search.scss'
+import '../Flight_Search/Flight_Search.css'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { RiAccountPinCircleLine } from 'react-icons/ri'
 import { RiCalendar2Fill } from "react-icons/ri";

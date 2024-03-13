@@ -3,7 +3,7 @@
 import video from '../../assets/clouds_final.mp4';
 import airplane from '../../assets/airplane5.png';
 import Flight_Search from '../Flight_Search/Flight_Search';
-import './Flight_Main.scss';
+import './Flight_Main.css';
 
 function Flight_Main() {
     return (

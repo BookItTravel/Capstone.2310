@@ -18,11 +18,10 @@ function App() {
 
       <Navbar />
       <Home />
-
       <Main />
       <Footer />
-      {/* <Flight_Main /> */}
       <Profile />
+      <Flight_Main />
     </>
   )
 }
