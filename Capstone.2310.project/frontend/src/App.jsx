@@ -7,6 +7,7 @@ import Main from './Components/Main/Main'
 import Footer from './Components/Footer/Footer'
 // import Register from './Components/Register/Register'
 import Flight_Main from './Components/Flight/Flight_Main'
+import Profile from './Pages/Profile/Profile'
 // import Flight_Search from './Components/Flight_Search/Flight_Search'
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
 
       <Main />
       <Footer />
-      <Flight_Main />
+      {/* <Flight_Main /> */}
+      <Profile />
     </>
   )
 }

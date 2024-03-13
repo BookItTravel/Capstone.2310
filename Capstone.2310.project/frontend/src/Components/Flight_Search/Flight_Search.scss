@@ -14,6 +14,8 @@
 
 // Flight_Search.scss
 
+// Flight_Search.scss
+
 .search {
     .sectionContainer {
         width: 100%;
@@ -23,7 +25,7 @@
         row-gap: 2rem;
 
         .btns {
-            background: var(--SecondaryColor);
+            background: var(--whiteColor);
             padding: .5rem;
             border-radius: 1rem;
             flex-direction: column;
@@ -38,7 +40,7 @@
                 text-align: center;
 
                 &:hover {
-                    background: var(--PrimaryColor);
+                    // background: var(--PrimaryColor);
                     color: var(--whiteColor);
                     font-weight: 500;
                     transition: .4s ease;
@@ -46,7 +48,7 @@
             }
 
             .active {
-                background: var(--PrimaryColor);
+                // background: var(--PrimaryColor);
                 color: var(--whiteColor);
                 font-weight: 500;
             }
@@ -62,7 +64,7 @@
                 .iconDiv {
                     padding: 16px 10px;
                     border-radius: 3rem;
-                    background: var(--SecondaryColor);
+                    background: var(--whiteColor);
                     margin-right: 1rem;
 
                     .icon {
@@ -80,7 +82,7 @@
                     }
 
                     input {
-                        width: 95%;
+                        width: 100%; // Updated to 100%
                         border: none;
                         outline: none;
                         background: transparent;
@@ -94,4 +96,8 @@
             }
         }
     }
+}
+
+.btn.btnBlock.flex {
+    width: 100% !important; // Add !important
 }
