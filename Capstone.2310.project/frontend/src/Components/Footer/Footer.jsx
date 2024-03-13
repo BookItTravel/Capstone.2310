@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './footer.scss'
+import './footer.css'
 import { FiSend } from 'react-icons/fi'
 import { MdOutlineTravelExplore } from 'react-icons/md'
 import { AiOutlineTwitter } from 'react-icons/ai'
