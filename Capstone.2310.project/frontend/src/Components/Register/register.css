@@ -1,86 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    color: #fff;
-}
-
-body {
-    min-height: 100vh;
-    background-color: rgb(253, 253, 253);
-}
-
-.Register {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 1rem 0.5rem;
-}
-
-section {
+.home {
     width: 100%;
-    max-width: 420px;
-    min-height: 400px;
+    height: 90vh;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    overflow: hidden; /* Ensure the video doesn't overflow the container */
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
+.video-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 0;
 }
 
-a,
-a:visited {
-    color: #fff;
+.regSection {
+    width: 35%;
+    background-color: #ffffff;
+    padding: 20px 20px 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 2%;
+    position: relative;
+    z-index: 1; /* Ensure the form is on top of the video */
 }
 
-input[type="text"],
-input[type="password"],
-button,
-textarea {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    padding: 0.25rem;
-    border-radius: 0.5rem;
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(86, 192, 231, 0.235);
+    top: 0;
+    bottom: 0;
+    z-index: 2; /* Ensure the overlay is on top of the video */
+    mix-blend-mode: hard-light;
 }
 
-label,
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0077cc;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #b3d4f1;
+    border-radius: 4px;
+}
+
 button {
-    margin-top: 1rem;
+    background-color:  hsl(183, 100%, 51%);
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-button {
-    padding: 0.5rem;
+button:disabled {
+    background-color: #b3d4f1;
+    cursor: not-allowed;
+}
+
+.invalid {
+    color: #ff4d4f;
+    margin-left: 0.25rem;
+}
+
+.valid {
+    color: #52c41a;
+    margin-left: 0.25rem;
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
-}
-
-.instructions>svg {
-    margin-right: 0.25rem;
+    color: #0077cc;
 }
 
 .offscreen {
@@ -92,27 +94,13 @@ button {
     display: none;
 }
 
-.valid {
-    color: limegreen;
-    margin-left: 0.25rem;
-}
-
-.invalid {
-    color: red;
-    margin-left: 0.25rem;
-}
-
 .errmsg {
     background-color: lightpink;
     color: firebrick;
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
-}
-
-.line {
-    display: inline-block;
-}
+}  
 
 .flexGrow {
     flex-grow: 1;
