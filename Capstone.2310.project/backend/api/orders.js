@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 const { placeOrder, getOrderHistoryByUserId } = require('../db/db_methods');
 
-// POST /api/orders
+// POST /orders
 router.post('/', async (req, res, next) => {
     try {
-        const { user_id, product_id, quantity } = req.body;
-        const order = await placeOrder(user_id, product_id, quantity);
+        const { user_id, traveler_id, quantity } = req.body;
+        const order = await placeOrder(user_id, traveler_id, quantity);
         res.status(201).send({ order });
     } catch (error) {
         next(error);
     }
 });
 
-// GET /api/orders/:user_id
+// GET /orders/:user_id
 router.get('/:user_id', async (req, res, next) => {
     try {
         const { user_id } = req.params;
