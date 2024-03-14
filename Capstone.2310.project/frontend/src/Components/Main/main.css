@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+/* Shared styles for Main and Home components */
+.main-container {
+    font-variant: var(--whiteColor);
+    background: var(--bodyColor);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.section {
+    padding: 4rem 0 2rem;
+}
+
+.container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.icon {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.none {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    align-items: center;
+}
+
+.btn {
+    padding: .7rem 1.5rem;
+    background: var(--PrimaryColor);
+    border: none;
+    outline: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    color: var(--whiteColor);
+}
+
+.btn a {
+    color: var(--whiteColor);
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: var(--PrimaryColor);
+}
+
+img,
+video {
+    width: 100%;
+    height: auto;
+}
+
+input {
+    font-size: 100%;
+    color: var(--greyText);
+}
+
+p {
+    font-size: 13px;
+    color: var(--greyText);
+    line-height: 22px;
+}
+
+h4 {
+    padding: 1rem 0;
+    font-weight: 700;
+    color: var(--blackColor);
+}
+
+h2 {
+    font-size: 25px;
+    padding: 1rem 0;
+    color: var(--blackColor);
+}
+
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main component styles */
+.main-container {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDream: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+}
+
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDream: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+    --cardHover: rgb(255, 255, 255);
+}
+
+.main {
+    width: 100%;
+}
+
+.secTitle .title {
+    position: relative;
+    width: max-content;
+    color: var(--textColor);
+    margin: 1rem 0;
+    z-index: 2;
+}
+
+.secTitle .title::after {
+    position: absolute;
+    content: '';
+    background: var(--SecondaryColor);
+    height: 5px;
+    width: 120px;
+    right: 0;
+    bottom: 5px;
+    z-index: -1;
+}
+
+.secContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.singleDestination {
+    height: 100%;
+    display: grid;
+    row-gap: 10px;
+    padding: 1rem;
+    border-radius: 10px;
+    align-items: center;
+    background: var(--cardBG);
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+    overflow: hidden;
+}
+
+.singleDestination:hover {
+    background: var(--cardHover);
+    box-shadow: 1 4px 4px rgba(85, 85, 114, 0.549);
+    cursor: pointer;
+}
+
+.singleDestination .imageDiv {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.singleDestination .imageDiv .img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-out;
+}
+
+.singleDestination .cardInfo {
+    padding: 1rem;
+}
+
+.singleDestination .cardInfo .destTitle {
+    color: var(--blackColor);
+    font-size: 1.25rem;
+}
+
+.singleDestination .cardInfo .continent {
+    gap: .5rem;
+}
+
+.singleDestination .cardInfo .continent .icon {
+    color: var(--textColor);
+    font-size: 18px;
+}
+
+.singleDestination .cardInfo .continent .name {
+    color: var(--textColor);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.singleDestination .cardInfo .fees {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-top: 1.5px solid var(--greyText);
+    border-bottom: 1.5px solid var(--greyText);
+}
+
+.singleDestination .cardInfo .grade {
+    color: var(--textColor);
+    max-width: 100px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.singleDestination .cardInfo .grade small {
+    text-align: center;
+    background: var(--gradientColor);
+    border-radius: 1rem;
+    color: var(--whiteColor);
+    padding: 1px 10px;
+    font-size: 10px;
+}
+
+.singleDestination .cardInfo .price {
+    font-size: 2rem;
+    color: var(--blackColor);
+}
+
+.singleDestination .desc {
+    font-size: 13.5px;
+    color: var(--textColor);
+    font-weight: 500;
+}
+
+.singleDestination .btn {
+    margin-top: 1rem;
+    color: var(--whiteColor);
+    font-weight: 600;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+.singleDestination .btn .icon {
+    align-self: center;
+    font-size: 18px;
+}

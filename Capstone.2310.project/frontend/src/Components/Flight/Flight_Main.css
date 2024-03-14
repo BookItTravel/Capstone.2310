@@ -1,0 +1,204 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDream: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+}
+
+.home {
+    padding-top: 10rem;
+    text-align: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.home .mainText {
+    color: var(--blackColor);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 2.5rem;
+}
+
+.home .homeImages {
+    width: 100%;
+    margin: 1rem auto 0;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 5rem;
+}
+
+.home .homeImages .videoDiv .video {
+    border-radius: 10rem;
+}
+
+.home .homeImages .plane {
+    width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+    .home {
+        padding-top: 12rem;
+    }
+
+    .search .sectionContainer .searchInputs {
+        display: grid;
+        grid-template-columns: repeat(2.1fr);
+    }
+}
+
+@media screen and (min-width: 570px) {
+    .home .mainText {
+        width: 80%;
+    }
+
+    .home .homeImages .video {
+        border-radius: 15rem;
+    }
+
+    .home .homeImages .plane {
+        position: absolute;
+        width: 95%;
+        top: -8%;
+    }
+
+    .search .sectionContainer .btns {
+        border-radius: 3rem;
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .home .mainText {
+        width: 80%;
+    }
+
+    .home .homeImages .videoDiv {
+        width: 80%;
+    }
+
+    .home .homeImages .videoDiv .video {
+        height: 100%;
+        width: 100%;
+        border-radius: 15rem;
+    }
+
+    .home .homeImages .plane {
+        width: 95%;
+        top: -8%;
+    }
+
+    .search .sectionContainer .btn {
+        border-radius: 3rem;
+        flex-direction: row;
+    }
+
+    .search .sectionContainer .searchInputs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .home {
+        padding-top: 13rem;
+    }
+
+    .home .mainText {
+        width: 70%;
+        padding-bottom: 1.5rem;
+        font-size: 22px;
+        line-height: 4rem;
+    }
+
+    .search .sectionContainer .btns {
+        width: 70%;
+        border-radius: 3rem;
+        flex-direction: row;
+    }
+
+    .search .sectionContainer .searchInputs {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .home .mainText {
+        width: 70%;
+        font-size: 25px;
+        line-height: 4rem;
+    }
+
+    .search .sectionContainer .searchInputs {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .section {
+        padding: 6rem 0 4rem;
+    }
+
+    .container {
+        width: 75%;
+        margin: auto;
+    }
+
+    .home .mainText {
+        width: 60%;
+        font-size: 25px;
+        line-height: 4rem;
+    }
+
+    .home .homeImages .videDiv {
+        width: 90%;
+        height: 300px;
+    }
+
+    .home .homeImages .videDiv .video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 15rem;
+    }
+
+    .home .homeImages .plane {
+        width: 100%;
+        top: -10%;
+    }
+
+    .search .sectionContainer .btns {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1106px),
+(min-width: 1440px) {
+    .home .homeImages .plane {
+        width: 90%;
+        top: -30%;
+    }
+
+    .search .sectionContainer .btns {
+        width: 50%;
+    }
+}

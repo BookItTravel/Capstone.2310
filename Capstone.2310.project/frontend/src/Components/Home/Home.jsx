@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './home.scss'
+import './home.css'
 import video from '../../assets/video.mp4'
 import { GrLocation } from 'react-icons/gr'
 import { HiFilter } from 'react-icons/hi'
