@@ -26,7 +26,6 @@ client.connect();
 app.use(morgan("dev"));
 app.use(cors());
 
-
 // Check requests for a token and attach the decoded id to the request
 app.use((req, res, next) => {
   const auth = req.headers.authorization;
@@ -57,13 +56,3 @@ app.use("*", (req, res) => {
 app.listen(PORT, () => {
   console.log("Server is listening on Port:", PORT);
 });
-// const express = require('express');
-// const app = express();
-
-// app.get("/", (req, res, next) => {
-//   res.send("hello");
-// });
-
-// app.listen(3000, () => {
-//   console.log("server is running");
-// });
