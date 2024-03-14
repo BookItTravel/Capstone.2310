@@ -1,0 +1,211 @@
+.booking-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100vw;
+    margin: 0 auto;
+}
+
+.booking-heading {
+    font-size: 1.875rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.review-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 100vw;
+}
+
+.review-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.flight-column, .hotel-column {
+    height: auto;
+    width: 30vw;
+    row-gap: 10px;
+    border-radius: 10px;
+    background-color: var(--cardBG);
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+    overflow: hidden;
+    padding: 0.75rem;
+    margin: 1.5rem;
+}
+
+.trip-card {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.section-title-container {
+    font-size: 1.875rem;
+    width: 100vw;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.column-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+}
+
+.trip-container {
+    padding: 0.25rem 0.25rem 1.0rem 1.0rem;
+    border-bottom: 1.5px solid var(--greyText);
+    height: auto;
+    overflow: hidden;
+}
+
+.flight-summary {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0;
+    padding-top: 0.4rem;
+}
+
+.flight-name {
+    color: black;
+    font-weight: bold;
+    margin-top: 0.3rem;
+}
+
+.hotel-container {
+    padding: 0.25rem 0.25rem 1.0rem 1.0rem;
+    border-bottom: 1.5px solid var(--greyText);
+    height: auto;
+    overflow: hidden;
+}
+
+.hotel-name {
+    color: black;
+    font-weight: bold;
+    margin-top: 0.3rem;
+}
+
+.cost-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem auto;
+    width: 50vw;
+    row-gap: 10px;
+    border-radius: 10px;
+    background-color: var(--cardBG);
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+    overflow: hidden;
+    padding: 0.75rem;
+    height: auto;
+}
+
+.cost-title-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cost-heading {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+}
+
+.cost-detail-container {
+    width: 65%;
+}
+
+table {
+    width: 100%;
+}
+
+.item-data {
+    font-size: 1.1rem;
+    padding: 0.2rem;
+    width: 50%;
+}
+
+.cost-data {
+    font-size: 1.1rem;
+    padding: 0.2rem;
+    text-align: right;
+    width: 50%;
+}
+
+.savings-data {
+    color: var(--SecondaryColor);
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.2rem;
+    text-align: right;
+    width: 50%;
+}
+
+.total-name {
+    color: var(--PrimaryColor);
+    font-size: 1.1rem;
+    font-weight: bolder;
+    padding: 0.2rem;
+    width: 50%;
+}
+
+.total-data {
+    color: var(--PrimaryColor);
+    font-size: 1.1rem;
+    font-weight: bolder;
+    padding: 0.2rem;
+    text-align: right;
+    width: 50%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem ;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.booking-button {
+    padding: .7rem 1.5rem;
+    background: var(--PrimaryColor);
+    border: none;
+    outline: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    color: var(--whiteColor);
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.booking-button:hover {
+    background: var(--PrimaryColor);
+}
+
+

@@ -7,6 +7,7 @@ import Main from './Components/Main/Main'
 import Footer from './Components/Footer/Footer'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
+import Booking from './Pages/Booking/Booking'
 import Flight_Main from './Components/Flight/Flight_Main'
 import Profile from './Pages/Profile/Profile'
 // import Flight_Search from './Components/Flight_Search/Flight_Search'
@@ -33,7 +34,8 @@ function App() {
           {/* <Route path="/" element={<Home />} />
           <Route path="/main" element={<Main />} /> */}
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />3
+          <Route path="/booking" element={<Booking />} />3
           {/* <Route path="/" element={<Main />} /> */}
         </Routes>
         <Profile />
