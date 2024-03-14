@@ -5,8 +5,9 @@ const { JWT_SECRET } = process.env;
 const router = express.Router();
 const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername } = require('../db/db_methods');
 const SALT_COUNT = 10;
+const { JWT_SECRET } = process.env;
 
-// GET /api/users
+// GET /users
 router.get('/', async (req, res, next) => {
     try {
         const users = await getAllUsers();
@@ -16,7 +17,7 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// GET /api/users/:user_id
+// GET /users/:user_id
 router.get('/:user_id', async (req, res, next) => {
     try {
         const user = await getUserById(req.params.user_id);
@@ -30,7 +31,7 @@ router.get('/:user_id', async (req, res, next) => {
     }
 });
 
-// PATCH /api/users/:user_id
+// PATCH /users/:user_id
 router.patch('/:user_id', async (req, res, next) => {
     try {
         const user = await updateUser(req.params.user_id, req.body);
@@ -44,7 +45,7 @@ router.patch('/:user_id', async (req, res, next) => {
     }
 });
 
-// DELETE /api/users/:user_id
+// DELETE /users/:user_id
 router.delete('/:user_id', async (req, res, next) => {
     try {
         const user = await deleteUser(req.params.user_id);
@@ -58,7 +59,7 @@ router.delete('/:user_id', async (req, res, next) => {
     }
 });
 
-// POST /api/users/login
+// POST /users/login
 router.post('/login', async (req, res, next) => {
     try {
         const { username, password } = req.body;
@@ -77,17 +78,17 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
-// POST /api/users/register
+// POST /users/register
 router.post('/register', async (req, res, next) => {
     try {
-        const { username, password, firstName, lastName, email, phone, passportNumber } = req.body;
+        const { username, password, email } = req.body;
         const existingUser = getUserByUsername(username);
         if (existingUser) {
             return res.send(401).json({ message: 'Username already exists' });
         }
         console.log("user", existingUser)
         const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-        const newUser = await addUser({ username, password: hashedPassword, firstName, lastName, email, phone, passportNumber });
+        const newUser = await addUser({ username, password: hashedPassword, email });
   
         res.status(201).json({ message: 'User registered successfully', user: newUser });
     } catch (error) {

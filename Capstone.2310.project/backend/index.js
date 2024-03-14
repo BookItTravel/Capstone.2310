@@ -17,6 +17,7 @@ app.use("/", router);
 app.use("/users", require("./api/users"));
 app.use("/cart", require("./api/cart"));
 app.use("/orders", require("./api/orders"));
+//app.use("/travelers",require("./api/traveler"))
 
 const client = require('./db/index');
 client.connect();
