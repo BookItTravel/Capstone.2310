@@ -80,14 +80,14 @@ router.post('/login', async (req, res, next) => {
 // POST /users/register
 router.post('/register', async (req, res, next) => {
     try {
-        const { username, password, firstName, lastName, email, phone, passportNumber } = req.body;
+        const { username, password, email } = req.body;
         const existingUser = getUserByUsername(username);
         if (existingUser) {
             return res.send(401).json({ message: 'Username already exists' });
         }
         console.log("user", existingUser)
         const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-        const newUser = await addUser({ username, password: hashedPassword, firstName, lastName, email, phone, passportNumber });
+        const newUser = await addUser({ username, password: hashedPassword, email });
   
         res.status(201).json({ message: 'User registered successfully', user: newUser });
     } catch (error) {

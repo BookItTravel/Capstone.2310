@@ -28,11 +28,8 @@ const fetchProductsFromAPI = async () => {
 const addUser = async ({
   username,
   password,
-  firstName,
-  lastName,
   email,
-  phone,
-  passportNumber,
+ 
 }) => {
   const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
   try {
@@ -40,19 +37,15 @@ const addUser = async ({
       rows: [user],
     } = await client.query(
       `
-            INSERT INTO users(username, password, firstName, lastName, email, phone, passportNumber)
-            VALUES($1, $2, $3, $4, $5, $6, $7)
+            INSERT INTO users(username, password, email)
+            VALUES($1, $2, $3)
             ON CONFLICT (username) DO NOTHING
             RETURNING *;
         `,
       [
         username,
         hashedPassword,
-        firstName,
-        lastName,
         email,
-        phone,
-        passportNumber,
       ]
     );
   } catch (error) {
