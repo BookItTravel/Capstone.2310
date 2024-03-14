@@ -19,19 +19,27 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Home />
-      <Main />
+      <div>
+        <Navbar />
+      </div>
+      <div>
+        <Home />
+      </div>
+      <div>
+        <Main />
+      </div>
       <BrowserRouter>
         <Routes>
           {/* <Route path="/" element={<Home />} />
           <Route path="/main" element={<Main />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          {/* <Route path="/" element={<Main />} /> */}
         </Routes>
         <Profile />
         <Flight_Main />
       </BrowserRouter>
+      <Footer />
     </>
   )
 }

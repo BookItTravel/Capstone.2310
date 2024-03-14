@@ -5,7 +5,6 @@ const { JWT_SECRET } = process.env;
 const router = express.Router();
 const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername } = require('../db/db_methods');
 const SALT_COUNT = 10;
-const { JWT_SECRET } = process.env;
 
 // GET /users
 router.get('/', async (req, res, next) => {
