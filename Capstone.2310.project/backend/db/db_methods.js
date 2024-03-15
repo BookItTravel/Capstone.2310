@@ -133,6 +133,7 @@ const getUserByUsername = async (username) => {
         `,
       [username]
     );
+    console.log(user);
     return user;
   } catch (error) {
     throw error;

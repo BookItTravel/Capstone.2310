@@ -12,6 +12,22 @@ const { JWT_SECRET } = process.env;
 // Apply JSON parsing middleware
 app.use(express.json());
 
+// Logging middleware
+app.use(morgan("dev"));
+app.use(cors());
+
+// Check requests for a token and attach the decoded id to the request
+app.use((req, res, next) => {
+  const auth = req.headers.authorization;
+  const token = auth?.startsWith("Bearer ") ? auth.slice(7) : null;
+  try {
+    req.user = jwt.verify(token, JWT_SECRET);
+  } catch {
+    req.user = null;
+  }
+  next();
+});
+
 // Apply router
 app.use("/", router);
 app.use("/users", require("./api/users"));
@@ -21,24 +37,6 @@ app.use("/orders", require("./api/orders"));
 
 const client = require('./db/index');
 client.connect();
-
-// Logging middleware
-app.use(morgan("dev"));
-app.use(cors());
-
-// Check requests for a token and attach the decoded id to the request
-app.use((req, res, next) => {
-  const auth = req.headers.authorization;
-  const token = auth?.startsWith("Bearer ") ? auth.slice(7) : null;
-
-  try {
-    req.user = jwt.verify(token, JWT_SECRET);
-  } catch {
-    req.user = null;
-  }
-
-  next();
-});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

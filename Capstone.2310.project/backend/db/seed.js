@@ -2,6 +2,7 @@ const client = require("../db/index");
 
 const seed = async () => {
   console.log("Seeding the database");
+  client.connect();
   try {
     // Clear the database
     await client.query(`
@@ -10,17 +11,18 @@ const seed = async () => {
             DROP TABLE IF EXISTS traveler;
             DROP TABLE IF EXISTS users;
         `);
+    console.log("1")
     // Recreate tables
     await client.query(`
       CREATE TABLE users (
         user_id SERIAL PRIMARY KEY,
         username VARCHAR(50) UNIQUE NOT NULL,
         password VARCHAR(100) NOT NULL,
-        firstName VARCHAR(255) NOT NULL,
-        lastName VARCHAR(255) NOT NULL,
+        firstName VARCHAR(255),
+        lastName VARCHAR(255),
         email VARCHAR(255) UNIQUE NOT NULL,
-        phone VARCHAR(255) NOT NULL,
-        passportNumber VARCHAR(255) UNIQUE NOT NULL
+        phone VARCHAR(255),
+        passportNumber VARCHAR(255)
       );
       
       CREATE TABLE traveler (
@@ -30,9 +32,7 @@ const seed = async () => {
         date_of_birth INTEGER NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         passportNumber VARCHAR(255) UNIQUE NOT NULL,
-        user_id INTEGER REFERENCES users(user_id),
-
-
+        user_id INTEGER REFERENCES users(user_id)
       );
       
       CREATE TABLE shopping_cart (
@@ -51,10 +51,13 @@ const seed = async () => {
         order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
+    console.log("Completed Seeding Database")
   } catch (error) {
     console.log(error);
     throw error;
-  }
+  } finally {
+    client.end()
+  };
 };
 
 // Seed the database if we are running this file directly.

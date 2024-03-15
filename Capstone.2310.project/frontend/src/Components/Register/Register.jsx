@@ -76,7 +76,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await axios.post("/api/users/register",
+      const response = await axios.post("http://localhost:3000/users/register",
         {
             username: user,
             email: email,
@@ -94,7 +94,7 @@ const Register = () => {
             throw new Error("Registration failed");
         }
     } catch (err) {
-      if (!err?.response) {
+      if (!err.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 409) {
         setErrMsg("Username Taken");
