@@ -5,7 +5,6 @@ const { JWT_SECRET } = process.env;
 const router = express.Router();
 const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername } = require('../db/db_methods');
 const SALT_COUNT = 10;
-const { JWT_SECRET } = process.env;
 
 // GET /users
 router.get('/', async (req, res, next) => {
@@ -82,11 +81,12 @@ router.post('/login', async (req, res, next) => {
 router.post('/register', async (req, res, next) => {
     try {
         const { username, password, email } = req.body;
-        const existingUser = getUserByUsername(username);
-        if (existingUser) {
-            return res.send(401).json({ message: 'Username already exists' });
-        }
+        console.log(req.body);
+        const existingUser = await getUserByUsername(username);
         console.log("user", existingUser)
+        if (existingUser) {
+            return res.status(401).json({ message: 'Username already exists' });
+        }
         const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
         const newUser = await addUser({ username, password: hashedPassword, email });
   
