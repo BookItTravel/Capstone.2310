@@ -1,0 +1,68 @@
+.bookingDetails-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    margin: 0 auto;
+    background-image: url('../../assets/booking_bgd.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title-container {
+    font-size: 1.435rem;
+    width: 100vw;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+    color: var(--whiteColorDream);
+}
+
+.booking-summary {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    row-gap: 10px;
+    border-radius: 10px;
+    background-color: var(--cardBG);
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+    width: 50vw;
+}
+
+.summary-heading {
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.cost-summary {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card-heading {
+    text-align: center;
+}
+
+.cost-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.cost-info {
+    margin: 0 3.5rem;
+}
