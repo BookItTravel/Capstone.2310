@@ -3,24 +3,24 @@ const client = require('./index');
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
-// Mock API endpoint for Amadeus product (flight, hotel, destination) information
-const PRODUCTS_API_URL = "https://example.com/products";
+// // Mock API endpoint for Amadeus product (flight, hotel, destination) information
+// const PRODUCTS_API_URL = "https://example.com/products";
 
-// Simulated database storage
-let users = [];
-let shoppingCart = [];
-let orders = [];
+// // Simulated database storage
+// let users = [];
+// let shoppingCart = [];
+// let orders = [];
 
-// Helper function to fetch products from third-party API
-const fetchProductsFromAPI = async () => {
-  try {
-    const response = await axios.get(PRODUCTS_API_URL);
-    return response.data;
-  } catch (error) {
-    console.log("Error fetching products from API:", error);
-    throw error;
-  }
-};
+// // Helper function to fetch products from third-party API
+// const fetchProductsFromAPI = async () => {
+//   try {
+//     const response = await axios.get(PRODUCTS_API_URL);
+//     return response.data;
+//   } catch (error) {
+//     console.log("Error fetching products from API:", error);
+//     throw error;
+//   }
+// };
 
 // User Methods
 
@@ -245,6 +245,29 @@ const updateCart = async (user_id, traveler_id, newQuantity) => {
       }
 };
 
+// Retrieve a cart by user id number
+const getCartByUserId = async (user_id) => {
+  try {
+    const {
+      rows: [cart],
+    } = await client.query(`
+            SELECT user_id, cart_id, traveler_id, quantity
+            FROM shopping_cart;
+            WHERE id=${user_id}
+        `);
+
+    if (!user) {
+      throw {
+        name: "UserNotFoundError",
+        message: "A user with that id does not exist",
+      };
+    }
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // Order Methods
 
 // Place an order
@@ -296,6 +319,7 @@ module.exports = {
   addToCart,
   removeFromCart,
   updateCart,
+  getCartByUserId,
   placeOrder,
   getOrderHistoryByUserId,
   addTraveler

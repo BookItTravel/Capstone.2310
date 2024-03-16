@@ -1,6 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { addToCart, removeFromCart, updateCart } = require('../db/db_methods');
+const { addToCart, removeFromCart, updateCart, getCartByUserId } = require('../db/db_methods');
+
+// GET /cart/:user_id
+router.get('/:user_id', async (req, res, next) => {
+    try {
+        const cart = await getCartByUserId(req.params.user_id);
+        if (!user) {
+            res.status(404).send({ message: 'Cart not found' });
+        } else {
+            res.send({ cart });
+        }
+    } catch (error) {
+        next(error);
+    }
+});
 
 // POST /cart
 router.post('/', async (req, res, next) => {
