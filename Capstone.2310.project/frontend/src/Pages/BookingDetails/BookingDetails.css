@@ -32,6 +32,8 @@
     background-color: var(--cardBG);
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     width: 50vw;
+    height: auto;
+    margin: 1.5rem;
 }
 
 .summary-heading {
@@ -50,6 +52,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 .card-heading {
@@ -65,4 +68,137 @@
 
 .cost-info {
     margin: 0 3.5rem;
+}
+
+.form-container {
+    row-gap: 10px;
+    border-radius: 10px;
+    background-color: var(--cardBG);
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+    width: 50vw;
+    height: auto;
+    margin: 1.5rem;
+}
+
+.form-container label {
+    font-size: 0.9rem;
+}
+
+.form-heading {
+    margin: 0.25rem 0.25rem 0.25rem 0.5rem;
+}
+
+.name-container {
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.booking-name {
+    border: 1px solid #000;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    width: 50%;
+    margin-left: .25rem;
+}
+
+.gender-heading, .dob-heading {
+    margin-left: 0.75rem;
+}
+
+.gender-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.gender-container input {
+    width: 17px;
+    margin-left: 1.25rem;
+    padding: 0.25rem;
+    border: 1px solid #000;
+}
+
+.gender-container label {
+    margin-left: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.dob-container {
+    margin-left: 1rem;
+    height: auto;
+}
+
+.dob-container select {
+    height: 2.5rem;
+    border: 1px solid #000;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem;
+}
+
+.payment-container {
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.payment-container select {
+    height: 2.5rem;
+    border: 1px solid #000;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem;
+}
+
+.payment-container input {
+    border: 1px solid #000;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-left: .25rem;
+}
+
+.longInput {
+    width: 60%;
+}
+
+.mediumInput {
+    width: 45%;
+}
+
+.stateInput {
+    width: 30%;
+}
+
+.shortInput {
+    width: 15%;
+}
+
+.tc-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tc-container input {
+    width: 17px;
+    margin-left: 1.25rem;
+    padding: 0.25rem;
+    border: 1px solid #000;
+}
+
+.tc-container label {
+    margin-left: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.policy-container {
+    padding: 0.75rem;
+    width: 100%; 
+}
+
+.policy-container ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.policy-container li {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
 }
