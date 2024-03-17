@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./BookingDetails.css";
 
 const BookingDetails = () => {
@@ -25,6 +25,7 @@ const BookingDetails = () => {
     zipCode: '',
     agreeToTerms: false,
   });
+  const [formValid, setFormValid] = useState(false);
 
   // Handler for form input changes
   const handleInputChange = (e) => {
@@ -56,6 +57,22 @@ const BookingDetails = () => {
     // Logic to add additional traveler form goes here
     console.log("Add additional traveler");
   };
+
+  // Function to check form validity
+  const checkFormValidity = () => {
+    const inputs = document.querySelectorAll('input[required]');
+    for (let input of inputs) {
+      if (!input.value) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Update form validity state whenever form data changes
+  useEffect(() => {
+    setFormValid(checkFormValidity());
+  }, [formData]);
 
   return (
     <div className="bookingDetails-container">
@@ -444,7 +461,7 @@ const BookingDetails = () => {
             <p>Refer to your booking terms for specific details.</p>
           </div>
           <div className='button-container'>
-            <button className='booking-button' type="submit">Just Book It!!</button>
+            <button className='booking-button' type="submit" disabled={!formValid}>Just Book It!!</button>
           </div>
         </form>
       </div>
