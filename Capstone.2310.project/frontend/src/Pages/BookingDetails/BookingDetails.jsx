@@ -80,7 +80,7 @@ const BookingDetails = () => {
         <h1 className="details-heading">Booking Details</h1>
       </div>
       <div className="booking-summary">
-      <h2 className="summary-heading">Trip Summary</h2>
+        <h2 className="summary-heading">Trip Summary</h2>
         <div className="card-container">
           <div className="flight-summary-card">
             <h3 className="card-heading">Flights</h3>
