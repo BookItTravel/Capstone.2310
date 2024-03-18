@@ -37,11 +37,11 @@
 section {
     width: 35%;
     background-color: #ffffff;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 2%;
-    position: relative; /* Ensure section is positioned relative for z-index to work */
+    /* margin-left: 2%; */
+    /* position: relative; Ensure section is positioned relative for z-index to work */
     z-index: 3; /* Adjust the value as needed */
 }
 

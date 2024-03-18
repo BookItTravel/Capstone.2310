@@ -22,7 +22,7 @@ function Home() {
         <section className="home">
             <div className="overlay"></div>
             <video src={video} muted autoPlay loop type="video/mp4"></video>
-
+            
             <div className="homeContent container">
                 <div className="textDiv">
 
@@ -36,6 +36,7 @@ function Home() {
                 </div>
 
                 <div data-aos="fade-up" className="cardDiv grid">
+                    
                     <div className="destinationInput">
                         <label htmlFor="city">Search your destination</label>
                         <div className="input flex">

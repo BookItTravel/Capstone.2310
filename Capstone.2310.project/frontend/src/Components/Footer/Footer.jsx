@@ -44,12 +44,12 @@ function Footer() {
                         <div className="logoDiv">
                             <a href="#" className='logo flex'>
                                 <MdOutlineTravelExplore className="icon" />
-                                Travel.
+                                Book It.
                             </a>
                         </div>
 
                         <div data-aos="fade-up" className="footerParagraph">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia reiciendis atque, enim a possimus cum obcaecati quae nobis animi et neque, corporis distinctio molestias ipsam eum? Sit odit corporis doloremque?
+                        <p>Inspiring journeys await with our travel application, your trusted companion for seamless exploration. Start your next adventure today and unlock a world of wonders at your fingertips.</p>
                         </div>
 
                         <div data-aos="fade-up" className="footerSocials flex">
