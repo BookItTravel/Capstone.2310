@@ -28,7 +28,7 @@ const Confirmation = () => {
             <div className='title-container'>
                 <h1 className='confirmation-heading'>Booking Confirmation</h1>
             </div>
-            <div className='custom-confirmation-container'>
+            <div className='custom-container-container'>
                 <div className="booking-confirmation-summary">
                     <h2 className="summary-heading">Trip Summary</h2>
                     <div className="card-container">

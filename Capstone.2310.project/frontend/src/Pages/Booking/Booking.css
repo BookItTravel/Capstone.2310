@@ -19,12 +19,26 @@
     width: 100vw;
 }
 
+.custom-booking-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    row-gap: 10px;
+    border-radius: 10px;
+    background-color:rgba(225, 225, 235, 0.7);
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+    width: 60vw;
+    margin-bottom: 5rem;
+    padding: 0.75rem 0;
+}
+
 .flight-card, .hotel-card {
     height: auto;
     width: 50vw;
     row-gap: 10px;
     border-radius: 10px;
-    background-color: var(--cardBG);
+    background-color: rgba(225, 225, 235, 0.7);
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     overflow: hidden;
     padding: 0.75rem;
@@ -106,7 +120,7 @@ p {
     width: 50vw;
     row-gap: 10px;
     border-radius: 10px;
-    background-color: var(--cardBG);
+    background-color: rgba(225, 225, 235, 0.7);
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     overflow: hidden;
     padding: 0.75rem;
