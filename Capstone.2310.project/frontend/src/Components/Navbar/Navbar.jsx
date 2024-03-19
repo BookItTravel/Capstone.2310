@@ -24,25 +24,16 @@ function Navbar() {
                             <a href="#" className='navLink'>Packages</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Shop</a>
+                            <a href="#" className='navLink'>Flght</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>About</a>
+                            <a href="#" className='navLink'>Stay</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Pages</a>
-                        </li>
-                        <li className='navItem'>
-                            <a href="#" className='navLink'>News</a>
-                        </li>
-                        <li className='navItem'>
-                            <a href="#" className='navLink'>Contact</a>
-                        </li>
-                        <li className='navItem'>
-                            <a href="#" className='navLink'>Login/Register</a>
+                            <a href="#" className='navLink'>Profile</a>
                         </li>
                         <button className='btn'>
-                            <a href="#">BOOK NOW</a>
+                            <a href="/login">Sign In</a>
                         </button>
                     </ul>
                     <div className="closeNavbar">

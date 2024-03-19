@@ -284,3 +284,7 @@ html {
 .home .homeContent .icon:hover {
     color: var(--PrimaryColor);
 }
+
+.destinationInput {
+    width: 40%;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import './home.css'
 import video from '../../assets/video.mp4'
 import { GrLocation } from 'react-icons/gr'
@@ -22,7 +22,7 @@ function Home() {
         <section className="home">
             <div className="overlay"></div>
             <video src={video} muted autoPlay loop type="video/mp4"></video>
-
+            
             <div className="homeContent container">
                 <div className="textDiv">
 
@@ -36,8 +36,17 @@ function Home() {
                 </div>
 
                 <div data-aos="fade-up" className="cardDiv grid">
+                    
                     <div className="destinationInput">
-                        <label htmlFor="city">Search your destination</label>
+                        <label htmlFor="city">Flying From</label>
+                        <div className="input flex">
+                            <input type="text" placeholder='Enter name here...' />
+                            <GrLocation className="icon" />
+                        </div>
+                    </div>
+
+                    <div className="destinationInput">
+                        <label htmlFor="city">Flying To</label>
                         <div className="input flex">
                             <input type="text" placeholder='Enter name here...' />
                             <GrLocation className="icon" />
@@ -45,14 +54,27 @@ function Home() {
                     </div>
 
                     <div className="dateInput">
-                        <label htmlFor="date">Select your date</label>
+                        <label htmlFor="date">Departure Date</label>
                         <div className="input flex">
                             <input type="date" />
-                            <GrLocation className="icon" />
                         </div>
                     </div>
 
-                    <div className="priceInput">
+                    <div className="dateInput">
+                        <label htmlFor="date">Run Date</label>
+                        <div className="input flex">
+                            <input type="date" />
+                        </div>
+                    </div>
+
+                    <div className="travelerinput">
+                        <label htmlFor="travelers">Number of Travelers</label>
+                        <div className="input flex">
+                            <input type="number" />
+                        </div>
+                    </div>
+
+                    {/* <div className="priceInput">
                         <div className="label_total flex">
                             <label htmlFor="price">Max price:
                             </label>
@@ -61,11 +83,11 @@ function Home() {
                         <div className="input flex">
                             <input type="range" max="5000" min="1000" />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="searchOptions flex">
-                        <HiFilter className="icon" />
-                        <span>MORE FILTERS</span>
+                        {/* <HiFilter className="icon" /> */}
+                        <span>Search Flights</span>
                     </div>
                 </div>
 
