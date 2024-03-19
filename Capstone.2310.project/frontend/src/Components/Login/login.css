@@ -12,7 +12,13 @@
     --cardBG: rgb(225, 225, 235);
 }
 
-.video-background {
+.home {
+    background-image: url('../../assets/booking_bgd.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .video-background {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -20,9 +26,9 @@
     left: 0;
     object-fit: cover;
     z-index: -1;
-}
+} */
 
-.overlay {
+/* .overlay {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -32,7 +38,7 @@
     z-index: 2;
     mix-blend-mode: hard-light;
     pointer-events: none;
-}
+} */
 
 section {
     width: 35%;

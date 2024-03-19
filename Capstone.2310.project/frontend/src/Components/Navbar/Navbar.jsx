@@ -32,11 +32,8 @@ function Navbar() {
                         <li className='navItem'>
                             <a href="#" className='navLink'>Profile</a>
                         </li>
-                        <li className='navItem'>
-                            <a href="#" className='navLink'>Contact</a>
-                        </li>
                         <button className='btn'>
-                            <a href="#">Sign In</a>
+                            <a href="/login">Sign In</a>
                         </button>
                     </ul>
                     <div className="closeNavbar">

@@ -3,235 +3,6 @@ import { Link } from 'react-router-dom';
 import "./BookingDetails.css";
 
 const BookingDetails = () => {
-  // // State variables to hold form data
-  // const [formData, setFormData] = useState({
-  //   primaryTraveler: {
-  //     firstName: '',
-  //     middleName: '',
-  //     lastName: '',
-  //     email: '',
-  //     phoneNumber: '',
-  //     gender: '',
-  //     birthMonth: '',
-  //     birthDay: '',
-  //     birthYear: '',
-  //   },
-  //   additionalTravelers: [],
-  //   cardName: '',
-  //   cardType: '',
-  //   cardNumber: '',
-  //   expirationDate: '',
-  //   cvv: '',
-  //   billingAddress1: '',
-  //   billingAddress2: '',
-  //   city: '',
-  //   state: '',
-  //   zipCode: '',
-  //   agreeToTerms: false,
-  // });
-  // const [formValid, setFormValid] = useState(false);
-  // const [showAdditionalForm, setShowAdditionalForm] = useState(false);
-
-  // // Handler for form input changes
-  // const handleInputChange = (e, travelerIndex = null) => {
-  //   const { name, value } = e.target;
-  //   if (travelerIndex !== null) {
-  //     const additionalTravelers = [...formData.additionalTravelers];
-  //     additionalTravelers[travelerIndex][name] = value;
-  //     setFormData({
-  //       ...formData,
-  //       additionalTravelers,
-  //     });
-  //   } else {
-  //     setFormData({
-  //       ...formData,
-  //       primaryTraveler: {
-  //         ...formData.primaryTraveler,
-  //         [name]: value,
-  //       },
-  //     });
-  //   }
-  // };
-
-  // // Handler for checkbox change
-  // const handleCheckboxChange = (e) => {
-  //   const { name, checked } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: checked,
-  //   });
-  // };
-
-  // // Handler for form submission
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Add your form submission logic here
-  //   console.log(formData);
-  // };
-
-  // // Handler for adding additional traveler
-  // const handleAddTraveler = () => {
-  //   const additionalTravelers = [...formData.additionalTravelers, {
-  //     firstName: '',
-  //     middleName: '',
-  //     lastName: '',
-  //     gender: '',
-  //     birthMonth: '',
-  //     birthDay: '',
-  //     birthYear: '',
-  //   }];
-  //   setFormData({
-  //     ...formData,
-  //     additionalTravelers,
-  //   });
-  //   console.log("Add additional traveler");
-  // };
-
-  // // Function to handle input changes for additional travelers
-  // const handleAdditionalInputChange = (e, index) => {
-  //   const { name, value } = e.target;
-  //   setAdditionalTravelers(prevTravelers => {
-  //     const updatedTravelers = [...prevTravelers];
-  //     updatedTravelers = { ...updatedTravelers[index], [name]: value };
-  //     return updatedTravelers;
-  //   })
-  // }
-
-  // // Function to check form validity
-  // const checkFormValidity = () => {
-  //   const inputs = document.querySelectorAll('input[required]');
-  //   for (let input of inputs) {
-  //     if (!input.value) {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // };
-
-  // // Update form validity state whenever form data changes
-  // useEffect(() => {
-  //   setFormValid(checkFormValidity());
-  // }, [formData]);
-
-  // const BookingDetails = () => {
-  // // State variables to hold form data
-  // const [formData, setFormData] = useState({
-  //   primaryTraveler: {
-  //     firstName: '',
-  //     middleName: '',
-  //     lastName: '',
-  //     email: '',
-  //     phoneNumber: '',
-  //     gender: '',
-  //     birthMonth: '',
-  //     birthDay: '',
-  //     birthYear: '',
-  //   },
-  //   additionalTravelers: [],
-  //   cardName: '',
-  //   cardType: '',
-  //   cardNumber: '',
-  //   expirationDate: '',
-  //   cvv: '',
-  //   billingAddress1: '',
-  //   billingAddress2: '',
-  //   city: '',
-  //   state: '',
-  //   zipCode: '',
-  //   agreeToTerms: false,
-  // });
-  // const [formValid, setFormValid] = useState(false);
-  // const [showAdditionalForm, setShowAdditionalForm] = useState(false);
-
-  // // Handler for form input changes
-  // const handleInputChange = (e, travelerIndex = null) => {
-  //   const { name, value } = e.target;
-  //   if (travelerIndex !== null) {
-  //     const additionalTravelers = [...formData.additionalTravelers];
-  //     additionalTravelers[travelerIndex][name] = value;
-  //     setFormData(prevState => ({
-  //       ...prevState,
-  //       additionalTravelers: additionalTravelers,
-  //     }));
-  //   } else {
-  //     setFormData(prevState => ({
-  //       ...prevState,
-  //       primaryTraveler: {
-  //         ...prevState.primaryTraveler,
-  //         [name]: value,
-  //       },
-  //     }));
-  //   }
-  // };
-
-  // // Handler for checkbox change
-  // const handleCheckboxChange = (e) => {
-  //   const { name, checked } = e.target;
-  //   setFormData(prevState => ({
-  //     ...prevState,
-  //     [name]: checked,
-  //   }));
-  // };
-
-  // // Handler for form submission
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Add your form submission logic here
-  //   console.log(formData);
-  // };
-
-  // // Handler for adding additional traveler
-  // const handleAddTraveler = () => {
-  //   const additionalTravelers = [...formData.additionalTravelers, {
-  //     firstName: '',
-  //     middleName: '',
-  //     lastName: '',
-  //     gender: '',
-  //     birthMonth: '',
-  //     birthDay: '',
-  //     birthYear: '',
-  //   }];
-  //   setFormData(prevState => ({
-  //     ...prevState,
-  //     additionalTravelers: additionalTravelers,
-  //   }));
-  //   console.log("Add additional traveler");
-  // };
-
-  // // Function to handle input changes for additional travelers
-  // const handleAdditionalInputChange = (e, index) => {
-  //   const { name, value } = e.target;
-  //   setFormData(prevState => ({
-  //     ...prevState,
-  //     additionalTravelers: prevState.additionalTravelers.map((traveler, i) =>
-  //       i === index ? { ...traveler, [name]: value } : traveler
-  //     ),
-  //   }));
-  // };
-
-  // // Function to check form validity
-  // const checkFormValidity = () => {
-  //   const inputs = [
-  //     formData.primaryTraveler.firstName,
-  //     formData.primaryTraveler.lastName,
-  //     formData.cardName,
-  //     formData.cardType,
-  //     formData.cardNumber,
-  //     formData.expirationDate,
-  //     formData.cvv,
-  //     formData.billingAddress1,
-  //     formData.city,
-  //     formData.state,
-  //     formData.zipCode,
-  //   ];
-
-  //   return inputs.every(input => input.trim() !== '');
-  // };
-
-  // // Update form validity state whenever form data changes
-  // useEffect(() => {
-  //   setFormValid(checkFormValidity());
-  // }, [formData]);
 
   // State variables to hold form data
   const [formData, setFormData] = useState({
@@ -260,27 +31,34 @@ const BookingDetails = () => {
     agreeToTerms: false,
   });
   const [formValid, setFormValid] = useState(false);
-  const [ ,setShowAdditionalForm] = useState(false);
+  const [showAdditionalForm ,setShowAdditionalForm] = useState(false);
 
   // Handler for form input changes
   const handleInputChange = (e, travelerIndex = null) => {
+    console.log('e', e);
     const { name, value } = e.target;
-    if (travelerIndex !== null) {
-      const additionalTravelers = [...formData.additionalTravelers];
-      additionalTravelers[travelerIndex][name] = value;
-      setFormData(prevState => ({
-        ...prevState,
-        additionalTravelers: additionalTravelers,
-      }));
-    } else {
-      setFormData(prevState => ({
-        ...prevState,
-        primaryTraveler: {
-          ...prevState.primaryTraveler,
-          [name]: value,
-        },
-      }));
-    }
+
+    setFormData({...formData,  [name]: value})
+    // if (travelerIndex !== null) {
+    //   const additionalTravelers = [...formData.additionalTravelers];
+    //   additionalTravelers[travelerIndex][name] = value;
+    //   setFormData(prevState => ({
+    //     ...prevState,
+    //     additionalTravelers: additionalTravelers,
+    //     cardNumber: '911'
+    //   }));
+    // } else {
+    //   setFormData(prevState => ({
+    //     ...prevState,
+    //     primaryTraveler: {
+    //       ...prevState.primaryTraveler,
+    //       [name]: value,
+    //       cardNumber: '911',
+    //     },
+    //   }));
+    // }
+
+    console.log(formData)
   };
 
   // Handler for checkbox change
@@ -387,7 +165,7 @@ const BookingDetails = () => {
         </div>
         <div className="form-container">
           <h2 className='summary-heading'>Payment Details</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autoComplete="false">
             <legend><h3 className='form-heading'>Contact Information</h3></legend>
             <div className='name-container'>
               <label htmlFor="firstName">First Name</label>
@@ -836,13 +614,23 @@ const BookingDetails = () => {
                 <option value="discover">Discover</option>
               </select>
               <label htmlFor="cardNumber">Credit Card Number</label>
-              <input className='mediumInput'
+              {/* <input className='mediumInput' autoComplete='new-password'
                 type="text"
                 id="cardNumber"
                 name="cardNumber"
                 value={formData.cardNumber}
                 onChange={handleInputChange}
-                pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}"
+                // pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}"
+                placeholder="xxxx-xxxx-xxxx-xxxx"
+                required
+              /> */}
+              <input className='mediumInput' autoComplete='new-password'
+                type="text"
+                id="cardNumber"
+                name="cardNumber"
+               value={formData.cardNumber}
+                onChange={handleInputChange}
+                // // pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}"
                 placeholder="xxxx-xxxx-xxxx-xxxx"
                 required
               />
