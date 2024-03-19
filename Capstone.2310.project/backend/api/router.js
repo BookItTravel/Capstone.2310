@@ -21,7 +21,7 @@ const API = "api";
 
 
 //Flight
-router.get(`/flight-search`, cache(300), (req, res, next ) => {
+router.post(`/flight-search`, cache(300), (req, res, next ) => {
  
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
     // Find the cheapest flights
@@ -39,6 +39,9 @@ router.get(`/flight-search`, cache(300), (req, res, next ) => {
         res.send(response);
     });
     });
+
+ 
+
 
     // Airports search
   router.get(`/city-and-airport-search/:parameter`, cache(300), (req, res) => {
