@@ -27,7 +27,7 @@ function App() {
         <Navbar />
         {/* <Home />
         <Main /> */}
-        <Flight_Main />
+        {/* <Flight_Main /> */}
         <Routes>
           <Route path="/" element={<LandingPage />} />
           {/* <Route path="/main" element={<Main />} /> */}

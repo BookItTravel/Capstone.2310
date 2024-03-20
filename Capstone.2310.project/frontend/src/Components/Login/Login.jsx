@@ -33,21 +33,21 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/users/login', {
-            username: user,
-            password: pwd,
-          });
-      
+        username: user,
+        password: pwd,
+      });
+
 
       // Check if the response is successful
-    if (response.status === 200) {
-      const { token } = response.data;
-      
-      setAuth({ user, pwd, accessToken: token });
-      setUser("");
-      setPwd("");
-      setSuccess(true);
-      navigate(from, { replace: true });
-    } else {
+      if (response.status === 200) {
+        const { token } = response.data;
+
+        setAuth({ user, pwd, accessToken: token });
+        setUser("");
+        setPwd("");
+        setSuccess(true);
+        navigate(from, { replace: true });
+      } else {
         throw new Error("Login failed");
       }
     } catch (err) {
@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="home">
+    <div className="login_home">
       <div className="overlay"></div>
       {/* <video
         className="video-background"

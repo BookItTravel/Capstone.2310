@@ -20,8 +20,10 @@ li {
 }
 
 .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    /* Reduced padding */
+    padding-right: 1rem;
+    /* Reduced padding */
 }
 
 .icon {
@@ -167,11 +169,19 @@ html {
     z-index: -1;
 }
 
+.wide-container.container {
+    width: 100vw;
+    /* Adjust to ensure full width */
+    padding: 20px 20px;
+    /* Remove padding if necessary */
+    margin: auto;
+}
+
 .secContent {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+    /* This forces 5 columns */
     gap: 1.5rem;
-    justify-content: center;
 }
 
 .singleDestination {

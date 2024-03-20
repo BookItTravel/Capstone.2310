@@ -203,12 +203,15 @@ html {
 }
 
 .home .homeContent .cardDiv {
-    position: relative;
-    padding: 2rem 1rem;
+    display: grid;
+    /* Adjust the template columns to fit the "Number of Travelers" and "Search Flights" in the same row */
+    grid-template-columns: repeat(4, 1fr) auto;
+    /* This assumes 4 equal columns for the other inputs and auto for the search button, adjust as needed */
+    gap: 1rem;
+    align-items: center;
+    padding: 1.5rem 1rem;
     background: var(--whiteColor);
     border-radius: 10px;
-    gap: 1rem;
-    grid-template-columns: repeat(3, 1fr);
 }
 
 .home .homeContent .cardDiv label {
@@ -244,6 +247,7 @@ html {
     width: 100%;
     font-size: 13px;
     font-weight: 500;
+
 }
 
 .home .homeContent .cardDiv .input input::placeholder {
@@ -261,18 +265,40 @@ html {
 }
 
 .home .homeContent .cardDiv .searchOptions {
+    /* Adjust or remove absolute positioning */
+    /* position: absolute; */
+    /* Consider removing or adjusting these lines */
+    /* bottom: -0.7rem; */
+    /* left: 50%; */
+    /* transform: translate(-50%); */
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 1rem;
+    border-radius: 3rem;
+    background: var(--gradientColor);
+    cursor: pointer; */
     position: absolute;
     background: var(--gradientColor);
     width: max-content;
-    bottom: -0.7rem;
+    bottom: -1.3rem;
     column-gap: .8rem;
-    padding: 5px 1rem;
+    padding: 5px 2rem;
     border-radius: 3rem;
     left: 50%;
     transform: translate(-50%);
     justify-content: center;
     cursor: pointer;
 }
+
+.travelerinput .input {
+    /* For example, limit its max-width if it's too wide */
+    max-width: 70%;
+    /* Adjust as needed */
+    margin: 0 auto;
+    /* Center the input in its grid column */
+}
+
 
 .home .homeContent .icon {
     font-size: 20px;
@@ -285,6 +311,6 @@ html {
     color: var(--PrimaryColor);
 }
 
-.destinationInput {
+/* .destinationInput {
     width: 40%;
-}
+} */
