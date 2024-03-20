@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../../Components/Footer/Footer'
 import "./Booking.css";
 
 const Booking = () => {
@@ -103,6 +104,7 @@ const Booking = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

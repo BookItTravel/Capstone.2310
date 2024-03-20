@@ -1,5 +1,6 @@
 import '../Profile/Profile.css';
 import { CgProfile } from "react-icons/cg";
+import Footer from '../../Components/Footer/Footer';
 
 function Profile() {
     return (
@@ -34,6 +35,7 @@ function Profile() {
                 <h1 className="profile-heading">Support</h1>
                 <div className='support'></div>
             </div>
+            <Footer />
         </div>
     );
 }
