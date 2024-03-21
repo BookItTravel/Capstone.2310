@@ -30,7 +30,7 @@ function Navbar() {
                             <a href="#" className='navLink'>Stay</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Profile</a>
+                            <a href="/profile" className='navLink'>Profile</a>
                         </li>
                         <button className='btn'>
                             <a href="/login">Sign In</a>
