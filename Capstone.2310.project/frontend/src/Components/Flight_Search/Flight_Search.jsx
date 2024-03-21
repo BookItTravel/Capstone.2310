@@ -1,4 +1,3 @@
-
 import '../Flight_Search/Flight_Search.css'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { RiAccountPinCircleLine } from 'react-icons/ri'
@@ -15,26 +14,10 @@ function Flight_Search() {
  const [originLocationCode, setOriginLocationCode] = useState('');
 
  
- // const handleSubmit = async (e) => {
-     //     e.preventDefault()
-     //   const data = {
-         //     destinationLocation,adults, departureDate, originLocation
-         //   }
-         //     const result = await axios.post('http://localhost:3000/flight-search', {data})
-         //     console.log(result.data)
-         //  const handleChange = (value) => {
-           
-         //     setDepartureDate(departureDate)
-         //     setOriginLocation(originLocation)
-         //     setDestinationLocation(destinationLocation)
-         //     setTravelers(travelers)
-         //     fetchData(value);
-          
-         //  };
-         //     console.log("orgin", originLocation)
-         // } 
+
 
              const handleSubmit = async (parameters) => {
+          
                  try {
                      const url = 'http://localhost:3000/flight-search';
                      const response = await axios.post(url, parameters);
@@ -66,6 +49,7 @@ function Flight_Search() {
                 .then(data => {
                     if (data) {
                         console.log('Data received from the server:', data);
+                       // setResults(data)
                         // Process the received data here
                     } else {
                         console.log('Failed to fetch data from the server.');
@@ -74,16 +58,19 @@ function Flight_Search() {
                 .catch(error => {
                     console.error('An error occurred:', error);
                 });
-       
-            
-            const handleChange = (parameters) => {
-        setAdults(adults)
-        setDepartureDate(departureDate)
-        setDestinationLocationCode(destinationLocationCode)
-        setOriginLocationCode(originLocationCode)
-        handleSubmit(parameters)
-        }
-            
+                
+                setResults(data)
+                
+                const handleChange = (parameters) => {
+                    setAdults(adults)
+                    setDepartureDate(departureDate)
+                    setDestinationLocationCode(destinationLocationCode)
+                    setOriginLocationCode(originLocationCode)
+                    handleSubmit(parameters)
+                }
+                
+          
+            setResults()
             
     return (
         <div className="search container section">
@@ -178,8 +165,6 @@ function Flight_Search() {
         </div>
     )
 }
-
-
 
 
 export default Flight_Search

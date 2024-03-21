@@ -4,8 +4,12 @@ import video from '../../assets/clouds_final.mp4';
 import airplane from '../../assets/airplane5.png';
 import Flight_Search from '../Flight_Search/Flight_Search';
 import './Flight_Main.css';
+import { useState } from 'react';
+import { FlightResultList } from './FlightResultList';
 
 function Flight_Main() {
+const [results, setResults] = useState([]);
+
     return (
         <div className="home flex container">
 
@@ -22,7 +26,8 @@ function Flight_Main() {
 
             </div>
 
-            <Flight_Search />
+            <Flight_Search setResults={setResults}/>
+            <FlightResultList results={results}/>
         </div>
     );
 }

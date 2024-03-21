@@ -10,16 +10,22 @@ import Register from './Components/Register/Register'
 import Booking from './Pages/Booking/Booking'
 import BookingDetails from './Pages/BookingDetails/BookingDetails'
 import Confirmation from './Pages/Confirmation/Confirmation'
-//import Flight_Main from './Components/Flight/Flight_Main'
+import Flight_Main from './Components/Flight/Flight_Main'
 import Profile from './Pages/Profile/Profile'
- import Flight_Search from './Components/Flight_Search/Flight_Search'
+import Flight_Search from './Components/Flight_Search/Flight_Search'
+import { FlightResultList } from './Components/Flight/FlightResultList'
+
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Flights from './Components/Flight/flight'
 
 
+
 function App() {
   const [count, setCount] = useState(0)
+  // const [results, setResults] = useState([])
+  
+
 
   return (
     <>
@@ -45,8 +51,10 @@ function App() {
         </Routes>
         <Profile />
         {/* <Flight_Main /> */}
-      <Flight_Search />
+
       </BrowserRouter>
+          <Flight_Search />
+            <FlightResultList />
       <Flights />
       <Footer />
     </>

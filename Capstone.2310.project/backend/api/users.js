@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const router = express.Router();
-const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername } = require('../db/db_methods');
+const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername} = require('../db/db_methods');
 const SALT_COUNT = 10;
 
 // GET /users
@@ -21,12 +21,12 @@ router.get('/:user_id', async (req, res, next) => {
     try {
         const user = await getUserById(req.params.user_id);
         if (!user) {
-            res.status(404).send({ message: 'User not found' });
+            res.status(401).json({ message: 'User not found' });
         } else {
-            res.send({ user });
+            res.json({ user });
         }
     } catch (error) {
-        next(error);
+         next(error);
     }
 });
 
@@ -68,7 +68,7 @@ router.post('/login', async (req, res, next) => {
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).json({ message: 'Ifnvalid username or password' });
         }
         const token = jwt.sign({ user_id: user.user_id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
         res.json({ message: 'Login Successful', token });

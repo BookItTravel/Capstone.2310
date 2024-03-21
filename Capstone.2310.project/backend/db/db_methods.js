@@ -1,7 +1,7 @@
-const axios = require("axios");
 const client = require('./index');
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
+const axios = require("axios");
 
 // // Mock API endpoint for Amadeus product (flight, hotel, destination) information
 // const PRODUCTS_API_URL = "https://example.com/products";
@@ -25,6 +25,8 @@ const SALT_COUNT = 10;
 // User Methods
 
 // Add a new user
+
+
 const addUser = async ({
   username,
   password,
@@ -105,7 +107,7 @@ const getUserById = async (user_id) => {
     } = await client.query(`
             SELECT user_id, username, firstName, lastName, email, phone, passportNumber
             FROM users;
-            WHERE id=${user_id}
+            WHERE id=$1
         `);
 
     if (!user) {
@@ -121,24 +123,25 @@ const getUserById = async (user_id) => {
 };
 
 // Retrieve a user by username
-const getUserByUsername = async (username) => {
+async function getUserByUsername(username) {
+  // first get the user
   try {
-    const {
-      rows: [user],
-    } = await client.query(
-      `
-            SELECT *
-            FROM users
-            WHERE username=$1
-        `,
-      [username]
-    );
-    console.log(user);
+    const {rows} = await client.query(`
+      SELECT *
+      FROM users
+      WHERE username = $1;
+    `, [username]);
+    // if it doesn't exist, return null
+    if (!rows || !rows.length) return null;
+    // if it does:
+    // delete the 'password' key from the returned object
+    const [user] = rows;
+    // delete user.password;
     return user;
   } catch (error) {
-    throw error;
+    console.error(error)
   }
-};
+}
 
 // Delete a user from the database
 const deleteUser = async (username) => {
@@ -298,7 +301,23 @@ const getOrderHistoryByUserId = async (user_id) => {
     }
 };
 
+async function getUser({username, password}) {
+  if (!username || !password) {
+    return;
+  }
 
+  try {
+    const user = await getUserByUsername(username);
+    if(!user) return;
+    const hashedPassword = user.password;
+    const passwordsMatch = await bcrypt.compare(password, hashedPassword);
+    if(!passwordsMatch) return;
+    delete user.password;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
 
 
 // Product Methods
@@ -322,6 +341,7 @@ module.exports = {
   getCartByUserId,
   placeOrder,
   getOrderHistoryByUserId,
-  addTraveler
+  addTraveler,
+
   //getProductInfo,
 };
