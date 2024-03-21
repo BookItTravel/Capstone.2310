@@ -4,9 +4,6 @@ const Amadeus = require("amadeus");
 const express = require("express");
 const cache = require('../cache/node-cache')
 
-
-
-
 // Create router
 const router = express.Router();
 
@@ -17,8 +14,6 @@ const amadeus = new Amadeus({
 });
 
 const API = "api";
-
-
 
 //Flight
 router.post(`/flight-search`, cache(300), (req, res, next ) => {
@@ -32,9 +27,6 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
       adults
     }).then(function (response) {
       res.send(response.result);
-
-        //console.log("resonse", response.result.data)
-        //console.log("flights", flights)
     }).catch(function (response) {
         res.send(response);
     });

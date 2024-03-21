@@ -3,25 +3,6 @@ const client = require('./index');
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
-// // Mock API endpoint for Amadeus product (flight, hotel, destination) information
-// const PRODUCTS_API_URL = "https://example.com/products";
-
-// // Simulated database storage
-// let users = [];
-// let shoppingCart = [];
-// let orders = [];
-
-// // Helper function to fetch products from third-party API
-// const fetchProductsFromAPI = async () => {
-//   try {
-//     const response = await axios.get(PRODUCTS_API_URL);
-//     return response.data;
-//   } catch (error) {
-//     console.log("Error fetching products from API:", error);
-//     throw error;
-//   }
-// };
-
 // User Methods
 
 // Add a new user
@@ -31,7 +12,7 @@ const addUser = async ({
   email,
  
 }) => {
-  const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+  
   try {
     const {
       rows: [user],
@@ -44,7 +25,7 @@ const addUser = async ({
         `,
       [
         username,
-        hashedPassword,
+        password,
         email,
       ]
     );
@@ -104,8 +85,8 @@ const getUserById = async (user_id) => {
       rows: [user],
     } = await client.query(`
             SELECT user_id, username, firstName, lastName, email, phone, passportNumber
-            FROM users;
-            WHERE id=${user_id}
+            FROM users
+            WHERE user_id=${user_id}
         `);
 
     if (!user) {
@@ -297,17 +278,6 @@ const getOrderHistoryByUserId = async (user_id) => {
         throw error;
     }
 };
-
-
-
-
-// Product Methods
-
-// Helper function to get product information from Amadeus
-// const getProductInfo = async (product_id) => {
-//     const products = await fetchProductsFromAPI();
-//     return products.find((product) => product.id === product_id);
-// };
 
 module.exports = {
   addUser,
