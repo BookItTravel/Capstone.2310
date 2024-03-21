@@ -3,7 +3,7 @@ import '../Flight_Search/Flight_Search.css'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { RiAccountPinCircleLine } from 'react-icons/ri'
 import { RiCalendar2Fill } from "react-icons/ri";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios'
 
 

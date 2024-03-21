@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../Components/Footer/Footer';
 import "./BookingDetails.css";
 
 const BookingDetails = () => {
@@ -614,23 +615,13 @@ const BookingDetails = () => {
                 <option value="discover">Discover</option>
               </select>
               <label htmlFor="cardNumber">Credit Card Number</label>
-              {/* <input className='mediumInput' autoComplete='new-password'
-                type="text"
-                id="cardNumber"
-                name="cardNumber"
-                value={formData.cardNumber}
-                onChange={handleInputChange}
-                // pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}"
-                placeholder="xxxx-xxxx-xxxx-xxxx"
-                required
-              /> */}
               <input className='mediumInput' autoComplete='new-password'
                 type="text"
                 id="cardNumber"
                 name="cardNumber"
                value={formData.cardNumber}
                 onChange={handleInputChange}
-                // // pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}"
+                pattern="\d{4}-?\d{4}-?\d{4}-?\d{4}"
                 placeholder="xxxx-xxxx-xxxx-xxxx"
                 required
               />
@@ -744,6 +735,7 @@ const BookingDetails = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

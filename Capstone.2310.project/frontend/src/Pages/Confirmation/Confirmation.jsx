@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Footer from '../../Components/Footer/Footer';
 import './Confirmation.css';
 
 const Confirmation = () => {
@@ -68,6 +69,7 @@ const Confirmation = () => {
                     <button className='booking-button' type="submit">Book Your Next Trip</button>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 };
