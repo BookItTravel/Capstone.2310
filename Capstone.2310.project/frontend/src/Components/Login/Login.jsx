@@ -58,65 +58,58 @@ const Login = () => {
   };
 
   return (
-    <div className="login_home">
-      <div className="overlay"></div>
-      {/* <video
-        className="video-background"
-        src={video}
-        muted
-        autoPlay
-        loop
-        type="video/mp4"
-      ></video> */}
-      {success ? (
-        <section>
-          <h1>You are logged in!</h1>
-          <br />
-          <p>
-            <a href="#">Go to Home</a>
-          </p>
-        </section>
-      ) : (
-        <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
-          <h1>Sign In</h1>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
-              required
-            />
-
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
-              required
-            />
-            <button>Sign In</button>
-          </form>
-          <p>
-            Need an Account?
+    <div>
+      <div className="login_home">
+        {success ? (
+          <section>
+            <h1>You are logged in!</h1>
             <br />
-            <span>
-              <Link to="/register">Sign Up</Link>
-            </span>
-          </p>
-        </section>
-      )}
+            <p>
+              <a href="#">Go to Home</a>
+            </p>
+          </section>
+        ) : (
+          <section className="login-container">
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
+            >
+              {errMsg}
+            </p>
+            <h1>Sign In</h1>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                ref={userRef}
+                autoComplete="off"
+                onChange={(e) => setUser(e.target.value)}
+                value={user}
+                required
+              />
+
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
+                required
+              />
+              <button className="login-button">Sign In</button>
+            </form>
+            <p>
+              Need an Account?
+              <br />
+              <span>
+                <Link to="/register">Sign Up</Link>
+              </span>
+            </p>
+          </section>
+        )}
+      </div>
       <Footer />
     </div>
   );

@@ -16,40 +16,21 @@
     background-image: url('../../assets/booking_bgd.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 86.5vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* .video-background {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    z-index: -1;
-} */
-
-/* .overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: rgba(86, 192, 231, 0.235);
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    mix-blend-mode: hard-light;
-    pointer-events: none;
-} */
-
-section {
+.login-container {
     width: 35%;
     background-color: #ffffff;
-    /* padding: 20px; */
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* margin-left: 2%; */
-    /* position: relative; Ensure section is positioned relative for z-index to work */
-    z-index: 3;
-    /* Adjust the value as needed */
+    box-shadow: 0 4px 8px rgba(225, 225, 235, 0.7);
+    
 }
 
 label {
@@ -68,13 +49,17 @@ input {
     border-radius: 4px;
 }
 
-button {
-    background-color: hsl(183, 100%, 51%);
-    color: #ffffff;
-    padding: 10px 15px;
+.login-button {
+    padding: .7rem 1.5rem;
+    background: var(--PrimaryColor);
     border: none;
-    border-radius: 4px;
+    outline: none;
+    border-radius: 3rem;
     cursor: pointer;
+    color: var(--whiteColor);
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
 }
 
 button:disabled {

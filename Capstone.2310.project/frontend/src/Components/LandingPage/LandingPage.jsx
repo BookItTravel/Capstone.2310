@@ -7,6 +7,7 @@ import { AiFillInstagram } from 'react-icons/ai'
 import { FaTripadvisor } from 'react-icons/fa'
 import { FiChevronRight } from 'react-icons/fi'
 import { MdOutlineTravelExplore } from 'react-icons/md'
+import './LandingPage.css'
 
 const LandingPage = () => {
     return (
@@ -14,10 +15,6 @@ const LandingPage = () => {
             <Home />
             <Main />
             <section className='footer'>
-                <div className="videoDiv">
-                    {/* <video src={video} muted autoPlay loop type="video/mp4"></video> */}
-                </div>
-
                 <div className="secContent container">
                     <div className="contactDiv flex">
                         <div data-aos="fade-up" className="text">
@@ -26,7 +23,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className="inputDiv flex">
-                            <input data-aos="fade-up" type="text" placeholder='Enter Email Address' />
+                            <input data-aos="fade-up" type="text" placeholder='Enter Email Address' className='emailInput'/>
                             <button data-aos="fade-up" className='btn flex' type='submit'>
                                 SEND <FiSend className="icon" />
 
