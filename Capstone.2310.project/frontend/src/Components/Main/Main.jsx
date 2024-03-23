@@ -25,9 +25,9 @@ function Main() {
             imgSrc: img,
             destTitle: 'Bora Bora',
             location: 'Tahiti',
-            grade: 'Relax',
-            fees: '$700',
-            description: 'Nestled in the heart of South America, Peru is a captivating destination that weaves together a rich tapestry of culture, history, and natural beauty. '
+            grade: 'Starting at',
+            fees: '$1,700',
+            description: 'Bora Bora, a small South Pacific island in French Polynesia, is renowned for its turquoise lagoon, luxurious overwater bungalows, vibrant marine life, and tranquil beauty.'
 
         },
 
@@ -36,9 +36,9 @@ function Main() {
             imgSrc: img2,
             destTitle: 'Machu Picchu',
             location: 'Peru',
-            grade: 'Relax',
-            fees: '$600',
-            description: 'Nestled in the heart of South America, Peru is a captivating destination that weaves together a rich tapestry of culture, history, and natural beauty. '
+            grade: 'Starting at',
+            fees: '$1,600',
+            description: 'Machu Picchu, the iconic Incan citadel set high in the Andes Mountains of Peru, showcases remarkable ancient engineering and breathtaking natural surroundings.'
 
         },
 
@@ -47,9 +47,9 @@ function Main() {
             imgSrc: img3,
             destTitle: 'Cancun',
             location: 'Mexico',
-            grade: 'Relax',
-            fees: '$700',
-            description: "Nestled along the turquoise shores of the Caribbean Sea, Cancun stands as an unrivaled jewel on Mexico's Yucatán Peninsula. "
+            grade: 'Starting at',
+            fees: '$1,000',
+            description: "Cancun, a vibrant city on Mexico's Yucatan Peninsula, is renowned for its stunning Caribbean beaches, lively nightlife, rich Mayan heritage, and luxurious resorts."
 
         },
 
@@ -58,9 +58,9 @@ function Main() {
             imgSrc: img4,
             destTitle: 'Santorini ',
             location: 'Greece',
-            grade: 'Relax',
-            fees: '$700',
-            description: "Santorini boasts some of the world's most breathtaking sunsets, transforming the sky into a palette of warm hues that reflect upon the shimmering waters. "
+            grade: 'Starting at',
+            fees: '$1,900',
+            description: 'Santorini, a Greek island in the Aegean Sea, is famed for its dramatic views, stunning sunsets, white-washed buildings, blue-domed churches, and ancient archaeological sites.'
 
         },
 
@@ -69,14 +69,14 @@ function Main() {
             imgSrc: img5,
             destTitle: 'Tokyo',
             location: 'Japan',
-            grade: 'Relax',
-            fees: '$700',
-            description: 'Embark on a journey to Tokyo, a city that seamlessly blends ancient traditions with cutting-edge innovation, creating a captivating tapestry of culture, cuisine, and technology. '
+            grade: 'Starting at',
+            fees: '$2,500',
+            description: "Tokyo, Japan's bustling capital, blends ultra-modern and traditional, from neon-lit skyscrapers and anime shops to historic temples, serene parks, and rich culinary scenes."
         },
     ]
 
     return (
-        <section className='main container section'>
+        <section className='main container section wide-container'>
 
 
             <div className="secTitle">
@@ -107,7 +107,7 @@ function Main() {
 
                                     <div className="fees flex">
                                         <div className="grade">
-                                            <span>{grade}<small></small></span>
+                                            <span>{grade}</span>
                                         </div>
                                         <div className="price">
                                             <h5>{fees}</h5>

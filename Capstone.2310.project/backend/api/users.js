@@ -1,9 +1,9 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const router = express.Router();
-const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername} = require('../db/db_methods');
+const { addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername } = require('../db/db_methods');
 const SALT_COUNT = 10;
 
 // GET /users
@@ -21,12 +21,26 @@ router.get('/:user_id', async (req, res, next) => {
     try {
         const user = await getUserById(req.params.user_id);
         if (!user) {
-            res.status(401).json({ message: 'User not found' });
+            res.status(404).json({ message: 'User not found' });
         } else {
-            res.json({ user });
+            res.send({ user });
         }
     } catch (error) {
-         next(error);
+        next(error);
+    }
+});
+
+//GET /users/:username
+router.get('/:username', async (req, res, next) => {
+    try {
+        const user = await getUserByUsername(req.params.username);
+        if (!user) {
+            res.status(404).send({ message: 'User not found' });
+        } else {
+            res.send({ user });
+        }
+    } catch (error) {
+        next(error);
     }
 });
 
@@ -63,15 +77,12 @@ router.post('/login', async (req, res, next) => {
     try {
         const { username, password } = req.body;
         const user = await getUserByUsername(username);
-        if (!user) {
+        if (!user || password !== user.password) {
             return res.status(401).json({ message: 'Invalid username or password' });
+        } else {
+            const token = jwt.sign({ user_id: user.user_id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+            res.json({ message: 'Login Successful', token });
         }
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ message: 'Ifnvalid username or password' });
-        }
-        const token = jwt.sign({ user_id: user.user_id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
-        res.json({ message: 'Login Successful', token });
     } catch (error) {
         next(error);
     }
@@ -87,9 +98,7 @@ router.post('/register', async (req, res, next) => {
         if (existingUser) {
             return res.status(401).json({ message: 'Username already exists' });
         }
-        const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-        const newUser = await addUser({ username, password: hashedPassword, email });
-  
+        const newUser = await addUser({ username, password, email });
         res.status(201).json({ message: 'User registered successfully', user: newUser });
     } catch (error) {
         next(error);

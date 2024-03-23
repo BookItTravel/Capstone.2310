@@ -1,39 +1,18 @@
+const axios = require("axios");
 const client = require('./index');
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
-const axios = require("axios");
-
-// // Mock API endpoint for Amadeus product (flight, hotel, destination) information
-// const PRODUCTS_API_URL = "https://example.com/products";
-
-// // Simulated database storage
-// let users = [];
-// let shoppingCart = [];
-// let orders = [];
-
-// // Helper function to fetch products from third-party API
-// const fetchProductsFromAPI = async () => {
-//   try {
-//     const response = await axios.get(PRODUCTS_API_URL);
-//     return response.data;
-//   } catch (error) {
-//     console.log("Error fetching products from API:", error);
-//     throw error;
-//   }
-// };
 
 // User Methods
 
 // Add a new user
-
-
 const addUser = async ({
   username,
   password,
   email,
  
 }) => {
-  const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+  
   try {
     const {
       rows: [user],
@@ -46,7 +25,7 @@ const addUser = async ({
         `,
       [
         username,
-        hashedPassword,
+        password,
         email,
       ]
     );
@@ -106,8 +85,8 @@ const getUserById = async (user_id) => {
       rows: [user],
     } = await client.query(`
             SELECT user_id, username, firstName, lastName, email, phone, passportNumber
-            FROM users;
-            WHERE id=$1
+            FROM users
+            WHERE user_id=${user_id}
         `);
 
     if (!user) {
@@ -123,25 +102,24 @@ const getUserById = async (user_id) => {
 };
 
 // Retrieve a user by username
-async function getUserByUsername(username) {
-  // first get the user
+const getUserByUsername = async (username) => {
   try {
-    const {rows} = await client.query(`
-      SELECT *
-      FROM users
-      WHERE username = $1;
-    `, [username]);
-    // if it doesn't exist, return null
-    if (!rows || !rows.length) return null;
-    // if it does:
-    // delete the 'password' key from the returned object
-    const [user] = rows;
-    // delete user.password;
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+            SELECT *
+            FROM users
+            WHERE username=$1
+        `,
+      [username]
+    );
+    console.log(user);
     return user;
   } catch (error) {
-    console.error(error)
+    throw error;
   }
-}
+};
 
 // Delete a user from the database
 const deleteUser = async (username) => {
@@ -301,33 +279,6 @@ const getOrderHistoryByUserId = async (user_id) => {
     }
 };
 
-async function getUser({username, password}) {
-  if (!username || !password) {
-    return;
-  }
-
-  try {
-    const user = await getUserByUsername(username);
-    if(!user) return;
-    const hashedPassword = user.password;
-    const passwordsMatch = await bcrypt.compare(password, hashedPassword);
-    if(!passwordsMatch) return;
-    delete user.password;
-    return user;
-  } catch (error) {
-    throw error;
-  }
-}
-
-
-// Product Methods
-
-// Helper function to get product information from Amadeus
-// const getProductInfo = async (product_id) => {
-//     const products = await fetchProductsFromAPI();
-//     return products.find((product) => product.id === product_id);
-// };
-
 module.exports = {
   addUser,
   deleteUser,
@@ -341,7 +292,6 @@ module.exports = {
   getCartByUserId,
   placeOrder,
   getOrderHistoryByUserId,
-  addTraveler,
-
+  addTraveler
   //getProductInfo,
 };

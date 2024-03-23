@@ -7,8 +7,8 @@ import { FaSearch } from 'react-icons/fa';
 
 
 
-   const Flights = (props) => {
-    const [flight, setFlight] = useState([]);
+   const Airport = (props) => {
+    const [airport, setAirport] = useState([]);
     const [error, setError] = useState();
     const [input, setInput] = useState('')
     // const { flights, setFlights } = useContext(FlightContext);
@@ -41,7 +41,7 @@ import { FaSearch } from 'react-icons/fa';
         
             /> 
             <input 
-            placeholder='Search for flights'
+            placeholder='Search for airports'
             value={input}
             onChange={(e) => handleChange(e.target.value)}
          /> 
@@ -50,7 +50,7 @@ import { FaSearch } from 'react-icons/fa';
                 <thead></thead>
                 <tbody>
                
-                    {flight.map((flights, index) => (
+                    {airport.map((flights, index) => (
                         <tr key={index}>
                             <td>{flights.address.cityName}</td>
                             <td>{flights.address.cityName}</td>
@@ -62,5 +62,5 @@ import { FaSearch } from 'react-icons/fa';
     );
 };
 
-export default Flights;
+export default Airport;
 

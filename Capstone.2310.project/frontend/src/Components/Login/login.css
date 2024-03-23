@@ -12,7 +12,13 @@
     --cardBG: rgb(225, 225, 235);
 }
 
-.video-background {
+.login_home {
+    background-image: url('../../assets/booking_bgd.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .video-background {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -20,9 +26,9 @@
     left: 0;
     object-fit: cover;
     z-index: -1;
-}
+} */
 
-.overlay {
+/* .overlay {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -32,17 +38,18 @@
     z-index: 2;
     mix-blend-mode: hard-light;
     pointer-events: none;
-}
+} */
 
 section {
     width: 35%;
     background-color: #ffffff;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 2%;
-    position: relative; /* Ensure section is positioned relative for z-index to work */
-    z-index: 3; /* Adjust the value as needed */
+    /* margin-left: 2%; */
+    /* position: relative; Ensure section is positioned relative for z-index to work */
+    z-index: 3;
+    /* Adjust the value as needed */
 }
 
 label {
@@ -62,7 +69,7 @@ input {
 }
 
 button {
-    background-color:  hsl(183, 100%, 51%);
+    background-color: hsl(183, 100%, 51%);
     color: #ffffff;
     padding: 10px 15px;
     border: none;

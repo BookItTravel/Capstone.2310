@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import video from "../../assets/video.mp4";
+// import video from "../../assets/video.mp4";
+import Footer from "../Footer/Footer";
 import "./login.css";
 import axios from "axios";
 
@@ -32,21 +33,21 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/users/login', {
-            username: user,
-            password: pwd,
-          });
-      
+        username: user,
+        password: pwd,
+      });
+
 
       // Check if the response is successful
-    if (response.status === 200) {
-      const { token } = response.data;
-      
-      setAuth({ user, pwd, accessToken: token });
-      setUser("");
-      setPwd("");
-      setSuccess(true);
-      navigate(from, { replace: true });
-    } else {
+      if (response.status === 200) {
+        const { token } = response.data;
+
+        setAuth({ user, pwd, accessToken: token });
+        setUser("");
+        setPwd("");
+        setSuccess(true);
+        navigate(from, { replace: true });
+      } else {
         throw new Error("Login failed");
       }
     } catch (err) {
@@ -57,16 +58,16 @@ const Login = () => {
   };
 
   return (
-    <div className="home">
+    <div className="login_home">
       <div className="overlay"></div>
-      <video
+      {/* <video
         className="video-background"
         src={video}
         muted
         autoPlay
         loop
         type="video/mp4"
-      ></video>
+      ></video> */}
       {success ? (
         <section>
           <h1>You are logged in!</h1>
@@ -116,6 +117,7 @@ const Login = () => {
           </p>
         </section>
       )}
+      <Footer />
     </div>
   );
 };

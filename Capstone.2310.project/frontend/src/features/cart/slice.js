@@ -6,5 +6,5 @@ const initialState = {
 
 
 const cartSlice = createSlice({
-    name: 
-})
+    name: "Price"
+});

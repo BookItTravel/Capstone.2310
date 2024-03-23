@@ -4,9 +4,6 @@ const Amadeus = require("amadeus");
 const express = require("express");
 const cache = require('../cache/node-cache')
 
-
-
-
 // Create router
 const router = express.Router();
 
@@ -18,10 +15,9 @@ const amadeus = new Amadeus({
 
 const API = "api";
 
-
-
-//Flight
-router.post(`/flight-search`, cache(300), (req, res, next ) => {
+//Flight 
+// no longer allowed 
+router.get(`/flight-search`, cache(300), (req, res, next ) => {
  
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
     // Find the cheapest flights
@@ -32,13 +28,35 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
       adults
     }).then(function (response) {
       res.send(response.result);
-
-        //console.log("resonse", response.result.data)
-        //console.log("flights", flights)
     }).catch(function (response) {
         res.send(response);
     });
     });
+
+
+// New flight search
+// 404
+// router.post(`/flight-offers`, cache(300), (req, res, next ) => {
+
+//   const { originLocationCode,
+//     destinationLocationCode,
+//     departureDate,
+//     adults
+//    } = req.body
+//    // Find the cheapest flights
+//    amadeus.shopping.flightOffersSearch.get({
+//      originLocationCode,
+//      destinationLocationCode,
+//      departureDate,
+
+//      adults,
+
+//    }).then(function (response) {
+//      res.send(response.result);
+//    }).catch(function (response) {
+//        res.send(response);
+//    });
+//    });
 
  
 
@@ -97,16 +115,17 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
 
 
     // Confirming the offer
-    router.get(`/hotel-offers`, cache(300), async (req, res) => {
+    router.get(`/hotel-offers`, cache(300), async (req, res ) => {
       try {
-        const { hotelId } = req.body;
-        const response = await amadeus.referenceData.locations.hotels.byHotels.get({
-          hotelId,
+        const { hotelIds, cityCode } = req.query;
+        amadeus.shopping.hotelOffersSearch.get({
+          hotelIds,
+          cityCode
         });
         console.log(amadeus.referenceData.locations.hotels.byHotel)
-        res.json(JSON.parse(response.body));
+       await res.json(JSON.parse(response.body));
       } catch (err) {
-        res.json(err);
+       await res.json(err);
       }
     });
     // Booking
@@ -127,6 +146,57 @@ router.get(`/${API}/search`, cache(300), async (req, res) => {
     await res.json(err);
   }
 });
+
+// Querying hotels
+router.get(`/hotel-offers`, async (req, res, next ) => {
+  try {
+    const { hotelIds, adults, cityCode, checkInDate, roomQuantity, paymentPolicy, bestRateOnly } = req.query;
+    const response = await amadeus.shopping.hotelOffersSearch.get({
+      hotelIds, adults, cityCode, checkInDate, roomQuantity, paymentPolicy, bestRateOnly 
+    });
+
+ 
+    await res.json(JSON.parse(response.body));
+  } catch (err) {
+    await res.json(err);
+  }
+});
+
+router.get(`/${API}/hotels`, async (req, res) => {
+  try {
+    const { hotelIds, cityCode, checkInDate, checkOutDate } = req.query;
+    const response = await amadeus.shopping.hotelOffersSearch.get({
+      hotelIds,
+      cityCode,
+      checkInDate,
+      checkOutDate,
+    });
+
+    await res.json(JSON.parse(response.body));
+  } catch (err) {
+    await res.json(err);
+  }
+});
+
+
+
+
+router.get(`/${API}/hotels`, cache(300), async (req, res) => {
+  try {
+    const { hotelIds, cityCode } = req.body;
+    const response = await amadeus.shopping.hotelOffersSearch.get({
+      hotelIds,
+      cityCode
+    
+    });
+    // console.log("hjj", await amadeus.shopping.hotelOffersSearch);
+    res.json(JSON.parse(response.body));
+  } catch (err) {
+   // console.error("Error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+  
 
 
 // POI
