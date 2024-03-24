@@ -12,6 +12,19 @@
     padding-top: 1.65rem;
 }
 
+.confirmation-title-container {
+    font-size: 1.435rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100vw;
+    font-weight: 800;
+    text-align: center;
+    margin: 115px 0rem 2rem 0rem;
+    color: var(--whiteColorDream);
+}
+
 .custom-container-container {
     display: flex;
     flex-wrap: wrap;
@@ -22,7 +35,7 @@
     background-color:rgba(225, 225, 235, 0.7);
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     width: 80vw;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
 
 .booking-confirmation-summary {

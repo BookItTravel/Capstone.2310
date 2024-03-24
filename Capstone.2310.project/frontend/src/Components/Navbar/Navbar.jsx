@@ -1,7 +1,8 @@
 import './navbar.css'
-import { MdOutlineTravelExplore } from 'react-icons/md';
+import Logo from '../../assets/BookItLogo.png';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { TbGridDots } from 'react-icons/tb';
+
 
 function Navbar() {
 
@@ -10,15 +11,15 @@ function Navbar() {
             <header className="header-flex">
 
                 <div className="logoDiv">
-                    <a href="#" className='logo flex'>
-                        <h1><MdOutlineTravelExplore className="icon" /> Book It.</h1>
+                    <a href="/" className='logo flex'>
+                        <img src={Logo} className="navBar-icon" />
                     </a>
                 </div>
 
                 <div className="navBar">
                     <ul className='navLists flex'>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Home</a>
+                            <a href="/" className='navLink'>Home</a>
                         </li>
                         <li className='navItem'>
                             <a href="#" className='navLink'>Packages</a>
@@ -30,7 +31,7 @@ function Navbar() {
                             <a href="#" className='navLink'>Stay</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Profile</a>
+                            <a href="/profile" className='navLink'>Profile</a>
                         </li>
                         <button className='btn'>
                             <a href="/login">Sign In</a>

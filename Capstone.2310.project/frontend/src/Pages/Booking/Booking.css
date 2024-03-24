@@ -14,7 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     margin: 0 auto;
     width: 100vw;
 }
@@ -29,7 +29,7 @@
     background-color:rgba(225, 225, 235, 0.7);
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     width: 60vw;
-    margin-bottom: 5rem;
+    margin: 175px 0rem 4rem 4rem;
     padding: 0.75rem 0;
 }
 
@@ -55,15 +55,19 @@
     overflow: hidden;
 }
 
-.title-container {
+.booking-title-container {
     font-size: 1.435rem;
-    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 20vw;
     font-weight: 800;
     text-align: center;
-    margin-top: 1.75rem;
-    margin-bottom: 1.75rem;
+    margin: 1.75rem 5rem 1.75rem 0rem;
     color: var(--whiteColorDream);
 }
+
 
 .column-title {
     font-size: 1.3rem;
