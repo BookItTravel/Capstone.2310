@@ -1,13 +1,5 @@
 import { useEffect } from "react";
 import "./footer.css";
-// import { FiSend } from 'react-icons/fi'
-import { MdOutlineTravelExplore } from "react-icons/md";
-// import { AiOutlineTwitter } from 'react-icons/ai'
-// import { AiFillYoutube } from 'react-icons/ai'
-// import { AiFillInstagram } from 'react-icons/ai'
-// import { FaTripadvisor } from 'react-icons/fa'
-// import { FiChevronRight } from 'react-icons/fi'
-// import video from '../../assets/video2.mp4'
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Logo from "../../assets/BookItLogo.png"
