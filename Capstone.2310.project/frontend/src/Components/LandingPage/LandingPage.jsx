@@ -1,5 +1,6 @@
 import Home from '../Home/Home'
 import Main from '../Main/Main'
+import Flight_Results from '../Flight/Flight_Results'
 import { FiSend } from 'react-icons/fi'
 import { AiOutlineTwitter } from 'react-icons/ai'
 import { AiFillYoutube } from 'react-icons/ai'
@@ -14,6 +15,7 @@ const LandingPage = () => {
         <>
             <Home />
             <Main />
+            <Flight_Results />
             <section className='footer'>
                 <div className="secContent container">
                     <div className="contactDiv flex">
@@ -41,7 +43,7 @@ const LandingPage = () => {
                             </div>
 
                             <div data-aos="fade-up" className="footerParagraph">
-                            <p>Inspiring journeys await with our travel application, your trusted companion for seamless exploration. Start your next adventure today and unlock a world of wonders at your fingertips.</p>
+                                <p>Inspiring journeys await with our travel application, your trusted companion for seamless exploration. Start your next adventure today and unlock a world of wonders at your fingertips.</p>
                             </div>
 
                             <div data-aos="fade-up" className="footerSocials flex">
@@ -152,7 +154,7 @@ const LandingPage = () => {
                         </div>
                     </div>
                 </div>
-        </section>
+            </section>
         </>
     )
 };

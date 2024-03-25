@@ -9,13 +9,11 @@ import Register from './Components/Register/Register'
 import Booking from './Pages/Booking/Booking'
 import BookingDetails from './Pages/BookingDetails/BookingDetails'
 import Confirmation from './Pages/Confirmation/Confirmation'
-
 import Profile from './Pages/Profile/Profile'
 import Flight_Main from './Components/Flight/Flight_Main'
-
-
+import Flight_Results from './Components/Flight/Flight_Results'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Flights from './Components/Flight/flight'
+
 
 
 function App() {
