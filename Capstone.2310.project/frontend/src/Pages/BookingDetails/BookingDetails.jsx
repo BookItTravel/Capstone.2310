@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../../Components/Footer/Footer';
 import "./BookingDetails.css";
 
 const BookingDetails = () => {
@@ -737,7 +736,6 @@ const BookingDetails = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

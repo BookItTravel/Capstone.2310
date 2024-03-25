@@ -16,7 +16,7 @@
     background-image: url('../../assets/booking_bgd.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 86.5vh;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

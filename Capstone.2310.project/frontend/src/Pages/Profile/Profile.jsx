@@ -1,6 +1,5 @@
 import '../Profile/Profile.css';
 import { CgProfile } from "react-icons/cg";
-import Footer from '../../Components/Footer/Footer';
 
 function Profile() {
     return (
@@ -41,7 +40,6 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }

@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import Footer from "../Footer/Footer";
 import "./login.css";
 import { login } from "../../api/index";
 
@@ -104,7 +103,6 @@ const Login = () => {
           </section>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
