@@ -5,10 +5,10 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import "./register.css";
 import Footer from "../Footer/Footer";
+import { register } from "../../api";
 
 // validate username and password
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -76,14 +76,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await axios.post(
-        "http://localhost:3000/users/register",
-        {
-          username: user,
-          email: email,
-          password: pwd,
-        }
-      );
+      const response = await register(user, email, pwd);
 
       // Handle the response accordingly
       if (response.status === 201) {
@@ -96,13 +89,8 @@ const Register = () => {
         throw new Error("Registration failed");
       }
     } catch (err) {
-      if (!err.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
+      console.error(err);
+      setErrMsg("Registration Failed");
       errRef.current.focus();
     }
   };
