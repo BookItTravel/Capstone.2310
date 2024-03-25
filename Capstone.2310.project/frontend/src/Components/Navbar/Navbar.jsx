@@ -25,7 +25,7 @@ function Navbar() {
                             <a href="#" className='navLink'>Packages</a>
                         </li>
                         <li className='navItem'>
-                            <a href="#" className='navLink'>Flght</a>
+                            <a href="#" className='navLink'>Flight</a>
                         </li>
                         <li className='navItem'>
                             <a href="#" className='navLink'>Stay</a>

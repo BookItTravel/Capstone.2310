@@ -10,6 +10,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 1.65rem;
+    height: 100vh;
 }
 
 .confirmation-title-container {

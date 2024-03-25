@@ -7,7 +7,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import "./register.css";
-import Footer from "../Footer/Footer";
 import { register } from "../../api";
 
 // validate username and password
@@ -278,7 +277,6 @@ const Register = () => {
           </section>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
