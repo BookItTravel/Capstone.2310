@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { FaSearch} from "react-icons/fa"
+import './hotels.css'
 
 
 
@@ -24,16 +25,18 @@ const Hotels = () => {
 
 
     return (
-        <>
+        <div  className='hotel-search' >
         <h1>Hotel Search</h1>
-        <div className="input-wrapper"></div>
+        <div className="input-wrapper">
+
         <FaSearch id="search-icon" /> 
         <input 
-        placeholder='where to?'
+        placeholder='Where to stay?'
         value={input}
         onChange={(e) => handleChange(e.target.value)}
         />
-        </>
+        </div>
+        </div>
     )
 } 
 

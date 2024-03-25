@@ -15,7 +15,7 @@ import Profile from './Pages/Profile/Profile'
 
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Flights from './Components/Flight/airport'
+import Flights from './Components/Flight_Search/Flights'
 import Hotels from './Components/Hotel/hotels'
 import Airport from './Components/Flight/airport'
 
@@ -43,6 +43,7 @@ function App() {
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/hotel" element={<Hotels /> } />
           <Route path='/airport' element={<Airport />} />
+          <Route path='/flights' element={<Flights />} />
         </Routes>
 
         {/* <Footer /> */}
