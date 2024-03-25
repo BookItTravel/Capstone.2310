@@ -162,14 +162,15 @@ router.get(`/hotel-offers`, async (req, res, next ) => {
   }
 });
 
-router.get(`/${API}/hotels`, async (req, res) => {
+router.post(`/${API}/hotels`, async (req, res) => {
   try {
-    const { hotelIds, cityCode, checkInDate, checkOutDate } = req.query;
+    const { hotelIds, cityCode, checkInDate, checkOutDate, adults} = req.body;
     const response = await amadeus.shopping.hotelOffersSearch.get({
       hotelIds,
       cityCode,
       checkInDate,
       checkOutDate,
+      adults
     });
 
     await res.json(JSON.parse(response.body));
@@ -179,24 +180,6 @@ router.get(`/${API}/hotels`, async (req, res) => {
 });
 
 
-
-
-router.get(`/${API}/hotels`, cache(300), async (req, res) => {
-  try {
-    const { hotelIds, cityCode } = req.body;
-    const response = await amadeus.shopping.hotelOffersSearch.get({
-      hotelIds,
-      cityCode
-    
-    });
-    // console.log("hjj", await amadeus.shopping.hotelOffersSearch);
-    res.json(JSON.parse(response.body));
-  } catch (err) {
-   // console.error("Error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-  
 
 
 // POI
