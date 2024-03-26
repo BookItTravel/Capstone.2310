@@ -62,7 +62,7 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
 
 
     // Airports search
-  router.get(`/city-and-airport-search/:parameter`, cache(300), (req, res) => {
+  router.get(`/city-and-airport-search/:parameter`, cache(400), (req, res) => {
         const parameter = req.params.parameter;
         // Which cities or airports start with ’r'?
         amadeus.referenceData.locations
@@ -83,7 +83,7 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
   //HOTEL 
 
  // gettting location
-  router.get(`/search-location`, cache(300), async (req, res) => {
+  router.get(`/search-location`, cache(400), async (req, res) => {
     try {
       const { keyword } = req.body;
       const response = await amadeus.referenceData.locations.get({
@@ -96,7 +96,7 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
     }
   });
 
-  router.get(`/city-hotels`, cache(300), async (req, res) => {
+  router.get(`/city-hotels`, cache(400), async (req, res) => {
     try {
       const { cityCode } = req.query;
       const response = await amadeus.referenceData.locations.hotels.byCity.get({
@@ -115,7 +115,7 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
 
 
     // Confirming the offer
-    router.get(`/hotel-offers`, cache(300), async (req, res ) => {
+    router.get(`/hotel-offers`, cache(400), async (req, res ) => {
       try {
         const { hotelIds, cityCode } = req.query;
         amadeus.shopping.hotelOffersSearch.get({
@@ -133,7 +133,7 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
 
 
 // City search suggestions
-router.get(`/${API}/search`, cache(300), async (req, res) => {
+router.get(`/${API}/search`, cache(400), async (req, res) => {
   try {
     const { keyword } = req.body;
     const response = await amadeus.referenceData.locations.get({
@@ -183,7 +183,7 @@ router.post(`/${API}/hotels`, async (req, res) => {
 
 
 // POI
-router.get(`/reference-data/locations/pois`, cache(300), async (req, res)=> {
+router.get(`/reference-data/locations/pois`, cache(400), async (req, res)=> {
  try {
   const { latitude, longitude } = req.body;
   const response = await  amadeus.referenceData.locations.pointsOfInterest.get({
