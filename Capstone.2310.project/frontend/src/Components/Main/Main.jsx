@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import './main.css'
 import img from '../../assets/img.jpg'
 import img2 from '../../assets/img2.jpg'
