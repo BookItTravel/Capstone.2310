@@ -12,9 +12,9 @@ const Flights = () => {
         e.preventDefault();
 
         const params = {
-            departureDate: departureDate,
             destinationLocationCode: destinationLocationCode,
             originLocationCode: originLocationCode,
+            departureDate: departureDate,
             adults: adults
         };
 
@@ -42,45 +42,45 @@ const Flights = () => {
 
     return ( 
         <div className='flight-search'>
-            <h1>Flight Search</h1>
-            <form onSubmit={fetchFlights}>
-                <div className="input-wrapper">
-                <div className="input-wrapper">
-                    <FaSearch id="search-icon" /> 
-                    <input 
-                        placeholder='Destination'
-                        value={destinationLocationCode}
-                        onChange={(e) => setDestinationLocationCode(e.target.value)}
-                    />
-                <div className="input-wrapper">
-                    <FaSearch id="search-icon" /> 
-                    <input 
-                        placeholder='Departure Date'
-                        type="date"
-                        value={departureDate}
-                        onChange={(e) => setDepartureDate(e.target.value)}
-                    />
-                </div>
-                </div>
-                    <FaSearch id="search-icon" /> 
-                    <input 
-                        placeholder='Number of Adults'
-                        type="number"
-                        value={adults}
-                        onChange={(e) => setAdults(e.target.value)}
-                    />
-                </div>
-                <div className="input-wrapper">
-                    <FaSearch id="search-icon" /> 
-                    <input 
-                        placeholder='Origin Location'
-                        value={originLocationCode}
-                        onChange={(e) => setOriginLocationCode(e.target.value)}
-                    />
-                </div>
-                <button type="submit">Search</button>
-            </form>
-        </div>
+        <h1>Flight Search</h1>
+        <form onSubmit={fetchFlights}>
+            <div className="input-wrapper">
+                <FaSearch id="search-icon" /> 
+                <input 
+                    placeholder='Number of Adults'
+                    type="number"
+                    value={adults}
+                    onChange={(e) => setAdults(e.target.value)}
+                />
+            </div>
+            <div className="input-wrapper">
+                <FaSearch id="search-icon" /> 
+                <input 
+                    placeholder='Departure Date'
+                    type="date"
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
+                />
+            </div>
+            <div className="input-wrapper">
+                <FaSearch id="search-icon" /> 
+                <input 
+                    placeholder='Origin Location'
+                    value={originLocationCode}
+                    onChange={(e) => setOriginLocationCode(e.target.value)}
+                />
+            </div>
+            <div className="input-wrapper">
+                <FaSearch id="search-icon" /> 
+                <input 
+                    placeholder='Destination'
+                    value={destinationLocationCode}
+                    onChange={(e) => setDestinationLocationCode(e.target.value)}
+                />
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
     )
 }
 
