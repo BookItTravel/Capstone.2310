@@ -38,7 +38,7 @@ app.use("/orders", require("./api/orders"));
 const client = require('./db/index');
 client.connect();
 
-// Error handling middleware
+//Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res

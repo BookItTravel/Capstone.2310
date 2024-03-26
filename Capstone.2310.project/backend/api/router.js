@@ -15,8 +15,9 @@ const amadeus = new Amadeus({
 
 const API = "api";
 
-//Flight
-router.post(`/flight-search`, cache(300), (req, res, next ) => {
+//Flight 
+// no longer allowed 
+router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
  
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
     // Find the cheapest flights
@@ -32,11 +33,36 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
     });
     });
 
+
+// New flight search
+// 404
+// router.post(`/flight-offers`, cache(300), (req, res, next ) => {
+
+//   const { originLocationCode,
+//     destinationLocationCode,
+//     departureDate,
+//     adults
+//    } = req.body
+//    // Find the cheapest flights
+//    amadeus.shopping.flightOffersSearch.get({
+//      originLocationCode,
+//      destinationLocationCode,
+//      departureDate,
+
+//      adults,
+
+//    }).then(function (response) {
+//      res.send(response.result);
+//    }).catch(function (response) {
+//        res.send(response);
+//    });
+//    });
+
  
 
 
     // Airports search
-  router.get(`/city-and-airport-search/:parameter`, cache(300), (req, res) => {
+  router.get(`/city-and-airport-search/:parameter`, cache(400), (req, res) => {
         const parameter = req.params.parameter;
         // Which cities or airports start with ’r'?
         amadeus.referenceData.locations
@@ -57,7 +83,7 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
   //HOTEL 
 
  // gettting location
-  router.get(`/search-location`, cache(300), async (req, res) => {
+  router.get(`/search-location`, cache(400), async (req, res) => {
     try {
       const { keyword } = req.body;
       const response = await amadeus.referenceData.locations.get({
@@ -70,7 +96,7 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
     }
   });
 
-  router.get(`/city-hotels`, cache(300), async (req, res) => {
+  router.get(`/city-hotels`, cache(400), async (req, res) => {
     try {
       const { cityCode } = req.query;
       const response = await amadeus.referenceData.locations.hotels.byCity.get({
@@ -89,16 +115,17 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
 
 
     // Confirming the offer
-    router.get(`/hotel-offers`, cache(300), async (req, res) => {
+    router.get(`/hotel-offers`, cache(400), async (req, res ) => {
       try {
-        const { hotelId } = req.body;
-        const response = await amadeus.referenceData.locations.hotels.byHotels.get({
-          hotelId,
+        const { hotelIds, cityCode } = req.query;
+        amadeus.shopping.hotelOffersSearch.get({
+          hotelIds,
+          cityCode
         });
         console.log(amadeus.referenceData.locations.hotels.byHotel)
-        res.json(JSON.parse(response.body));
+       await res.json(JSON.parse(response.body));
       } catch (err) {
-        res.json(err);
+       await res.json(err);
       }
     });
     // Booking
@@ -106,7 +133,7 @@ router.post(`/flight-search`, cache(300), (req, res, next ) => {
 
 
 // City search suggestions
-router.get(`/${API}/search`, cache(300), async (req, res) => {
+router.get(`/${API}/search`, cache(400), async (req, res) => {
   try {
     const { keyword } = req.body;
     const response = await amadeus.referenceData.locations.get({
@@ -120,9 +147,43 @@ router.get(`/${API}/search`, cache(300), async (req, res) => {
   }
 });
 
+// Querying hotels
+router.get(`/hotel-offers`, async (req, res, next ) => {
+  try {
+    const { hotelIds, adults, cityCode, checkInDate, roomQuantity, paymentPolicy, bestRateOnly } = req.query;
+    const response = await amadeus.shopping.hotelOffersSearch.get({
+      hotelIds, adults, cityCode, checkInDate, roomQuantity, paymentPolicy, bestRateOnly 
+    });
+
+ 
+    await res.json(JSON.parse(response.body));
+  } catch (err) {
+    await res.json(err);
+  }
+});
+
+router.post(`/${API}/hotels`, async (req, res) => {
+  try {
+    const { hotelIds, cityCode, checkInDate, checkOutDate, adults} = req.body;
+    const response = await amadeus.shopping.hotelOffersSearch.get({
+      hotelIds,
+      cityCode,
+      checkInDate,
+      checkOutDate,
+      adults
+    });
+
+    await res.json(JSON.parse(response.body));
+  } catch (err) {
+    await res.json(err);
+  }
+});
+
+
+
 
 // POI
-router.get(`/reference-data/locations/pois`, cache(300), async (req, res)=> {
+router.get(`/reference-data/locations/pois`, cache(400), async (req, res)=> {
  try {
   const { latitude, longitude } = req.body;
   const response = await  amadeus.referenceData.locations.pointsOfInterest.get({
