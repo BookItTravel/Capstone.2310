@@ -1,26 +1,4 @@
-const axios = require("axios");
 const client = require('./index');
-const bcrypt = require("bcrypt");
-const SALT_COUNT = 10;
-
-// Mock API endpoint for Amadeus product (flight, hotel, destination) information
-const PRODUCTS_API_URL = "https://example.com/products";
-
-// Simulated database storage
-let users = [];
-let shoppingCart = [];
-let orders = [];
-
-// Helper function to fetch products from third-party API
-const fetchProductsFromAPI = async () => {
-  try {
-    const response = await axios.get(PRODUCTS_API_URL);
-    return response.data;
-  } catch (error) {
-    console.log("Error fetching products from API:", error);
-    throw error;
-  }
-};
 
 // User Methods
 
@@ -28,31 +6,24 @@ const fetchProductsFromAPI = async () => {
 const addUser = async ({
   username,
   password,
-  firstName,
-  lastName,
   email,
-  phone,
-  passportNumber,
+ 
 }) => {
-  const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
+  
   try {
     const {
       rows: [user],
     } = await client.query(
       `
-            INSERT INTO users(username, password, firstName, lastName, email, phone, passportNumber)
-            VALUES($1, $2, $3, $4, $5, $6, $7)
+            INSERT INTO users(username, password, email)
+            VALUES($1, $2, $3)
             ON CONFLICT (username) DO NOTHING
             RETURNING *;
         `,
       [
         username,
-        hashedPassword,
-        firstName,
-        lastName,
+        password,
         email,
-        phone,
-        passportNumber,
       ]
     );
   } catch (error) {
@@ -111,8 +82,8 @@ const getUserById = async (user_id) => {
       rows: [user],
     } = await client.query(`
             SELECT user_id, username, firstName, lastName, email, phone, passportNumber
-            FROM users;
-            WHERE id=${user_id}
+            FROM users
+            WHERE user_id=${user_id}
         `);
 
     if (!user) {
@@ -140,6 +111,7 @@ const getUserByUsername = async (username) => {
         `,
       [username]
     );
+    console.log(user);
     return user;
   } catch (error) {
     throw error;
@@ -168,21 +140,42 @@ const deleteUser = async (username) => {
   }
 };
 
+// Traveler Methods
+
+const addTraveler = async ({
+   firstname, lastname, date_of_birth, email, passportNumber, user_id
+}) => {
+  try {
+    const {
+      rows: [traveler],
+    } = await client.query(
+      ` INSERT INTO traveler(firstname, lastname, date_of_birth, email, passportNumber, user_id)
+      VALUES($1, $2, $3, $4, $5, $6)
+      RETURNING *
+      `,
+      [firstname, lastname, date_of_birth, email, passportNumber, user_id]
+    )
+  return traveler
+    } catch (error) {
+      throw (error)
+    }
+}
+
 // Shopping Cart Methods
 
-// Add a product to the cart
-const addToCart = async (user_id, product_id, quantity) => {
+// Add a traveler to the cart
+const addToCart = async (user_id, traveler_id, quantity) => {
     try {
         const {
           rows: [cartItem],
         } = await client.query(
           `
-                INSERT INTO shopping_cart(user_id, product_id, quantity)
+                INSERT INTO shopping_cart(user_id, traveler_id, quantity)
                 VALUES($1, $2, $3)
                 RETURNING *;
             `,
           [
-            user_id, product_id, quantity
+            user_id, traveler_id, quantity
           ]
         );
         return cartItem;
@@ -191,18 +184,18 @@ const addToCart = async (user_id, product_id, quantity) => {
       }
 };
 
-// Remove a product from the cart
-const removeFromCart = async (user_id, product_id) => {
+// Remove a traveler from the cart
+const removeFromCart = async (user_id, traveler_id) => {
     try {
         const {
           rows: [cartItem],
         } = await client.query(
           `
                 DELETE FROM shopping_cart
-                WHERE user_id=$1 AND product_id=$2
+                WHERE user_id=$1 AND traveler_id=$2
                 RETURNING *;
             `,
-          [user_id, product_id]
+          [user_id, traveler_id]
         );
         return cartItem;
       } catch (error) {
@@ -211,7 +204,7 @@ const removeFromCart = async (user_id, product_id) => {
 };
 
 // Update the cart
-const updateCart = async (user_id, product_id, newQuantity) => {
+const updateCart = async (user_id, traveler_id, newQuantity) => {
     try {
         const {
           rows: [cartItem],
@@ -219,10 +212,10 @@ const updateCart = async (user_id, product_id, newQuantity) => {
           `
                 UPDATE shopping_cart
                 SET quantity=$1
-                WHERE user_id=$2 AND product_id=$3
+                WHERE user_id=$2 AND traveler_id=$3
                 RETURNING *;
             `,
-          [newQuantity, user_id, product_id]
+          [newQuantity, user_id, traveler_id]
         );
         return cartItem;
       } catch (error) {
@@ -230,16 +223,39 @@ const updateCart = async (user_id, product_id, newQuantity) => {
       }
 };
 
+// Retrieve a cart by user id number
+const getCartByUserId = async (user_id) => {
+  try {
+    const {
+      rows: [cart],
+    } = await client.query(`
+            SELECT user_id, cart_id, traveler_id, quantity
+            FROM shopping_cart;
+            WHERE id=${user_id}
+        `);
+
+    if (!user) {
+      throw {
+        name: "UserNotFoundError",
+        message: "A user with that id does not exist",
+      };
+    }
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // Order Methods
 
 // Place an order
-const placeOrder = async (user_id, product_id, quantity) => {
+const placeOrder = async (user_id, traveler_id, quantity) => {
     try {
         const { rows: [order] } = await client.query(`
-            INSERT INTO order (user_id, product_id, quantity)
+            INSERT INTO order (user_id, traveler_id, quantity)
             VALUES ($1, $2, $3)
             RETURNING *;
-        `, [user_id, priduct_id, quantity]);
+        `, [user_id, traveler_id, quantity]);
         return order;
     } catch (error) {
         throw error;
@@ -260,14 +276,6 @@ const getOrderHistoryByUserId = async (user_id) => {
     }
 };
 
-// Product Methods
-
-// Helper function to get product information from Amadeus
-const getProductInfo = async (product_id) => {
-    const products = await fetchProductsFromAPI();
-    return products.find((product) => product.id === product_id);
-};
-
 module.exports = {
   addUser,
   deleteUser,
@@ -278,7 +286,8 @@ module.exports = {
   addToCart,
   removeFromCart,
   updateCart,
+  getCartByUserId,
   placeOrder,
   getOrderHistoryByUserId,
-  getProductInfo,
+  addTraveler
 };

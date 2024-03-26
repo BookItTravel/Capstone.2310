@@ -12,15 +12,6 @@ const { JWT_SECRET } = process.env;
 // Apply JSON parsing middleware
 app.use(express.json());
 
-// Apply router
-app.use("/", router);
-app.use("/users", require("./api/users"));
-app.use("/cart", require("./api/cart"));
-app.use("/orders", require("./api/orders"));
-
-const client = require('./db/index');
-client.connect();
-
 // Logging middleware
 app.use(morgan("dev"));
 app.use(cors());
@@ -29,17 +20,25 @@ app.use(cors());
 app.use((req, res, next) => {
   const auth = req.headers.authorization;
   const token = auth?.startsWith("Bearer ") ? auth.slice(7) : null;
-
   try {
     req.user = jwt.verify(token, JWT_SECRET);
   } catch {
     req.user = null;
   }
-
   next();
 });
 
-// Error handling middleware
+// Apply router
+app.use("/", router);
+app.use("/users", require("./api/users"));
+app.use("/cart", require("./api/cart"));
+app.use("/orders", require("./api/orders"));
+//app.use("/travelers",require("./api/traveler"))
+
+const client = require('./db/index');
+client.connect();
+
+//Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res
