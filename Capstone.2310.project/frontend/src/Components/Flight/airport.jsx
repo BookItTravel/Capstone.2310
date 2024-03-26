@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import flightsapi from '../../api/flightsapi';
-import './flight.css'
+// import './flight.css'
 import { FaSearch } from 'react-icons/fa';
 // import { FlightContext, FlightContextProvider } from '../../context/FlightContext';
 
