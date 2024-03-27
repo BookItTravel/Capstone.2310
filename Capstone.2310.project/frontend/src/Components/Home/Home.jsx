@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import './home.css'
 import video from '../../assets/video.mp4'
 import { GrLocation } from 'react-icons/gr'
-// import { HiFilter } from 'react-icons/hi'
 import { FiFacebook } from 'react-icons/fi'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { SiTripadvisor } from 'react-icons/si'
@@ -10,36 +9,13 @@ import { BsListTask } from 'react-icons/bs'
 import { TbApps } from 'react-icons/tb'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import { useState } from 'react';
-import axios from 'axios'
 
 
 function Home() {
-    const [destinationLocationCode, setDestinationLocationCode] = useState('')
-    const [adults, setAdults] = useState(1);
-    const [departureDate, setDepartureDate] = useState('');
-    const [originLocationCode, setOriginLocationCode] = useState('');
-    //const [returnDate, setReturnDate] = useState('')
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
     }, [])
-    
-  const fetchFlights = (value) => {
-    fetch(`http://localhost:3000/flight-search`)
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
-  }
-
-   const handleChange = (destinationLocationCode, adults, departureDate, originLocationCode) => {
-        setAdults(adults)
-        setDepartureDate(departureDate)
-        setDestinationLocationCode(destinationLocationCode)
-        setOriginLocationCode(originLocationCode)
-   }
-
 
     return (
         <section className="home">
@@ -60,14 +36,10 @@ function Home() {
 
                 <div data-aos="fade-up" className="cardDiv grid">
                     
-                    <form onSubmit={handleChange}>
                     <div className="destinationInput">
                         <label htmlFor="city">Flying From</label>
                         <div className="input flex">
-                            <input type="text" placeholder='Enter name here...'
-                              value={originLocationCode}
-                              onChange={(e) => setOriginLocationCode(e.target.value)}
-                             />
+                            <input type="text" placeholder='Enter name here...' />
                             <GrLocation className="icon" />
                         </div>
                     </div>
@@ -75,9 +47,7 @@ function Home() {
                     <div className="destinationInput">
                         <label htmlFor="city">Flying To</label>
                         <div className="input flex">
-                            <input type="text" placeholder='Enter name here...'
-                               value={destinationLocationCode}
-                               onChange={(e) => setDestinationLocationCode(e.target.value)} />
+                            <input type="text" placeholder='Enter name here...' />
                             <GrLocation className="icon" />
                         </div>
                     </div>
@@ -85,8 +55,7 @@ function Home() {
                     <div className="dateInput">
                         <label htmlFor="date">Departure Date</label>
                         <div className="input flex">
-                            <input type="date" value={departureDate}
-                            onChange={(e) => setDepartureDate(e.target.value)}/>
+                            <input type="date" />
                         </div>
                     </div>
 
@@ -94,35 +63,19 @@ function Home() {
                         <label htmlFor="date">Run Date</label>
                         <div className="input flex">
                             <input type="date" />
-                             {/* value={returnDate}
-                             onChange={(e) => setReturnDate(e.target.value)} /> */}
                         </div>
                     </div>
 
                     <div className="travelerinput">
                         <label htmlFor="travelers">Number of Travelers</label>
                         <div className="input flex">
-                            <input type="number" value={adults}  
-                            onChange={(e) => setAdults(e.target.value)}/>
+                            <input type="number" />
                         </div>
                     </div>
-
-                    {/* <div className="priceInput">
-                        <div className="label_total flex">
-                            <label htmlFor="price">Max price:
-                            </label>
-                            <h3 className="total">$5000</h3>
-                        </div>
-                        <div className="input flex">
-                            <input type="range" max="5000" min="1000" />
-                        </div>
-                    </div> */}
 
                     <div className="searchOptions flex">
-                        {/* <HiFilter className="icon" /> */}
-                        <button>Search Flights</button>
+                        <span>Search Flights</span>
                     </div>
-                </form>
                 </div>
 
                 <div data-aos="fade-up"

@@ -1,7 +1,4 @@
-const axios = require("axios");
 const client = require('./index');
-const bcrypt = require("bcrypt");
-const SALT_COUNT = 10;
 
 // User Methods
 
@@ -293,5 +290,4 @@ module.exports = {
   placeOrder,
   getOrderHistoryByUserId,
   addTraveler
-  //getProductInfo,
 };
