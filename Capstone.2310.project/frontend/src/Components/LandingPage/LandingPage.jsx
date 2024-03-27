@@ -14,8 +14,8 @@ const LandingPage = () => {
     return (
         <>
             <Home />
-            <Main />
             <Flight_Results />
+            <Main />
             <section className='footer'>
                 <div className="secContent container">
                     <div className="contactDiv flex">
