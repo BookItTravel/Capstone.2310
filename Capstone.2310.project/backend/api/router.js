@@ -133,9 +133,9 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
 
 
 // City search suggestions
-router.get(`/${API}/search`, cache(400), async (req, res) => {
+router.get(`/${API}/search/:keyword`, cache(400), async (req, res) => {
   try {
-    const { keyword } = req.body;
+    const  keyword  = req.params.keyword;
     const response = await amadeus.referenceData.locations.get({
       keyword,
       subType: Amadeus.location.city,
