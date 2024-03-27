@@ -17,8 +17,8 @@ const API = "api";
 
 //Flight 
 // no longer allowed 
-router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
- 
+router.post(`/flight-search`,(req, res, next ) => {
+  console.log("request", req.body)
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
     // Find the cheapest flights
     amadeus.shopping.flightOffersSearch.get({
@@ -133,9 +133,9 @@ router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
 
 
 // City search suggestions
-router.get(`/${API}/search`, cache(400), async (req, res) => {
+router.get(`/${API}/search/:keyword`, cache(400), async (req, res) => {
   try {
-    const { keyword } = req.body;
+    const  keyword  = req.params.keyword;
     const response = await amadeus.referenceData.locations.get({
       keyword,
       subType: Amadeus.location.city,
