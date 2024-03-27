@@ -5,14 +5,15 @@ import { FaSearch } from 'react-icons/fa';
 const Flights = () => {
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
-    const [cityOr, setCityOr ] = useState('')
-    const [cityDes, setCityDes ] = useState('')
+    const [originLocationCode, setOriginLocationCode ] = useState('')
+    const [destinationLocationCode, setDestinationLocationCode ] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
      
         try {
-            const responseOrigin = await fetch(`http://localhost:3000/api/search/${cityOr}`, {
+            
+            const responseOrigin = await fetch(`http://localhost:3000/api/search/${originLocationCode}`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": 'application/json'
@@ -24,10 +25,15 @@ const Flights = () => {
             const resDataOrigin = await responseOrigin.json();
             console.log("data", resDataOrigin);
 
-            const cityOriginNames = resDataOrigin.data.map(location => location.address.cityName);
+            const cityOriginNames = resDataOrigin.data.reduce((obj,cur  )=>{
+                if(cur.address){
+                    return { ...cur.address}
+                }
+            },{})
             console.log("City Names", cityOriginNames);
 
-            const responseDes = await fetch(`http://localhost:3000/api/search/${cityDes}`, {
+        
+            const responseDes = await fetch(`http://localhost:3000/api/search/${destinationLocationCode}`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": 'application/json'
@@ -37,25 +43,33 @@ const Flights = () => {
                 throw new Error('Unsuccessful');
             }
             const resDes = await responseDes.json();
-            console.log("data", resDes);
+            const destinationCode =  resDes.data.reduce((obj,cur) => {
+                 if(cur.address) {
+                    return { ...cur.address}
+                 }
 
-            const cityDesNames = resDes.data.map(location => location.address.cityName);
+       
+            },{})
+            
+            const cityDesNames = resDes.data.map((location )=> location.address);
             console.log("City Names", cityDesNames);
 
 
+
+             console.log(" cities ",cityDesNames, cityOriginNames)
             const params = {
-                         cityDesNames,
-                       cityOriginNames,
+                originLocationCode: cityOriginNames.cityCode,
+                destinationLocationCode: destinationCode.cityCode ,
                          departureDate: departureDate,
                          adults: adults
                    };
-
-            const responseTwo = await fetch(`http://localhost:3000/flight-search`, {params}, {
+             console.log("Params", params)
+            const responseTwo = await fetch(`http://localhost:3000/flight-search`,  {
              method: 'POST',
              headers: {
                  'Content-Type': 'application/json'
              },
-            //   body: JSON.stringify(params) 
+              body: JSON.stringify(params) 
            
             });
             if (!responseTwo.ok) {
@@ -80,40 +94,69 @@ const Flights = () => {
             <div className="input-wrapper">
                 <FaSearch id="search-icon" /> 
                 <input 
-                    placeholder='Number of Adults'
-                    type="number"
-                    value={adults}
-                    onChange={(e) => setAdults(e.target.value)}
-                    />
-            </div>
-            <div className="input-wrapper">
-                <FaSearch id="search-icon" /> 
-                <input 
-                    placeholder='Departure Date'
-                    type="date"
-                    value={departureDate}
-                    onChange={(e) => setDepartureDate(e.target.value)}
-                    />
-            </div>
-            <div className="input-wrapper">
-                <FaSearch id="search-icon" /> 
-                <input 
                     placeholder='Origin Location'
-                    value={cityOr}
-                    onChange={(e) => setCityOr(e.target.value)}
+                    value={originLocationCode}
+                    onChange={(e) => setOriginLocationCode(e.target.value)}
                     />
             </div>
             <div className="input-wrapper">
                 <FaSearch id="search-icon" /> 
-                <input 
+                 <input 
                     placeholder='Destination'
-                    value={cityDes}
-                    onChange={(e) => setCityDes(e.target.value)}
+                 value={destinationLocationCode}
+                     onChange={(e) => setDestinationLocationCode(e.target.value)}
+                     />
+             </div>
+             <div className="input-wrapper">
+                 <FaSearch id="search-icon" /> 
+                 <input 
+                     placeholder='Departure Date'
+                     type="date"
+                     value={departureDate}
+                     onChange={(e) => setDepartureDate(e.target.value)}
+                     />
+             </div>
+           <div className="input-wrapper">
+                <FaSearch id="search-icon" /> 
+                <input 
+                  placeholder='Number of Adults'
+                     type="number"
+                    value={adults}
+                   onChange={(e) => setAdults(e.target.value)}
                     />
-            </div>
-            <button type="submit">Search</button>
-        </form>
-    </div>
+             </div>
+                     <button type="submit">Search</button>
+         </form>
+     </div>
+    //         <div className="input-wrapper">
+    //             <FaSearch id="search-icon" /> 
+    //             <input 
+    //                 placeholder='Destination'
+    //                 value={destinationLocationCode}
+    //                 onChange={(e) => setDestinationLocationCode(e.target.value)}
+    //                 />
+    //         </div>
+    //         <div className="input-wrapper">
+    //             <FaSearch id="search-icon" /> 
+    //             <input 
+    //                 placeholder='Departure Date'
+    //                 type="date"
+    //                 value={departureDate}
+    //                 onChange={(e) => setDepartureDate(e.target.value)}
+    //                 />
+    //         </div>
+    //         <div className="input-wrapper">
+    //             <FaSearch id="search-icon" /> 
+    //             <input 
+    //                 placeholder='Number of Adults'
+    //                 type="number"
+    //                 value={adults}
+    //                 onChange={(e) => setAdults(e.target.value)}
+    //                 />
+    //         </div>
+    //         <button type="submit">Search</button>
+    //     </form>
+    // </div>
     )
 }
 

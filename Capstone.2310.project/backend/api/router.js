@@ -17,8 +17,8 @@ const API = "api";
 
 //Flight 
 // no longer allowed 
-router.get(`/flight-search`, cache(400) ,(req, res, next ) => {
- 
+router.post(`/flight-search`,(req, res, next ) => {
+  console.log("request", req.body)
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
     // Find the cheapest flights
     amadeus.shopping.flightOffersSearch.get({
