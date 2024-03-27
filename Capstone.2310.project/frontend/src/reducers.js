@@ -1,3 +1,10 @@
+import { GET_CART_SUCCESS, ADD_TO_CART_SUCCESS, REMOVE_FROM_CART_SUCCESS, UPDATE_CART_SUCCESS, CART_ERROR } from './actionTypes';
+
+const initialState = {
+  cart: [],
+  error: null
+};
+
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CART_SUCCESS:
