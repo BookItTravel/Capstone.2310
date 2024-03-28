@@ -21,6 +21,9 @@ const Departure_Table = ({ onBookClick }) => {
 
     return (
         <>
+            {/* <h1 data-aos="fade-up" className="homeTitle">
+                        Search Your Holiday
+                    </h1> */}
             <div className='departingFlightsDiv'>
                 <h2 className="departingFlightsHeader">Departing Flights</h2> {/* Header added here */}
                 <table className="flightsTable">
@@ -32,6 +35,7 @@ const Departure_Table = ({ onBookClick }) => {
                             <th>Duration</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr>
                             <td>
@@ -54,58 +58,7 @@ const Departure_Table = ({ onBookClick }) => {
                             <td>
                                 <div className="bookButtonContainer">
                                     <span className="priceText">Total Price: $1500</span>
-                                    <button className="bookButton" onClick={onBookClick}>Departure_Table</button>
-                                </div>
-                            </td>
-                        </tr>
-                        {/* Add more rows as needed */}
-                        <tr>
-                            <td>
-                                <div>320</div>
-                                <div>PK-211</div>
-                            </td>
-                            <td>
-                                <div>ISB-DXB</div>
-                                <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
-                            </td>
-                            <td>
-                                18-09-20 03:15pm {/* Original time placement */}
-                            </td>
-                            <td>02:00</td>
-                        </tr>
-                        <tr className="bookRow">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div>
-                                    <span className="priceText">Total Price: $1500</span>
-                                    <button className="bookButton">Book It</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>320</div>
-                                <div>PK-211</div>
-                            </td>
-                            <td>
-                                <div>ISB-DXB</div>
-                                <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
-                            </td>
-                            <td>
-                                18-09-20 03:15pm {/* Original time placement */}
-                            </td>
-                            <td>02:00</td>
-                        </tr>
-                        <tr className="bookRow">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div>
-                                    <span className="priceText">Total Price: $1500</span>
-                                    <button className="bookButton">Book It</button>
+                                    <button className="bookButton" onClick={onBookClick}>Book It</button>
                                 </div>
                             </td>
                         </tr>

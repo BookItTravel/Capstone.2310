@@ -21,9 +21,14 @@ const Hotel_Table = (props) => {
 
     return (
         <>
-            <h2 className="HotelHeader">Hotels</h2> {/* Header added here */}
+
             <table className="flightsTable">
                 <thead>
+                    <tr>
+                        <th className="hotelsHeader" colspan="4">
+                            Hotels
+                        </th>
+                    </tr>
                     <tr>
                         <th>Airline</th>
                         <th>Departure</th>
@@ -57,85 +62,7 @@ const Hotel_Table = (props) => {
                             </div>
                         </td>
                     </tr>
-                    {/* Repeat for each flight as needed */}
-                    <tr>
-                        <td>
-                            <div>320</div>
-                            <div>PK-211</div>
-                        </td>
-                        <td>
-                            <div>ISB-DXB</div>
-                            <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
-                        </td>
-                        <td>
-                            18-09-20 03:15pm {/* Original time placement */}
-                        </td>
-                        <td>02:00</td>
-                    </tr>
-                    <tr className="bookRow">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div>
-                                <span className="priceText">Total Price: $1500</span>
-                                <button className="bookButton">Book It</button>
-                            </div>
-                        </td>
-                    </tr>
-                    {/* Repeat for each flight as needed */}
-                    <tr>
-                        <td>
-                            <div>320</div>
-                            <div>PK-211</div>
-                        </td>
-                        <td>
-                            <div>ISB-DXB</div>
-                            <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
-                        </td>
-                        <td>
-                            18-09-20 03:15pm {/* Original time placement */}
-                        </td>
-                        <td>02:00</td>
-                    </tr>
-                    <tr className="bookRow">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div>
-                                <span className="priceText">Total Price: $1500</span>
-                                <button className="bookButton">Book It</button>
-                            </div>
-                        </td>
-                    </tr>
-                    {/* Repeat for each flight as needed */}
-                    <tr>
-                        <td>
-                            <div>320</div>
-                            <div>PK-211</div>
-                        </td>
-                        <td>
-                            <div>ISB-DXB</div>
-                            <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
-                        </td>
-                        <td>
-                            18-09-20 03:15pm {/* Original time placement */}
-                        </td>
-                        <td>02:00</td>
-                    </tr>
-                    <tr className="bookRow">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div>
-                                <span className="priceText">Total Price: $1500</span>
-                                <button className="bookButton">Hotel_Table</button>
-                            </div>
-                        </td>
-                    </tr>
-                    {/* Repeat for each flight as needed */}
+
                 </tbody>
             </table>
         </>

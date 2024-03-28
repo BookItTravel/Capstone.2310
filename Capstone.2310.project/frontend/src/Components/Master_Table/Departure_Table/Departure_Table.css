@@ -1,20 +1,31 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDream: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+}
+
 .flightsTable {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     border: 2px solid #d6d4d493;
-    /* Lighter black for a softer look */
     table-layout: fixed;
-    /* Ensures the columns are spread out evenly */
-    background-color: hsla(0, 0%, 93%, 0.501);
+    background-color: hsla(0, 0%, 93%, 0.58);
 }
 
 .flightsTable th,
 .flightsTable td {
     padding: 16px;
-    text-align: left;
+    text-align: center;
     width: 25%;
-    /* Sets each column to take up 25% of the table's width */
 }
 
 .flightsTable td {
@@ -23,27 +34,22 @@
 
 .priceText {
     margin-right: 10px;
-    /* Adds some space between the price and the button */
     display: inline-block;
-    /* Ensures the text and button are on the same line */
     vertical-align: middle;
-    /* Aligns text with the button */
 }
 
 .bookButton {
-    background-color: #4CAF50;
+    background-color: hsl(199, 100%, 33%);
     color: white;
     padding: 10px 24px;
     border: none;
     cursor: pointer;
     display: inline-block;
-    /* Aligns the button next to the price text */
     vertical-align: middle;
-    /* Ensures vertical alignment with the price text */
 }
 
 .bookButton:hover {
-    background-color: #45a049;
+    background-color: var(--SecondaryColor);
 }
 
 .bookRow {
@@ -54,8 +60,4 @@
     border-bottom: 2px solid #d6d4d493;
     padding: 16px;
     border-top: none;
-}
-
-.departingFlightsHeader {
-    background-color: hsla(0, 0%, 93%, 0.501);
 }
