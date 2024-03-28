@@ -90,6 +90,11 @@ const Search = () => {
         }
     };
 
+    const handleAdultsChange = (newValue) => {
+        const newAdults = newValue < 1? 1 : newValue;
+        setAdults(newAdults);
+    };
+
     return (
         <div>
             <form onSubmit={handleSubmit} className='searchForm'>
@@ -118,6 +123,7 @@ const Search = () => {
                     <div className="searchInput-container">
                         <input type="date" 
                         value={departureDate}
+                        min={new Date().toISOString().split('T')[0]} // Set minimum date to today's date
                         onChange={(e) => setDepartureDate(e.target.value)} className='searchInput' />
                     </div>
                 </div>
@@ -125,7 +131,9 @@ const Search = () => {
                 <div className="dateInput">
                     <label htmlFor="date" className='searchLabel'>Return Date</label>
                     <div className="searchInput-container">
-                        <input type="date" className='searchInput'/>
+                        <input type="date"
+                         min={new Date().toISOString().split('T')[0]} // Set minimum date to today's date
+                         className='searchInput' />
                     </div>
                 </div>
 
@@ -134,7 +142,7 @@ const Search = () => {
                     <div className="searchInput-container">
                         <input type="number" 
                         value={adults}
-                        onChange={(e) => setAdults(e.target.value)} className='searchInput' />
+                        onChange={(e) => handleAdultsChange(parseInt(e.target.value))} className='searchInput' />
                     </div> 
                 </div>
                 <button type="submit" className='searchButton'>Search Flights</button>

@@ -26,11 +26,16 @@
 
 .login-container {
     width: 35%;
-    background-color: #ffffff;
+    background-color: var(--cardBG);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(225, 225, 235, 0.7);
+    margin-right: 25%;
     
+}
+
+.login-heading {
+    text-align: center;
 }
 
 label {
@@ -47,6 +52,12 @@ input {
     margin-bottom: 15px;
     border: 1px solid #b3d4f1;
     border-radius: 4px;
+}
+
+.loginInput {
+    background-color: var(--whiteColor);
+    color: var(--textColor);
+    border: 1px solid var(--blackColor);
 }
 
 .login-button {
