@@ -11,7 +11,7 @@ import BookingDetails from './Pages/BookingDetails/BookingDetails'
 import Confirmation from './Pages/Confirmation/Confirmation'
 import Profile from './Pages/Profile/Profile'
 import Master_Table from './Components/Master_Table/Master_Table'
-import Flight_Results from './Components/Flight/Flight_Results'
+// import Flight_Results from './Components/Flight/Flight_Results'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Flights from './Components/Flight_Search/Flights'
 import Hotels from './Components/Hotel/hotels'

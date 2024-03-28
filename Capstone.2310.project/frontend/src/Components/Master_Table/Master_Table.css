@@ -1,11 +1,14 @@
-/* Example of a more specific CSS selector */
-/* .departingFlightsHeaderDiv {
-    margin-top: 100px;
-} */
 .masterTable-container {
-    height: 180vh;
+    height: 100vh;
     background-image: url('../../assets/booking_bgd.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+}
 
+.secondDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

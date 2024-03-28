@@ -35,15 +35,12 @@ const Departure_Table = ({ onBookClick }) => {
                             <th>Duration</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr>
                             <td>
                                 <div>320</div>
-                                <div>PK-211</div>
                             </td>
                             <td>
-                                <div>ISB-DXB</div>
                                 <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
                             </td>
                             <td>
