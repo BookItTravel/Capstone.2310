@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Departure_Table from '../Master_Table/Departure_Table/Departure_Table'
 import Return_Table from '../Master_Table/Return_Table/Return_Table'
 import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table'
+import './Master_Table.css'
+
+
 
 
 function Master_Table() {
@@ -19,7 +22,7 @@ function Master_Table() {
     };
 
     return (
-        <div>
+        <div className='masterTable-container'>
             <Departure_Table onBookClick={handleBookDeparture} />
             {showReturnTable && <Return_Table onBookClick={handleBookReturn} />}
             {showHotelTable && <Hotel_Table />}

@@ -6,6 +6,7 @@
     /* Lighter black for a softer look */
     table-layout: fixed;
     /* Ensures the columns are spread out evenly */
+    background-color: hsla(0, 0%, 93%, 0.501);
 }
 
 .flightsTable th,
@@ -53,4 +54,8 @@
     border-bottom: 2px solid #d6d4d493;
     padding: 16px;
     border-top: none;
+}
+
+.departingFlightsHeader {
+    background-color: hsla(0, 0%, 93%, 0.501);
 }
