@@ -113,7 +113,7 @@ const Register = () => {
             >
               {errMsg}
             </p>
-            <h1>Register</h1>
+            <h1 className="register-heading">Register</h1>
             <form onSubmit={handleSubmit}>
               <label htmlFor="email">
                 Email:
@@ -138,6 +138,7 @@ const Register = () => {
                 aria-describedby="emailnote"
                 onFocus={() => setEmailFocus(true)}
                 onBlur={() => setEmailFocus(false)}
+                className="registerInput"
               />
               <p
                 id="emailnote"
@@ -173,6 +174,7 @@ const Register = () => {
                 aria-describedby="uidnote"
                 onFocus={() => setUserFocus(true)}
                 onBlur={() => setUserFocus(false)}
+                className="registerInput"
               />
               <p
                 id="uidnote"
@@ -209,6 +211,7 @@ const Register = () => {
                 aria-describedby="pwdnote"
                 onFocus={() => setPwdFocus(true)}
                 onBlur={() => setPwdFocus(false)}
+                className="registerInput"
               />
               <p
                 id="pwdnote"
@@ -249,6 +252,7 @@ const Register = () => {
                 aria-describedby="confirmnote"
                 onFocus={() => setMatchFocus(true)}
                 onBlur={() => setMatchFocus(false)}
+                className="registerInput"
               />
               <p
                 id="confirmnote"
@@ -267,7 +271,7 @@ const Register = () => {
                 Sign Up
               </button>
             </form>
-            <p>
+            <p className="registerQuestion">
               Already registered?
               <br />
               <span className="line">

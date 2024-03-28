@@ -25,9 +25,13 @@ const Departure_Table = ({ onBookClick }) => {
                         Search Your Holiday
                     </h1> */}
             <div className='departingFlightsDiv'>
-                <h2 className="departingFlightsHeader">Departing Flights</h2> {/* Header added here */}
                 <table className="flightsTable">
                     <thead>
+                        <tr>
+                            <th className="departingFlightsHeader" colSpan="4">
+                                Departing Flights
+                            </th>
+                        </tr>
                         <tr>
                             <th>Airline</th>
                             <th>Departure</th>

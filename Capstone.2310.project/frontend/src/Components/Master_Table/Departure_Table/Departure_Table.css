@@ -61,3 +61,10 @@
     padding: 16px;
     border-top: none;
 }
+
+.departingFlightsHeader {
+    background-color: hsla(199, 100%, 33%, 0.532);
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
