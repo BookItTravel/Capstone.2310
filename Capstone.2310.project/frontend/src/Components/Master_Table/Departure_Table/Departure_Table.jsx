@@ -30,11 +30,18 @@ const Departure_Table = ({ onBookClick }) => {
                 </tr>
             </thead>
             <tbody>
-                {/* Example row */}
                 <tr>
-                    <td>320</td>
-                    <td>ISB-DXB<br />18-09-20 01:15pm</td>
-                    <td>18-09-20 03:15pm</td>
+                    <td>
+                        <div>320</div>
+                        <div>PK-211</div>
+                    </td>
+                    <td>
+                        <div>ISB-DXB</div>
+                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                    </td>
+                    <td>
+                        18-09-20 03:15pm {/* Original time placement */}
+                    </td>
                     <td>02:00</td>
                 </tr>
                 <tr className="bookRow">
@@ -46,6 +53,56 @@ const Departure_Table = ({ onBookClick }) => {
                     </td>
                 </tr>
                 {/* Add more rows as needed */}
+                <tr>
+                    <td>
+                        <div>320</div>
+                        <div>PK-211</div>
+                    </td>
+                    <td>
+                        <div>ISB-DXB</div>
+                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                    </td>
+                    <td>
+                        18-09-20 03:15pm {/* Original time placement */}
+                    </td>
+                    <td>02:00</td>
+                </tr>
+                <tr className="bookRow">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <span className="priceText">Total Price: $1500</span>
+                            <button className="bookButton">Book It</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>320</div>
+                        <div>PK-211</div>
+                    </td>
+                    <td>
+                        <div>ISB-DXB</div>
+                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                    </td>
+                    <td>
+                        18-09-20 03:15pm {/* Original time placement */}
+                    </td>
+                    <td>02:00</td>
+                </tr>
+                <tr className="bookRow">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <div>
+                            <span className="priceText">Total Price: $1500</span>
+                            <button className="bookButton">Book It</button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     );

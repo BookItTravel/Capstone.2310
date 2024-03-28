@@ -19,12 +19,12 @@ function Master_Table() {
     };
 
     return (
-        <>
-            <h1>Hello from Master_Table</h1>
+        <div>
             <Departure_Table onBookClick={handleBookDeparture} />
             {showReturnTable && <Return_Table onBookClick={handleBookReturn} />}
             {showHotelTable && <Hotel_Table />}
-        </>
+        </div>
+
     );
 }
 
