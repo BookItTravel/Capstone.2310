@@ -2,7 +2,7 @@ import Home from '../Home/Home'
 import Main from '../Main/Main'
 // import Flight_Results from '../Flight/Flight_Results'
 
-import Master_Table from '../Master_Table/Master_Table'
+// import Master_Table from '../Master_Table/Master_Table'
 import { FiSend } from 'react-icons/fi'
 import { AiOutlineTwitter } from 'react-icons/ai'
 import { AiFillYoutube } from 'react-icons/ai'
@@ -16,7 +16,7 @@ const LandingPage = () => {
     return (
         <>
             <Home />
-            <Master_Table />
+            {/* <Master_Table /> */}
 
             {/* <Flight_Results /> */}
             <Main />

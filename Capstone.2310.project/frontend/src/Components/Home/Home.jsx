@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './home.css'
 import video from '../../assets/video.mp4'
 import { GrLocation } from 'react-icons/gr'
@@ -12,19 +13,20 @@ import 'aos/dist/aos.css'
 
 
 function Home() {
+    const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
-    const [originLocationCode, setOriginLocationCode ] = useState('')
-    const [destinationLocationCode, setDestinationLocationCode ] = useState('')
+    const [originLocationCode, setOriginLocationCode] = useState('')
+    const [destinationLocationCode, setDestinationLocationCode] = useState('')
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
     }, [])
     const handleSubmit = async (e) => {
         e.preventDefault();
-     
+
         try {
-            
+
             const responseOrigin = await fetch(`http://localhost:3000/api/search/${originLocationCode}`, {
                 method: 'GET',
                 headers: {
@@ -37,14 +39,14 @@ function Home() {
             const resDataOrigin = await responseOrigin.json();
             console.log("data", resDataOrigin);
 
-            const cityOriginNames = resDataOrigin.data.reduce((obj,cur  )=>{
-                if(cur.address){
-                    return { ...cur.address}
+            const cityOriginNames = resDataOrigin.data.reduce((obj, cur) => {
+                if (cur.address) {
+                    return { ...cur.address }
                 }
-            },{})
+            }, {})
             console.log("City Names", cityOriginNames);
 
-        
+
             const responseDes = await fetch(`http://localhost:3000/api/search/${destinationLocationCode}`, {
                 method: 'GET',
                 headers: {
@@ -55,34 +57,34 @@ function Home() {
                 throw new Error('Unsuccessful');
             }
             const resDes = await responseDes.json();
-            const destinationCode =  resDes.data.reduce((obj,cur) => {
-                 if(cur.address) {
-                    return { ...cur.address}
-                 }
+            const destinationCode = resDes.data.reduce((obj, cur) => {
+                if (cur.address) {
+                    return { ...cur.address }
+                }
 
-       
-            },{})
-            
-            const cityDesNames = resDes.data.map((location )=> location.address);
+
+            }, {})
+
+            const cityDesNames = resDes.data.map((location) => location.address);
             console.log("City Names", cityDesNames);
 
 
 
-             console.log(" cities ",cityDesNames, cityOriginNames)
+            console.log(" cities ", cityDesNames, cityOriginNames)
             const params = {
                 originLocationCode: cityOriginNames.cityCode,
-                destinationLocationCode: destinationCode.cityCode ,
-                         departureDate: departureDate,
-                         adults: adults
-                   };
-             console.log("Params", params)
-            const responseTwo = await fetch(`http://localhost:3000/flight-search`,  {
-             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
-              body: JSON.stringify(params) 
-           
+                destinationLocationCode: destinationCode.cityCode,
+                departureDate: departureDate,
+                adults: adults
+            };
+            console.log("Params", params)
+            const responseTwo = await fetch(`http://localhost:3000/flight-search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(params)
+
             });
             if (!responseTwo.ok) {
                 throw new Error('Unsuccessful');
@@ -90,17 +92,21 @@ function Home() {
             const responseData = await responseTwo.json();
             console.log("data", responseData);
 
-         
-        } catch (error){
+            navigate('/master_table');
+        } catch (error) {
             console.error("Error getting your data", error);
         }
     };
+
+    // const handleSearchClick = () => {
+    //     navigate('/master_table'); // Path to navigate to Master_Table
+    // };
 
     return (
         <section className="home">
             <div className="overlay"></div>
             <video src={video} muted autoPlay loop type="video/mp4"></video>
-            
+
             <div className="homeContent container">
                 <div className="textDiv">
 
@@ -114,58 +120,58 @@ function Home() {
                 </div>
 
                 <div data-aos="fade-up" className="cardDiv grid">
-                    
-                <form onSubmit={handleSubmit}>
-                    <div className="destinationInput">
-                        <label htmlFor="city">Flying From</label>
-                        <div className="input flex">
-                            <input type="text" placeholder='Originial location...'
-                                value={originLocationCode}
-                                onChange={(e) => setOriginLocationCode(e.target.value)} />
-                            <GrLocation className="icon" />
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="destinationInput">
+                            <label htmlFor="city">Flying From</label>
+                            <div className="input flex">
+                                <input type="text" placeholder='Originial location...'
+                                    value={originLocationCode}
+                                    onChange={(e) => setOriginLocationCode(e.target.value)} />
+                                <GrLocation className="icon" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="destinationInput">
-                        <label htmlFor="city">Flying To</label>
-                        <div className="input flex">
-                            <input type="text" placeholder='Enter destination...' 
-                                value={destinationLocationCode}
-                                onChange={(e) => setDestinationLocationCode(e.target.value)}/>
-                            <GrLocation className="icon" />
+                        <div className="destinationInput">
+                            <label htmlFor="city">Flying To</label>
+                            <div className="input flex">
+                                <input type="text" placeholder='Enter destination...'
+                                    value={destinationLocationCode}
+                                    onChange={(e) => setDestinationLocationCode(e.target.value)} />
+                                <GrLocation className="icon" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="dateInput">
-                        <label htmlFor="date">Departure Date</label>
-                        <div className="input flex">
-                            <input type="date" 
-                            value={departureDate}
-                            onChange={(e) => setDepartureDate(e.target.value)}/>
+                        <div className="dateInput">
+                            <label htmlFor="date">Departure Date</label>
+                            <div className="input flex">
+                                <input type="date"
+                                    value={departureDate}
+                                    onChange={(e) => setDepartureDate(e.target.value)} />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="dateInput">
-                        <label htmlFor="date">Return Date</label>
-                        <div className="input flex">
-                            <input type="date" />
+                        <div className="dateInput">
+                            <label htmlFor="date">Return Date</label>
+                            <div className="input flex">
+                                <input type="date" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="travelerinput">
-                        <label htmlFor="travelers">Number of Travelers</label>
-                        <div className="input flex">
-                            <input type="number" 
-                            value={adults}
-                            onChange={(e) => setAdults(e.target.value)}/>
-                        </div> 
-                    </div>
+                        <div className="travelerinput">
+                            <label htmlFor="travelers">Number of Travelers</label>
+                            <div className="input flex">
+                                <input type="number"
+                                    value={adults}
+                                    onChange={(e) => setAdults(e.target.value)} />
+                            </div>
+                        </div>
 
-                    <div className="searchOptions flex">
-                        <button type="submit" >Search Flights</button>
-                    </div>
+                        <div className="searchOptions flex">
+                            <button type="submit">Search Flights</button>
+                        </div>
                     </form>
-           
+
                 </div>
 
                 <div data-aos="fade-up"

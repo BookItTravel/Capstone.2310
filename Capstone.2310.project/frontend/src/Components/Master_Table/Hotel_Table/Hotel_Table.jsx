@@ -129,7 +129,7 @@ const Hotel_Table = (props) => {
                     <td>
                         <div>
                             <span className="priceText">Total Price: $1500</span>
-                            <button className="bookButton">Book It</button>
+                            <button className="bookButton">Hotel_Table</button>
                         </div>
                     </td>
                 </tr>
