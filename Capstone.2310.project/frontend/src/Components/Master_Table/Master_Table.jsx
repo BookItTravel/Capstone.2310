@@ -1,6 +1,16 @@
+import Departure_Table from '../Master_Table/Departure_Table/Departure_Table'
+import Return_Table from '../Master_Table/Return_Table/Return_Table'
+import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table'
+
+
 function Master_Table() {
     return (
-        <h1>Hello from Master_Table </h1>
+        <>
+            <h1>Hello from Master_Table</h1>
+            <Departure_Table />
+            <Return_Table />
+            <Hotel_Table />
+        </>
     )
 
 }

@@ -1,9 +1,7 @@
 import Home from '../Home/Home'
 import Main from '../Main/Main'
 // import Flight_Results from '../Flight/Flight_Results'
-import Departure_Table from '../Master_Table/Departure_Table/Departure_Table'
-import Return_Table from '../Master_Table/Return_Table/Return_Table'
-import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table'
+
 import Master_Table from '../Master_Table/Master_Table'
 import { FiSend } from 'react-icons/fi'
 import { AiOutlineTwitter } from 'react-icons/ai'
@@ -19,9 +17,7 @@ const LandingPage = () => {
         <>
             <Home />
             <Master_Table />
-            <Departure_Table />
-            <Return_Table />
-            <Hotel_Table />
+
             {/* <Flight_Results /> */}
             <Main />
             <section className='footer'>
