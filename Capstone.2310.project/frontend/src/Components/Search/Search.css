@@ -1,6 +1,6 @@
 .searchForm {
     display: grid;
-    grid-template-columns: repeat(5, 1fr) auto;
+    grid-template-columns: repeat(6, 1fr) auto;
     align-items: center;
     gap: 1rem;
     padding: 1.5rem 1rem;
@@ -49,18 +49,28 @@
     margin-bottom: 1.2rem;
 }
 
+.searchButton-container {
+    padding: 0;
+}
+
 .searchButton {
-    position: absolute;
+    /* position: absolute; */
     background: var(--gradientColor);
     width: max-content;
-    bottom: 14.5rem;
+    /* bottom: 14.5rem; */
     column-gap: .8rem;
     padding: 5px 2rem;
     border-radius: 3rem;
-    left: 50%;
+    /* left: 50%; */
     transform: translate(-50%);
-    justify-content: center;
+    /* justify-content: center; */
     cursor: pointer;
     border: 0px;
     color: var(--whiteColor);
+    vertical-align: center;
+    margin-left: 55%;
+    margin-top: 2.5rem;
+    height: 2.5rem;
+    width: 12rem;
+    font-size: 15px;
 }

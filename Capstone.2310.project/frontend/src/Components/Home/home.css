@@ -295,7 +295,7 @@ html {
     cursor: pointer;
 }
 
-.searchButton {
+/* .searchButton {
     position: absolute;
     background: var(--gradientColor);
     width: max-content;
@@ -309,7 +309,7 @@ html {
     cursor: pointer;
     border: 0px;
     color: var(--whiteColor);
-}
+} */
 
 .travelerinput .input {
     /* For example, limit its max-width if it's too wide */

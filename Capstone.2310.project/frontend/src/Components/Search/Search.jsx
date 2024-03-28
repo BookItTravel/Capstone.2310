@@ -145,7 +145,9 @@ const Search = () => {
                         onChange={(e) => handleAdultsChange(parseInt(e.target.value))} className='searchInput' />
                     </div> 
                 </div>
-                <button type="submit" className='searchButton'>Search Flights</button>
+                <div className='searchButton-container'>
+                    <button type="submit" className='searchButton'>Search</button>
+                </div>
             </form>
         </div>
     )
