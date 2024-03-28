@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Flight_Results.css';
+import './Hotel_Table.css';
 
-const Flights = (props) => {
+const Hotel_Table = (props) => {
     // const [flight, setFlight] = useState([]);
     // const [input, setInput] = useState('');
 
@@ -139,4 +139,4 @@ const Flights = (props) => {
     );
 };
 
-export default Flights;
+export default Hotel_Table;
