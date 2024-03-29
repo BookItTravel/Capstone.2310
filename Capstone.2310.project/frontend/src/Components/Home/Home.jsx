@@ -9,6 +9,7 @@ import { BsListTask } from 'react-icons/bs'
 import { TbApps } from 'react-icons/tb'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import Hotels from '../Hotel/hotels'
 
 
 function Home() {
@@ -16,6 +17,7 @@ function Home() {
     const [departureDate, setDepartureDate] = useState('');
     const [originLocationCode, setOriginLocationCode ] = useState('')
     const [destinationLocationCode, setDestinationLocationCode ] = useState('')
+    const [cityCode, setCityCode] = useState('');
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
@@ -37,11 +39,11 @@ function Home() {
             const resDataOrigin = await responseOrigin.json();
             console.log("data", resDataOrigin);
 
-            const cityOriginNames = resDataOrigin.data.reduce((obj,cur  )=>{
+            const cityOriginNames = Array.isArray(resDataOrigin.data) ? resDataOrigin.data.reduce((obj,cur  )=>{
                 if(cur.address){
                     return { ...cur.address}
                 }
-            },{})
+            },{}) : {};
             console.log("City Names", cityOriginNames);
 
         
@@ -55,16 +57,18 @@ function Home() {
                 throw new Error('Unsuccessful');
             }
             const resDes = await responseDes.json();
-            const destinationCode =  resDes.data.reduce((obj,cur) => {
-                 if(cur.address) {
-                    return { ...cur.address}
+            const destinationCode =  resDes.data.reduce((obj,des) => {
+                 if(des.address) {
+                    return { ...des.address}
                  }
 
-       
-            },{})
-            
-            const cityDesNames = resDes.data.map((location )=> location.address);
-            console.log("City Names", cityDesNames);
+                },{})
+                
+                const cityDesNames = resDes.data.map((location )=> location.address);
+                const cityDesCode = resDes.data.map((location )=> location.address.cityCode);
+                console.log("City Names", cityDesNames);
+                console.log("City Des Code", cityDesCode);
+                setCityCode(cityDesCode)
 
 
 
@@ -84,10 +88,11 @@ function Home() {
               body: JSON.stringify(params) 
            
             });
-            if (!responseTwo.ok) {
-                throw new Error('Unsuccessful');
-            }
             const responseData = await responseTwo.json();
+
+            if (!responseData || !responseData.data) {
+                throw new Error('Invalid response data');
+            }
             console.log("data", responseData);
 
          
@@ -95,7 +100,7 @@ function Home() {
             console.error("Error getting your data", error);
         }
     };
-
+        console.log("destination STate",destinationLocationCode)
     return (
         <section className="home">
             <div className="overlay"></div>
@@ -165,6 +170,7 @@ function Home() {
                         <button type="submit" >Search Flights</button>
                     </div>
                     </form>
+                <Hotels cityCode={cityCode} departureDate={departureDate} />
            
                 </div>
 
@@ -182,7 +188,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-
 
         </section>
     )

@@ -71,7 +71,9 @@ video {
 input {
     font-size: 100%;
     color: var(--greyText);
+  
 }
+
 
 p {
     font-size: 13px;

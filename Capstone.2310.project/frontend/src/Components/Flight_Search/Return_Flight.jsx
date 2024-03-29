@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Flight.css";
 import { FaSearch } from 'react-icons/fa';
 
-const Flights = () => {
+const Return_Flight = () => {
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
     const [originLocationCode, setOriginLocationCode ] = useState('')
@@ -52,29 +52,26 @@ const Flights = () => {
             },{})
             
             const cityDesNames = resDes.data.map((location )=> location.address);
-            const cityDsNames = resDes.data.map((location )=> location.address.cityCode);
             console.log("City Names", cityDesNames);
-            console.log("City NamesCode", cityDsNames);
 
 
 
-             console.log(" citiesth",cityDesNames, cityOriginNames)
+             console.log(" cities ",cityDesNames, cityOriginNames)
             const params = {
                 originLocationCode: cityOriginNames.cityCode,
-                destinationLocationCode: destinationCode.cityCode,
+                destinationLocationCode: destinationCode.cityCode ,
                          departureDate: departureDate,
                          adults: adults
                    };
-                   console.log("Params", params)
-                   const responseTwo = await fetch(`http://localhost:3000/flight-search`,  {
-                       method: 'POST',
-                       headers: {
-                           'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(params) 
-                        
-                    });
-                    console.log("hotelss",destinationCode.cityCode)
+             console.log("Params", params)
+            const responseTwo = await fetch(`http://localhost:3000/flight-search`,  {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+              body: JSON.stringify(params) 
+           
+            });
             if (!responseTwo.ok) {
                 throw new Error('Unsuccessful');
             }
@@ -131,36 +128,7 @@ const Flights = () => {
                      <button type="submit">Search</button>
          </form>
      </div>
-    //         <div className="input-wrapper">
-    //             <FaSearch id="search-icon" /> 
-    //             <input 
-    //                 placeholder='Destination'
-    //                 value={destinationLocationCode}
-    //                 onChange={(e) => setDestinationLocationCode(e.target.value)}
-    //                 />
-    //         </div>
-    //         <div className="input-wrapper">
-    //             <FaSearch id="search-icon" /> 
-    //             <input 
-    //                 placeholder='Departure Date'
-    //                 type="date"
-    //                 value={departureDate}
-    //                 onChange={(e) => setDepartureDate(e.target.value)}
-    //                 />
-    //         </div>
-    //         <div className="input-wrapper">
-    //             <FaSearch id="search-icon" /> 
-    //             <input 
-    //                 placeholder='Number of Adults'
-    //                 type="number"
-    //                 value={adults}
-    //                 onChange={(e) => setAdults(e.target.value)}
-    //                 />
-    //         </div>
-    //         <button type="submit">Search</button>
-    //     </form>
-    // </div>
-    )
-}
-
-export default Flights;
+      )
+    }
+    
+    export default Return_Flight;
