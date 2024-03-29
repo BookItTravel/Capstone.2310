@@ -1,6 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import './HotelOfferCard.css';
 
 const HotelOfferCard = () => {
+    const navigate = useNavigate();
+
+    const handleBookButtonClick = () => {
+        navigate('/booking');
+    };
 
     return (
         <div className="offer-card">
@@ -28,7 +34,7 @@ const HotelOfferCard = () => {
                 </div>
             </div>
             <div className="card-button">
-                <button className="booking-button">Book It!</button>
+                <button className="booking-button" onClick={handleBookButtonClick}>Book It!</button>
             </div>
         </div>
     )

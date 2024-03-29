@@ -149,7 +149,6 @@ const Search = () => {
                 </div>
                 <div className='searchButton-container'>
                     <button type="submit" 
-                    // onClick={'/master_table'} 
                     className='searchButton'>Search</button>
                 </div>
             </form>
