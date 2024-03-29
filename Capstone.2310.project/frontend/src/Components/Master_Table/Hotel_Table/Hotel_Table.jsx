@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Hotel_Table.css';
 
-const Hotel_Table = (props) => {
-    const [flight, setFlight] = useState([]);
+const Hotel_Table = ({ onRowClick }) => {
+    const [hotel, setHotel] = useState([]);
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
 
@@ -22,7 +22,7 @@ const Hotel_Table = (props) => {
 
     const handleRowClick = (index) => {
         setSelectedRow(selectedRow === index ? null : index);
-        // onBookClick();
+        onRowClick();
     };
 
     return (

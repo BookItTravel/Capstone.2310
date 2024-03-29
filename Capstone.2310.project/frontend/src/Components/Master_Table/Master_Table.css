@@ -1,5 +1,5 @@
 .masterTable-container {
-    height: 100vh;
+    height: 100vw;
     background-image: url('../../assets/booking_bgd.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,4 +24,5 @@
     width: 85%;
     border-radius: 15px;
     margin-top: 2rem;
+    z-index: 5
 }

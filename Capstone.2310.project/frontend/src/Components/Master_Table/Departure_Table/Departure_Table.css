@@ -15,6 +15,7 @@
 .table-container {
     border-radius: 15px;
     margin: 0.75rem 0rem;
+    z-index: 3;
 }
 
 .results-table {
