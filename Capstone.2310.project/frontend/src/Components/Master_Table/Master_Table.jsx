@@ -24,7 +24,9 @@ function Master_Table() {
 
     return (
         <div className='masterTable-container'>
-            <Search />
+            <div className='search-container'>
+                <Search />
+            </div>
             <div className='secondDiv'>
                 <Departure_Table onBookClick={handleBookDeparture} />
                 {showReturnTable && <Return_Table onBookClick={handleBookReturn} />}

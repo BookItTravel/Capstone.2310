@@ -13,15 +13,16 @@
 }
 
 .flightsTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    border: 2px solid #d6d4d493;
+    width: 50%;
+    /* border-collapse: collapse; */
+    margin-top: px;
+    border-bottom: 2px solid var(--blackColor);
     table-layout: fixed;
     background-color: hsla(0, 0%, 93%, 0.58);
+    border-radius: 15px;
 }
 
-.flightsTable th,
+/* .flightsTable th,
 .flightsTable td {
     padding: 16px;
     text-align: center;
@@ -30,15 +31,15 @@
 
 .flightsTable td {
     vertical-align: middle;
-}
+} */
 
-.priceText {
+/* .priceText {
     margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
-}
+} */
 
-.bookButton {
+/* .bookButton {
     background-color: hsl(199, 100%, 33%);
     color: white;
     padding: 10px 24px;
@@ -53,18 +54,32 @@
 }
 
 .bookRow {
-    border-bottom: 2px solid #d6d4d493;
-}
+    border-bottom: 2px solid var(--blackColor);
+} */
 
-.flightsTable thead th {
-    border-bottom: 2px solid #d6d4d493;
+/* .flightsTable thead th {
+    border-bottom: 2px solid var(--blackColor);
     padding: 16px;
     border-top: none;
 }
 
 .departingFlightsHeader {
-    background-color: hsla(199, 100%, 33%, 0.532);
+    background-color: hsla(199, 100%, 33%, 0.8);
     color: white;
     font-size: 25px;
     text-align: center;
 }
+
+.table-heading {
+    background-color: rgba(225, 225, 235, 0.8);
+}
+
+.table-info {
+    background-color: rgba(225, 225, 235, 0.8);
+    padding: 10px 0;
+}
+
+table, th, td {
+    border: 1px solid black;
+} */
+

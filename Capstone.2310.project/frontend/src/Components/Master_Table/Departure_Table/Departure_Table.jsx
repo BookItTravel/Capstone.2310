@@ -33,26 +33,28 @@ const Departure_Table = ({ onBookClick }) => {
                             </th>
                         </tr>
                         <tr>
-                            <th>Airline</th>
-                            <th>Departure</th>
-                            <th>Arrival</th>
-                            <th>Duration</th>
+                            <th className='table-heading'>Airline</th>
+                            <th className='table-heading'>Departure</th>
+                            <th className='table-heading'>Arrival</th>
+                            <th className='table-heading'>Duration</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div>320</div>
+                        <tr className='table-row'>
+                            <td className='table-info'>
+                                <p>United</p>
                             </td>
-                            <td>
-                                <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                            <td className='table-info'>
+                                <p>18-09-20 01:15pm</p> {/* Additional time under ISB-DXB */}
+                                <p>Seattle</p>
                             </td>
-                            <td>
-                                18-09-20 03:15pm {/* Original time placement */}
+                            <td className='table-info'>
+                                <p>18-09-20 03:15pm</p> {/* Original time placement */}
+                                <p>New York City</p>
                             </td>
-                            <td>02:00</td>
+                            <td className='table-info'><p>02:00</p></td>
                         </tr>
-                        <tr className="bookRow">
+                        {/* <tr className="bookRow">
                             <td></td>
                             <td></td>
                             <td></td>
@@ -62,7 +64,7 @@ const Departure_Table = ({ onBookClick }) => {
                                     <button className="bookButton" onClick={onBookClick}>Book It</button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
