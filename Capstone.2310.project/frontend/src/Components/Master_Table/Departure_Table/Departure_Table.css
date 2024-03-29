@@ -1,5 +1,5 @@
 :root {
-    --PrimaryColor: hsl(199, 100%, 33%);
+    --PrimaryColor: rgb(0, 115, 168);
     --SecondaryColor: hsl(187, 85%, 43%);
     --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
     --whiteColor: hsl(0, 0%, 100%);
@@ -12,74 +12,54 @@
     --cardBG: rgb(225, 225, 235);
 }
 
-.flightsTable {
-    width: 50%;
-    /* border-collapse: collapse; */
-    margin-top: px;
-    border-bottom: 2px solid var(--blackColor);
-    table-layout: fixed;
-    background-color: hsla(0, 0%, 93%, 0.58);
+.table-container {
     border-radius: 15px;
+    margin: 0.75rem 0rem;
 }
 
-/* .flightsTable th,
-.flightsTable td {
-    padding: 16px;
+.results-table {
+    width: 100%;
+    table-layout: fixed;
+    background-color: rgba(225, 225, 235, 0.8);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid var(--blackColor);
+}
+
+.table-header {
+    background-color: rgba(0, 115, 168, 0.8);
+    width: 100%;
+    padding: 0.5rem 0rem;
+    color: var(--whiteColorDream);
     text-align: center;
-    width: 25%;
-}
-
-.flightsTable td {
-    vertical-align: middle;
-} */
-
-/* .priceText {
-    margin-right: 10px;
-    display: inline-block;
-    vertical-align: middle;
-} */
-
-/* .bookButton {
-    background-color: hsl(199, 100%, 33%);
-    color: white;
-    padding: 10px 24px;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.bookButton:hover {
-    background-color: var(--SecondaryColor);
-}
-
-.bookRow {
-    border-bottom: 2px solid var(--blackColor);
-} */
-
-/* .flightsTable thead th {
-    border-bottom: 2px solid var(--blackColor);
-    padding: 16px;
-    border-top: none;
-}
-
-.departingFlightsHeader {
-    background-color: hsla(199, 100%, 33%, 0.8);
-    color: white;
-    font-size: 25px;
-    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 2px solid var(--blackColor);
 }
 
 .table-heading {
-    background-color: rgba(225, 225, 235, 0.8);
+    border-bottom: 2px solid var(--blackColor);
+    padding: 0.25rem 0rem;    
+}
+
+.selected {
+    background-color: rgba(225,225,235, 1);
+    border-bottom: 2px solid var(--blackColor);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .table-info {
-    background-color: rgba(225, 225, 235, 0.8);
-    padding: 10px 0;
+    text-align: center;
+    padding: 0.25rem 0rem;
 }
 
-table, th, td {
-    border: 1px solid black;
-} */
+.table-text {
+    color: var(--textColor);
+    font-weight: 600;
+}
 
+.table-body {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}

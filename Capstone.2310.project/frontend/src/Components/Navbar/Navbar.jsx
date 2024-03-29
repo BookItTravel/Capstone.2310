@@ -19,9 +19,6 @@ function Navbar() {
                 <div className="navBar">
                     <ul className='navLists flex'>
                         <li className='navItem'>
-                            <a href="/master_table" className='navLink'>Master_Table</a>
-                        </li>
-                        <li className='navItem'>
                             <a href="/" className='navLink'>Home</a>
                         </li>
                         <li className='navItem'>
