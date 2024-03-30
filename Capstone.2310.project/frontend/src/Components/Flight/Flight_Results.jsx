@@ -37,11 +37,9 @@ const Flights = (props) => {
                     </td>
                     <td>
                         <div>ISB-DXB</div>
-                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                        <div>18-09-20 01:15pm</div>
                     </td>
-                    <td>
-                        18-09-20 03:15pm {/* Original time placement */}
-                    </td>
+                    <td>18-09-20 03:15pm</td>
                     <td>02:00</td>
                 </tr>
                 <tr className="bookRow">
@@ -55,7 +53,6 @@ const Flights = (props) => {
                         </div>
                     </td>
                 </tr>
-                {/* Repeat for each flight as needed */}
                 <tr>
                     <td>
                         <div>320</div>
@@ -63,11 +60,9 @@ const Flights = (props) => {
                     </td>
                     <td>
                         <div>ISB-DXB</div>
-                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                        <div>18-09-20 01:15pm</div>
                     </td>
-                    <td>
-                        18-09-20 03:15pm {/* Original time placement */}
-                    </td>
+                    <td>18-09-20 03:15pm</td>
                     <td>02:00</td>
                 </tr>
                 <tr className="bookRow">
@@ -81,7 +76,6 @@ const Flights = (props) => {
                         </div>
                     </td>
                 </tr>
-                {/* Repeat for each flight as needed */}
                 <tr>
                     <td>
                         <div>320</div>
@@ -89,11 +83,9 @@ const Flights = (props) => {
                     </td>
                     <td>
                         <div>ISB-DXB</div>
-                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                        <div>18-09-20 01:15pm</div>
                     </td>
-                    <td>
-                        18-09-20 03:15pm {/* Original time placement */}
-                    </td>
+                    <td>18-09-20 03:15pm</td>
                     <td>02:00</td>
                 </tr>
                 <tr className="bookRow">
@@ -107,7 +99,6 @@ const Flights = (props) => {
                         </div>
                     </td>
                 </tr>
-                {/* Repeat for each flight as needed */}
                 <tr>
                     <td>
                         <div>320</div>
@@ -115,11 +106,9 @@ const Flights = (props) => {
                     </td>
                     <td>
                         <div>ISB-DXB</div>
-                        <div>18-09-20 01:15pm</div> {/* Additional time under ISB-DXB */}
+                        <div>18-09-20 01:15pm</div>
                     </td>
-                    <td>
-                        18-09-20 03:15pm {/* Original time placement */}
-                    </td>
+                    <td>18-09-20 03:15pm</td>
                     <td>02:00</td>
                 </tr>
                 <tr className="bookRow">
@@ -133,7 +122,6 @@ const Flights = (props) => {
                         </div>
                     </td>
                 </tr>
-                {/* Repeat for each flight as needed */}
             </tbody>
         </table>
     );

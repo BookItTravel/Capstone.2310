@@ -1,6 +1,8 @@
 import Home from '../Home/Home'
 import Main from '../Main/Main'
-import Flight_Results from '../Flight/Flight_Results'
+// import Flight_Results from '../Flight/Flight_Results'
+
+// import Master_Table from '../Master_Table/Master_Table'
 import { FiSend } from 'react-icons/fi'
 import { AiOutlineTwitter } from 'react-icons/ai'
 import { AiFillYoutube } from 'react-icons/ai'
@@ -14,7 +16,9 @@ const LandingPage = () => {
     return (
         <>
             <Home />
-            <Flight_Results />
+            {/* <Master_Table /> */}
+
+            {/* <Flight_Results /> */}
             <Main />
             <section className='footer'>
                 <div className="secContent container">
@@ -25,7 +29,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className="inputDiv flex">
-                            <input data-aos="fade-up" type="text" placeholder='Enter Email Address' className='emailInput'/>
+                            <input data-aos="fade-up" type="text" placeholder='Enter Email Address' className='emailInput' />
                             <button data-aos="fade-up" className='btn flex' type='submit'>
                                 SEND <FiSend className="icon" />
 

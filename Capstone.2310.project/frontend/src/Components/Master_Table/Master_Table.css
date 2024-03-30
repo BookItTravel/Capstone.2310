@@ -1,0 +1,15 @@
+.masterTable-container {
+    height: 100vh;
+    background-image: url('../../assets/booking_bgd.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 150px;
+}
+
+.secondDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
