@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { GrLocation } from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import './Search.css';
 
 
 const Search = () => {
+    const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
     const [originLocationCode, setOriginLocationCode ] = useState('');
@@ -84,10 +86,10 @@ const Search = () => {
             const responseData = await responseTwo.json();
             console.log("data", responseData);
 
-         
         } catch (error){
             console.error("Error getting your data", error);
         }
+        navigate('/master_table');
     };
 
     const handleAdultsChange = (newValue) => {
@@ -146,7 +148,8 @@ const Search = () => {
                     </div> 
                 </div>
                 <div className='searchButton-container'>
-                    <button type="submit" className='searchButton'>Search</button>
+                    <button type="submit" 
+                    className='searchButton'>Search</button>
                 </div>
             </form>
         </div>
