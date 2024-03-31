@@ -11,71 +11,55 @@ const Hotel_Table = ({ onRowClick, destinationCode, departDate, returnsDate, ori
     const [adults, setAdults] = useState('');
     const [hotelName, setHotelName] = useState([])
     const [cityCode, setCityCode] = useState('');
-   
- 
 
-    // const fetchData = (value) => {
-    //     fetch(`http://localhost:3000/city-and-airport-search/${input}`)
-    //         .then((response) => response.json())
-    //         .then((json) => {
-    //             const result = json;
-    //             console.log(result);
-    //         });
-    // };
-
-    // const handleChange = (value) => {
-    //     setInput(value);
-    //     fetchData(value);
-    // };
     useEffect(() => {
-        const fetchHotels = async () => {
-            setCityCode(destinationCode);
-            try {
-                const response = await fetch(`http://localhost:3000/city-hotels?cityCode=${cityCode}`, {
-                    method: "GET",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                });
-                if (!response.ok) {
-                    throw new Error('Unsuccessful');
-                }
-                const resData = await response.json();
-                console.log("eedata", resData);
-    
-                if (resData.data && resData.data.length > 0) {
-                    const hotelIdss = resData.data.map(hotel => hotel.hotelId);
-                    const nameHotel = resData.data.map(name => name.name);
-    
-                    setHotelIds(hotelIdss);
-                    setHotelName(nameHotel);
-    
-                    const params = {
-                        hotelIds,
-                        cityCode,
-                        checkInDate: departDate,
-                        checkOutDate: returnsDate,
-                        adults
-                    };
-    
-                    console.log("dates checkin", departDate)
-                    console.log("dates checkout", returnsDate)
-                } else {
-                    console.log('No hotel data found.');
-                }
-            } catch (error) {
-                console.error("error ", error);
-            }
-        }
-    
-        fetchHotels();
-    }, [destinationCode, departDate, returnsDate, adults]); 
-    
-    const handleHotel = (value) => {
+    const fetchHotels = async () => {
+        try {
+      
 
-        setHotel(value);
+            const response = await fetch(`http://localhost:3000/city-hotels?cityCode=${destinationCode}`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Unsuccessful');
+            }
+
+            const resData = await response.json();
+            console.log("eedata", resData);
+
+            if (resData.data && resData.data.length > 0) {
+                const hotelIdss = resData.data.map(hotel => hotel.hotelId);
+                const nameHotel = resData.data.map(name => name.name);
+
+                setHotelIds(hotelIdss);
+                setHotelName(nameHotel);
+
+                const params = {
+                    hotelIds,
+                    cityCode: destinationCode,
+                    checkInDate: departDate,
+                    checkOutDate: returnsDate,
+                    adults
+                };
+
+              
+            }
+        } catch (error) {
+            console.error("error ", error);
+           
+        }
     }
-    console.log("kjajkj", hotel)
+
+    fetchHotels();
+}, [destinationCode, departDate, returnsDate, adults]);
+    
+    const handleHotel = () => {
+        setHotel(hotelIds)
+    }
     
     const handleRowClick = (index) => {
         setSelectedRow(selectedRow === index ? null : index);
@@ -105,7 +89,7 @@ const Hotel_Table = ({ onRowClick, destinationCode, departDate, returnsDate, ori
                             onClick={() => handleRowClick(0)} // Pass index or identifier of the row
                         >
                             <td className='hotel-table-info'>
-                                <p onClick={handleHotel} value={hotelId} className='table-text'>{hotelName[index]}</p>
+                                <p onClick={handleHotel} className='table-text'>{hotelName[index]}</p>
                             </td>
                             <td className='hotel-table-info'>
                                 <p className='table-text'>{destinationCode}</p>
