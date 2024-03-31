@@ -10,7 +10,12 @@ const Master_Table = () => {
     const [showReturnTable, setShowReturnTable] = useState(false);
     const [showHotelTable, setShowHotelTable] = useState(false);
     const [showHotelOffer, setShowHotelOffer] = useState(false);
-
+    const [flightData, setFlightData] = useState([]);
+    const [adult, setAdult] = useState(1);
+    const [departDate, setDepartDate] = useState('');
+    const [originCode, setOriginCode ] = useState('');
+    const [destinationCode, setDestinationCode ] = useState('');
+    const [returnsDate, setReturnsDate ] = useState('');
     // Handler for showing Return Table
     const handleBookDeparture = () => {
         setShowReturnTable(true);
@@ -34,11 +39,26 @@ const Master_Table = () => {
     return (
         <div className='masterTable-container'>
             <div className='search-container'>
-                <Search />
+                <Search 
+                setFlightData={setFlightData}
+                setAdult={setAdult}
+                setDepartDate={setDepartDate}
+                setDestinationCode={setDestinationCode}
+                setOriginCode={setOriginCode}
+                setReturnsDate={setReturnsDate}
+                 />
             </div>
             <div className='secondDiv'>
-                <Departure_Table onBookClick={handleBookDeparture} />
-                {showReturnTable && <Return_Table onBookClick={handleBookReturn} />}
+                <Departure_Table onBookClick={handleBookDeparture} flightData={flightData}/>
+                {showReturnTable && <Return_Table 
+                onBookClick={handleBookReturn}
+                adult={adult}
+                departDate={departDate}
+                destinationCode={destinationCode}
+                originCode={originCode}
+                returnsDate={returnsDate}
+                
+                 />}
                 {showHotelTable && <Hotel_Table onRowClick={handleShowHotelOffer} />}
             </div>
             {showHotelOffer && 

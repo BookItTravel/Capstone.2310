@@ -25,6 +25,7 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border: 2px solid var(--blackColor);
+    
 }
 
 .table-header {
@@ -63,4 +64,9 @@
 .table-body {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+
+.table-wrapper {
+    height: 300px; /* Adjust the height as needed */
+    overflow-y: auto;
 }

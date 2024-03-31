@@ -1,34 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Return_Table.css';
 
-const Return_Table = ({ onBookClick }) => {
+const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originCode,returnsDate }) => {
     const [flight, setFlight] = useState([]);
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
+    const [adults, setAdults] = useState(1);
+    const [departureDate, setDepartureDate] = useState('');
+    const [originLocationCode, setOriginLocationCode ] = useState('');
+    const [destinationLocationCode, setDestinationLocationCode ] = useState('');
+    const [returnDate, setReturnDate ] = useState('');
+    const [returnFlightData, setReturnFlightData] = useState([]);
 
-    const fetchData = (value) => {
-        fetch(`http://localhost:3000/city-and-airport-search/${input}`)
-            .then((response) => response.json())
-            .then((json) => {
-                const result = json;
-                console.log(result);
-            });
-    };
 
-    const handleChange = (value) => {
-        setInput(value);
-        fetchData(value);
-    };
 
+    useEffect(() => {
+    const fetchData = async () => { 
+       
+        const params = {
+           adults: adult,
+           originLocationCode: destinationCode,
+            destinationLocationCode: originCode,
+           departureDate: returnsDate,
+           
+        }
+        console.log("return params", params)
+        try {
+        const response = await fetch(`http://localhost:3000/flight-search`,  {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+             body: JSON.stringify(params) 
+          
+           });
+           if (!response.ok) {
+               throw new Error('Unsuccessful');
+           }
+           const resData = await response.json();
+           setReturnFlightData(resData.data || []);
+           console.log("data from return", resData);
+           
+           // const itinerarie = responseData.data.map((flights) => flights.itineraries)
+           
+        } catch (error){
+            console.error("Error getting your data", error);
+        }
+    }
+    
+    fetchData();
+}, []);
     const handleRowClick = (index) => {
         setSelectedRow(selectedRow === index ? null : index);
         onBookClick();
     };
-
+    console.log("this is return flight Data", returnFlightData);
+    // const flightsOffer = returnFlightData && returnFlightData.data ? returnFlightData.data.reduce((obj, returns) => {
+    //     if (returns.itineraries) {
+    //         return { ...flight.itineraries };
+    //     }
+    // }, {}) : {};
+    //console.log("Retrun offer", flightsOffer)
+    console.log("render check", returnFlightData.data)
     return (
         <>
            <div className='table-container'> 
                 <h2 className='table-header'>Returning Flights</h2>
+                <div className="table-wrapper">
                 <table className="results-table">
                     <thead>
                         <tr>
@@ -39,27 +77,35 @@ const Return_Table = ({ onBookClick }) => {
                             <th className='table-heading'>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <tr
-                            className={selectedRow === 0 ? 'table-row selected' : 'table-row'} // Apply 'selected' class if the row is selected
-                            onClick={() => handleRowClick(0)} // Pass index or identifier of the row
-                        >
-                            <td className='table-info'>
-                                <p className='table-text'>United</p>
-                            </td>
-                            <td className='table-info'>
-                                <p className='table-text'>18-09-20 01:15pm</p> {/* Additional time under ISB-DXB */}
-                                <p className='table-text'>Seattle</p>
-                            </td>
-                            <td className='table-info'>
-                                <p className='table-text'>18-09-20 03:15pm</p> {/* Original time placement */}
-                                <p className='table-text'>New York City</p>
-                            </td>
-                            <td className='table-info'><p className='table-text'>02:00</p></td>
-                            <td className= 'table-info'><p className='table-text'>$1,500</p></td>
-                        </tr>
-                    </tbody>
+                    <tbody className='table-body'>
+    {returnFlightData && returnFlightData && returnFlightData.length > 0 && returnFlightData.map((returns, index) => (
+        <tr
+            key={index}
+            className={selectedRow === index ? 'table-row selected' : 'table-row'} // Apply 'selected' class if the row is selected
+            onClick={() => handleRowClick(index)} // Pass index or identifier of the row
+        >
+            <td className='table-info'>
+                <p className='table-text'>{returns.itineraries[0].segments[0].carrierCode}</p>
+            </td>
+            <td className='table-info'>
+                <p className='table-text'>{returns.itineraries[0].segments[0].departure.at}</p>
+                <p className='table-text'>{returns.itineraries[0].segments[0].departure.iataCode}</p>
+            </td>
+            <td className='table-info'>
+                <p className='table-text'>{returns.itineraries[0].segments[0].arrival.at}</p>
+                <p className='table-text'>{returns.itineraries[0].segments[0].arrival.iataCode}</p>
+            </td>
+            <td className='table-info'>
+                <p className='table-text'>{returns.itineraries[0].duration}</p>
+            </td>
+            <td className='table-info'>
+                <p className='table-text'>{returns.price.total}</p>
+            </td>
+        </tr>
+    ))}
+</tbody>
                 </table>
+            </div>
             </div>
         </>
     );

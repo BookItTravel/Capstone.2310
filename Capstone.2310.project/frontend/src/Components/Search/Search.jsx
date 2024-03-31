@@ -4,14 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import './Search.css';
+import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table';
 
 
-const Search = () => {
+const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCode, setOriginCode, setAdult}) => {
     const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
     const [originLocationCode, setOriginLocationCode ] = useState('');
     const [destinationLocationCode, setDestinationLocationCode ] = useState('');
+    const [returnDate, setReturnDate ] = useState('');
+    const [cityCode, setCityCode] = useState('');
+
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
@@ -60,7 +64,10 @@ const Search = () => {
             },{})
             
             const cityDesNames = resDes.data.map((location )=> location.address);
+            const cityDesCode = resDes.data.map((location )=> location.address.cityCode);
             console.log("City Names", cityDesNames);
+            console.log("City Des Code", cityDesCode);
+            setCityCode(cityDesCode)
 
 
 
@@ -71,6 +78,11 @@ const Search = () => {
                          departureDate: departureDate,
                          adults: adults
                    };
+                   setAdult(adults);
+                   setDepartDate(departureDate);
+                   setDestinationCode(cityOriginNames.cityCode);
+                   setOriginCode(destinationCode.cityCode);
+                   setReturnsDate(returnDate)
              console.log("Params", params)
             const responseTwo = await fetch(`http://localhost:3000/flight-search`,  {
              method: 'POST',
@@ -84,7 +96,10 @@ const Search = () => {
                 throw new Error('Unsuccessful');
             }
             const responseData = await responseTwo.json();
+            // const itinerarie = responseData.data.map((flights) => flights.itineraries)
             console.log("data", responseData);
+           // console.log("the Itineraries", itinerarie)
+            setFlightData(responseData);
 
         } catch (error){
             console.error("Error getting your data", error);
@@ -134,8 +149,9 @@ const Search = () => {
                     <label htmlFor="date" className='searchLabel'>Return Date</label>
                     <div className="searchInput-container">
                         <input type="date"
+                          value={returnDate}
                          min={new Date().toISOString().split('T')[0]} // Set minimum date to today's date
-                         className='searchInput' />
+                         onChange={(e) => setReturnDate(e.target.value)} className='searchInput' />
                     </div>
                 </div>
 
@@ -152,6 +168,7 @@ const Search = () => {
                     className='searchButton'>Search</button>
                 </div>
             </form>
+            {/* <Hotel_Table cityCode={cityCode} departureDate={departureDate} /> */}
         </div>
     )
 };

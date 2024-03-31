@@ -13,6 +13,7 @@ import Search from '../Search/Search';
 
 
 function Home() {
+   // const [flightData, setFlightData] = useState([])
     // const [adults, setAdults] = useState(1);
     // const [departureDate, setDepartureDate] = useState('');
     // const [originLocationCode, setOriginLocationCode ] = useState('')

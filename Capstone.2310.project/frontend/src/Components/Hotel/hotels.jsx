@@ -56,7 +56,7 @@ const Hotels = ({cityCode, departureDate}) => {
           throw new Error('Unsuccessful');
         }
         const resHotel = await responseHotelOffer.json();
-        console.log("Hotels Offer:",resHotel)
+        console.log("Hotels Offer:", resHotel)
       } catch (error){
         console.error("error ", error);
       }
