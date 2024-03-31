@@ -7,14 +7,14 @@ import './Search.css';
 import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table';
 
 
-const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCode, setOriginCode, setAdult}) => {
+const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCode, setOriginCode, setAdult, setReturnLocation}) => {
     const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
     const [originLocationCode, setOriginLocationCode ] = useState('');
     const [destinationLocationCode, setDestinationLocationCode ] = useState('');
     const [returnDate, setReturnDate ] = useState('');
-    const [cityCode, setCityCode] = useState('');
+   // const [cityCode, setCityCode] = useState('');
 
 
     useEffect(() => {
@@ -67,7 +67,7 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
             const cityDesCode = resDes.data.map((location )=> location.address.cityCode);
             console.log("City Names", cityDesNames);
             console.log("City Des Code", cityDesCode);
-            setCityCode(cityDesCode)
+            //setCityCode(cityDesCode)
 
 
 
@@ -80,9 +80,10 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
                    };
                    setAdult(adults);
                    setDepartDate(departureDate);
-                   setDestinationCode(cityOriginNames.cityCode);
-                   setOriginCode(destinationCode.cityCode);
+                   setDestinationCode(destinationCode.cityCode);
+                   setOriginCode( cityOriginNames.cityCode);
                    setReturnsDate(returnDate)
+                   setReturnLocation(destinationCode.cityCode)
              console.log("Params", params)
             const responseTwo = await fetch(`http://localhost:3000/flight-search`,  {
              method: 'POST',

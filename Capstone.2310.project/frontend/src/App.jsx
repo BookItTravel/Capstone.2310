@@ -14,7 +14,7 @@ import Master_Table from './Components/Master_Table/Master_Table'
 // import Flight_Results from './Components/Flight/Flight_Results'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Flights from './Components/Flight_Search/Flights'
-import Hotels from './Components/Hotel/hotels'
+
 import Airport from './Components/Flight/airport'
 
 
@@ -37,7 +37,7 @@ function App() {
           <Route path="/bookingdetails" element={<BookingDetails />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/master_table" element={<Master_Table />} />
-          <Route path="/hotel" element={<Hotels />} />
+         
           <Route path='/airport' element={<Airport />} />
           <Route path='/flights' element={<Flights />} />
         </Routes>

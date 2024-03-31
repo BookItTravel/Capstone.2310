@@ -16,6 +16,7 @@ const Master_Table = () => {
     const [originCode, setOriginCode ] = useState('');
     const [destinationCode, setDestinationCode ] = useState('');
     const [returnsDate, setReturnsDate ] = useState('');
+    const [returnLocation, setReturnLocation] = useState('')
     // Handler for showing Return Table
     const handleBookDeparture = () => {
         setShowReturnTable(true);
@@ -46,6 +47,7 @@ const Master_Table = () => {
                 setDestinationCode={setDestinationCode}
                 setOriginCode={setOriginCode}
                 setReturnsDate={setReturnsDate}
+                setReturnLocation={setReturnLocation}
                  />
             </div>
             <div className='secondDiv'>
@@ -57,9 +59,16 @@ const Master_Table = () => {
                 destinationCode={destinationCode}
                 originCode={originCode}
                 returnsDate={returnsDate}
+                returnLocation={returnLocation}
                 
                  />}
-                {showHotelTable && <Hotel_Table onRowClick={handleShowHotelOffer} />}
+                {showHotelTable && <Hotel_Table 
+                                destinationCode={destinationCode}
+                                originCode={originCode}
+                                departDate={departDate}
+                                returnsDate={returnsDate}
+                                onRowClick={handleShowHotelOffer} 
+                />}
             </div>
             {showHotelOffer && 
                 <HotelOffer 
