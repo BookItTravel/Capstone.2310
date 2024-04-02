@@ -4,10 +4,10 @@ const router = require("./api/router");
 const PORT = 3000;
 const app = express();
 const cors = require('cors');
-// const bodyParser = require('body-parser');
 const morgan = require('morgan');
-//const path = require('path');
+const stripe = require(stripe)(process.env.STRIPE_ID);
 const { JWT_SECRET } = process.env;
+const { DATABASE_URL } = process.env;
 
 // Apply JSON parsing middleware
 app.use(express.json());
@@ -26,6 +26,33 @@ app.use((req, res, next) => {
     req.user = null;
   }
   next();
+});
+
+// Apply stripe checkout session for a cart checkout
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    ui_mode: 'embedded',
+    line_items: [
+      {
+        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        price: '{{PRICE_ID}}',
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    return_url: `${DATABASE_URL}/return?session_id={CHECKOUT_SESSION_ID}`,
+  });
+  
+  res.send({clientSecret: session.client_secret});
+});
+
+app.get('/session-status', async (req, res) => {
+  const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+
+  res.send({
+    status: session.status,
+    customer_email: session.customer_details.email
+  });
 });
 
 // Apply router
