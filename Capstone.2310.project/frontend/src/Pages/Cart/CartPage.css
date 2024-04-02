@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../../assets/booking_bgd.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 100vh; /* Ensure the cart fills the entire viewport height */
+}
+
+.cart-items {
+  margin-top: 20px;
+  width: 100%; /* Make sure the items take full width */
+  max-width: 800px; /* Limit the width of the items */
+}
+
+.cart-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: white; /* Set font color to white */
+}
+
+.cart-item div {
+  margin-bottom: 5px;
+  color: white; /* Set font color to white */
+}
+
+button {
+  background-color: #007bff;
+  color: white; /* Set font color to white */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.cart-title {
+  color: white; /* Set font color to white */
+}
+
+.empty-cart-message {
+  color: white; /* Set font color to white */
+}
+
+
