@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { Provider } from 'react-redux'
+import store from './store'
 
 import Navbar from './Components/Navbar/Navbar'
 import LandingPage from './Components/LandingPage/LandingPage'
@@ -17,6 +19,9 @@ import Flights from './Components/Flight_Search/Flights'
 
 import Airport from './Components/Flight/airport'
 
+import CartPage from './Pages/Cart/CartPage'
+
+
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,7 +30,8 @@ function App() {
 
 
   return (
-    <>
+    <Provider store={store}>
+      <div>
       <Navbar />
       <BrowserRouter>
         <Routes>
@@ -40,11 +46,12 @@ function App() {
          
           <Route path='/airport' element={<Airport />} />
           <Route path='/flights' element={<Flights />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
 
       </BrowserRouter>
-
-    </>
+</div>
+    </Provider>
   )
 }
 
