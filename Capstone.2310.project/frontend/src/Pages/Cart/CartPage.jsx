@@ -1,15 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
-import { removeFromCart, updateCart } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, updateCart } from "../../features/cart/slice.js"   // Import actions from cartSlice
+import { Link } from "react-router-dom";
 import "./CartPage.css";
 
-const CartPage = ({ cart, removeFromCart, updateCart }) => {
+const CartPage = () => {
+  const cart = useSelector((state) => state.cart.cart); // Access cart state using useSelector hook
+  const dispatch = useDispatch(); // Get dispatch function
+
   const handleRemoveFromCart = (itemId) => {
-    removeFromCart(itemId);
+    dispatch(removeFromCart(itemId)); // Dispatch removeFromCart action
   };
 
   const handleUpdateQuantity = (itemId, newQuantity) => {
-    updateCart(itemId, newQuantity);
+    dispatch(updateCart(itemId, newQuantity)); // Dispatch updateCart action
   };
 
   return (
@@ -32,23 +36,20 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
                 onChange={(e) =>
                   handleUpdateQuantity(item.id, parseInt(e.target.value))
                 }
-              />
-            </div>
-          ))}
-        </div>
-      )}
-      <button>Proceed to Checkout</button>
-    </div>
-  );
-};
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {cart.length === 0 ? (
+          <Link to="/">
+            <button>Home</button>
+          </Link>
+        ) : (
+          <button>Proceed to Checkout</button>
+        )}
+      </div>
+    );
+  };
 
-const mapStateToProps = (state) => ({
-  cart: state.cart.cart,
-});
-
-const mapDispatchToProps = {
-  removeFromCart,
-  updateCart,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
+export default CartPage;

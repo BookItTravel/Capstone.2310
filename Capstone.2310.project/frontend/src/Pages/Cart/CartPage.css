@@ -9,32 +9,32 @@ body {
 .cart-page {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
-  height: 100vh; /* Ensure the cart fills the entire viewport height */
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh;
 }
 
 .cart-items {
   margin-top: 20px;
-  width: 100%; /* Make sure the items take full width */
-  max-width: 800px; /* Limit the width of the items */
+  width: 100%; 
+  max-width: 800px;
 }
 
 .cart-item {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
-  color: white; /* Set font color to white */
+  color: white; 
 }
 
 .cart-item div {
   margin-bottom: 5px;
-  color: white; /* Set font color to white */
+  color: white; 
 }
 
 button {
   background-color: #007bff;
-  color: white; /* Set font color to white */
+  color: white; 
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -45,11 +45,11 @@ button:hover {
 }
 
 .cart-title {
-  color: white; /* Set font color to white */
+  color: white; 
 }
 
 .empty-cart-message {
-  color: white; /* Set font color to white */
+  color: white; 
 }
 
 
