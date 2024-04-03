@@ -1,27 +1,46 @@
 import { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+
 import './Confirmation.css';
 
 const Confirmation = () => {
     const [confirmationCode, setConfirmationCode] = useState('');
+    const [status, setStatus] = useState(null);
+    const [customerEmail, setCustomerEmail] = useState('');
 
     useEffect(() => {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const sessionId = urlParams.get('session_id');
+
+        fetch(`/session-status?session_id=${sessionId}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setStatus(data.status);
+                setCustomerEmail(data.customer_email);
+            });
+
         // Function to generate a random alphanumeric code
         const generateConfirmationCode = () => {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            
+
             let code = '';
-            
+
             for (let i =0; i < 6; i++) {
                 const randomIndex = Math.floor(Math.random() * characters.length);
                 code += characters.charAt(randomIndex);
             }
-            
+
             return code;
         };
 
         // Generate a random code when the component mounts
         setConfirmationCode(generateConfirmationCode());
     }, []);
+
+    if (status === 'open') {
+        return <Navigate to="/checkout" />;
+    }
 
     return (
         <div>
@@ -71,7 +90,7 @@ const Confirmation = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 export default Confirmation;
