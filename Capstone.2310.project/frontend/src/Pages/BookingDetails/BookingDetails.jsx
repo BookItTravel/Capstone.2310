@@ -20,8 +20,6 @@ const BookingDetails = () => {
     agreeToTerms: false,
   });
   const [formValid, setFormValid] = useState(false);
-  // const [showAdditionalForm, setShowAdditionalForm] = useState(false);
-  // const [clientSecret, setClientSecret] = useState(null);
 
   // Handler for form input changes
   const handleInputChange = (e, travelerIndex = null) => {
@@ -93,17 +91,6 @@ const BookingDetails = () => {
     }));
   };
 
-  // // Function to handle input changes for additional travelers
-  // const handleAdditionalInputChange = (e, index) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     additionalTravelers: prevState.additionalTravelers.map((traveler, i) =>
-  //       i === index ? { ...traveler, [name]: value } : traveler
-  //     ),
-  //   }));
-  // };
-
   // Function to check form validity
   const checkFormValidity = () => {
     const inputs = [
@@ -135,7 +122,7 @@ const BookingDetails = () => {
         method: "POST",
       });
 
-      if (!Response.ok) {
+      if (!res.ok) {
         throw new Error("Failed to fetch client secret");
       }
 
