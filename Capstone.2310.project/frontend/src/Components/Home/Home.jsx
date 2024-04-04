@@ -120,7 +120,7 @@ function Home() {
                 </div>
 
                 {/* <div data-aos="fade-up" className="formDiv">  */}
-                <Search />
+                <Search  />
                 {/* <form onSubmit={handleSubmit} className='cardDiv grid'>
                         <div className="destinationInput">
                             <label htmlFor="city" className='searchLabel'>Flying From</label>

@@ -20,6 +20,10 @@ import Airport from './Components/Flight/airport'
 
 function App() {
   const [count, setCount] = useState(0);
+  const [flightDataDeparture, setFlightDataDeparture ] = useState([]);
+  const [flightDataReturn, setFlightDataReturn ] = useState(null);
+
+  console.log("selected flight form app", flightDataDeparture)
 
 
 
@@ -33,10 +37,15 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/booking" element={<Booking />} />
+          <Route path="/booking" element={<Booking 
+                 flightDataDeparture={flightDataDeparture}
+                 flightDataReturn={flightDataReturn} />} />
           <Route path="/bookingdetails" element={<BookingDetails />} />
           <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/master_table" element={<Master_Table />} />
+          <Route path="/master_table" element={<Master_Table
+                 setFlightDataDeparture={setFlightDataDeparture}
+                 setFlightDataReturn={setFlightDataReturn}
+           />} />
          
           <Route path='/airport' element={<Airport />} />
           <Route path='/flights' element={<Flights />} />

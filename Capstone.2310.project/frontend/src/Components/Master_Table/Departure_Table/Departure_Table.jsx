@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './Departure_Table.css';
 
-const Departure_Table = ({ onBookClick, flightData }) => {
+const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedFlightDeparture }) => {
     const [flight, setFlight] = useState([]);
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
+  
 
     const fetchData = (value) => {
         fetch(`http://localhost:3000/city-and-airport-search/${input}`)
@@ -15,14 +16,18 @@ const Departure_Table = ({ onBookClick, flightData }) => {
             });
     };
 
+
+
     const handleChange = (value) => {
         setInput(value);
         fetchData(value);
     };
 
     
-    const handleRowClick = (index) => {
+    const handleRowClick = (index, flight) => {
         setSelectedRow(selectedRow === index ? null : index);
+        setSelectedFlightDeparture(flight)
+
         onBookClick();
     };
     console.log("this is flight Data", flightData);
@@ -31,8 +36,9 @@ const Departure_Table = ({ onBookClick, flightData }) => {
             return { ...flight.itineraries };
         }
     }, {}) : {};
-    // const depatureData = flightData.map((depart) => depart[0].segments);
+ 
     console.log("departeuskdcb", flightsOffer)
+    console.log("this is selected flight" , flight)
     return (
         <div className='table-container'>
             <h2 className='table-header'>Departing Flights</h2>
@@ -52,7 +58,7 @@ const Departure_Table = ({ onBookClick, flightData }) => {
                             <tr
                                 key={index}
                                 className={selectedRow === index ? 'table-row selected' : 'table-row'}
-                                onClick={() => handleRowClick(index)}
+                                onClick={() => handleRowClick(index, flight)}
                             >
                                 <td className='table-info'>
                                     <p className='table-text'>{flight.itineraries[0].segments[0].carrierCode}</p>

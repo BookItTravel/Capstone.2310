@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import flightsapi from '../../api/flightsapi';
-// import './flight.css'
+
 import { FaSearch } from 'react-icons/fa';
-// import { FlightContext, FlightContextProvider } from '../../context/FlightContext';
+
 
 
 
@@ -11,7 +11,7 @@ import { FaSearch } from 'react-icons/fa';
     const [airport, setAirport] = useState([]);
     const [error, setError] = useState();
     const [input, setInput] = useState('')
-    // const { flights, setFlights } = useContext(FlightContext);
+
    
         const fetchData = (value) => {
                 fetch (`http://localhost:3000/city-and-airport-search/${input}`)
@@ -19,7 +19,7 @@ import { FaSearch } from 'react-icons/fa';
                 .then((json) => {
                  const result = json
                     console.log(result);
-                //setFlight(response.data.data);
+      
                 });
         };
         
@@ -31,7 +31,7 @@ import { FaSearch } from 'react-icons/fa';
         fetchData(value)
     }
     
-    //console.log(response.data.data)
+
     return (
         <div className="flight">
             <p>hello</p>

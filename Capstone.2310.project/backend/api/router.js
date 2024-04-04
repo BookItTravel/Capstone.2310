@@ -96,7 +96,7 @@ router.post(`/flight-search`,(req, res, next ) => {
     }
   });
 
-  router.get(`/city-hotels`, cache(400), async (req, res) => {
+  router.get(`/city-hotels`, async (req, res) => {
     try {
       const { cityCode } = req.query;
       const response = await amadeus.referenceData.locations.hotels.byCity.get({
@@ -115,7 +115,7 @@ router.post(`/flight-search`,(req, res, next ) => {
 
 
     // Confirming the offer
-    router.get(`/hotel-offers`, cache(400), async (req, res ) => {
+    router.get(`/hotel-offers`, async (req, res ) => {
       try {
         const { hotelIds, cityCode } = req.query;
         amadeus.shopping.hotelOffersSearch.get({
@@ -133,7 +133,7 @@ router.post(`/flight-search`,(req, res, next ) => {
 
 
 // City search suggestions
-router.get(`/${API}/search/:keyword`, cache(400), async (req, res) => {
+router.get(`/${API}/search/:keyword`,  async (req, res) => {
   try {
     const  keyword  = req.params.keyword;
     const response = await amadeus.referenceData.locations.get({

@@ -131,35 +131,7 @@ const Flights = () => {
                      <button type="submit">Search</button>
          </form>
      </div>
-    //         <div className="input-wrapper">
-    //             <FaSearch id="search-icon" /> 
-    //             <input 
-    //                 placeholder='Destination'
-    //                 value={destinationLocationCode}
-    //                 onChange={(e) => setDestinationLocationCode(e.target.value)}
-    //                 />
-    //         </div>
-    //         <div className="input-wrapper">
-    //             <FaSearch id="search-icon" /> 
-    //             <input 
-    //                 placeholder='Departure Date'
-    //                 type="date"
-    //                 value={departureDate}
-    //                 onChange={(e) => setDepartureDate(e.target.value)}
-    //                 />
-    //         </div>
-    //         <div className="input-wrapper">
-    //             <FaSearch id="search-icon" /> 
-    //             <input 
-    //                 placeholder='Number of Adults'
-    //                 type="number"
-    //                 value={adults}
-    //                 onChange={(e) => setAdults(e.target.value)}
-    //                 />
-    //         </div>
-    //         <button type="submit">Search</button>
-    //     </form>
-    // </div>
+  
     )
 }
 

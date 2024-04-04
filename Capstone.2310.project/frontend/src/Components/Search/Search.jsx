@@ -14,7 +14,7 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
     const [originLocationCode, setOriginLocationCode ] = useState('');
     const [destinationLocationCode, setDestinationLocationCode ] = useState('');
     const [returnDate, setReturnDate ] = useState('');
-   // const [cityCode, setCityCode] = useState('');
+
 
 
     useEffect(() => {
@@ -67,7 +67,7 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
             const cityDesCode = resDes.data.map((location )=> location.address.cityCode);
             console.log("City Names", cityDesNames);
             console.log("City Des Code", cityDesCode);
-            //setCityCode(cityDesCode)
+
 
 
 
@@ -97,9 +97,8 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
                 throw new Error('Unsuccessful');
             }
             const responseData = await responseTwo.json();
-            // const itinerarie = responseData.data.map((flights) => flights.itineraries)
+          
             console.log("data", responseData);
-           // console.log("the Itineraries", itinerarie)
             setFlightData(responseData);
 
         } catch (error){
@@ -169,7 +168,7 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
                     className='searchButton'>Search</button>
                 </div>
             </form>
-            {/* <Hotel_Table cityCode={cityCode} departureDate={departureDate} /> */}
+           
         </div>
     )
 };

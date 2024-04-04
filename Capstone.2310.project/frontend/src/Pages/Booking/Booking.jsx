@@ -1,31 +1,40 @@
 import { Link } from 'react-router-dom';
 import "./Booking.css";
+import { useLocation } from 'react-router-dom';
 
 const Booking = () => {
+  const location = useLocation();
+  const { flightDeparture, flightReturn } = location.state;
+
+
+    console.log("booking prop departure", flightDeparture);
+    console.log("booking prop return", flightReturn);
+ 
   return (
     <div>
       <div className="booking-container">
         <div className="review-container">
           <div className="booking-title-container">
-            <h1 className="review-heading">Review your trip</h1>
+        <h1 className="review-heading">Review your trip</h1>
           </div>
           <div className="custom-booking-container">
             <div className="flight-card">
               <div className="column-heading">
                 <h3 className="column-title">Flights</h3>
               </div>
+              {/* { flightDeparture.} */}
               <div className="trip-card">
                 <div className="flight-container">
-                  <h4 className="flight-summary">Seattle to New York City</h4>
-                  <p>11:59pm-8:06am (5h 7m)</p>
-                  <p>Wed, Apr 10</p>
+                <h4 className="flight-summary">{flightDeparture.itineraries[0].segments[0].arrival.iataCode} to {flightReturn.itineraries[0].segments[0].arrival.iataCode}</h4>
+                  <p>Duration: {flightDeparture.itineraries[0].duration}</p>
+                  <p>Departutre Date: {flightDeparture.lastTicketingDate}</p>
                   <p>2 Adults, 1 Child</p>
                   <p className="flight-name">11:59pm Seattle</p>
                   <p>Seattle-Tacoma International Airport</p>
                   <p>5h 7m flight</p>
                   <p>Jet Blue</p>
                   <p>Airbus A320-200</p>
-                  <p>Economy</p>
+                  <p>Cabin: {flightDeparture.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
                   <p>8:06am New York City</p>
                   <p>John F. Kennedy International Airport</p>
                 </div>
