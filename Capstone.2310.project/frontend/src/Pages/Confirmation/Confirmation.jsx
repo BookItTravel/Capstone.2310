@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-
 import './Confirmation.css';
 
 const Confirmation = () => {
@@ -39,7 +38,7 @@ const Confirmation = () => {
     }, []);
 
     if (status === 'open') {
-        return <Navigate to="/checkout" />;
+        return <Navigate to="/bookingdetails" />;
     }
 
     return (

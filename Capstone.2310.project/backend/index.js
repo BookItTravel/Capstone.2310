@@ -5,6 +5,7 @@ const PORT = 3000;
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
+const jwt = require('jsonwebtoken');
 const stripe = require('stripe')(process.env.STRIPE_ID);
 const router = require('./api/router');
 
@@ -50,13 +51,17 @@ app.post('/create-checkout-session', async (req, res) => {
     },
   ];
   const session = await stripe.checkout.sessions.create({
-    ui_mode: 'embedded',
+    // ui_mode: 'embedded',
+    success_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
     line_items: cart,
     mode: 'payment',
-    return_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    // eslint-disable-next-line max-len
+    // TODO: metadata passed with success_url. Can set metadata to cancel or success = true to show if the transaction was successful or canceled.
+    // return_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
   });
 
-  res.send({ clientSecret: session.client_secret });
+  res.send({ url: session.url });
 });
 
 app.get('/session-status', async (req, res) => {

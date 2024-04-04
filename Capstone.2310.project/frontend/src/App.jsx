@@ -10,7 +10,10 @@ import Master_Table from './Components/Master_Table/Master_Table';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Flights from './Components/Flight_Search/Flights';
 import Airport from './Components/Flight/airport';
+import { loadStripe } from '@stripe/stripe-js';
 import './App.css';
+
+const stripePromise = loadStripe('sk_test_51P0ushRsNEKpqF1rtoYXxVsXFM2IiJNf9BCBGKzjdhvdA4frWrClK6d39zblsGbTbgkNcobt5j8Tsz8PYgtxLLYf00yMCBkpRX');
 
 function App() {
 
