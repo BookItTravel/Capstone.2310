@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-
+import { Navigate, Link } from 'react-router-dom';
 import './Confirmation.css';
 
 const Confirmation = () => {
@@ -39,7 +38,7 @@ const Confirmation = () => {
     }, []);
 
     if (status === 'open') {
-        return <Navigate to="/checkout" />;
+        return <Navigate to="/bookingdetails" />;
     }
 
     return (
@@ -85,7 +84,7 @@ const Confirmation = () => {
                         </ul>
                     </div>
                     <div className='button-container'>
-                        <button className='booking-button' type="submit">Book Your Next Trip</button>
+                        <Link className='booking-button' to={'/master_table'}>Book Your Next Trip</Link>
                     </div>
                 </div>
             </div>

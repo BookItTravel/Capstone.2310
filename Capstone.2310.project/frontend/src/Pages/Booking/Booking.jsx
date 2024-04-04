@@ -55,7 +55,8 @@ const Booking = () => {
                 </div>
               </div>
               <div className="button-container">
-                <button className="booking-button">Change Flight</button>
+                <Link to={'/master_table'} className="booking-button">Change Flight</Link>
+                {/* <button className="booking-button" onClick={'/master_table'}>Change Flight</button> */}
               </div>
             </div>
             <div className="hotel-card">
@@ -69,7 +70,8 @@ const Booking = () => {
                 <p>Check Out: April 18, 2024</p>
               </div>
               <div className="button-container">
-                <button className="booking-button">Change Stay</button>
+                <Link to={'/master_table'} className="booking-button">Change Stay</Link>
+                {/* <button className="booking-button" onClick={'/master_table'}>Change Stay</button> */}
               </div>
             </div>
             <div className="cost-container">

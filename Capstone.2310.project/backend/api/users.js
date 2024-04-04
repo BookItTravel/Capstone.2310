@@ -8,10 +8,27 @@ const {
   addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername,
 } = require('../db/db_methods');
 
-const SALT_COUNT = 10;
+// Middleware function to check authorization
+const authorizeUser = (req, res, next) => {
+  // check if the request contains a valid JWT token
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authorization token is missing' });
+  }
+
+  try {
+    // Verify the JWT token
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
+};
 
 // GET /users
-router.get('/', async (req, res, next) => {
+router.get('/', authorizeUser, async (req, res, next) => {
   try {
     const users = await getAllUsers();
     res.send({ users });
@@ -21,13 +38,17 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET /users/:user_id
-router.get('/:user_id', async (req, res, next) => {
+router.get('/:user_id', authorizeUser, async (req, res, next) => {
   try {
-    const user = await getUserById(req.params.user_id);
+    const { user_id } = req.params;
+    // Check if the requested user_id matches with the user's own id or the admin
+    if (user_id !== req.user.user_id && req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Unauthorized access' });
+    }
+
+    const user = await getUserById(user_id);
     if (!user) {
       res.status(404).json({ message: 'User not found' });
-    } else {
-      res.send({ user });
     }
   } catch (error) {
     next(error);
