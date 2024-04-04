@@ -12,7 +12,7 @@ const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode
     const navigate = useNavigate();
     const handleBookButtonClick = () => {
         navigate('/booking', { state: { flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName } });
-    };
+    }
 
 
     useEffect(() => {
