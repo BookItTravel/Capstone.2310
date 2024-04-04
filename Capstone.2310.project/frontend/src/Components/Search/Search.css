@@ -1,0 +1,76 @@
+.searchForm {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    background-color: rgba(225, 225, 235, 0.8);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.searchLabel {
+    display: block;
+    color: var(--textColor);
+    padding-bottom: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.searchInput-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0 auto;
+    height: 40px;
+    padding: 0 0rem;
+    background-color: var(--whiteColor);
+    border-radius: 3rem;
+}
+
+.searchInput {
+    background-color: none;
+    border: none;
+    outline: none;
+    width: 70%;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--textColor);
+}
+
+.searchIcon {
+    font-size: 20px;
+    margin: 5px;
+    color: var(--PrimaryColor);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.searchButton-container {
+    padding: 0;
+}
+
+.searchButton {
+    /* position: absolute; */
+    background: var(--gradientColor);
+    width: max-content;
+    /* bottom: 14.5rem; */
+    column-gap: .8rem;
+    padding: 5px 2rem;
+    border-radius: 3rem;
+    /* left: 50%; */
+    transform: translate(-50%);
+    /* justify-content: center; */
+    cursor: pointer;
+    border: 0px;
+    color: var(--whiteColor);
+    vertical-align: center;
+    margin-left: 55%;
+    margin-top: 2.5rem;
+    height: 2.5rem;
+    width: 12rem;
+    font-size: 15px;
+}

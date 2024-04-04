@@ -70,7 +70,7 @@ const Login = () => {
             >
               {errMsg}
             </p>
-            <h1>Sign In</h1>
+            <h1 className="login-heading">Sign In</h1>
             <form onSubmit={handleSubmit}>
               <label htmlFor="username">Username:</label>
               <input
@@ -81,6 +81,7 @@ const Login = () => {
                 onChange={(e) => setUser(e.target.value)}
                 value={user}
                 required
+                className="loginInput"
               />
 
               <label htmlFor="password">Password:</label>
@@ -90,6 +91,7 @@ const Login = () => {
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
+                className="loginInput"
               />
               <button className="login-button">Sign In</button>
             </form>

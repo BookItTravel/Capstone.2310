@@ -1,0 +1,72 @@
+:root {
+    --PrimaryColor: rgb(0, 115, 168);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDream: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240, 240, 246);
+    --cardBG: rgb(225, 225, 235);
+}
+
+.table-container {
+    border-radius: 15px;
+    margin: 0.75rem 0rem;
+    z-index: 3;
+}
+
+.results-table {
+    width: 100%;
+    table-layout: fixed;
+    background-color: rgba(225, 225, 235, 0.8);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 2px solid var(--blackColor);
+    
+}
+
+.table-header {
+    background-color: rgba(0, 115, 168, 0.8);
+    width: 100%;
+    padding: 0.5rem 0rem;
+    color: var(--whiteColorDream);
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 2px solid var(--blackColor);
+}
+
+.table-heading {
+    border-bottom: 2px solid var(--blackColor);
+    padding: 0.25rem 0rem;    
+}
+
+.selected {
+    background-color: rgba(225,225,235, 1);
+    border-bottom: 2px solid var(--blackColor);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.table-info {
+    text-align: center;
+    padding: 0.25rem 0rem;
+}
+
+.table-text {
+    color: var(--textColor);
+    font-weight: 600;
+}
+
+.table-body {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.table-wrapper {
+    height: 300px; /* Adjust the height as needed */
+    overflow-y: auto;
+}

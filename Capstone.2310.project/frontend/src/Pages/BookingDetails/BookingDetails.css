@@ -115,6 +115,7 @@
     border-radius: 0.5rem;
     width: 50%;
     margin-left: .25rem;
+    background-color: var(--whiteColor);
 }
 
 .gender-heading, .dob-heading {
@@ -173,6 +174,7 @@
     padding: 0.75rem;
     border-radius: 0.5rem;
     margin-left: .25rem;
+    background-color: var(--whiteColor);
 }
 
 .longInput {
@@ -194,6 +196,7 @@
 .tc-container {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .tc-container input {
@@ -221,4 +224,8 @@
 .policy-container li {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
+}
+
+#checkout {
+    height: 800px;
 }
