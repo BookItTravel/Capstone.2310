@@ -13,7 +13,6 @@ import BookingDetails from './Pages/BookingDetails/BookingDetails'
 import Confirmation from './Pages/Confirmation/Confirmation'
 import Profile from './Pages/Profile/Profile'
 import Master_Table from './Components/Master_Table/Master_Table'
-// import Flight_Results from './Components/Flight/Flight_Results'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Flights from './Components/Flight_Search/Flights'
 
@@ -23,11 +22,8 @@ import CartPage from './Pages/Cart/CartPage'
 
 
 
+
 function App() {
-  const [count, setCount] = useState(0);
-
-
-
 
   return (
     <Provider store={store}>
@@ -43,12 +39,10 @@ function App() {
           <Route path="/bookingdetails" element={<BookingDetails />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/master_table" element={<Master_Table />} />
-         
           <Route path='/airport' element={<Airport />} />
           <Route path='/flights' element={<Flights />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>
-
       </BrowserRouter>
 </div>
     </Provider>
