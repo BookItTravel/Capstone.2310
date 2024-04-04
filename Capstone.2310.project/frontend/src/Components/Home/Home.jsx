@@ -1,4 +1,5 @@
 // import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import './home.css'
 import video from '../../assets/video.mp4'
 // import { GrLocation } from 'react-icons/gr'
@@ -13,7 +14,7 @@ import Search from '../Search/Search';
 
 
 function Home() {
-   // const [flightData, setFlightData] = useState([])
+    // const [flightData, setFlightData] = useState([])
     // const [adults, setAdults] = useState(1);
     // const [departureDate, setDepartureDate] = useState('');
     // const [originLocationCode, setOriginLocationCode ] = useState('')
@@ -115,12 +116,19 @@ function Home() {
                         Our Packages
                     </span>
                     <h1 data-aos="fade-up" className="homeTitle">
-                        Search Your Holiday
+                        It's A Big World Out There, Go Explore
                     </h1>
+                    {/* <p>book your next adveture with us</p> */}
+                </div>
+                <div data-aos="fade-up" className='homeSearchButton-container'>
+                    <Link to="/master_table">
+                        <button type="submit"
+                            className='homeSearchButton'>Let's Go!!</button>
+                    </Link>
                 </div>
 
                 {/* <div data-aos="fade-up" className="formDiv">  */}
-                <Search />
+                {/* <Search /> */}
                 {/* <form onSubmit={handleSubmit} className='cardDiv grid'>
                         <div className="destinationInput">
                             <label htmlFor="city" className='searchLabel'>Flying From</label>

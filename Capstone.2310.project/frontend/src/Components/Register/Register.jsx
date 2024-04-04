@@ -101,7 +101,7 @@ const Register = () => {
           <section className="regSection">
             <h1>Success!</h1>
             <p>
-              <a href="#">Sign In</a>
+              <a href="/login">Sign In</a>
             </p>
           </section>
         ) : (
@@ -117,14 +117,12 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
               <label htmlFor="email">
                 Email:
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  className={validName ? "valid" : "hide"}
-                />
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  className={validName || !email ? "hide" : "invalid"}
-                />
+                {email && validEmail && (
+                  <FontAwesomeIcon icon={faCheck} className="valid" />
+                )}
+                {email && !validEmail && (
+                  <FontAwesomeIcon icon={faTimes} className="invalid" />
+                )}
               </label>
               <input
                 type="email"
