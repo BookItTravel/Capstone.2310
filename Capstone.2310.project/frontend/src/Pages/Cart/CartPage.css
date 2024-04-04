@@ -1,9 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('../../assets/booking_bgd.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .cart-page {
@@ -12,6 +9,9 @@ body {
   align-items: center; 
   justify-content: center; 
   height: 100vh;
+  background-image: url('../../assets/booking_bgd.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .cart-items {
