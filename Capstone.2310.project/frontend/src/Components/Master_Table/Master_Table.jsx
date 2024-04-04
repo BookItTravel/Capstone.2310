@@ -23,6 +23,8 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
     const [selectedFlightDeparture, setSelectedFlightDeparture] = useState([]);
     const [selectedFlightReturn, setSelectedFlightReturn] = useState([]);
     const [isBookingClicked, setIsBookingClicked] = useState(false);
+    const [cityOriginName, setCityOriginName ] = useState('');
+    const [cityDesName, setCityDesName ] = useState('');
 
     // Handler for showing Return Table
     const handleBookDeparture = () => {
@@ -65,6 +67,8 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
                     setOriginCode={setOriginCode}
                     setReturnsDate={setReturnsDate}
                     setReturnLocation={setReturnLocation}
+                    setCityOriginName={setCityOriginName}
+                    setCityDesName={setCityDesName}
                 />
             </div>
             <div className='secondDiv'>
@@ -104,6 +108,9 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
                     onClose={handleCloseHotelOffer}
                     selectedFlightDeparture={selectedFlightDeparture}
                     selectedFlightReturn={selectedFlightReturn}
+                    originCode={originCode}
+                    cityDesName={cityDesName}
+                    cityOriginName={cityOriginName}
                 />
             }
 

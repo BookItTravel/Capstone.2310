@@ -3,7 +3,7 @@ import './HotelOffer.css';
 import { useState,useEffect} from 'react'
 
 
-const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, selectedHotelId, selectedHotelName, selectedFlightDeparture, selectedFlightReturn}) => {
+const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, selectedHotelId, selectedHotelName, selectedFlightDeparture, selectedFlightReturn, originCode, cityDesName, cityOriginName}) => {
     const [hotelId, setHotelId] = useState('');
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
@@ -12,6 +12,7 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
     const [hotelOffers, setHotelOffers] = useState([]);
     const [ flightDeparture, setFlightDeparture] = useState([]);
     const [ flightReturn, setFlightReturn] = useState([]);
+    const [originalCode, setOriginalCode] = useState('')
 
 
     //TODO: Need logic to render as many room offers as there are for the hotel for the given date.
@@ -45,13 +46,18 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
       }
       setFlightDeparture(selectedFlightDeparture);
       setFlightReturn(selectedFlightReturn);
+      setOriginalCode(originCode);
     }
     hotelData();
      },[]);
+    console.log("original code", originCode);
     console.log("departure in hotelOffer ", selectedFlightDeparture);
     console.log("return in hotelOffer ", selectedFlightReturn);
     console.log("departure flightstate in hotelOffer ", flightDeparture);
-    console.log("return flightstate in hotelOffer ", flightReturn)
+    console.log("return flightstate in hotelOffer ", flightReturn);
+    console.log("originNameCity", cityOriginName);
+    console.log("desNameCity", cityDesName);
+
 
     return (
         <div className="hotel-offer-container">
@@ -71,6 +77,9 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
                         flightDeparture={flightDeparture}
                         flightReturn={flightReturn}
                         hotelOffers={hotelOffers} 
+                        originalCode={originalCode}
+                        cityDesName={cityDesName}
+                        cityOriginName={cityOriginName}
                     
                         />
                   

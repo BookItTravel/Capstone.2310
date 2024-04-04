@@ -7,7 +7,7 @@ import './Search.css';
 import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table';
 
 
-const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCode, setOriginCode, setAdult, setReturnLocation}) => {
+const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCode, setOriginCode, setAdult, setReturnLocation, setCityOriginName, setCityDesName }) => {
     const navigate = useNavigate();
     const [adults, setAdults] = useState(1);
     const [departureDate, setDepartureDate] = useState('');
@@ -42,7 +42,12 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
                     return { ...cur.address}
                 }
             },{})
-            console.log("City Names", cityOriginNames);
+            const cityOrigin = resDataOrigin.data.map((location )=> location.address.cityName);
+            console.log("City Origin Names", cityOriginNames);
+            console.log("City Origin cityNames", cityOrigin);
+
+            setCityOriginName(cityOriginNames);
+          
 
         
             const responseDes = await fetch(`http://localhost:3000/api/search/${destinationLocationCode}`, {
@@ -65,8 +70,12 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
             
             const cityDesNames = resDes.data.map((location )=> location.address);
             const cityDesCode = resDes.data.map((location )=> location.address.cityCode);
-            console.log("City Names", cityDesNames);
+            const cityDes = resDes.data.map((location )=> location.address.cityName);
+            console.log("City Destination code", destinationCode)
+            console.log("City Des Names", cityDesNames);
             console.log("City Des Code", cityDesCode);
+            console.log("City DesName Code", cityDes);
+            setCityDesName(cityDesNames)
 
 
 

@@ -4,25 +4,29 @@ import './HotelOfferCard.css';
 import Booking from '../../Pages/Booking/Booking'
 
 
-const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn }) => {
+const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode, cityDesName, cityOriginName }) => {
     const [flightBookDeparture, setFlightBookDeparture ] = useState([]);
     const [flightBookReturn, setFlightBookReturn ] = useState([]);
     const [bookingVisible, setBookingVisible] = useState(false);
 
     const navigate = useNavigate();
     const handleBookButtonClick = () => {
-        navigate('/booking', { state: { flightDeparture, flightReturn } });
+        navigate('/booking', { state: { flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName } });
     };
 
 
     useEffect(() => {
      setBookingVisible(true)
-    }, [flightDeparture, flightReturn]);
+    }, [flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName]);
     
     console.log("Depart state in hotelCard", flightBookDeparture);
     console.log("return state in hotelCard", flightBookReturn);
      console.log("prop to hotelCard", flightDeparture);
      console.log("prop to hotelCard", flightReturn);
+     console.log("hotel Offer Card data", hotelOffers);
+     console.log("cardOffer originalCode", originCode);
+     console.log("originNameCity Card", cityOriginName);
+     console.log("desNameCity Card", cityDesName);
 
  
     if (!hotelOffers || !hotelOffers.data || !Array.isArray(hotelOffers.data)) {
@@ -31,7 +35,7 @@ const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn }) => {
     return (
 
         <div className="offer-card">
-        {  hotelOffers.data.map((offerData, index) => (
+        { hotelOffers.data.map((offerData, index) => (
                 <div key={index}>
                     <div className="price-section">
                         <div className="offer-name">
