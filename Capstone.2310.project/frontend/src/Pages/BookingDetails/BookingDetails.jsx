@@ -1,8 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import "./BookingDetails.css";
 
 const BookingDetails = () => {
-  
+  const location = useLocation();
+  const {
+    totalAfterSavings
+  } = location.state;
+
+  const amount = totalAfterSavings.toFixed(2);
   // State variables to hold form data
   const [formData, setFormData] = useState({
     primaryTraveler: {
@@ -120,6 +126,8 @@ const BookingDetails = () => {
       // Create a Checkout Session
       const res = await fetch("http://localhost:3000/create-checkout-session", {
         method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({amount: amount * 100})
       });
 
       if (!res.ok) {

@@ -1,45 +1,50 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./Booking.css";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Booking = () => {
   const location = useLocation();
-  const { flightDeparture, flightReturn, hotelOffers, cityDesName, cityOriginName } = location.state;
+  const {
+    flightDeparture,
+    flightReturn,
+    hotelOffers,
+    cityDesName,
+    cityOriginName,
+  } = location.state;
 
+  console.log("booking prop departure", flightDeparture);
+  console.log("booking prop return", flightReturn);
+  console.log("Data hotel Offer Card in booking", hotelOffers);
+  console.log("Data desName in booking", cityDesName);
+  console.log("Data originName in booking", cityOriginName);
 
-    console.log("booking prop departure", flightDeparture);
-    console.log("booking prop return", flightReturn);
-    console.log("Data hotel Offer Card in booking", hotelOffers);
-    console.log("Data desName in booking", cityDesName);
-    console.log("Data originName in booking", cityOriginName);
-
-
-    const flightTotal = flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
-    ? flightDeparture.travelerPricings[0].price.total
-    : flightReturn.travelerPricings[0].price.total;
-  
+  const flightTotal =
+    flightDeparture.travelerPricings[0].price.total >=
+    flightReturn.travelerPricings[0].price.total
+      ? flightDeparture.travelerPricings[0].price.total
+      : flightReturn.travelerPricings[0].price.total;
 
   const totalFlightCost = parseFloat(flightTotal);
   const totalHotelCost = parseFloat(hotelOffers.data[0].offers[0].price.total);
   const totalBeforeSavings = totalFlightCost + totalHotelCost;
   const totalAfterSavings = totalBeforeSavings - 320;
 
-
   const convertDuration = (durationString) => {
     const matches = durationString.match(/PT(\d+)H(\d+)M/);
-    if(!matches) return "Invalid duration";
+    if (!matches) return "Invalid duration";
 
     const hours = parseInt(matches[1]);
     const minutes = parseInt(matches[2]);
 
-    const formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2,'0')}`;
+    const formattedDuration = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}`;
 
     return formattedDuration;
-  }
+  };
 
   const durationDeparture = flightDeparture.itineraries[0].duration;
-  const convertedDuration = convertDuration(durationDeparture)
-
+  const convertedDuration = convertDuration(durationDeparture);
 
   const durationReturn = flightReturn.itineraries[0].duration;
   const convertedDurationReturn = convertDuration(durationReturn);
@@ -50,51 +55,72 @@ const Booking = () => {
     const time = dateTime.toLocaleTimeString();
 
     return `${date} ${time}`;
-  } 
+  };
 
-  const dateTimeString = flightDeparture.itineraries[0].segments[0].departure.at;
+  const dateTimeString =
+    flightDeparture.itineraries[0].segments[0].departure.at;
   const formattedDateTimeDepart = convertDateTime(dateTimeString);
 
-  const dateTimeStringArrivalDepart = flightReturn.itineraries[0].segments[0].arrival.at;
+  const dateTimeStringArrivalDepart =
+    flightReturn.itineraries[0].segments[0].arrival.at;
   const formattedDateTimeDepartArrival = convertDateTime(dateTimeString);
 
-  const dateTimeStringReturn = flightReturn.itineraries[0].segments[0].departure.at;
+  const dateTimeStringReturn =
+    flightReturn.itineraries[0].segments[0].departure.at;
   const formattedDateTimeReturn = convertDateTime(dateTimeString);
 
- 
+  const navigate = useNavigate();
+  const handleBookButtonClick = () => {
+      navigate('/bookingdetails', { state: { totalAfterSavings } });
+  }
+
   return (
     <div>
       <div className="booking-container">
         <div className="review-container">
           <div className="booking-title-container">
-        {/* <h1 className="review-heading">Review your trip</h1> */}
+            {/* <h1 className="review-heading">Review your trip</h1> */}
           </div>
           <div className="custom-booking-container">
             <div className="flight-card">
               <div className="column-heading">
                 <h3 className="column-title">Flights</h3>
               </div>
-            
+
               <div className="trip-card">
                 <div className="flight-container">
-                <h4 className="flight-summary">{cityOriginName.cityName} to {cityDesName[0].cityName}</h4>
-                  <p>Airline: {flightDeparture.itineraries[0].segments[0].carrierCode}</p>
+                  <h4 className="flight-summary">
+                    {cityOriginName.cityName} to {cityDesName[0].cityName}
+                  </h4>
+                  <p>
+                    Airline:{" "}
+                    {flightDeparture.itineraries[0].segments[0].carrierCode}
+                  </p>
                   <p>Duration: {convertedDuration}</p>
                   <p className="flight-name">11:59pm Seattle</p>
                   <p>Seattle-Tacoma International Airport</p>
                   <p>Departure Time: {formattedDateTimeDepart} </p>
                   <p>Jet Blue</p>
-                  <p>{flightDeparture.itineraries[0].segments[0].carrierCode}</p>
-                  <p>{flightDeparture.itineraries[0].segments[0].aircraft.code}</p>
-                  <p>Cabin: {flightDeparture.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
+                  <p>
+                    {flightDeparture.itineraries[0].segments[0].carrierCode}
+                  </p>
+                  <p>
+                    {flightDeparture.itineraries[0].segments[0].aircraft.code}
+                  </p>
+                  <p>
+                    Cabin:{" "}
+                    {
+                      flightDeparture.travelerPricings[0]
+                        .fareDetailsBySegment[0].cabin
+                    }
+                  </p>
                   <p>Arrival: {formattedDateTimeDepartArrival}</p>
                   <p>John F. Kennedy International Airport</p>
                 </div>
 
-
                 <div className="flight-container">
                   <h4 className="flight-summary">
-                  {cityDesName[0].cityName} to {cityOriginName.cityName}
+                    {cityDesName[0].cityName} to {cityOriginName.cityName}
                   </h4>
                   <p>6:00am-9:19pm (15h 19m)</p>
                   <p>Wed, Apr 18</p>
@@ -104,7 +130,13 @@ const Booking = () => {
                   <p>7h 6m flight</p>
                   <p>{flightReturn.itineraries[0].segments[0].carrierCode}</p>
                   <p>{flightReturn.itineraries[0].segments[0].aircraft.code}</p>
-                  <p>Cabin: {flightReturn.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
+                  <p>
+                    Cabin:{" "}
+                    {
+                      flightReturn.travelerPricings[0].fareDetailsBySegment[0]
+                        .cabin
+                    }
+                  </p>
                   <p>11:06am Denver</p>
                   <p>Denver International Airport</p>
                   <p>7:10pm Denver</p>
@@ -117,8 +149,9 @@ const Booking = () => {
                 </div>
               </div>
               <div className="button-container">
-                <Link to={'/master_table'} className="booking-button">Change Flight</Link>
-                {/* <button className="booking-button" onClick={'/master_table'}>Change Flight</button> */}
+                <Link to={"/master_table"} className="booking-button">
+                  Change Flight
+                </Link>
               </div>
             </div>
             <div className="hotel-card">
@@ -132,8 +165,9 @@ const Booking = () => {
                 <p>Check Out: {hotelOffers.data[0].offers[0].checkOutDate}</p>
               </div>
               <div className="button-container">
-                <Link to={'/master_table'} className="booking-button">Change Stay</Link>
-                {/* <button className="booking-button" onClick={'/master_table'}>Change Stay</button> */}
+                <Link to={"/master_table"} className="booking-button">
+                  Change Stay
+                </Link>
               </div>
             </div>
             <div className="cost-container">
@@ -143,18 +177,21 @@ const Booking = () => {
               <div className="cost-detail-container">
                 <table className="cost-table">
                   <tbody className="cost-table-body">
-                  <p>Order Date: {flightDeparture.lastTicketingDate}</p>
+                    <p>Order Date: {flightDeparture.lastTicketingDate}</p>
                     <tr className="cost-table-row">
                       <td className="item-data">Flights</td>
                       <td className="cost-data">
-  {flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
-    ? `$${flightDeparture.travelerPricings[0].price.total}`
-    : `$${flightReturn.travelerPricings[0].price.total}`}
-</td>
+                        {flightDeparture.travelerPricings[0].price.total >=
+                        flightReturn.travelerPricings[0].price.total
+                          ? `$${flightDeparture.travelerPricings[0].price.total}`
+                          : `$${flightReturn.travelerPricings[0].price.total}`}
+                      </td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Stay</td>
-                      <td className="cost-data">${hotelOffers.data[0].offers[0].price.total}</td>
+                      <td className="cost-data">
+                        ${hotelOffers.data[0].offers[0].price.total}
+                      </td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Savings</td>
@@ -162,13 +199,18 @@ const Booking = () => {
                     </tr>
                     <tr className="cost-table-row">
                       <td className="total-name">Total</td>
-                      <td className="total-data">   ${totalAfterSavings.toFixed(2)}</td>
+                      <td className="total-data">
+                        {" "}
+                        ${totalAfterSavings.toFixed(2)}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div className="button-container">
-                <Link to={'/bookingdetails'} className="booking-button">Booking Details</Link>
+                <button onClick={handleBookButtonClick} className="booking-button">
+                  Booking Details
+                </button>
               </div>
             </div>
           </div>
