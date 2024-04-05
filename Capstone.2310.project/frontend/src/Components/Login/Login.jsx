@@ -34,15 +34,15 @@ const Login = () => {
 
 
       // Check if the response is successful
-      
-        const { token } = response.data;
 
-        setAuth({ user, pwd, accessToken: token });
-        setUser("");
-        setPwd("");
-        setSuccess(true);
-        navigate(from, { replace: true });
-      
+      const { token } = response.data;
+
+      setAuth({ user, pwd, accessToken: token });
+      setUser("");
+      setPwd("");
+      setSuccess(true);
+      navigate(from, { replace: true });
+
     } catch (err) {
       console.error(err);
       setErrMsg("Login Failed");
@@ -94,6 +94,10 @@ const Login = () => {
                 className="loginInput"
               />
               <button className="login-button">Sign In</button>
+              <Link to="/master_table">
+                <button className="guest-button">Book as Guest</button>
+              </Link>
+
             </form>
             <p>
               Need an Account?
