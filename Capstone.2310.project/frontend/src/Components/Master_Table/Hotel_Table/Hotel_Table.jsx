@@ -73,16 +73,16 @@ import './Hotel_Table.css';
                                     onClick={() => handleRowClick(index, hotelId, hotelName[index])}
                                 >
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{hotelName[index]}</p>
+                                        {hotelName[index]}
                                     </td>
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{destinationCode}</p>
+                                        {destinationCode}
                                     </td>
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{departDate}</p>
+                                        {departDate}
                                     </td>
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{returnsDate}</p>
+                                        {returnsDate}
                                     </td>
                                 </tr>
                             ))}

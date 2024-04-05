@@ -307,7 +307,7 @@ const BookingDetails = () => {
                       type="text"
                       id={`additionalFirstName-${index}`}
                       name={`additionalFirstName-${index}`}
-                      value={additionalTraveler.firstName}
+                      value={formData.additionalTravelers.firstName}
                       onChange={(e) => handleInputChange(e)}
                       required
                     />
@@ -319,7 +319,7 @@ const BookingDetails = () => {
                       type="text"
                       id={`additionalMiddleName-${index}`}
                       name={`additionalMiddleName-${index}`}
-                      value={additionalTraveler.middleName}
+                      value={formData.additionalTravelers.middleName}
                       onChange={(e) => handleInputChange(e)}
                     />
                     <label htmlFor={`additionalLastName-${index}`}>
@@ -330,7 +330,7 @@ const BookingDetails = () => {
                       type="text"
                       id={`additionalLastName-${index}`}
                       name={`additionalLastName-${index}`}
-                      value={additionalTraveler.lastName}
+                      value={formData.additionalTravelers.lastName}
                       onChange={(e) => handleInputChange(e)}
                       required
                     />
@@ -343,8 +343,8 @@ const BookingDetails = () => {
                       type="radio"
                       id={`additionalMale-${index}`}
                       name={`additionalGender-${index}`}
-                      value={additionalTraveler.male}
-                      checked={additionalTraveler.gender === "male"}
+                      value="male"
+                      checked={formData.additionalTravelers.gender === "male"}
                       onChange={(e) => handleInputChange(e)}
                     />
                     <label htmlFor={`additionalFemale-${index}`}>Male</label>
@@ -353,8 +353,8 @@ const BookingDetails = () => {
                       type="radio"
                       id={`additionalfemale-${index}`}
                       name={`additionalGender-${index}`}
-                      value={additionalTraveler.female}
-                      checked={additionalTraveler.gender === "female"}
+                      value="female"
+                      checked={formData.additionalTravelers.gender === "female"}
                       onChange={(e) => handleInputChange(e)}
                     />
                     <label htmlFor="female">Female</label>
@@ -364,7 +364,7 @@ const BookingDetails = () => {
                     <select
                       className="dob"
                       name="birthMonth"
-                      value={additionalTraveler.birthMonth}
+                      value={formData.additionalTravelers.birthMonth}
                       onChange={(e) => handleInputChange(e)}
                       required
                     >
@@ -381,7 +381,7 @@ const BookingDetails = () => {
                     <select
                       className="dob"
                       name="birthDay"
-                      value={additionalTraveler.birthDay}
+                      value={formData.additionalTravelers.birthDay}
                       onChange={(e) => handleInputChange(e)}
                       required
                     >
@@ -399,7 +399,7 @@ const BookingDetails = () => {
                     <select
                       className="dob"
                       name="birthYear"
-                      value={additionalTraveler.birthYear}
+                      value={formData.additionalTravelers.birthYear}
                       onChange={(e) => handleInputChange(e)}
                       required
                     >
