@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./FLight.css";
+import "./Flight.css";
 import { FaSearch } from 'react-icons/fa';
 
 const Flights = () => {
