@@ -91,39 +91,44 @@ router.get('/search-location', cache(400), async (req, res) => {
   }
 });
 
-router.get('/city-hotels', cache(400), async (req, res) => {
-  try {
-    const { cityCode } = req.query;
-    const response = await amadeus.referenceData.locations.hotels.byCity.get({
-      cityCode,
-    });
-    if (!response) {
-      return res.status(400).json({ error: 'No response' });
+  router.get(`/city-hotels`, async (req, res) => {
+    try {
+      const { cityCode } = req.query;
+      const response = await amadeus.referenceData.locations.hotels.byCity.get({
+        cityCode
+      })
+      if (!response){
+        return res.status(400).json({error: "No response" })
+      }
+      res.json(JSON.parse(response.body));
+  
+    } catch (err) {
+      res.json(err);
     }
-    res.json(JSON.parse(response.body));
-  } catch (err) {
-    res.json(err);
-  }
-});
+  });
 
-// Confirming the offer
-router.get('/hotel-offers', cache(400), async (req, res) => {
-  try {
-    const { hotelIds, cityCode } = req.query;
-    amadeus.shopping.hotelOffersSearch.get({
-      hotelIds,
-      cityCode,
+
+
+    // Confirming the offer
+    router.get(`/hotel-offers`, async (req, res ) => {
+      try {
+        const { hotelIds, cityCode } = req.query;
+        amadeus.shopping.hotelOffersSearch.get({
+          hotelIds,
+          cityCode
+        });
+        console.log(amadeus.referenceData.locations.hotels.byHotel)
+       await res.json(JSON.parse(response.body));
+      } catch (err) {
+       await res.json(err);
+      }
     });
-    console.log(amadeus.referenceData.locations.hotels.byHotel);
-    await res.json(JSON.parse(response.body));
-  } catch (err) {
-    await res.json(err);
-  }
-});
-// Booking
+    // Booking
+  
+
 
 // City search suggestions
-router.get(`/${API}/search/:keyword`, cache(400), async (req, res) => {
+router.get(`/${API}/search/:keyword`,  async (req, res) => {
   try {
     const { keyword } = req.params;
     const response = await amadeus.referenceData.locations.get({

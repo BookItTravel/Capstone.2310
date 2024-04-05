@@ -1,37 +1,49 @@
 import { Link } from 'react-router-dom';
 import "./Booking.css";
+import { useLocation } from 'react-router-dom';
 
 const Booking = () => {
+  const location = useLocation();
+  const { flightDeparture, flightReturn, hotelOffers, cityDesName, cityOriginName } = location.state;
+
+
+    console.log("booking prop departure", flightDeparture);
+    console.log("booking prop return", flightReturn);
+    console.log("Data hotel Offer Card in booking", hotelOffers);
+    console.log("Data desName in booking", cityDesName);
+    console.log("Data originName in booking", cityOriginName);
+ 
   return (
     <div>
       <div className="booking-container">
         <div className="review-container">
           <div className="booking-title-container">
-            <h1 className="review-heading">Review your trip</h1>
+        <h1 className="review-heading">Review your trip</h1>
           </div>
           <div className="custom-booking-container">
             <div className="flight-card">
               <div className="column-heading">
                 <h3 className="column-title">Flights</h3>
               </div>
+            
               <div className="trip-card">
                 <div className="flight-container">
-                  <h4 className="flight-summary">Seattle to New York City</h4>
-                  <p>11:59pm-8:06am (5h 7m)</p>
-                  <p>Wed, Apr 10</p>
+                <h4 className="flight-summary">{cityOriginName.cityName} to {cityDesName[0].cityName}</h4>
+                  <p>Duration: {flightDeparture.itineraries[0].duration}</p>
+                  <p>Departutre Date: {flightDeparture.lastTicketingDate}</p>
                   <p>2 Adults, 1 Child</p>
                   <p className="flight-name">11:59pm Seattle</p>
                   <p>Seattle-Tacoma International Airport</p>
                   <p>5h 7m flight</p>
                   <p>Jet Blue</p>
                   <p>Airbus A320-200</p>
-                  <p>Economy</p>
-                  <p>8:06am New York City</p>
+                  <p>Cabin: {flightDeparture.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
+                  <p>Arrival: 8:06am New York City</p>
                   <p>John F. Kennedy International Airport</p>
                 </div>
                 <div className="flight-container">
                   <h4 className="flight-summary">
-                    New York City to Denver to Seattle
+                  {cityDesName[0].cityName} to {cityOriginName.cityName}
                   </h4>
                   <p>6:00am-9:19pm (15h 19m)</p>
                   <p>Wed, Apr 18</p>
@@ -64,10 +76,10 @@ const Booking = () => {
                 <h3 className="column-title">Stay</h3>
               </div>
               <div className="hotel-container">
-                <p className="hotel-name">Aloft New York Brooklyn</p>
-                <p>Brooklyn, NY</p>
-                <p>Check In: April 11, 2024</p>
-                <p>Check Out: April 18, 2024</p>
+                <p className="hotel-name">{hotelOffers.data[0].hotel.name}</p>
+                <p>{hotelOffers.data[0].hotel.cityCode}</p>
+                <p>Check In: {hotelOffers.data[0].offers[0].checkInDate}</p>
+                <p>Check Out: {hotelOffers.data[0].offers[0].checkOutDate}</p>
               </div>
               <div className="button-container">
                 <Link to={'/master_table'} className="booking-button">Change Stay</Link>
@@ -83,11 +95,11 @@ const Booking = () => {
                   <tbody className="cost-table-body">
                     <tr className="cost-table-row">
                       <td className="item-data">Flights</td>
-                      <td className="cost-data">$1,200</td>
+                      <td className="cost-data">${hotelOffers.data[0].offers[0].price.total}</td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Stay</td>
-                      <td className="cost-data">$2,100</td>
+                      <td className="cost-data">${hotelOffers.data[0].offers[0].price.total}</td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Savings</td>

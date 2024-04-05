@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Return_Table.css';
 
-const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originCode,returnsDate }) => {
-    const [flight, setFlight] = useState([]);
+const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originCode,returnsDate, setSelectedFlightReturn }) => {
+    const [returns, setReturns] = useState([]);
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
     const [adults, setAdults] = useState(1);
@@ -41,7 +41,6 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
            setReturnFlightData(resData.data || []);
            console.log("data from return", resData);
            
-           // const itinerarie = responseData.data.map((flights) => flights.itineraries)
            
         } catch (error){
             console.error("Error getting your data", error);
@@ -50,8 +49,9 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
     
     fetchData();
 }, []);
-    const handleRowClick = (index) => {
+    const handleRowClick = (index, returns) => {
         setSelectedRow(selectedRow === index ? null : index);
+        setSelectedFlightReturn(returns)
         onBookClick();
     };
     console.log("this is return flight Data", returnFlightData);
@@ -82,7 +82,7 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
         <tr
             key={index}
             className={selectedRow === index ? 'table-row selected' : 'table-row'} // Apply 'selected' class if the row is selected
-            onClick={() => handleRowClick(index)} // Pass index or identifier of the row
+            onClick={() => handleRowClick(index, returns)} // Pass index or identifier of the row
         >
             <td className='table-info'>
                 <p className='table-text'>{returns.itineraries[0].segments[0].carrierCode}</p>

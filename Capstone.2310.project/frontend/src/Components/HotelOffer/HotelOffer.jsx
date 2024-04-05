@@ -3,13 +3,16 @@ import './HotelOffer.css';
 import { useState,useEffect} from 'react'
 
 
-const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, selectedHotelId, selectedHotelName}) => {
+const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, selectedHotelId, selectedHotelName, selectedFlightDeparture, selectedFlightReturn, originCode, cityDesName, cityOriginName}) => {
     const [hotelId, setHotelId] = useState('');
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
     const [adults, setAdults] = useState('');
     const [cityCode, setCityCode] = useState('');
     const [hotelOffers, setHotelOffers] = useState([]);
+    const [ flightDeparture, setFlightDeparture] = useState([]);
+    const [ flightReturn, setFlightReturn] = useState([]);
+    const [originalCode, setOriginalCode] = useState('')
 
 
     //TODO: Need logic to render as many room offers as there are for the hotel for the given date.
@@ -35,15 +38,27 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
           throw new Error('Unsuccessful');
         }
         const resHotel = await responseHotelOffer.json();
-        setHotelOffers(resHotel)
+        setHotelOffers(resHotel);
+
         console.log("Hotels Offer:", resHotel)
       } catch (error){
         console.error("error ", error);
       }
+      setFlightDeparture(selectedFlightDeparture);
+      setFlightReturn(selectedFlightReturn);
+      setOriginalCode(originCode);
     }
     hotelData();
      },[]);
-   
+    console.log("original code", originCode);
+    console.log("departure in hotelOffer ", selectedFlightDeparture);
+    console.log("return in hotelOffer ", selectedFlightReturn);
+    console.log("departure flightstate in hotelOffer ", flightDeparture);
+    console.log("return flightstate in hotelOffer ", flightReturn);
+    console.log("originNameCity", cityOriginName);
+    console.log("desNameCity", cityDesName);
+
+
     return (
         <div className="hotel-offer-container">
             <div className="offer-popup"> 
@@ -54,11 +69,19 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
                 <div className="stay-summary">
                     <p className="offer-dates">Check In: {departDate} </p>
                     <p className="offer-dates">Check Out: {returnsDate} </p>
-                    {/* <p className="hotel-offer">{selectedHotelName}</p> */}
+                
                 </div>
                 <div className="room-card-container">
               
-                        <HotelOfferCard hotelOffers={hotelOffers}/>
+                        <HotelOfferCard 
+                        flightDeparture={flightDeparture}
+                        flightReturn={flightReturn}
+                        hotelOffers={hotelOffers} 
+                        originalCode={originalCode}
+                        cityDesName={cityDesName}
+                        cityOriginName={cityOriginName}
+                    
+                        />
                   
                 </div>
             </div>
