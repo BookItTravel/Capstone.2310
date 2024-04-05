@@ -1,11 +1,10 @@
-import { useState } from 'react'
+
 import './App.css'
 import { Provider } from 'react-redux'
 import store from './store'
 
 import Navbar from './Components/Navbar/Navbar'
 import LandingPage from './Components/LandingPage/LandingPage'
-import Footer from './Components/Footer/Footer'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
 import Booking from './Pages/Booking/Booking'
@@ -17,14 +16,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Flights from './Components/Flight_Search/Flights';
 import Airport from './Components/Flight/airport';
-import { loadStripe } from '@stripe/stripe-js';
 import './App.css';
 
 
 import CartPage from './Pages/Cart/CartPage'
-
-
-// const stripePromise = loadStripe('sk_test_51P0ushRsNEKpqF1rtoYXxVsXFM2IiJNf9BCBGKzjdhvdA4frWrClK6d39zblsGbTbgkNcobt5j8Tsz8PYgtxLLYf00yMCBkpRX');
 
 function App() {
 
