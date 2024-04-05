@@ -12,13 +12,62 @@ const Booking = () => {
     console.log("Data hotel Offer Card in booking", hotelOffers);
     console.log("Data desName in booking", cityDesName);
     console.log("Data originName in booking", cityOriginName);
+
+
+    const flightTotal = flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
+    ? flightDeparture.travelerPricings[0].price.total
+    : flightReturn.travelerPricings[0].price.total;
+  
+
+  const totalFlightCost = parseFloat(flightTotal);
+  const totalHotelCost = parseFloat(hotelOffers.data[0].offers[0].price.total);
+  const totalBeforeSavings = totalFlightCost + totalHotelCost;
+  const totalAfterSavings = totalBeforeSavings - 320;
+
+
+  const convertDuration = (durationString) => {
+    const matches = durationString.match(/PT(\d+)H(\d+)M/);
+    if(!matches) return "Invalid duration";
+
+    const hours = parseInt(matches[1]);
+    const minutes = parseInt(matches[2]);
+
+    const formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2,'0')}`;
+
+    return formattedDuration;
+  }
+
+  const durationDeparture = flightDeparture.itineraries[0].duration;
+  const convertedDuration = convertDuration(durationDeparture)
+
+
+  const durationReturn = flightReturn.itineraries[0].duration;
+  const convertedDurationReturn = convertDuration(durationReturn);
+
+  const convertDateTime = (dateTimeString) => {
+    const dateTime = new Date(dateTimeString);
+    const date = dateTime.toLocaleDateString();
+    const time = dateTime.toLocaleTimeString();
+
+    return `${date} ${time}`;
+  } 
+
+  const dateTimeString = flightDeparture.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeDepart = convertDateTime(dateTimeString);
+
+  const dateTimeStringArrivalDepart = flightReturn.itineraries[0].segments[0].arrival.at;
+  const formattedDateTimeDepartArrival = convertDateTime(dateTimeString);
+
+  const dateTimeStringReturn = flightReturn.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeReturn = convertDateTime(dateTimeString);
+
  
   return (
     <div>
       <div className="booking-container">
         <div className="review-container">
           <div className="booking-title-container">
-        <h1 className="review-heading">Review your trip</h1>
+        {/* <h1 className="review-heading">Review your trip</h1> */}
           </div>
           <div className="custom-booking-container">
             <div className="flight-card">
@@ -29,18 +78,20 @@ const Booking = () => {
               <div className="trip-card">
                 <div className="flight-container">
                 <h4 className="flight-summary">{cityOriginName.cityName} to {cityDesName[0].cityName}</h4>
-                  <p>Duration: {flightDeparture.itineraries[0].duration}</p>
-                  <p>Departutre Date: {flightDeparture.lastTicketingDate}</p>
-                  <p>2 Adults, 1 Child</p>
+                  <p>Airline: {flightDeparture.itineraries[0].segments[0].carrierCode}</p>
+                  <p>Duration: {convertedDuration}</p>
                   <p className="flight-name">11:59pm Seattle</p>
                   <p>Seattle-Tacoma International Airport</p>
-                  <p>5h 7m flight</p>
+                  <p>Departure Time: {formattedDateTimeDepart} </p>
                   <p>Jet Blue</p>
-                  <p>Airbus A320-200</p>
+                  <p>{flightDeparture.itineraries[0].segments[0].carrierCode}</p>
+                  <p>{flightDeparture.itineraries[0].segments[0].aircraft.code}</p>
                   <p>Cabin: {flightDeparture.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
-                  <p>Arrival: 8:06am New York City</p>
+                  <p>Arrival: {formattedDateTimeDepartArrival}</p>
                   <p>John F. Kennedy International Airport</p>
                 </div>
+
+
                 <div className="flight-container">
                   <h4 className="flight-summary">
                   {cityDesName[0].cityName} to {cityOriginName.cityName}
@@ -51,15 +102,14 @@ const Booking = () => {
                   <p className="flight-name">6:00am New York City</p>
                   <p>LaGuardia Airport</p>
                   <p>7h 6m flight</p>
-                  <p>Frontier</p>
-                  <p>Airbus A321-200 Neo</p>
-                  <p>Economy</p>
+                  <p>{flightReturn.itineraries[0].segments[0].carrierCode}</p>
+                  <p>{flightReturn.itineraries[0].segments[0].aircraft.code}</p>
+                  <p>Cabin: {flightReturn.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
                   <p>11:06am Denver</p>
                   <p>Denver International Airport</p>
                   <p>7:10pm Denver</p>
                   <p className="flight-name">Denver International Airport</p>
                   <p>3h 9m flight</p>
-                  <p>Frontier</p>
                   <p>Airbus A320-200 Neo</p>
                   <p>Economy</p>
                   <p>9:19pm Seattle</p>
@@ -91,9 +141,14 @@ const Booking = () => {
               <div className="cost-detail-container">
                 <table className="cost-table">
                   <tbody className="cost-table-body">
+                  <p>Order Date: {flightDeparture.lastTicketingDate}</p>
                     <tr className="cost-table-row">
                       <td className="item-data">Flights</td>
-                      <td className="cost-data">${hotelOffers.data[0].offers[0].price.total}</td>
+                      <td className="cost-data">
+  {flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
+    ? `$${flightDeparture.travelerPricings[0].price.total}`
+    : `$${flightReturn.travelerPricings[0].price.total}`}
+</td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Stay</td>
@@ -105,7 +160,7 @@ const Booking = () => {
                     </tr>
                     <tr className="cost-table-row">
                       <td className="total-name">Total</td>
-                      <td className="total-data">$2,880</td>
+                      <td className="total-data">   ${totalAfterSavings.toFixed(2)}</td>
                     </tr>
                   </tbody>
                 </table>
