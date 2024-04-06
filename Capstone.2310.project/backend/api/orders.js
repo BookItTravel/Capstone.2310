@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
 const express = require('express');
 
 const jwt = require('jsonwebtoken');

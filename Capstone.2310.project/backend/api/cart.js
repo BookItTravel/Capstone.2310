@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
 const express = require('express');
 
 const jwt = require('jsonwebtoken');
@@ -5,7 +7,10 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const router = express.Router();
 const {
-  addToCart, removeFromCart, updateCart, getCartByUserId,
+  addToCart,
+  removeFromCart,
+  updateCart,
+  getCartByUserId,
 } = require('../db/db_methods');
 
 // Middleware function to check authorization
