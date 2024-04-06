@@ -5,7 +5,8 @@ import "./BookingDetails.css";
 const BookingDetails = () => {
   const location = useLocation();
   const {
-    totalAfterSavings
+    totalAfterSavings,
+    numberofTravelers,
   } = location.state;
 
   const amount = totalAfterSavings.toFixed(2);
@@ -26,6 +27,7 @@ const BookingDetails = () => {
     agreeToTerms: false,
   });
   const [formValid, setFormValid] = useState(false);
+  const [numberOfEnteredTravelers, setNumberOfEnteredTravelers] = useState(1);
 
   // Handler for form input changes
   const handleInputChange = (e, travelerIndex = null) => {
@@ -80,6 +82,8 @@ const BookingDetails = () => {
 
   // Handler for adding additional traveler
   const handleAddTraveler = () => {
+    // Increment the number of entered travelers
+    setNumberOfEnteredTravelers(prevCount => prevCount + 1);
     setFormData((prevState) => ({
       ...prevState,
       additionalTravelers: [
@@ -490,6 +494,7 @@ const BookingDetails = () => {
                   onClick={handleSubmit}
                   className="booking-button"
                   type="click"
+                  disabled={numberOfEnteredTravelers !== numberofTravelers}
                 >
                   Book It
                 </button>
