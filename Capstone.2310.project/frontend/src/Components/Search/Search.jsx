@@ -83,7 +83,7 @@ const Search = ({ setFlightData, setDepartDate, setReturnsDate, setDestinationCo
             const responseData = await responseTwo.json();
 
             setFlightData(responseData);
-            handleShowDepartureTable(); // Call the function here after setting flight data
+            handleShowDepartureTable();
         } catch (error) {
             console.error("Error getting your data", error);
         }
@@ -123,7 +123,7 @@ const Search = ({ setFlightData, setDepartDate, setReturnsDate, setDestinationCo
                     <div className="searchInput-container">
                         <input type="date"
                             value={departureDate}
-                            min={new Date().toISOString().split('T')[0]} // Set minimum date to today's date
+                            min={new Date().toISOString().split('T')[0]}
                             onChange={(e) => setDepartureDate(e.target.value)} className='searchInput' />
                     </div>
                 </div>
@@ -133,7 +133,7 @@ const Search = ({ setFlightData, setDepartDate, setReturnsDate, setDestinationCo
                     <div className="searchInput-container">
                         <input type="date"
                             value={returnDate}
-                            min={new Date().toISOString().split('T')[0]} // Set minimum date to today's date
+                            min={new Date().toISOString().split('T')[0]}
                             onChange={(e) => setReturnDate(e.target.value)} className='searchInput' />
                     </div>
                 </div>
@@ -151,7 +151,6 @@ const Search = ({ setFlightData, setDepartDate, setReturnsDate, setDestinationCo
                         className='searchButton'>Search</button>
                 </div>
             </form>
-
         </div>
     )
 };
