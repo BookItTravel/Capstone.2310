@@ -1,14 +1,15 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-throw-literal */
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-useless-catch */
 const client = require('./index');
 
 // User Methods
 
 // Add a new user
-const addUser = async ({
-  username,
-  password,
-  email,
-
-}) => {
+const addUser = async ({ username, password, email }) => {
   try {
     const {
       rows: [user],
@@ -19,11 +20,7 @@ const addUser = async ({
             ON CONFLICT (username) DO NOTHING
             RETURNING *;
         `,
-      [
-        username,
-        password,
-        email,
-      ],
+      [username, password, email],
     );
   } catch (error) {
     throw error;
@@ -110,7 +107,6 @@ const getUserByUsername = async (username) => {
         `,
       [username],
     );
-    console.log(user);
     return user;
   } catch (error) {
     throw error;
@@ -142,7 +138,12 @@ const deleteUser = async (username) => {
 // Traveler Methods
 
 const addTraveler = async ({
-  firstname, lastname, date_of_birth, email, passportNumber, user_id,
+  firstname,
+  lastname,
+  date_of_birth,
+  email,
+  passportNumber,
+  user_id,
 }) => {
   try {
     const {
@@ -156,7 +157,7 @@ const addTraveler = async ({
     );
     return traveler;
   } catch (error) {
-    throw (error);
+    throw error;
   }
 };
 
@@ -173,9 +174,7 @@ const addToCart = async (user_id, traveler_id, quantity) => {
                 VALUES($1, $2, $3)
                 RETURNING *;
             `,
-      [
-        user_id, traveler_id, quantity,
-      ],
+      [user_id, traveler_id, quantity],
     );
     return cartItem;
   } catch (error) {
@@ -250,11 +249,16 @@ const getCartByUserId = async (user_id) => {
 // Place an order
 const placeOrder = async (user_id, traveler_id, quantity) => {
   try {
-    const { rows: [order] } = await client.query(`
+    const {
+      rows: [order],
+    } = await client.query(
+      `
             INSERT INTO order (user_id, traveler_id, quantity)
             VALUES ($1, $2, $3)
             RETURNING *;
-        `, [user_id, traveler_id, quantity]);
+        `,
+      [user_id, traveler_id, quantity],
+    );
     return order;
   } catch (error) {
     throw error;
@@ -264,11 +268,14 @@ const placeOrder = async (user_id, traveler_id, quantity) => {
 // Retrieve order history based on user_id
 const getOrderHistoryByUserId = async (user_id) => {
   try {
-    const { rows } = await client.query(`
+    const { rows } = await client.query(
+      `
             SELECT *
             FROM orders
             WHERE user_id=$1;
-        `, [user_id]);
+        `,
+      [user_id],
+    );
     return rows;
   } catch (error) {
     throw error;

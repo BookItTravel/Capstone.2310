@@ -2,32 +2,35 @@ import { useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import "./BookingDetails.css";
 
+const FORM_DATA = {
+  primaryTraveler: {
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    birthMonth: "",
+    birthDay: "",
+    birthYear: "",
+  },
+  additionalTravelers: [],
+  agreeToTerms: false,
+}
+
 const BookingDetails = () => {
   const location = useLocation();
   const {
     totalAfterSavings,
-    numberofTravelers,
   } = location.state;
 
   const amount = totalAfterSavings.toFixed(2);
   // State variables to hold form data
-  const [formData, setFormData] = useState({
-    primaryTraveler: {
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      gender: "",
-      birthMonth: "",
-      birthDay: "",
-      birthYear: "",
-    },
-    additionalTravelers: [],
-    agreeToTerms: false,
-  });
+  const [formData, setFormData] = useState(FORM_DATA);
   const [formValid, setFormValid] = useState(false);
   const [numberOfEnteredTravelers, setNumberOfEnteredTravelers] = useState(1);
+
+  // for checking form data object
+  console.log(FORM_DATA);
 
   // Handler for form input changes
   const handleInputChange = (e, travelerIndex = null) => {
@@ -50,6 +53,7 @@ const BookingDetails = () => {
         },
       }));
     }
+    console.log(formData.additionalTravelers.gender);
   };
   
   // Handler for checkbox change
@@ -92,7 +96,6 @@ const BookingDetails = () => {
           firstName: "",
           middleName: "",
           lastName: "",
-          gender: "",
           birthMonth: "",
           birthDay: "",
           birthYear: "",
@@ -107,7 +110,6 @@ const BookingDetails = () => {
       formData.primaryTraveler.firstName,
       formData.primaryTraveler.middleName,
       formData.primaryTraveler.lastName,
-      formData.primaryTraveler.gender,
       formData.primaryTraveler.birthMonth,
       formData.primaryTraveler.birthDay,
       formData.primaryTraveler.birthYear,
@@ -217,29 +219,6 @@ const BookingDetails = () => {
                   required
                 />
               </div>
-              <label className="gender-heading">Gender</label>
-              <div className="gender-container">
-                <input
-                  className="gender"
-                  type="radio"
-                  id="male"
-                  name="gender"
-                  value="male"
-                  checked={formData.primaryTraveler.gender === "male"}
-                  onChange={(e) => handleInputChange(e)}
-                />
-                <label htmlFor="male">Male</label>
-                <input
-                  className="gender"
-                  type="radio"
-                  id="female"
-                  name="gender"
-                  value="female"
-                  checked={formData.primaryTraveler.gender === "female"}
-                  onChange={(e) => handleInputChange(e)}
-                />
-                <label htmlFor="female">Female</label>
-              </div>
               <label className="dob-heading">Date of Birth</label>
               <div className="dob-container">
                 <select
@@ -295,7 +274,7 @@ const BookingDetails = () => {
                 </select>
               </div>
               {/* Additional traveler form */}
-              {formData.additionalTravelers.map((additionalTraveler, index) => (
+              {formData?.additionalTravelers?.map((additionalTraveler, index) => (
                 <div key={index} className="additional-traveler-form">
                   <legend>
                     <h3 className="form-heading">
@@ -339,31 +318,6 @@ const BookingDetails = () => {
                       required
                     />
                   </div>
-                  {/* Gender radio buttons */}
-                  <label className="gender-heading">Gender</label>
-                  <div className="gender-container">
-                    <input
-                      className="gender"
-                      type="radio"
-                      id={`additionalMale-${index}`}
-                      name={`additionalGender-${index}`}
-                      value="male"
-                      checked={formData.additionalTravelers.gender === "male"}
-                      onChange={(e) => handleInputChange(e)}
-                    />
-                    <label htmlFor={`additionalFemale-${index}`}>Male</label>
-                    <input
-                      className="gender"
-                      type="radio"
-                      id={`additionalfemale-${index}`}
-                      name={`additionalGender-${index}`}
-                      value="female"
-                      checked={formData.additionalTravelers.gender === "female"}
-                      onChange={(e) => handleInputChange(e)}
-                    />
-                    <label htmlFor="female">Female</label>
-                  </div>
-                  {/* Date of birth selects */}
                   <div className="dob-container">
                     <select
                       className="dob"
@@ -494,7 +448,6 @@ const BookingDetails = () => {
                   onClick={handleSubmit}
                   className="booking-button"
                   type="click"
-                  disabled={numberOfEnteredTravelers !== numberofTravelers}
                 >
                   Book It
                 </button>
