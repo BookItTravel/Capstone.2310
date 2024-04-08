@@ -1,23 +1,25 @@
 import { Link, useNavigate } from 'react-router-dom';
 import "./Booking.css";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Booking = () => {
   const location = useLocation();
-  const { flightDeparture, flightReturn, hotelOffers, cityDesName, cityOriginName, adult } = location.state;
+  const {
+    flightDeparture,
+    flightReturn,
+    hotelOffers,
+    cityDesName,
+    cityOriginName,
+  } = location.state;
 
   console.log("booking prop departure", flightDeparture);
   console.log("booking prop return", flightReturn);
   console.log("Data hotel Offer Card in booking", hotelOffers);
-  console.log("Data desName in booking", cityDesName[0].cityCode);
-  console.log("Data originName in booking", cityOriginName.cityCode);
-  console.log("adults in booking", adult)
-
+  console.log("Data desName in booking", cityDesName);
+  console.log("Data originName in booking", cityOriginName);
 
   const navigate = useNavigate();
-  const handleBookingDetail = () => {
-      navigate('/bookingdetails', {state: { adult }})
-  }
+
   
   const cityCodeOrigin = cityOriginName?.[0]?.cityCode;
   const cityCodeDestination = cityDesName?.[0]?.cityCode;
@@ -42,22 +44,22 @@ const Booking = () => {
   const totalBeforeSavings = totalFlightCost + totalHotelCost;
   const totalAfterSavings = totalBeforeSavings - 320;
 
-
   const convertDuration = (durationString) => {
     const matches = durationString.match(/PT(\d+)H(\d+)M/);
-    if(!matches) return "Invalid duration";
+    if (!matches) return "Invalid duration";
 
     const hours = parseInt(matches[1]);
     const minutes = parseInt(matches[2]);
 
-    const formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2,'0')}`;
+    const formattedDuration = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}`;
 
     return formattedDuration;
-  }
+  };
 
   const durationDeparture = flightDeparture.itineraries[0].duration;
-  const convertedDuration = convertDuration(durationDeparture)
-
+  const convertedDuration = convertDuration(durationDeparture);
 
   const durationReturn = flightReturn.itineraries[0].duration;
   const convertedDurationReturn = convertDuration(durationReturn);
@@ -68,15 +70,18 @@ const Booking = () => {
     const time = dateTime.toLocaleTimeString();
 
     return `${date} ${time}`;
-  } 
+  };
 
-  const dateTimeString = flightDeparture.itineraries[0].segments[0].departure.at;
-  const formattedDateTimeDestinationDepart = convertDateTime(dateTimeString);
+  const dateTimeString =
+    flightDeparture.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeDepart = convertDateTime(dateTimeString);
 
-  const dateTimeStringArrivalDepart = flightDeparture.itineraries[0].segments[0].arrival.at;
-  const formattedDateTimeDestinationArrival = convertDateTime(dateTimeStringArrivalDepart);
+  const dateTimeStringArrivalDepart =
+    flightReturn.itineraries[0].segments[0].arrival.at;
+  const formattedDateTimeDepartArrival = convertDateTime(dateTimeString);
 
-  const dateTimeStringReturn = flightReturn.itineraries[0].segments[0].departure.at;
+  const dateTimeStringReturn =
+    flightReturn.itineraries[0].segments[0].departure.at;
   const formattedDateTimeReturn = convertDateTime(dateTimeString);
 
   const dateTimeStringReturnArrival = flightReturn.itineraries[0].segments[0].departure.at;
@@ -85,20 +90,24 @@ const Booking = () => {
   const dateTimeStringArrivalReturn = flightReturn.itineraries[0].segments[0].arrival.at;
   const formattedDateTimeReturnArrival = convertDateTime(dateTimeStringArrivalReturn);
 
- 
+
+  const handleBookButtonClick = () => {
+      navigate('/bookingdetails', { state: { totalAfterSavings, adult  } });
+  }
+
   return (
     <div>
       <div className="booking-container">
         <div className="review-container">
           <div className="booking-title-container">
-        {/* <h1 className="review-heading">Review your trip</h1> */}
+            {/* <h1 className="review-heading">Review your trip</h1> */}
           </div>
           <div className="custom-booking-container">
             <div className="flight-card">
               <div className="column-heading">
                 <h3 className="column-title">Flights</h3>
               </div>
-            
+
               <div className="trip-card">
                 <div className="flight-container">
                 <h4 className="flight-summary">{cityOriginName.cityName} to {cityDesName[0].cityName}</h4>
@@ -114,10 +123,9 @@ const Booking = () => {
                   <p>Arrival: {formattedDateTimeDestinationArrival}</p>
                 </div>
 
-
                 <div className="flight-container">
                   <h4 className="flight-summary">
-                  {cityDesName[0].cityName} to {cityOriginName.cityName}
+                    {cityDesName[0].cityName} to {cityOriginName.cityName}
                   </h4>
                   <p>Airline: {flightReturn.itineraries[0].segments[0].carrierCode}</p>
                   <p>Aircraft: {flightReturn.itineraries[0].segments[0].aircraft.code}</p>
@@ -132,7 +140,9 @@ const Booking = () => {
                 </div>
               </div>
               <div className="button-container">
-                <button className="booking-button">Change Flight</button>
+                <Link to={"/master_table"} className="booking-button">
+                  Change Flight
+                </Link>
               </div>
             </div>
             <div className="hotel-card">
@@ -146,7 +156,9 @@ const Booking = () => {
                 <p>Check Out: {hotelOffers.data[0].offers[0].checkOutDate}</p>
               </div>
               <div className="button-container">
-                <button className="booking-button">Change Stay</button>
+                <Link to={"/master_table"} className="booking-button">
+                  Change Stay
+                </Link>
               </div>
             </div>
             <div className="cost-container">
@@ -167,7 +179,9 @@ const Booking = () => {
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Stay</td>
-                      <td className="cost-data">${hotelOffers.data[0].offers[0].price.total}</td>
+                      <td className="cost-data">
+                        ${hotelOffers.data[0].offers[0].price.total}
+                      </td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Savings</td>
@@ -175,13 +189,18 @@ const Booking = () => {
                     </tr>
                     <tr className="cost-table-row">
                       <td className="total-name">Total</td>
-                      <td className="total-data">   ${totalAfterSavings.toFixed(2)}</td>
+                      <td className="total-data">
+                        {" "}
+                        ${totalAfterSavings.toFixed(2)}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div className="button-container">
-                <button  className="booking-button" onClick={handleBookingDetail} >Booking Details</button>
+                <button onClick={handleBookButtonClick} className="booking-button">
+                  Booking Details
+                </button>
               </div>
             </div>
           </div>

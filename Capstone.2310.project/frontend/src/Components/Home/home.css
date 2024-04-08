@@ -71,7 +71,7 @@ video {
 input {
     font-size: 100%;
     color: var(--greyText);
-  
+
 }
 
 
@@ -180,7 +180,7 @@ html {
     height: max-content;
     padding: 8rem 1.5rem 3rem;
     display: flex;
-    row-gap: 3rem;
+    row-gap: 1rem;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
@@ -201,7 +201,7 @@ html {
 
 .home .homeContent .textDiv .homeTitle {
     position: relative;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
 }
 
 .home .homeContent .cardDiv {
@@ -271,19 +271,6 @@ html {
 }
 
 .home .homeContent .cardDiv .searchOptions {
-    /* Adjust or remove absolute positioning */
-    /* position: absolute; */
-    /* Consider removing or adjusting these lines */
-    /* bottom: -0.7rem; */
-    /* left: 50%; */
-    /* transform: translate(-50%); */
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 1rem;
-    border-radius: 3rem;
-    background: var(--gradientColor);
-    cursor: pointer; */
     position: absolute;
     background: var(--gradientColor);
     width: max-content;
@@ -297,21 +284,7 @@ html {
     cursor: pointer;
 }
 
-/* .searchButton {
-    position: absolute;
-    background: var(--gradientColor);
-    width: max-content;
-    bottom: -1rem;
-    column-gap: .8rem;
-    padding: 5px 2rem;
-    border-radius: 3rem;
-    left: 50%;
-    transform: translate(-50%);
-    justify-content: center;
-    cursor: pointer;
-    border: 0px;
-    color: var(--whiteColor);
-} */
+
 
 .travelerinput .input {
     /* For example, limit its max-width if it's too wide */
@@ -333,6 +306,35 @@ html {
     color: var(--PrimaryColor);
 }
 
-/* .destinationInput {
-    width: 40%;
-} */
+.homeSearchButton-container {
+    padding: 0;
+}
+
+.homeSearchButton {
+    background: var(--gradientColor);
+    width: max-content;
+    column-gap: .8rem;
+    padding: 5px 2rem;
+    border-radius: 3rem;
+    width: 200px;
+    display: block;
+    margin-bottom: 1.5rem;
+    margin-top: -1rem;
+    cursor: pointer;
+    border: 0px;
+    color: var(--whiteColor);
+    vertical-align: center;
+    height: 3.5rem;
+    width: 11rem;
+    font-size: 23px;
+    border: 1px solid white;
+    transition: all 0.3s ease;
+    /* Add transition for smooth animation */
+}
+
+.homeSearchButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    /* Scale up the button by 10% */
+
+}

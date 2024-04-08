@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { GrLocation } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import './Search.css';
-import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table';
 
 
 const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCode, setOriginCode, setAdult, setReturnLocation, setCityOriginName, setCityDesName }) => {
@@ -110,6 +110,7 @@ const Search = ({setFlightData, setDepartDate, setReturnsDate, setDestinationCod
             console.log("data", responseData);
             setFlightData(responseData);
 
+            navigate('/bookingdetails', { numberofTravelers: adults });
         } catch (error){
             console.error("Error getting your data", error);
         }

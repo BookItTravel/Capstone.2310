@@ -126,17 +126,19 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    align-items: center;
+    justify-content: start;
 }
 .gender-container input {
     width: 17px;
+    margin-top: 14px;
     margin-left: 1.25rem;
-    padding: 0.25rem;
     border: 1px solid #000;
 }
 
 .gender-container label {
     margin-left: 1.25rem;
-    padding-bottom: 1.25rem;
+    margin-bottom: 10px;
 }
 
 .dob-container {
@@ -224,4 +226,8 @@
 .policy-container li {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
+}
+
+#checkout {
+    height: 800px;
 }

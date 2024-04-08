@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
+import { Provider } from 'react-redux'
+import store from './store'
 
 import Navbar from './Components/Navbar/Navbar'
 import LandingPage from './Components/LandingPage/LandingPage'
-import Footer from './Components/Footer/Footer'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
 import Booking from './Pages/Booking/Booking'
@@ -11,12 +12,14 @@ import BookingDetails from './Pages/BookingDetails/BookingDetails'
 import Confirmation from './Pages/Confirmation/Confirmation'
 import Profile from './Pages/Profile/Profile'
 import Master_Table from './Components/Master_Table/Master_Table'
-// import Flight_Results from './Components/Flight/Flight_Results'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Flights from './Components/Flight_Search/Flights'
 
-import Airport from './Components/Flight/airport'
+import Flights from './Components/Flight_Search/Flights';
+import Airport from './Components/Flight/airport';
+import './App.css';
 
+
+import CartPage from './Pages/Cart/CartPage'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,7 +32,8 @@ function App() {
 
 
   return (
-    <>
+    <Provider store={store}>
+      <div>
       <Navbar />
       <BrowserRouter>
         <Routes>
@@ -49,11 +53,11 @@ function App() {
          
           <Route path='/airport' element={<Airport />} />
           <Route path='/flights' element={<Flights />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
-
       </BrowserRouter>
-
-    </>
+</div>
+    </Provider>
   )
 }
 

@@ -15,4 +15,8 @@
 .hotel-table-info {
     text-align: center;
     padding: 13px 0rem;
+    color: var(--textColor);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
 }

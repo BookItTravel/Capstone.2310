@@ -85,21 +85,21 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
             onClick={() => handleRowClick(index, returns)} // Pass index or identifier of the row
         >
             <td className='table-info'>
-                <p className='table-text'>{returns.itineraries[0].segments[0].carrierCode}</p>
+                {returns.itineraries[0].segments[0].carrierCode}
             </td>
             <td className='table-info'>
-                <p className='table-text'>{returns.itineraries[0].segments[0].departure.at}</p>
-                <p className='table-text'>{returns.itineraries[0].segments[0].departure.iataCode}</p>
+                {returns.itineraries[0].segments[0].departure.at}<br />
+                {returns.itineraries[0].segments[0].departure.iataCode}
             </td>
             <td className='table-info'>
-                <p className='table-text'>{returns.itineraries[0].segments[0].arrival.at}</p>
-                <p className='table-text'>{returns.itineraries[0].segments[0].arrival.iataCode}</p>
+                {returns.itineraries[0].segments[0].arrival.at}<br />
+                {returns.itineraries[0].segments[0].arrival.iataCode}
             </td>
             <td className='table-info'>
-                <p className='table-text'>{returns.itineraries[0].duration}</p>
+                {returns.itineraries[0].duration}
             </td>
             <td className='table-info'>
-                <p className='table-text'>{returns.price.total}</p>
+                {returns.price.total}
             </td>
         </tr>
     ))}
