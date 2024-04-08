@@ -16,7 +16,7 @@ const amadeus = new Amadeus({
 const API = "api";
 
 //Flight 
-// no longer allowed 
+
 router.post(`/flight-search`,(req, res, next ) => {
   console.log("request", req.body)
    const { originLocationCode, destinationLocationCode, departureDate, adults } = req.body
@@ -34,55 +34,28 @@ router.post(`/flight-search`,(req, res, next ) => {
     });
 
 
-// New flight search
-// 404
-// router.post(`/flight-offers`, cache(300), (req, res, next ) => {
-
-//   const { originLocationCode,
-//     destinationLocationCode,
-//     departureDate,
-//     adults
-//    } = req.body
-//    // Find the cheapest flights
-//    amadeus.shopping.flightOffersSearch.get({
-//      originLocationCode,
-//      destinationLocationCode,
-//      departureDate,
-
-//      adults,
-
-//    }).then(function (response) {
-//      res.send(response.result);
-//    }).catch(function (response) {
-//        res.send(response);
-//    });
-//    });
-
- 
-
-
-    // Airports search
-  router.get(`/city-and-airport-search/:parameter`, cache(400), (req, res) => {
-        const parameter = req.params.parameter;
-        // Which cities or airports start with ’r'?
-        amadeus.referenceData.locations
-            .get({
-                keyword: parameter,
-                subType: Amadeus.location.any,
-            })
-            .then(function (response) {
-                res.send(response.result);
-            })
-            .catch(function (response) {
-                res.send(response);
-            });
-    });
+    // Airport Search  ..not used at this time potential for stretch goal
+    router.get(`/city-and-airport-search/:parameter`, cache(400), (req, res) => {
+      const parameter = req.params.parameter;
+      // Which cities or airports start with ’r'?
+      amadeus.referenceData.locations
+          .get({
+              keyword: parameter,
+              subType: Amadeus.location.any,
+          })
+          .then(function (response) {
+              res.send(response.result);
+          })
+          .catch(function (response) {
+              res.send(response);
+          });
+  });
    
   
 
   //HOTEL 
 
- // gettting location
+ // gettting location ..not used at this time potential for stretch goal
   router.get(`/search-location`, cache(400), async (req, res) => {
     try {
       const { keyword } = req.body;
@@ -182,7 +155,7 @@ router.post(`/${API}/hotels`, async (req, res) => {
 
 
 
-// POI
+// POI  ..not used at this time potential for stretch goal
 router.get(`/reference-data/locations/pois`, cache(400), async (req, res)=> {
  try {
   const { latitude, longitude } = req.body;

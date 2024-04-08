@@ -107,10 +107,10 @@ const Booking = () => {
                   <p>Duration: {convertedDuration}</p>
                   <p>Cabin: {flightDeparture.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
                   <p className="flight-name"> {cityOriginName.cityName}</p>
-                  <p>Seattle-Tacoma International Airport</p>
+                  <p>{flightDeparture.itineraries[0].segments[0].departure.iataCode}</p>
                   <p>Departure: {formattedDateTimeDestinationDepart} </p>
                   <p className="flight-name" >{cityDesName[0].cityName}</p>
-                  <p>John F. Kennedy International Airport</p>
+                  <p>{flightDeparture.itineraries[0].segments[0].arrival.iataCode}</p>
                   <p>Arrival: {formattedDateTimeDestinationArrival}</p>
                 </div>
 
@@ -123,12 +123,12 @@ const Booking = () => {
                   <p>Aircraft: {flightReturn.itineraries[0].segments[0].aircraft.code}</p>
                   <p>Duration: {convertedDuration}</p>
                   <p>Cabin: {flightReturn.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
-                  <p className="flight-name"> {cityOriginName.cityName}</p>
-                  <p>Seattle-Tacoma International Airport</p>
-                  <p>Departure: {formattedDateTimeReturnDepart} </p>
                   <p className="flight-name" >{cityDesName[0].cityName}</p>
-                  <p>John F. Kennedy International Airport</p>
+                  <p>{flightReturn.itineraries[0].segments[0].departure.iataCode}</p>
                   <p>Arrival: {formattedDateTimeReturnArrival}</p>
+                  <p className="flight-name"> {cityOriginName.cityName}</p>
+                  <p>{flightReturn.itineraries[0].segments[0].arrival.iataCode}</p>
+                  <p>Departure: {formattedDateTimeReturnDepart} </p>
                 </div>
               </div>
               <div className="button-container">
@@ -160,10 +160,10 @@ const Booking = () => {
                     <tr className="cost-table-row">
                       <td className="item-data">Flights</td>
                       <td className="cost-data">
-  {flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
-    ? `$${flightDeparture.travelerPricings[0].price.total}`
-    : `$${flightReturn.travelerPricings[0].price.total}`}
-</td>
+                       {flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
+                        ? `$${flightDeparture.travelerPricings[0].price.total}`
+                        : `$${flightReturn.travelerPricings[0].price.total}`}
+                    </td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Stay</td>
