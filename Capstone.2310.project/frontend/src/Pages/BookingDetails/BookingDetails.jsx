@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import "./BookingDetails.css";
 
 const BookingDetails = () => {
+const location = useLocation();
+const { adult } = location.state;
+
+console.log("adult booking Detail", adult)
+ 
 
   // State variables to hold form data
   const [formData, setFormData] = useState({
@@ -585,9 +590,11 @@ const BookingDetails = () => {
                   </div>
                 </div>
               ))}
+               {adult > 1 && (
               <div className='button-container'>
                 <button className="booking-button" onClick={handleAddTraveler}>Add Traveler</button>
               </div>
+               )}
               {/* Payment Information section */}
               <legend><h3 className='form-heading'>Payment Information</h3></legend>
               <div className='payment-container'>

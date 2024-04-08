@@ -57,6 +57,7 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
     console.log("return flightstate in hotelOffer ", flightReturn);
     console.log("originNameCity", cityOriginName);
     console.log("desNameCity", cityDesName);
+    console.log("adults", adult)
 
 
     return (
@@ -80,6 +81,7 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
                         originalCode={originalCode}
                         cityDesName={cityDesName}
                         cityOriginName={cityOriginName}
+                        adult={adult}
                     
                         />
                   

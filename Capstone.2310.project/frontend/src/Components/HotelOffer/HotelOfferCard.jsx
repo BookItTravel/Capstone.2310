@@ -4,14 +4,14 @@ import './HotelOfferCard.css';
 import Booking from '../../Pages/Booking/Booking'
 
 
-const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode, cityDesName, cityOriginName }) => {
+const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode, cityDesName, cityOriginName,  adult}) => {
     const [flightBookDeparture, setFlightBookDeparture ] = useState([]);
     const [flightBookReturn, setFlightBookReturn ] = useState([]);
     const [bookingVisible, setBookingVisible] = useState(false);
 
     const navigate = useNavigate();
     const handleBookButtonClick = () => {
-        navigate('/booking', { state: { flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName } });
+        navigate('/booking', { state: { flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName, adult } });
     }
 
 
@@ -27,6 +27,7 @@ const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode
      console.log("cardOffer originalCode", originCode);
      console.log("originNameCity Card", cityOriginName);
      console.log("desNameCity Card", cityDesName);
+     console.log("adults in hotelCard", adult);
 
  
     if (!hotelOffers || !hotelOffers.data || !Array.isArray(hotelOffers.data)) {
