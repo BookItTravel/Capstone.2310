@@ -8,6 +8,7 @@ import Booking from '../../Pages/Booking/Booking';
 import './Master_Table.css';
 
 const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
+    const [showDepartureTable, setShowDepartureTable] = useState(false);
     const [showReturnTable, setShowReturnTable] = useState(false);
     const [showHotelTable, setShowHotelTable] = useState(false);
     const [showHotelOffer, setShowHotelOffer] = useState(false);
@@ -23,8 +24,12 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
     const [selectedFlightDeparture, setSelectedFlightDeparture] = useState([]);
     const [selectedFlightReturn, setSelectedFlightReturn] = useState([]);
     const [isBookingClicked, setIsBookingClicked] = useState(false);
-    const [cityOriginName, setCityOriginName ] = useState('');
-    const [cityDesName, setCityDesName ] = useState('');
+    const [cityOriginName, setCityOriginName] = useState('');
+    const [cityDesName, setCityDesName] = useState('');
+
+    const handleShowDepartureTable = () => {
+        setShowDepartureTable(true);
+    };
 
     // Handler for showing Return Table
     const handleBookDeparture = () => {
@@ -53,13 +58,11 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
         setIsBookingClicked(true);
     };
 
-    console.log("masterclass info", selectedFlightDeparture);
-    console.log("masterclass Return info", selectedFlightReturn);
-
     return (
         <div className='masterTable-container'>
             <div className='search-container'>
                 <Search
+                    handleShowDepartureTable={handleShowDepartureTable} // Pass the function as a prop
                     setFlightData={setFlightData}
                     setAdult={setAdult}
                     setDepartDate={setDepartDate}
@@ -72,11 +75,11 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
                 />
             </div>
             <div className='secondDiv'>
-                <Departure_Table
+                {showDepartureTable && <Departure_Table
                     onBookClick={handleBookDeparture}
                     flightData={flightData}
                     setSelectedFlightDeparture={setSelectedFlightDeparture}
-                />
+                />}
                 {showReturnTable && <Return_Table
                     onBookClick={handleBookReturn}
                     adult={adult}
@@ -113,8 +116,6 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
                     cityOriginName={cityOriginName}
                 />
             }
-
-          
         </div>
     );
 };
