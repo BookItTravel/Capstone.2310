@@ -1,8 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import { useState } from 'react';
 import "./Booking.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Booking = () => {
+ 
+  
+  
   const location = useLocation();
   const {
     flightDeparture,
@@ -10,30 +14,28 @@ const Booking = () => {
     hotelOffers,
     cityDesName,
     cityOriginName,
+    adult,
+    departDate, 
+    returnsDate,
   } = location.state;
-
   console.log("booking prop departure", flightDeparture);
   console.log("booking prop return", flightReturn);
   console.log("Data hotel Offer Card in booking", hotelOffers);
   console.log("Data desName in booking", cityDesName);
   console.log("Data originName in booking", cityOriginName);
-
-  const navigate = useNavigate();
-
+  console.log("dates check hotel in Booking", departDate, returnsDate )
   
-  const cityCodeOrigin = cityOriginName?.[0]?.cityCode;
-  const cityCodeDestination = cityDesName?.[0]?.cityCode;
-  const fetchData = (value) => {
-    fetch (`http://localhost:3000/city-and-airport-search/${cityCodeOrigin}`)
-    .then((response) => response.json())
-    .then((json) => {
-     const result = json
-        console.log("airport destination result", result);
-
-    });
-  };
-  fetchData();
-
+const cityCodeOrigin = cityOriginName ? cityOriginName.cityName : null
+  const cityCodeDestination = cityDesName?.[0]?.cityName;
+  const hotelName = hotelOffers?.data[0]?.hotel.name
+  
+console.log("citName in Booking", cityCodeOrigin);
+//console.log("cityName in Booking", cityOriginname);
+console.log("hotelName in Booking", hotelName);
+  const navigate = useNavigate();
+  
+  
+  
     const flightTotal = flightDeparture.travelerPricings[0].price.total >= flightReturn.travelerPricings[0].price.total
     ? flightDeparture.travelerPricings[0].price.total
     : flightReturn.travelerPricings[0].price.total;
@@ -72,16 +74,13 @@ const Booking = () => {
     return `${date} ${time}`;
   };
 
-  const dateTimeString =
-    flightDeparture.itineraries[0].segments[0].departure.at;
-  const formattedDateTimeDepart = convertDateTime(dateTimeString);
+  const dateTimeString = flightDeparture.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeDestinationDepart = convertDateTime(dateTimeString);
 
-  const dateTimeStringArrivalDepart =
-    flightReturn.itineraries[0].segments[0].arrival.at;
-  const formattedDateTimeDepartArrival = convertDateTime(dateTimeString);
+  const dateTimeStringArrivalDepart = flightDeparture.itineraries[0].segments[0].arrival.at;
+  const formattedDateTimeDestinationArrival = convertDateTime(dateTimeStringArrivalDepart);
 
-  const dateTimeStringReturn =
-    flightReturn.itineraries[0].segments[0].departure.at;
+  const dateTimeStringReturn = flightReturn.itineraries[0].segments[0].departure.at;
   const formattedDateTimeReturn = convertDateTime(dateTimeString);
 
   const dateTimeStringReturnArrival = flightReturn.itineraries[0].segments[0].departure.at;
@@ -92,7 +91,7 @@ const Booking = () => {
 
 
   const handleBookButtonClick = () => {
-      navigate('/bookingdetails', { state: { totalAfterSavings, adult  } });
+      navigate('/bookingdetails', { state: { totalAfterSavings, adult, departDate, returnsDate,  cityCodeOrigin, cityCodeDestination, hotelName } });
   }
 
   return (

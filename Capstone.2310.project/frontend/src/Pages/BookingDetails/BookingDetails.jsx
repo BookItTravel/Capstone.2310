@@ -16,12 +16,15 @@ const FORM_DATA = {
   additionalTravelers: [],
   agreeToTerms: false,
 }
-
 const BookingDetails = () => {
   const location = useLocation();
   const {
-    totalAfterSavings, adult,
+    totalAfterSavings, adult, departDate, returnsDate, cityCodeDestination, hotelName, cityCodeOrigin,
   } = location.state;
+  
+  //const cityCodeOrigin = cityOriginName?.[0]?.cityName;
+  console.log("dates chekc HOtel",  departDate, returnsDate )
+  console.log("cityName in BookingD", cityCodeOrigin);
 
   const amount = totalAfterSavings.toFixed(2);
   // State variables to hold form data
@@ -165,23 +168,23 @@ const BookingDetails = () => {
             <div className="card-container">
               <div className="flight-summary-card">
                 <h3 className="card-heading">Flights</h3>
-                <p>Seattle to New York City</p>
-                <p>Departure Date: April 10, 2024</p>
-                <p>New York City to Seattle</p>
-                <p>Return Date Date: April 18, 2024</p>
+                <p>{cityCodeOrigin} to {cityCodeDestination}</p>
+                <p>Departure Date: {departDate}</p>
+                <p>{cityCodeDestination} to {cityCodeOrigin}</p>
+                <p>Return Date Date: {returnsDate}</p>
               </div>
               <div className="hotel-summary-card">
                 <h3 className="card-heading">Stay</h3>
-                <p>Aloft New York Brooklyn</p>
-                <p>Check In Date: April 11, 2024</p>
-                <p>Check Out Date: April 18, 2024</p>
+                <p>{hotelName}</p>
+                <p>Check In Date: {departDate}</p>
+                <p>Check Out Date: {returnsDate}</p> 
               </div>
             </div>
             <div className="cost-summary">
               <h3 className="card-heading">Cost</h3>
               <div className="cost-card">
                 <p className="cost-info">Total</p>
-                <p className="cost-info">$2,880</p>
+                <p className="cost-info">{totalAfterSavings}</p>
               </div>
             </div>
           </div>

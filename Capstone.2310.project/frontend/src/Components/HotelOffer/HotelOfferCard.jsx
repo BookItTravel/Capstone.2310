@@ -4,14 +4,13 @@ import './HotelOfferCard.css';
 import Booking from '../../Pages/Booking/Booking'
 
 
-const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode, cityDesName, cityOriginName,  adult}) => {
-    const [flightBookDeparture, setFlightBookDeparture ] = useState([]);
-    const [flightBookReturn, setFlightBookReturn ] = useState([]);
+const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode, cityDesName, cityOriginName,  adult,departDate, returnsDate}) => {
+
     const [bookingVisible, setBookingVisible] = useState(false);
 
     const navigate = useNavigate();
     const handleBookButtonClick = () => {
-        navigate('/booking', { state: { flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName, adult } });
+        navigate('/booking', { state: { flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName, adult, departDate, returnsDate } });
     }
 
 
@@ -19,16 +18,6 @@ const HotelOfferCard = ({ hotelOffers, flightDeparture, flightReturn, originCode
      setBookingVisible(true)
     }, [flightDeparture, flightReturn, hotelOffers, originCode, cityDesName, cityOriginName]);
     
-    console.log("Depart state in hotelCard", flightBookDeparture);
-    console.log("return state in hotelCard", flightBookReturn);
-     console.log("prop to hotelCard", flightDeparture);
-     console.log("prop to hotelCard", flightReturn);
-     console.log("hotel Offer Card data", hotelOffers);
-     console.log("cardOffer originalCode", originCode);
-     console.log("originNameCity Card", cityOriginName);
-     console.log("desNameCity Card", cityDesName);
-     console.log("adults in hotelCard", adult);
-
  
     if (!hotelOffers || !hotelOffers.data || !Array.isArray(hotelOffers.data)) {
         return null; 

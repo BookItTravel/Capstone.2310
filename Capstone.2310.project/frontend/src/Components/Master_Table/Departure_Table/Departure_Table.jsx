@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Departure_Table.css';
 
 const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedFlightDeparture }) => {
-    const [flight, setFlight] = useState([]);
+
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
   
@@ -17,28 +17,25 @@ const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedF
     };
 
 
-
     const handleChange = (value) => {
         setInput(value);
         fetchData(value);
     };
 
-    
     const handleRowClick = (index, flight) => {
         setSelectedRow(selectedRow === index ? null : index);
         setSelectedFlightDeparture(flight)
 
         onBookClick();
     };
-    console.log("this is flight Data", flightData);
+   
     const flightsOffer = flightData && flightData.data ? flightData.data.reduce((obj, flight) => {
         if (flight.itineraries) {
             return { ...flight.itineraries };
         }
     }, {}) : {};
  
-    console.log("departeuskdcb", flightsOffer)
-    console.log("this is selected flight" , flight)
+
     return (
         <div className='table-container'>
             <h2 className='table-header'>Departing Flights</h2>

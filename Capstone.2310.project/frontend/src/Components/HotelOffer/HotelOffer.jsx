@@ -4,11 +4,6 @@ import { useState,useEffect} from 'react'
 
 
 const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, selectedHotelId, selectedHotelName, selectedFlightDeparture, selectedFlightReturn, originCode, cityDesName, cityOriginName}) => {
-    const [hotelId, setHotelId] = useState('');
-    const [checkInDate, setCheckInDate] = useState('');
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [adults, setAdults] = useState('');
-    const [cityCode, setCityCode] = useState('');
     const [hotelOffers, setHotelOffers] = useState([]);
     const [ flightDeparture, setFlightDeparture] = useState([]);
     const [ flightReturn, setFlightReturn] = useState([]);
@@ -50,14 +45,6 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
     }
     hotelData();
      },[]);
-    console.log("original code", originCode);
-    console.log("departure in hotelOffer ", selectedFlightDeparture);
-    console.log("return in hotelOffer ", selectedFlightReturn);
-    console.log("departure flightstate in hotelOffer ", flightDeparture);
-    console.log("return flightstate in hotelOffer ", flightReturn);
-    console.log("originNameCity", cityOriginName);
-    console.log("desNameCity", cityDesName);
-    console.log("adults", adult)
 
 
     return (
@@ -82,6 +69,8 @@ const HotelOffer = ({ onClose, departDate, returnsDate, adult, destinationCode, 
                         cityDesName={cityDesName}
                         cityOriginName={cityOriginName}
                         adult={adult}
+                        departDate={departDate}
+                        returnsDate={returnsDate}
                     
                         />
                   

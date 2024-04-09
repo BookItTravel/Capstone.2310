@@ -24,7 +24,7 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
            departureDate: returnsDate,
            
         }
-        console.log("return params", params)
+    
         try {
         const response = await fetch(`http://localhost:3000/flight-search`,  {
             method: 'POST',
@@ -39,8 +39,6 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
            }
            const resData = await response.json();
            setReturnFlightData(resData.data || []);
-           console.log("data from return", resData);
-           
            
         } catch (error){
             console.error("Error getting your data", error);
@@ -54,14 +52,7 @@ const Return_Table = ({ onBookClick, adult, departDate, destinationCode, originC
         setSelectedFlightReturn(returns)
         onBookClick();
     };
-    console.log("this is return flight Data", returnFlightData);
-    // const flightsOffer = returnFlightData && returnFlightData.data ? returnFlightData.data.reduce((obj, returns) => {
-    //     if (returns.itineraries) {
-    //         return { ...flight.itineraries };
-    //     }
-    // }, {}) : {};
-    //console.log("Retrun offer", flightsOffer)
-    console.log("render check", returnFlightData.data)
+
     return (
         <>
            <div className='table-container'> 

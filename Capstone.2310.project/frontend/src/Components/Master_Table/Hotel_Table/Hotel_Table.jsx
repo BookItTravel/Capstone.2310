@@ -2,15 +2,10 @@ import { useState,useEffect } from 'react';
 import './Hotel_Table.css';
 
  const Hotel_Table = ({ onRowClick, destinationCode, departDate, returnsDate, originCode, setSelectedHotelId, setSelectedHotelName }) => {
-    const [hotel, setHotel] = useState([]);
-    const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
     const [hotelIds, setHotelIds] = useState([]);
-    const [checkInDate, setCheckInDate] = useState('');
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [adults, setAdults] = useState('');
     const [hotelName, setHotelName] = useState([]);
-    const [cityCode, setCityCode] = useState('');
+
     
         const handleRowClick = (index, hotelId, name) => {
             setSelectedRow(index); 
@@ -18,7 +13,7 @@ import './Hotel_Table.css';
             setSelectedHotelName(name)
             onRowClick();
         };
-    //  console.log("the hotel IDD ", hotelId)
+
 
     useEffect(() => {
         const fetchHotels = async () => {

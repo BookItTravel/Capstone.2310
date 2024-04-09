@@ -53,8 +53,6 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
         setIsBookingClicked(true);
     };
 
-    console.log("masterclass info", selectedFlightDeparture);
-    console.log("masterclass Return info", selectedFlightReturn);
 
     return (
         <div className='masterTable-container'>
