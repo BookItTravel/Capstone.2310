@@ -25,7 +25,7 @@
     justify-content: space-around;
     width: 100%;
     margin: 0 auto;
-    height: 40px;
+    height: 45px;
     padding: 0 0rem;
     background-color: var(--whiteColor);
     border-radius: 3rem;
@@ -54,16 +54,12 @@
 }
 
 .searchButton {
-    /* position: absolute; */
     background: var(--gradientColor);
     width: max-content;
-    /* bottom: 14.5rem; */
     column-gap: .8rem;
     padding: 5px 2rem;
     border-radius: 3rem;
-    /* left: 50%; */
     transform: translate(-50%);
-    /* justify-content: center; */
     cursor: pointer;
     border: 0px;
     color: var(--whiteColor);
