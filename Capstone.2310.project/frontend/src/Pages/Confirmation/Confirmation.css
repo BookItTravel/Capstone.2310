@@ -65,7 +65,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     background-color: rgba(240, 240, 246, 0.6);
-    padding: 5.45rem 0.75rem;
+    padding: 4.45rem 0.75rem;
 }
 
 .confirmation-code-heading, .confirmation-code {
@@ -84,7 +84,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
     background-color: rgba(240, 240, 246, 0.6);
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     text-align: center;
 }
 
@@ -102,4 +102,15 @@
     background-color: rgba(240, 240, 246, 0.6);
     padding: 1.25rem 0;
     text-align: center;
+}
+
+.confirmation-icon {
+    border-radius: 50%;
+    width: 8%;
+}
+
+.icon-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

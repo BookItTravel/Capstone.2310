@@ -26,34 +26,7 @@ function Footer() {
         </div>
       </div>
     </div>
-    // <section className="footer">
-    //   <div className="videoDiv"></div>
 
-    //   <div className="secContent container">
-    //     <div className="footerCard flex">
-    //       <div className="footerIntro flex">
-    //         <div className="logoDiv">
-    //           <a href="#" className="logo flex">
-    //             <img src={Logo} className="footer-icon" />
-    //           </a>
-    //         </div>
-
-    //         <div data-aos="fade-up" className="footerParagraph">
-    //           <p>
-    //             Inspiring journeys await with our travel application, your
-    //             trusted companion for seamless exploration. Start your next
-    //             adventure today and unlock a world of wonders at your
-    //             fingertips.
-    //           </p>
-    //         </div>
-    //       </div>
-
-    //       <div className="footerDiv">
-    //         <small>BEST TRAVEL WEBSITE THEME COPYRIGHTS RESERVED</small>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
   );
 }
 

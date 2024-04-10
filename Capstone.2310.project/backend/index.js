@@ -35,15 +35,15 @@ app.use((req, res, next) => {
 
 // Apply stripe checkout session for a cart checkout
 app.post('/create-checkout-session', async (req, res) => {
-  // const { cart } = req.body; use with all key words
+  const { amount } = req.body;
   const cart = [
     {
       price_data: {
         currency: 'usd',
-        unit_amount: 10000,
+        unit_amount: amount,
         product_data: {
-          name: 'test',
-          description: 'test description',
+          name: 'Package Total',
+          description: 'Total package value after savings',
           // images:
         },
       },

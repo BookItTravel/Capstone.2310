@@ -54,11 +54,10 @@
 .table-info {
     text-align: center;
     padding: 0.25rem 0rem;
-}
-
-.table-text {
     color: var(--textColor);
     font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
 }
 
 .table-body {

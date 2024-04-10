@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Departure_Table.css';
 
 const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedFlightDeparture }) => {
-    const [flight, setFlight] = useState([]);
+
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
 
@@ -26,15 +26,13 @@ const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedF
 
         onBookClick();
     };
-    console.log("this is flight Data", flightData);
+   
     const flightsOffer = flightData && flightData.data ? flightData.data.reduce((obj, flight) => {
         if (flight.itineraries) {
             return { ...flight.itineraries };
         }
     }, {}) : {};
 
-    console.log("departeuskdcb", flightsOffer)
-    console.log("this is selected flight", flight)
     return (
         <div className='table-container'>
             <h2 className='table-header'>Departing Flights</h2>
@@ -57,21 +55,22 @@ const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedF
                                 onClick={() => handleRowClick(index, flight)}
                             >
                                 <td className='table-info'>
-                                    <p className='table-text'>{flight.itineraries[0].segments[0].carrierCode}</p>
+                                    
+                                    {flight.itineraries[0].segments[0].carrierCode}
                                 </td>
                                 <td className='table-info'>
-                                    <p className='table-text'>{flight.itineraries[0].segments[0].departure.at}</p>
-                                    <p className='table-text'>{flight.itineraries[0].segments[0].departure.iataCode}</p>
+                                    {flight.itineraries[0].segments[0].departure.at}<br />
+                                    {flight.itineraries[0].segments[0].departure.iataCode}
                                 </td>
                                 <td className='table-info'>
-                                    <p className='table-text'>{flight.itineraries[0].segments[0].arrival.at}</p>
-                                    <p className='table-text'>{flight.itineraries[0].segments[0].arrival.iataCode}</p>
+                                    {flight.itineraries[0].segments[0].arrival.at}<br />
+                                    {flight.itineraries[0].segments[0].arrival.iataCode}
                                 </td>
                                 <td className='table-info'>
-                                    <p className='table-text'>{flight.itineraries[0].duration}</p>
+                                    {flight.itineraries[0].duration}
                                 </td>
                                 <td className='table-info'>
-                                    <p className='table-text'>{flight.price.total}</p>
+                                    {flight.price.total}
                                 </td>
                             </tr>
                         ))}

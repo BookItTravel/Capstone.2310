@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react';
 import './Hotel_Table.css';
 
-const Hotel_Table = ({ onRowClick, destinationCode, departDate, returnsDate, originCode, setSelectedHotelId, setSelectedHotelName }) => {
-    const [hotel, setHotel] = useState([]);
-    const [input, setInput] = useState('');
+ const Hotel_Table = ({ onRowClick, destinationCode, departDate, returnsDate, originCode, setSelectedHotelId, setSelectedHotelName }) => {
     const [selectedRow, setSelectedRow] = useState(null);
     const [hotelIds, setHotelIds] = useState([]);
-    const [checkInDate, setCheckInDate] = useState('');
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [adults, setAdults] = useState('');
     const [hotelName, setHotelName] = useState([]);
-    const [cityCode, setCityCode] = useState('');
-
+ 
     const handleRowClick = (index, hotelId, name) => {
         setSelectedRow(index);
         setSelectedHotelId(hotelId);
@@ -72,16 +66,16 @@ const Hotel_Table = ({ onRowClick, destinationCode, departDate, returnsDate, ori
                                     onClick={() => handleRowClick(index, hotelId, hotelName[index])}
                                 >
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{hotelName[index]}</p>
+                                        {hotelName[index]}
                                     </td>
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{destinationCode}</p>
+                                        {destinationCode}
                                     </td>
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{departDate}</p>
+                                        {departDate}
                                     </td>
                                     <td className='hotel-table-info'>
-                                        <p className='table-text'>{returnsDate}</p>
+                                        {returnsDate}
                                     </td>
                                 </tr>
                             ))}

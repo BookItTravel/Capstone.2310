@@ -1,25 +1,39 @@
 import { useEffect, useState, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import "./BookingDetails.css";
 
+const FORM_DATA = {
+  primaryTraveler: {
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    birthMonth: "",
+    birthDay: "",
+    birthYear: "",
+  },
+  additionalTravelers: [],
+  agreeToTerms: false,
+}
 const BookingDetails = () => {
+  const location = useLocation();
+  const {
+    totalAfterSavings, adult, departDate, returnsDate, cityCodeDestination, hotelName, cityCodeOrigin,
+  } = location.state;
   
+  //const cityCodeOrigin = cityOriginName?.[0]?.cityName;
+  console.log("dates chekc HOtel",  departDate, returnsDate )
+  console.log("cityName in BookingD", cityCodeOrigin);
+
+  const amount = totalAfterSavings.toFixed(2);
   // State variables to hold form data
-  const [formData, setFormData] = useState({
-    primaryTraveler: {
-      firstName: "",
-      middleName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-      gender: "",
-      birthMonth: "",
-      birthDay: "",
-      birthYear: "",
-    },
-    additionalTravelers: [],
-    agreeToTerms: false,
-  });
+  const [formData, setFormData] = useState(FORM_DATA);
   const [formValid, setFormValid] = useState(false);
+  const [numberOfEnteredTravelers, setNumberOfEnteredTravelers] = useState(1);
+
+  // for checking form data object
+  console.log(FORM_DATA);
 
   // Handler for form input changes
   const handleInputChange = (e, travelerIndex = null) => {
@@ -42,6 +56,7 @@ const BookingDetails = () => {
         },
       }));
     }
+    console.log(formData.additionalTravelers.gender);
   };
   
   // Handler for checkbox change
@@ -74,6 +89,8 @@ const BookingDetails = () => {
 
   // Handler for adding additional traveler
   const handleAddTraveler = () => {
+    // Increment the number of entered travelers
+    setNumberOfEnteredTravelers(prevCount => prevCount + 1);
     setFormData((prevState) => ({
       ...prevState,
       additionalTravelers: [
@@ -82,7 +99,6 @@ const BookingDetails = () => {
           firstName: "",
           middleName: "",
           lastName: "",
-          gender: "",
           birthMonth: "",
           birthDay: "",
           birthYear: "",
@@ -97,7 +113,6 @@ const BookingDetails = () => {
       formData.primaryTraveler.firstName,
       formData.primaryTraveler.middleName,
       formData.primaryTraveler.lastName,
-      formData.primaryTraveler.gender,
       formData.primaryTraveler.birthMonth,
       formData.primaryTraveler.birthDay,
       formData.primaryTraveler.birthYear,
@@ -120,6 +135,8 @@ const BookingDetails = () => {
       // Create a Checkout Session
       const res = await fetch("http://localhost:3000/create-checkout-session", {
         method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({amount: amount * 100})
       });
 
       if (!res.ok) {
@@ -151,23 +168,23 @@ const BookingDetails = () => {
             <div className="card-container">
               <div className="flight-summary-card">
                 <h3 className="card-heading">Flights</h3>
-                <p>Seattle to New York City</p>
-                <p>Departure Date: April 10, 2024</p>
-                <p>New York City to Seattle</p>
-                <p>Return Date Date: April 18, 2024</p>
+                <p>{cityCodeOrigin} to {cityCodeDestination}</p>
+                <p>Departure Date: {departDate}</p>
+                <p>{cityCodeDestination} to {cityCodeOrigin}</p>
+                <p>Return Date Date: {returnsDate}</p>
               </div>
               <div className="hotel-summary-card">
                 <h3 className="card-heading">Stay</h3>
-                <p>Aloft New York Brooklyn</p>
-                <p>Check In Date: April 11, 2024</p>
-                <p>Check Out Date: April 18, 2024</p>
+                <p>{hotelName}</p>
+                <p>Check In Date: {departDate}</p>
+                <p>Check Out Date: {returnsDate}</p> 
               </div>
             </div>
             <div className="cost-summary">
               <h3 className="card-heading">Cost</h3>
               <div className="cost-card">
                 <p className="cost-info">Total</p>
-                <p className="cost-info">$2,880</p>
+                <p className="cost-info">{totalAfterSavings}</p>
               </div>
             </div>
           </div>
@@ -204,29 +221,6 @@ const BookingDetails = () => {
                   onChange={(e) => handleInputChange(e)}
                   required
                 />
-              </div>
-              <label className="gender-heading">Gender</label>
-              <div className="gender-container">
-                <input
-                  className="gender"
-                  type="radio"
-                  id="male"
-                  name="gender"
-                  value="male"
-                  checked={formData.primaryTraveler.gender === "male"}
-                  onChange={(e) => handleInputChange(e)}
-                />
-                <label htmlFor="male">Male</label>
-                <input
-                  className="gender"
-                  type="radio"
-                  id="female"
-                  name="gender"
-                  value="female"
-                  checked={formData.primaryTraveler.gender === "female"}
-                  onChange={(e) => handleInputChange(e)}
-                />
-                <label htmlFor="female">Female</label>
               </div>
               <label className="dob-heading">Date of Birth</label>
               <div className="dob-container">
@@ -283,7 +277,7 @@ const BookingDetails = () => {
                 </select>
               </div>
               {/* Additional traveler form */}
-              {formData.additionalTravelers.map((additionalTraveler, index) => (
+              {formData?.additionalTravelers?.map((additionalTraveler, index) => (
                 <div key={index} className="additional-traveler-form">
                   <legend>
                     <h3 className="form-heading">
@@ -299,7 +293,7 @@ const BookingDetails = () => {
                       type="text"
                       id={`additionalFirstName-${index}`}
                       name={`additionalFirstName-${index}`}
-                      value={additionalTraveler.firstName}
+                      value={formData.additionalTravelers.firstName}
                       onChange={(e) => handleInputChange(e)}
                       required
                     />
@@ -311,7 +305,7 @@ const BookingDetails = () => {
                       type="text"
                       id={`additionalMiddleName-${index}`}
                       name={`additionalMiddleName-${index}`}
-                      value={additionalTraveler.middleName}
+                      value={formData.additionalTravelers.middleName}
                       onChange={(e) => handleInputChange(e)}
                     />
                     <label htmlFor={`additionalLastName-${index}`}>
@@ -322,41 +316,16 @@ const BookingDetails = () => {
                       type="text"
                       id={`additionalLastName-${index}`}
                       name={`additionalLastName-${index}`}
-                      value={additionalTraveler.lastName}
+                      value={formData.additionalTravelers.lastName}
                       onChange={(e) => handleInputChange(e)}
                       required
                     />
                   </div>
-                  {/* Gender radio buttons */}
-                  <label className="gender-heading">Gender</label>
-                  <div className="gender-container">
-                    <input
-                      className="gender"
-                      type="radio"
-                      id={`additionalMale-${index}`}
-                      name={`additionalGender-${index}`}
-                      value={additionalTraveler.male}
-                      checked={additionalTraveler.gender === "male"}
-                      onChange={(e) => handleInputChange(e)}
-                    />
-                    <label htmlFor={`additionalFemale-${index}`}>Male</label>
-                    <input
-                      className="gender"
-                      type="radio"
-                      id={`additionalfemale-${index}`}
-                      name={`additionalGender-${index}`}
-                      value={additionalTraveler.female}
-                      checked={additionalTraveler.gender === "female"}
-                      onChange={(e) => handleInputChange(e)}
-                    />
-                    <label htmlFor="female">Female</label>
-                  </div>
-                  {/* Date of birth selects */}
                   <div className="dob-container">
                     <select
                       className="dob"
                       name="birthMonth"
-                      value={additionalTraveler.birthMonth}
+                      value={formData.additionalTravelers.birthMonth}
                       onChange={(e) => handleInputChange(e)}
                       required
                     >
@@ -373,7 +342,7 @@ const BookingDetails = () => {
                     <select
                       className="dob"
                       name="birthDay"
-                      value={additionalTraveler.birthDay}
+                      value={formData.additionalTravelers.birthDay}
                       onChange={(e) => handleInputChange(e)}
                       required
                     >
@@ -391,7 +360,7 @@ const BookingDetails = () => {
                     <select
                       className="dob"
                       name="birthYear"
-                      value={additionalTraveler.birthYear}
+                      value={formData.additionalTravelers.birthYear}
                       onChange={(e) => handleInputChange(e)}
                       required
                     >
@@ -408,11 +377,13 @@ const BookingDetails = () => {
                   </div>
                 </div>
               ))}
+                  {adult > 1 && (
               <div className="button-container">
                 <button className="booking-button" onClick={handleAddTraveler}>
                   Add Traveler
                 </button>
               </div>
+                  )}
               <legend>
                 <h3 className="form-heading">Terms and Conditions Agreement</h3>
               </legend>

@@ -11,7 +11,6 @@ const seed = async () => {
             DROP TABLE IF EXISTS traveler;
             DROP TABLE IF EXISTS users;
         `);
-    console.log('1');
     // Recreate tables
     await client.query(`
       CREATE TABLE users (
