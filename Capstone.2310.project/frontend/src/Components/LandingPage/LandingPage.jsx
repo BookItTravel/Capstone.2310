@@ -6,7 +6,7 @@ import { AiFillYoutube } from 'react-icons/ai'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FaTripadvisor } from 'react-icons/fa'
 import { FiChevronRight } from 'react-icons/fi'
-import { MdOutlineTravelExplore } from 'react-icons/md'
+import Logo from '../../assets/BookItLogo.png';
 import './LandingPage.css'
 
 const LandingPage = () => {
@@ -35,8 +35,7 @@ const LandingPage = () => {
                         <div className="footerIntro flex">
                             <div className="logoDiv">
                                 <a href="#" className='logo flex'>
-                                    <MdOutlineTravelExplore className="icon" />
-                                    Book It.
+                                    <img src={Logo} className="footer-icon" />
                                 </a>
                             </div>
 
