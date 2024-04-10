@@ -93,7 +93,12 @@ const Login = () => {
                 required
                 className="loginInput"
               />
-              <button className="login-button">Sign In</button>
+              <Link>
+                <button type="submit" className="login-button">Sign In</button>
+              </Link>
+              <Link to="/master_table">
+                <button className="guest-button">Book as Guest</button>
+              </Link>
             </form>
             <p>
               Need an Account?

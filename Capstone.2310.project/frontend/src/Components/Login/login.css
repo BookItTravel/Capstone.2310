@@ -71,6 +71,21 @@ input {
     font-weight: bolder;
     text-transform: uppercase;
     margin-bottom: 0.3rem;
+    margin-left: 15rem;
+}
+
+.guest-button {
+    padding: .7rem 1.5rem;
+    background: var(--PrimaryColor);
+    border: none;
+    outline: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    color: var(--whiteColor);
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    margin-left: 18px;
 }
 
 button:disabled {

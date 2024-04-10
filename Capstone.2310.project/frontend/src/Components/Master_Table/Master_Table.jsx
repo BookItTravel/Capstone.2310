@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Departure_Table from '../Master_Table/Departure_Table/Departure_Table';
 import Return_Table from '../Master_Table/Return_Table/Return_Table';
 import Hotel_Table from '../Master_Table/Hotel_Table/Hotel_Table';
 import Search from '../../Components/Search/Search';
 import HotelOffer from '../HotelOffer/HotelOffer';
-import Booking from '../../Pages/Booking/Booking';
 import './Master_Table.css';
 
 const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
+    const [showDepartureTable, setShowDepartureTable] = useState(false);
     const [showReturnTable, setShowReturnTable] = useState(false);
     const [showHotelTable, setShowHotelTable] = useState(false);
     const [showHotelOffer, setShowHotelOffer] = useState(false);
@@ -26,6 +26,12 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
     const [cityOriginName, setCityOriginName ] = useState('');
     const [cityDesName, setCityDesName ] = useState('');
 
+    
+    // Hnadler for showing Departure Table
+    const handleShowDepartureTable = () => {
+        setShowDepartureTable(true);
+    };
+    
     // Handler for showing Return Table
     const handleBookDeparture = () => {
         setShowReturnTable(true);
@@ -58,6 +64,7 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
         <div className='masterTable-container'>
             <div className='search-container'>
                 <Search
+                    handleShowDepartureTable={handleShowDepartureTable}
                     setFlightData={setFlightData}
                     setAdult={setAdult}
                     setDepartDate={setDepartDate}
@@ -70,11 +77,11 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
                 />
             </div>
             <div className='secondDiv'>
-                <Departure_Table
+                {showDepartureTable && <Departure_Table
                     onBookClick={handleBookDeparture}
                     flightData={flightData}
                     setSelectedFlightDeparture={setSelectedFlightDeparture}
-                />
+                />}
                 {showReturnTable && <Return_Table
                     onBookClick={handleBookReturn}
                     adult={adult}

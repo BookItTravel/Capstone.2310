@@ -24,7 +24,7 @@ function Home() {
           </h1>
         </div>
         <div data-aos="fade-up" className="homeSearchButton-container">
-          <Link to="/master_table">
+          <Link to="/login">
             <button type="submit" className="homeSearchButton">
               Let's Go!!
             </button>
