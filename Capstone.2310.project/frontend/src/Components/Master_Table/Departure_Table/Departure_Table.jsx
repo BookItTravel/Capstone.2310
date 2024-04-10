@@ -5,7 +5,6 @@ const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedF
 
     const [input, setInput] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
-  
 
     const fetchData = (value) => {
         fetch(`http://localhost:3000/city-and-airport-search/${input}`)
@@ -15,7 +14,6 @@ const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedF
                 console.log(result);
             });
     };
-
 
     const handleChange = (value) => {
         setInput(value);
@@ -34,7 +32,6 @@ const Departure_Table = ({ onBookClick, flightData, onFlightSelect, setSelectedF
             return { ...flight.itineraries };
         }
     }, {}) : {};
- 
 
     return (
         <div className='table-container'>

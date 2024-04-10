@@ -34,15 +34,15 @@ const Login = () => {
 
 
       // Check if the response is successful
-      
-        const { token } = response.data;
 
-        setAuth({ user, pwd, accessToken: token });
-        setUser("");
-        setPwd("");
-        setSuccess(true);
-        navigate(from, { replace: true });
-      
+      const { token } = response.data;
+
+      setAuth({ user, pwd, accessToken: token });
+      setUser("");
+      setPwd("");
+      setSuccess(true);
+      navigate(from, { replace: true });
+
     } catch (err) {
       console.error(err);
       setErrMsg("Login Failed");
