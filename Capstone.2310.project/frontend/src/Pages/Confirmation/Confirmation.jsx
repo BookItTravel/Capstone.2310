@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
+import Logo from '../../assets/BookItLogo.png';
 import './Confirmation.css';
 
 const Confirmation = () => {
@@ -49,20 +50,14 @@ const Confirmation = () => {
                 </div>
                 <div className='custom-container-container'>
                     <div className="booking-confirmation-summary">
-                        <h2 className="summary-heading">Trip Summary</h2>
+                        <h2 className="summary-heading">Congratulations!</h2>
                         <div className="card-container">
                             <div className="flight-summary-card">
-                                <h3 className="card-heading">Flights</h3>
-                                <p>Seattle to New York City</p>
-                                <p>Departure Date: April 10, 2024</p>
-                                <p>New York City to Seattle</p>
-                                <p>Return Date Date: April 18, 2024</p>
+                                <h3 className="card-heading">Thank You For Booking!</h3>
+                                <p>Sit back and enjoy your vacation!</p>
                             </div>
-                            <div className="hotel-summary-card">
-                                <h3 className="card-heading">Stay</h3>
-                                <p>Aloft New York Brooklyn</p>
-                                <p>Check In Date: April 11, 2024</p>
-                                <p>Check Out Date: April 18, 2024</p>
+                            <div className="icon-card">
+                                <img src={Logo} className='confirmation-icon' />
                             </div>
                         </div>
                     </div>
