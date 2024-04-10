@@ -9,6 +9,7 @@ import { TbApps } from "react-icons/tb";
 import "aos/dist/aos.css";
 
 function Home() {
+
   return (
     <section className="home">
       <div className="overlay"></div>

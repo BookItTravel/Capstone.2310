@@ -23,42 +23,34 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
     const [selectedFlightDeparture, setSelectedFlightDeparture] = useState([]);
     const [selectedFlightReturn, setSelectedFlightReturn] = useState([]);
     const [isBookingClicked, setIsBookingClicked] = useState(false);
-    const [cityOriginName, setCityOriginName ] = useState('');
-    const [cityDesName, setCityDesName ] = useState('');
+    const [cityOriginName, setCityOriginName] = useState('');
+    const [cityDesName, setCityDesName] = useState('');
 
-    
-    // Hnadler for showing Departure Table
     const handleShowDepartureTable = () => {
         setShowDepartureTable(true);
     };
-    
-    // Handler for showing Return Table
+
     const handleBookDeparture = () => {
         setShowReturnTable(true);
         setFlightDataDeparture(selectedFlightDeparture);
     };
 
-    // Handler for showing Hotel Table
     const handleBookReturn = () => {
         setShowHotelTable(true);
         setFlightDataReturn(selectedFlightReturn)
     };
 
-    // Handler for showing Hotel Offer
     const handleShowHotelOffer = () => {
         setShowHotelOffer(true);
     };
 
-    // Handler for closing Hotel Offer
     const handleCloseHotelOffer = () => {
         setShowHotelOffer(false);
     };
 
-    // Handler for booking button click in HotelOfferCard
     const handleBookHotelOffer = () => {
         setIsBookingClicked(true);
     };
-
 
     return (
         <div className='masterTable-container'>
@@ -118,8 +110,6 @@ const Master_Table = ({ setFlightDataDeparture, setFlightDataReturn }) => {
                     cityOriginName={cityOriginName}
                 />
             }
-
-          
         </div>
     );
 };

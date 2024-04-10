@@ -25,7 +25,7 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border: 2px solid var(--blackColor);
-    
+
 }
 
 .table-header {
@@ -41,11 +41,11 @@
 
 .table-heading {
     border-bottom: 2px solid var(--blackColor);
-    padding: 0.25rem 0rem;    
+    padding: 0.25rem 0rem;
 }
 
 .selected {
-    background-color: rgba(225,225,235, 1);
+    background-color: rgba(225, 225, 235, 1);
     border-bottom: 2px solid var(--blackColor);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -66,6 +66,6 @@
 }
 
 .table-wrapper {
-    height: 300px; /* Adjust the height as needed */
+    height: 300px;
     overflow-y: auto;
 }
