@@ -37,14 +37,12 @@
     margin: auto;
     row-gap: 2rem;
     z-index: 100;
-    background-color: rgb(148, 193, 227);
 }
 
 .footer .secContent .contactDiv {
     justify-content: space-between;
     flex-direction: column;
     gap: 1rem;
-    background-color: rgb(148, 193, 227);
 }
 
 .footer .secContent .contactDiv .text small {
@@ -64,7 +62,6 @@
     width: 100%;
     gap: 1rem;
     flex-direction: column;
-    background-color: rgb(148, 193, 227);
 }
 
 .footer .secContent .contactDiv .inputDiv input {
@@ -73,8 +70,8 @@
     border-radius: 3rem;
     border: 1px solid var(--whiteColor);
     outline: none;
-    background: white;
-    color: var(--PrimaryColor);
+    background-color: rgb(140, 209, 233);
+    color: var(--blackColor);
 }
 
 .footer .secContent .contactDiv .inputDiv input::placeholder {

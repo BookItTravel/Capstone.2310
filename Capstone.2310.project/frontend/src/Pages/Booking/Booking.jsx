@@ -132,10 +132,10 @@ console.log("hotelName in Booking", hotelName);
                   <p>Cabin: {flightReturn.travelerPricings[0].fareDetailsBySegment[0].cabin}</p>
                   <p className="flight-name" >{cityDesName[0].cityName}</p>
                   <p>{flightReturn.itineraries[0].segments[0].departure.iataCode}</p>
-                  <p>Arrival: {formattedDateTimeReturnArrival}</p>
+                  <p>Departure: {formattedDateTimeReturnDepart}</p>
                   <p className="flight-name"> {cityOriginName.cityName}</p>
                   <p>{flightReturn.itineraries[0].segments[0].arrival.iataCode}</p>
-                  <p>Departure: {formattedDateTimeReturnDepart} </p>
+                  <p>Arrival: {formattedDateTimeReturnArrival} </p>
                 </div>
               </div>
               <div className="button-container">

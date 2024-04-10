@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import { Provider } from 'react-redux'
 import store from './store'
-import React, { useState } from 'react';
 import Navbar from './Components/Navbar/Navbar'
 import LandingPage from './Components/LandingPage/LandingPage'
 import Login from './Components/Login/Login'
