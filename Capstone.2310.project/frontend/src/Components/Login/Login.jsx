@@ -88,12 +88,10 @@ const Login = () => {
                 value={pwd}
                 required
                 className="loginInput"
-              />
-              <Link>
-                <button type="submit" className="login-button">
-                  Sign In
-                </button>
-              </Link>
+              />              
+              <button type="submit" className="login-button">
+                Sign In
+              </button>
               <Link to="/master_table">
                 <button className="guest-button">Book as Guest</button>
               </Link>
