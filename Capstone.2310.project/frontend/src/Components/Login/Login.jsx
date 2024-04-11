@@ -32,9 +32,6 @@ const Login = () => {
     try {
       const response = await login(user, pwd);
 
-
-      // Check if the response is successful
-
       const { token } = response.data;
 
       setAuth({ user, pwd, accessToken: token });
@@ -42,7 +39,6 @@ const Login = () => {
       setPwd("");
       setSuccess(true);
       navigate(from, { replace: true });
-
     } catch (err) {
       console.error(err);
       setErrMsg("Login Failed");
@@ -94,7 +90,9 @@ const Login = () => {
                 className="loginInput"
               />
               <Link>
-                <button type="submit" className="login-button">Sign In</button>
+                <button type="submit" className="login-button">
+                  Sign In
+                </button>
               </Link>
               <Link to="/master_table">
                 <button className="guest-button">Book as Guest</button>

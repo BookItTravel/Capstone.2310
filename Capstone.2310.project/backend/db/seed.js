@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const client = require('./index');
 
 const seed = async () => {

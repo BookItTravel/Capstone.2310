@@ -7,7 +7,12 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 const router = express.Router();
 const {
-  addUser, deleteUser, updateUser, getAllUsers, getUserById, getUserByUsername,
+  addUser,
+  deleteUser,
+  updateUser,
+  getAllUsers,
+  getUserById,
+  getUserByUsername,
 } = require('../db/db_methods');
 
 // Middleware function to check authorization
@@ -107,7 +112,11 @@ router.post('/login', async (req, res, next) => {
     if (!user || password !== user.password) {
       return res.status(401).json({ message: 'Invalid username or password' });
     }
-    const token = jwt.sign({ user_id: user.user_id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign(
+      { user_id: user.user_id, username: user.username },
+      JWT_SECRET,
+      { expiresIn: '1h' },
+    );
     res.json({ message: 'Login Successful', token });
   } catch (error) {
     next(error);
@@ -123,7 +132,9 @@ router.post('/register', async (req, res, next) => {
       return res.status(401).json({ message: 'Username already exists' });
     }
     const newUser = await addUser({ username, password, email });
-    res.status(201).json({ message: 'User registered successfully', user: newUser });
+    res
+      .status(201)
+      .json({ message: 'User registered successfully', user: newUser });
   } catch (error) {
     next(error);
   }

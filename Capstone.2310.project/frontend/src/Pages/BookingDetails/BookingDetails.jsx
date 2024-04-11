@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import "./BookingDetails.css";
@@ -15,15 +17,21 @@ const FORM_DATA = {
   },
   additionalTravelers: [],
   agreeToTerms: false,
-}
+};
 const BookingDetails = () => {
   const location = useLocation();
   const {
-    totalAfterSavings, adult, departDate, returnsDate, cityCodeDestination, hotelName, cityCodeOrigin,
+    totalAfterSavings,
+    adult,
+    departDate,
+    returnsDate,
+    cityCodeDestination,
+    hotelName,
+    cityCodeOrigin,
   } = location.state;
-  
+
   //const cityCodeOrigin = cityOriginName?.[0]?.cityName;
-  console.log("dates chekc HOtel",  departDate, returnsDate )
+  console.log("dates chekc HOtel", departDate, returnsDate);
   console.log("cityName in BookingD", cityCodeOrigin);
 
   const amount = totalAfterSavings.toFixed(2);
@@ -42,8 +50,9 @@ const BookingDetails = () => {
       // Additional traveler
       setFormData((prevState) => ({
         ...prevState,
-        additionalTravelers: prevState.additionalTravelers.map((traveler, index) =>
-          index === travelerIndex ? { ...traveler, [name]: value } : traveler
+        additionalTravelers: prevState.additionalTravelers.map(
+          (traveler, index) =>
+            index === travelerIndex ? { ...traveler, [name]: value } : traveler
         ),
       }));
     } else {
@@ -58,7 +67,7 @@ const BookingDetails = () => {
     }
     console.log(formData.additionalTravelers.gender);
   };
-  
+
   // Handler for checkbox change
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
@@ -71,7 +80,7 @@ const BookingDetails = () => {
   // Handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     console.log(formData);
 
     if (checkFormValidity()) {
@@ -90,7 +99,7 @@ const BookingDetails = () => {
   // Handler for adding additional traveler
   const handleAddTraveler = () => {
     // Increment the number of entered travelers
-    setNumberOfEnteredTravelers(prevCount => prevCount + 1);
+    setNumberOfEnteredTravelers((prevCount) => prevCount + 1);
     setFormData((prevState) => ({
       ...prevState,
       additionalTravelers: [
@@ -121,10 +130,10 @@ const BookingDetails = () => {
 
     return inputs.every((input) => {
       // Check if input is a string before calling trim()
-      if (typeof input === 'string') {
-        return input.trim() !== '';
+      if (typeof input === "string") {
+        return input.trim() !== "";
       } else {
-        return input !== '';
+        return input !== "";
       }
     });
   };
@@ -135,8 +144,8 @@ const BookingDetails = () => {
       // Create a Checkout Session
       const res = await fetch("http://localhost:3000/create-checkout-session", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({amount: amount * 100})
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: amount * 100 }),
       });
 
       if (!res.ok) {
@@ -168,23 +177,27 @@ const BookingDetails = () => {
             <div className="card-container">
               <div className="flight-summary-card">
                 <h3 className="card-heading">Flights</h3>
-                <p>{cityCodeOrigin} to {cityCodeDestination}</p>
+                <p>
+                  {cityCodeOrigin} to {cityCodeDestination}
+                </p>
                 <p>Departure Date: {departDate}</p>
-                <p>{cityCodeDestination} to {cityCodeOrigin}</p>
+                <p>
+                  {cityCodeDestination} to {cityCodeOrigin}
+                </p>
                 <p>Return Date Date: {returnsDate}</p>
               </div>
               <div className="hotel-summary-card">
                 <h3 className="card-heading">Stay</h3>
                 <p>{hotelName}</p>
                 <p>Check In Date: {departDate}</p>
-                <p>Check Out Date: {returnsDate}</p> 
+                <p>Check Out Date: {returnsDate}</p>
               </div>
             </div>
             <div className="cost-summary">
               <h3 className="card-heading">Cost</h3>
               <div className="cost-card">
                 <p className="cost-info">Total</p>
-                <p className="cost-info">{totalAfterSavings}</p>
+                <p className="cost-info">{totalAfterSavings.toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -277,113 +290,118 @@ const BookingDetails = () => {
                 </select>
               </div>
               {/* Additional traveler form */}
-              {formData?.additionalTravelers?.map((additionalTraveler, index) => (
-                <div key={index} className="additional-traveler-form">
-                  <legend>
-                    <h3 className="form-heading">
-                      Additional Traveler {index + 1}
-                    </h3>
-                  </legend>
-                  <div className="name-container">
-                    <label htmlFor={`additionalFirstName-${index}`}>
-                      First Name
-                    </label>
-                    <input
-                      className="booking-name"
-                      type="text"
-                      id={`additionalFirstName-${index}`}
-                      name={`additionalFirstName-${index}`}
-                      value={formData.additionalTravelers.firstName}
-                      onChange={(e) => handleInputChange(e)}
-                      required
-                    />
-                    <label htmlFor={`additionalMiddleName-${index}`}>
-                      Middle Name
-                    </label>
-                    <input
-                      className="booking-name"
-                      type="text"
-                      id={`additionalMiddleName-${index}`}
-                      name={`additionalMiddleName-${index}`}
-                      value={formData.additionalTravelers.middleName}
-                      onChange={(e) => handleInputChange(e)}
-                    />
-                    <label htmlFor={`additionalLastName-${index}`}>
-                      Last Name
-                    </label>
-                    <input
-                      className="booking-name"
-                      type="text"
-                      id={`additionalLastName-${index}`}
-                      name={`additionalLastName-${index}`}
-                      value={formData.additionalTravelers.lastName}
-                      onChange={(e) => handleInputChange(e)}
-                      required
-                    />
-                  </div>
-                  <div className="dob-container">
-                    <select
-                      className="dob"
-                      name="birthMonth"
-                      value={formData.additionalTravelers.birthMonth}
-                      onChange={(e) => handleInputChange(e)}
-                      required
-                    >
-                      <option value="/">Month</option>
-                      {Array.from({ length: 12 }, (_, index) => {
-                        const month = index + 1;
-                        return (
-                          <option key={month} value={month}>
-                            {month}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    <select
-                      className="dob"
-                      name="birthDay"
-                      value={formData.additionalTravelers.birthDay}
-                      onChange={(e) => handleInputChange(e)}
-                      required
-                    >
-                      <option value="/">Day</option>
-                      {Array.from({ length: 31 }, (_, index) => {
-                        const day = index + 1;
-                        return (
-                          <option key={day} value={day}>
-                            {day}
-                          </option>
-                        );
-                      })}
-                    </select>
+              {formData?.additionalTravelers?.map(
+                (additionalTraveler, index) => (
+                  <div key={index} className="additional-traveler-form">
+                    <legend>
+                      <h3 className="form-heading">
+                        Additional Traveler {index + 1}
+                      </h3>
+                    </legend>
+                    <div className="name-container">
+                      <label htmlFor={`additionalFirstName-${index}`}>
+                        First Name
+                      </label>
+                      <input
+                        className="booking-name"
+                        type="text"
+                        id={`additionalFirstName-${index}`}
+                        name={`additionalFirstName-${index}`}
+                        value={formData.additionalTravelers.firstName}
+                        onChange={(e) => handleInputChange(e)}
+                        required
+                      />
+                      <label htmlFor={`additionalMiddleName-${index}`}>
+                        Middle Name
+                      </label>
+                      <input
+                        className="booking-name"
+                        type="text"
+                        id={`additionalMiddleName-${index}`}
+                        name={`additionalMiddleName-${index}`}
+                        value={formData.additionalTravelers.middleName}
+                        onChange={(e) => handleInputChange(e)}
+                      />
+                      <label htmlFor={`additionalLastName-${index}`}>
+                        Last Name
+                      </label>
+                      <input
+                        className="booking-name"
+                        type="text"
+                        id={`additionalLastName-${index}`}
+                        name={`additionalLastName-${index}`}
+                        value={formData.additionalTravelers.lastName}
+                        onChange={(e) => handleInputChange(e)}
+                        required
+                      />
+                    </div>
+                    <div className="dob-container">
+                      <select
+                        className="dob"
+                        name="birthMonth"
+                        value={formData.additionalTravelers.birthMonth}
+                        onChange={(e) => handleInputChange(e)}
+                        required
+                      >
+                        <option value="/">Month</option>
+                        {Array.from({ length: 12 }, (_, index) => {
+                          const month = index + 1;
+                          return (
+                            <option key={month} value={month}>
+                              {month}
+                            </option>
+                          );
+                        })}
+                      </select>
+                      <select
+                        className="dob"
+                        name="birthDay"
+                        value={formData.additionalTravelers.birthDay}
+                        onChange={(e) => handleInputChange(e)}
+                        required
+                      >
+                        <option value="/">Day</option>
+                        {Array.from({ length: 31 }, (_, index) => {
+                          const day = index + 1;
+                          return (
+                            <option key={day} value={day}>
+                              {day}
+                            </option>
+                          );
+                        })}
+                      </select>
 
-                    <select
-                      className="dob"
-                      name="birthYear"
-                      value={formData.additionalTravelers.birthYear}
-                      onChange={(e) => handleInputChange(e)}
-                      required
-                    >
-                      <option value="/">Year</option>
-                      {Array.from({ length: 100 }, (_, index) => {
-                        const year = 1924 + index;
-                        return (
-                          <option key={year} value={year}>
-                            {year}
-                          </option>
-                        );
-                      })}
-                    </select>
+                      <select
+                        className="dob"
+                        name="birthYear"
+                        value={formData.additionalTravelers.birthYear}
+                        onChange={(e) => handleInputChange(e)}
+                        required
+                      >
+                        <option value="/">Year</option>
+                        {Array.from({ length: 100 }, (_, index) => {
+                          const year = 1924 + index;
+                          return (
+                            <option key={year} value={year}>
+                              {year}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
                   </div>
+                )
+              )}
+              {adult > 1 && (
+                <div className="button-container">
+                  <button
+                    className="booking-button"
+                    onClick={handleAddTraveler}
+                  >
+                    Add Traveler
+                  </button>
                 </div>
-              ))}
-                  {adult > 1 && (
-              <div className="button-container">
-                <button className="booking-button" onClick={handleAddTraveler}>
-                  Add Traveler
-                </button>
-              </div>
-                  )}
+              )}
               <legend>
                 <h3 className="form-heading">Terms and Conditions Agreement</h3>
               </legend>

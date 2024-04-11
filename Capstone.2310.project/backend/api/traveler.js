@@ -38,7 +38,12 @@ router.post('/', authorizeUser, async (req, res, next) => {
       firstname, lastname, date_of_birth, passportNumber,
     } = req.body;
     const traveler = await addTraveler({
-      firstname, lastname, date_of_birth, email, passportNumber, user_id,
+      firstname,
+      lastname,
+      date_of_birth,
+      email,
+      passportNumber,
+      user_id,
     });
     if (traveler) {
       res.send(traveler);

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 require('dotenv').config();
 const express = require('express');
 
@@ -22,7 +24,7 @@ app.use(morgan('dev'));
 app.use(cors());
 
 // Check requests for a token and attach the decoded id to the request
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
   const auth = req.headers.authorization;
   const token = auth?.startsWith('Bearer ') ? auth.slice(7) : null;
   try {
@@ -44,7 +46,6 @@ app.post('/create-checkout-session', async (req, res) => {
         product_data: {
           name: 'Package Total',
           description: 'Total package value after savings',
-          // images:
         },
       },
       quantity: 1,
@@ -78,21 +79,20 @@ app.use('/', router);
 app.use('/users', require('./api/users'));
 app.use('/cart', require('./api/cart'));
 app.use('/orders', require('./api/orders'));
-// app.use("/travelers",require("./api/traveler"))
 
 const client = require('./db/index');
 
 client.connect();
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, _req, res, _next) => {
   console.error(err.stack);
   res
     .sendStatus(err.status || 500)
     .send(err.message || 'Internal server error.');
 });
 
-app.use('*', (req, res) => {
+app.use('*', (_req, res) => {
   res.status(404).send('Not found.');
 });
 

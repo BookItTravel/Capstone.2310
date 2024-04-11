@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import cartSlice from './features/cart/slice';
+import { configureStore } from "@reduxjs/toolkit";
+import cartSlice from "./features/cart/slice";
 
 const store = configureStore({
   reducer: {
@@ -8,4 +8,3 @@ const store = configureStore({
 });
 
 export default store;
-

@@ -1,33 +1,22 @@
-import { useState } from 'react'
-import './App.css'
-import { Provider } from 'react-redux'
-import store from './store'
-import Navbar from './Components/Navbar/Navbar'
-import LandingPage from './Components/LandingPage/LandingPage'
-import Login from './Components/Login/Login'
-import Register from './Components/Register/Register'
-import Booking from './Pages/Booking/Booking'
-import BookingDetails from './Pages/BookingDetails/BookingDetails'
-import Confirmation from './Pages/Confirmation/Confirmation'
-import Profile from './Pages/Profile/Profile'
-import Master_Table from './Components/Master_Table/Master_Table'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-
-
-import './App.css';
-
-
+import { useState } from "react";
+import { Provider } from "react-redux";
+import store from "./store";
+import Navbar from "./Components/Navbar/Navbar";
+import LandingPage from "./Components/LandingPage/LandingPage";
+import Login from "./Components/Login/Login";
+import Register from "./Components/Register/Register";
+import Booking from "./Pages/Booking/Booking";
+import BookingDetails from "./Pages/BookingDetails/BookingDetails";
+import Confirmation from "./Pages/Confirmation/Confirmation";
+import Profile from "./Pages/Profile/Profile";
+import Master_Table from "./Components/Master_Table/Master_Table";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [flightDataDeparture, setFlightDataDeparture] = useState([]);
   const [flightDataReturn, setFlightDataReturn] = useState(null);
 
-  console.log("selected flight form app", flightDataDeparture)
-
-
-
+  console.log("selected flight form app", flightDataDeparture);
 
   return (
     <Provider store={store}>
@@ -39,20 +28,31 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/booking" element={<Booking 
-                   flightDataDeparture={flightDataDeparture}
-                   flightDataReturn={flightDataReturn} />} />
+            <Route
+              path="/booking"
+              element={
+                <Booking
+                  flightDataDeparture={flightDataDeparture}
+                  flightDataReturn={flightDataReturn}
+                />
+              }
+            />
             <Route path="/bookingdetails" element={<BookingDetails />} />
             <Route path="/confirmation" element={<Confirmation />} />
-            <Route path="/master_table" element={<Master_Table
-                   setFlightDataDeparture={setFlightDataDeparture}
-                   setFlightDataReturn={setFlightDataReturn}
-             />} />
+            <Route
+              path="/master_table"
+              element={
+                <Master_Table
+                  setFlightDataDeparture={setFlightDataDeparture}
+                  setFlightDataReturn={setFlightDataReturn}
+                />
+              }
+            />
           </Routes>
         </BrowserRouter>
       </div>
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;

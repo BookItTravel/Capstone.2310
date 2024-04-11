@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import "./home.css";
 import video from "../../assets/video.mp4";
@@ -9,7 +10,6 @@ import { TbApps } from "react-icons/tb";
 import "aos/dist/aos.css";
 
 function Home() {
-
   return (
     <section className="home">
       <div className="overlay"></div>

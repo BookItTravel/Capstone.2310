@@ -1,223 +1,220 @@
 .booking-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 100vw;
-    margin: 0 auto;
-    background-image: url('../../assets/booking_bgd.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 100vw;
+  margin: 0 auto;
+  background-image: url("../../assets/booking_bgd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .review-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100vw;
 }
 
 .custom-booking-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    row-gap: 10px;
-    border-radius: 10px;
-    background-color:rgba(225, 225, 235, 0.7);
-    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
-    width: 60vw;
-    margin: 175px 0rem 4rem 4rem;
-    padding: 0.75rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  row-gap: 10px;
+  border-radius: 10px;
+  background-color: rgba(225, 225, 235, 0.7);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+  width: 60vw;
+  margin: 175px 0rem 4rem 4rem;
+  padding: 0.75rem 0;
 }
 
-.flight-card, .hotel-card {
-    height: auto;
-    width: 50vw;
-    row-gap: 10px;
-    border-radius: 10px;
-    background-color: rgba(225, 225, 235, 0.7);
-    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
-    overflow: hidden;
-    padding: 0.75rem;
-    margin: 1.5rem;
+.flight-card,
+.hotel-card {
+  height: auto;
+  width: 50vw;
+  row-gap: 10px;
+  border-radius: 10px;
+  background-color: rgba(225, 225, 235, 0.7);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+  overflow: hidden;
+  padding: 0.75rem;
+  margin: 1.5rem;
 }
-
 
 .trip-card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 
 .booking-title-container {
-    font-size: 1.435rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 20vw;
-    font-weight: 800;
-    text-align: center;
-    margin: 1.75rem 5rem 1.75rem 0rem;
-    color: var(--whiteColorDream);
+  font-size: 1.435rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 20vw;
+  font-weight: 800;
+  text-align: center;
+  margin: 1.75rem 5rem 1.75rem 0rem;
+  color: var(--whiteColorDream);
 }
 
-
 .column-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-align: center;
-    margin-top: .75rem;
-    margin-bottom: .75rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .flight-container {
-    padding: 0.25rem 0.25rem 1.0rem 1.0rem;
-    height: auto;
-    overflow: hidden;
+  padding: 0.25rem 0.25rem 1rem 1rem;
+  height: auto;
+  overflow: hidden;
 }
 
 p {
-    color: var(--textColor);
+  color: var(--textColor);
 }
 
 .flight-summary {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-    padding-bottom: 0;
-    padding-top: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0;
+  padding-top: 0.4rem;
 }
 
 .flight-name {
-    color: var(--blackColor);
-    font-weight: bold;
-    margin-top: 0.3rem;
+  color: var(--blackColor);
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 
 .hotel-container {
-    padding: 0.25rem 0.25rem 1.0rem 1.0rem;
-    height: auto;
-    overflow: hidden;
-    margin-left: 4.5rem;
+  padding: 0.25rem 0.25rem 1rem 1rem;
+  height: auto;
+  overflow: hidden;
+  margin-left: 4.5rem;
 }
 
 .hotel-name {
-    color: var(--blackColor);
-    font-weight: bold;
-    margin-top: 0.3rem;
+  color: var(--blackColor);
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 
 .cost-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 1.5rem auto;
-    width: 50vw;
-    row-gap: 10px;
-    border-radius: 10px;
-    background-color: rgba(225, 225, 235, 0.7);
-    box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
-    overflow: hidden;
-    padding: 0.75rem;
-    height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto;
+  width: 50vw;
+  row-gap: 10px;
+  border-radius: 10px;
+  background-color: rgba(225, 225, 235, 0.7);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0549);
+  overflow: hidden;
+  padding: 0.75rem;
+  height: auto;
 }
 
 .cost-title-container {
-    width: 100%;
-    text-align: center;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .cost-heading {
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-align: center;
-    margin-top: .75rem;
-    margin-bottom: .75rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .cost-detail-container {
-    width: 65%;
+  width: 65%;
 }
 
 .cost-table {
-    width: 100%;
+  width: 100%;
 }
 
 .item-data {
-    font-size: 1.1rem;
-    padding: 0.2rem;
-    width: 50%;
+  font-size: 1.1rem;
+  padding: 0.2rem;
+  width: 50%;
 }
 
 .cost-data {
-    font-size: 1.1rem;
-    padding: 0.2rem;
-    text-align: right;
-    width: 50%;
+  font-size: 1.1rem;
+  padding: 0.2rem;
+  text-align: right;
+  width: 50%;
 }
 
 .savings-data {
-    color: var(--SecondaryColor);
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 0.2rem;
-    text-align: right;
-    width: 50%;
+  color: var(--SecondaryColor);
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.2rem;
+  text-align: right;
+  width: 50%;
 }
 
 .total-name {
-    color: var(--PrimaryColor);
-    font-size: 1.1rem;
-    font-weight: bolder;
-    padding: 0.2rem;
-    width: 50%;
+  color: var(--PrimaryColor);
+  font-size: 1.1rem;
+  font-weight: bolder;
+  padding: 0.2rem;
+  width: 50%;
 }
 
 .total-data {
-    color: var(--PrimaryColor);
-    font-size: 1.1rem;
-    font-weight: bolder;
-    padding: 0.2rem;
-    text-align: right;
-    width: 50%;
+  color: var(--PrimaryColor);
+  font-size: 1.1rem;
+  font-weight: bolder;
+  padding: 0.2rem;
+  text-align: right;
+  width: 50%;
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem ;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 1.5rem 0;
 }
 
 .booking-button {
-    padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    color: var(--whiteColor);
-    font-weight: bolder;
-    text-transform: uppercase;
+  padding: 0.7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
 .booking-button:hover {
-    background: var(--PrimaryColor);
+  background: var(--PrimaryColor);
 }
-
-

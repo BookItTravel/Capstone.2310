@@ -1,12 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cart: [],
-  error: null
+  error: null,
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action) => {
@@ -17,12 +17,12 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       // Remove item from cart
       const itemId = action.payload;
-      return state.filter(item => item.id !== itemId); // Return the new state after removing the item
+      return state.filter((item) => item.id !== itemId); // Return the new state after removing the item
     },
     updateCart: (state, action) => {
       // Update item quantity in cart
       const { itemId, newQuantity } = action.payload;
-      const itemToUpdate = state.find(item => item.id === itemId);
+      const itemToUpdate = state.find((item) => item.id === itemId);
       if (itemToUpdate) {
         itemToUpdate.quantity = newQuantity;
       }
