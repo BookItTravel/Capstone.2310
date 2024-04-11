@@ -14,7 +14,7 @@ The Book It Travel Application was developed as a minimalist user friendly trave
 
 ## About The Project
 
-!Landing Page
+![Landing Page](./Capstone.2310.project/frontend/src/assets/landingPage.png)
 
 This project is a single page application built with JavaScript, React, Redux, Node Cache, Node.js, Express.js, Amadeus API, and Stripe.
 
@@ -83,20 +83,29 @@ Before you begin, ensure you have met the following requirements:
 
 ### Usage
 
-!Landing Page
+![Landing Page](./Capstone.2310.project/frontend/src/assets/landingPage.png)
+
 1. Click the button on the landing page to navigate to the search form.
 2. Enter vacation information into the search form and click the search button.
-!Search Results
+
+![Search Results](./Capstone.2310.project/frontend/src/assets/searchResults.png)
+
 3. Departure flights are provided for you to select from. Click the flight you want.
 4. Next return flights are provided for you to select from. Click the flight you want.
 5. Next your hotel choices are provided.  Click the hotel you want.
 6. If there is a room available, a window will appear for you to select your room.
-!Booking
+
+![Booking](./Capstone.2310.project/frontend/src/assets/booking.png)
+
 7. Navigate to the Booking page to review your trip.
-!BookingDetails
+
+![Booking Details](./Capstone.2310.project/frontend/src/assets/bookingDetails.png)
+
 8. If all looks good, continue to the next page to enter your information and any other travelers that might be traveling with you.
-9. Enter payment information.
-!Confirmation
+9. Enter payment information into the Stripe form.
+
+![Confirmation](./Capstone.2310.project/frontend/src/assets/confirmation.png)
+
 10. Review the confirmation page to get your Confirmation Number and book your next trip.
 
 ### Contributing
@@ -109,10 +118,10 @@ Distributed under the MIT License. See LICENSE for more information.
 
 ### Contact
 
-Matthew Brown
-Jon Hinson
-Lilianne Tavarez
-Portia Williams
+- Matthew Brown
+- Jon Hinson
+- Lilianne Tavarez
+- Portia Williams
 
 Deployed Link
 
