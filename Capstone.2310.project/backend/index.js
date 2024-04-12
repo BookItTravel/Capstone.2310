@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require('express');
 
-const PORT = 3000;
+
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan');
@@ -12,6 +12,7 @@ const stripe = require('stripe')(process.env.STRIPE_ID);
 const router = require('./api/router');
 
 const {
+  PORT = 3000,
   JWT_SECRET = 'placeholder secret',
   DEPLOYED_URL = 'http://localhost:5173',
 } = process.env;
