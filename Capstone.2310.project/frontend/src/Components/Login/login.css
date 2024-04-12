@@ -1,77 +1,120 @@
 :root {
-    --PrimaryColor: hsl(199, 100%, 33%);
-    --SecondaryColor: hsl(187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
-    --whiteColor: hsl(0, 0%, 100%);
-    --blackColor: hsl(201, 33%, 16%);
-    --textColor: hsl(240, 4%, 36%);
-    --whiteColorDream: hsl(0, 0%, 93%);
-    --greyText: rgb(190, 190, 190);
-    --inputColor: rgb(239, 239, 239);
-    --bodyColor: rgb(240, 240, 246);
-    --cardBG: rgb(225, 225, 235);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(
+    to right,
+    hsl(187, 85%, 43%),
+    hsl(199, 100%, 33%)
+  );
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDream: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
 }
 
 .login_home {
-    background-image: url('../../assets/booking_bgd.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-image: url("../../assets/booking_bgd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-container {
-    width: 35%;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(225, 225, 235, 0.7);
-    
+  width: 35%;
+  background-color: var(--cardBG);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(225, 225, 235, 0.7);
+  margin-right: 25%;
+}
+
+.login-heading {
+  text-align: center;
 }
 
 label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #0077cc;
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0077cc;
 }
 
 input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #b3d4f1;
-    border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #b3d4f1;
+  border-radius: 4px;
+}
+
+.loginInput {
+  background-color: var(--whiteColor);
+  color: var(--textColor);
+  border: 1px solid var(--blackColor);
 }
 
 .login-button {
-    padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    color: var(--whiteColor);
-    font-weight: bolder;
-    text-transform: uppercase;
-    margin-bottom: 0.3rem;
+  padding: 0.7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
+  font-weight: bolder;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  margin-left: 15rem;
+}
+
+.guest-button {
+  padding: 0.7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
+  font-weight: bolder;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  margin-left: 18px;
+}
+
+.guest-button {
+  padding: 0.7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
+  font-weight: bolder;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  margin-left: 18px;
 }
 
 button:disabled {
-    background-color: #b3d4f1;
-    cursor: not-allowed;
+  background-color: #b3d4f1;
+  cursor: not-allowed;
 }
 
 .errmsg {
-    color: #ff4d4f;
+  color: #ff4d4f;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }

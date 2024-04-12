@@ -1,61 +1,197 @@
-import { Link } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Booking.css";
 
 const Booking = () => {
+  const location = useLocation();
+  const {
+    flightDeparture,
+    flightReturn,
+    hotelOffers,
+    cityDesName,
+    cityOriginName,
+    adult,
+    departDate,
+    returnsDate,
+  } = location.state;
+  console.log("booking prop departure", flightDeparture);
+  console.log("booking prop return", flightReturn);
+  console.log("Data hotel Offer Card in booking", hotelOffers);
+  console.log("Data desName in booking", cityDesName);
+  console.log("Data originName in booking", cityOriginName);
+  console.log("dates check hotel in Booking", departDate, returnsDate);
+
+  const cityCodeOrigin = cityOriginName ? cityOriginName.cityName : null;
+  const cityCodeDestination = cityDesName?.[0]?.cityName;
+  const hotelName = hotelOffers?.data[0]?.hotel.name;
+
+  const navigate = useNavigate();
+
+  const flightTotal =
+    flightDeparture.travelerPricings[0].price.total >=
+    flightReturn.travelerPricings[0].price.total
+      ? flightDeparture.travelerPricings[0].price.total
+      : flightReturn.travelerPricings[0].price.total;
+
+  const totalFlightCost = parseFloat(flightTotal);
+  const totalHotelCost = parseFloat(hotelOffers.data[0].offers[0].price.total);
+  const totalBeforeSavings = totalFlightCost + totalHotelCost;
+  const totalAfterSavings = totalBeforeSavings - 320;
+
+  const convertDuration = (durationString) => {
+    const matches = durationString.match(/PT(\d+)H(\d+)M/);
+    if (!matches) return "Invalid duration";
+
+    const hours = parseInt(matches[1]);
+    const minutes = parseInt(matches[2]);
+
+    const formattedDuration = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}`;
+
+    return formattedDuration;
+  };
+
+  const durationDeparture = flightDeparture.itineraries[0].duration;
+  const convertedDuration = convertDuration(durationDeparture);
+
+  const durationReturn = flightReturn.itineraries[0].duration;
+  const convertedDurationReturn = convertDuration(durationReturn);
+
+  const convertDateTime = (dateTimeString) => {
+    const dateTime = new Date(dateTimeString);
+    const date = dateTime.toLocaleDateString();
+    const time = dateTime.toLocaleTimeString();
+
+    return `${date} ${time}`;
+  };
+
+  const dateTimeString =
+    flightDeparture.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeDestinationDepart = convertDateTime(dateTimeString);
+
+  const dateTimeStringArrivalDepart =
+    flightDeparture.itineraries[0].segments[0].arrival.at;
+  const formattedDateTimeDestinationArrival = convertDateTime(
+    dateTimeStringArrivalDepart
+  );
+
+  const dateTimeStringReturn =
+    flightReturn.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeReturn = convertDateTime(dateTimeString);
+
+  const dateTimeStringReturnArrival =
+    flightReturn.itineraries[0].segments[0].departure.at;
+  const formattedDateTimeReturnDepart = convertDateTime(dateTimeStringReturn);
+
+  const dateTimeStringArrivalReturn =
+    flightReturn.itineraries[0].segments[0].arrival.at;
+  const formattedDateTimeReturnArrival = convertDateTime(
+    dateTimeStringArrivalReturn
+  );
+
+  const handleBookButtonClick = () => {
+    navigate("/bookingdetails", {
+      state: {
+        totalAfterSavings,
+        adult,
+        departDate,
+        returnsDate,
+        cityCodeOrigin,
+        cityCodeDestination,
+        hotelName,
+      },
+    });
+  };
+
   return (
     <div>
       <div className="booking-container">
         <div className="review-container">
           <div className="booking-title-container">
-            <h1 className="review-heading">Review your trip</h1>
+            {/* <h1 className="review-heading">Review your trip</h1> */}
           </div>
           <div className="custom-booking-container">
             <div className="flight-card">
               <div className="column-heading">
                 <h3 className="column-title">Flights</h3>
               </div>
+
               <div className="trip-card">
                 <div className="flight-container">
-                  <h4 className="flight-summary">Seattle to New York City</h4>
-                  <p>11:59pm-8:06am (5h 7m)</p>
-                  <p>Wed, Apr 10</p>
-                  <p>2 Adults, 1 Child</p>
-                  <p className="flight-name">11:59pm Seattle</p>
-                  <p>Seattle-Tacoma International Airport</p>
-                  <p>5h 7m flight</p>
-                  <p>Jet Blue</p>
-                  <p>Airbus A320-200</p>
-                  <p>Economy</p>
-                  <p>8:06am New York City</p>
-                  <p>John F. Kennedy International Airport</p>
+                  <h4 className="flight-summary">
+                    {cityOriginName.cityName} to {cityDesName[0].cityName}
+                  </h4>
+                  <p>
+                    Airline:{" "}
+                    {flightDeparture.itineraries[0].segments[0].carrierCode}
+                  </p>
+                  <p>
+                    Aircraft:{" "}
+                    {flightDeparture.itineraries[0].segments[0].aircraft.code}
+                  </p>
+                  <p>Duration: {convertedDuration}</p>
+                  <p>
+                    Cabin:{" "}
+                    {
+                      flightDeparture.travelerPricings[0]
+                        .fareDetailsBySegment[0].cabin
+                    }
+                  </p>
+                  <p className="flight-name"> {cityOriginName.cityName}</p>
+                  <p>
+                    {
+                      flightDeparture.itineraries[0].segments[0].departure
+                        .iataCode
+                    }
+                  </p>
+                  <p>Departure: {formattedDateTimeDestinationDepart} </p>
+                  <p className="flight-name">{cityDesName[0].cityName}</p>
+                  <p>
+                    {
+                      flightDeparture.itineraries[0].segments[0].arrival
+                        .iataCode
+                    }
+                  </p>
+                  <p>Arrival: {formattedDateTimeDestinationArrival}</p>
                 </div>
+
                 <div className="flight-container">
                   <h4 className="flight-summary">
-                    New York City to Denver to Seattle
+                    {cityDesName[0].cityName} to {cityOriginName.cityName}
                   </h4>
-                  <p>6:00am-9:19pm (15h 19m)</p>
-                  <p>Wed, Apr 18</p>
-                  <p>2 Adults, 1 Child</p>
-                  <p className="flight-name">6:00am New York City</p>
-                  <p>LaGuardia Airport</p>
-                  <p>7h 6m flight</p>
-                  <p>Frontier</p>
-                  <p>Airbus A321-200 Neo</p>
-                  <p>Economy</p>
-                  <p>11:06am Denver</p>
-                  <p>Denver International Airport</p>
-                  <p>7:10pm Denver</p>
-                  <p className="flight-name">Denver International Airport</p>
-                  <p>3h 9m flight</p>
-                  <p>Frontier</p>
-                  <p>Airbus A320-200 Neo</p>
-                  <p>Economy</p>
-                  <p>9:19pm Seattle</p>
-                  <p>Seattle-Tacoma International Airport</p>
+                  <p>
+                    Airline:{" "}
+                    {flightReturn.itineraries[0].segments[0].carrierCode}
+                  </p>
+                  <p>
+                    Aircraft:{" "}
+                    {flightReturn.itineraries[0].segments[0].aircraft.code}
+                  </p>
+                  <p>Duration: {convertedDuration}</p>
+                  <p>
+                    Cabin:{" "}
+                    {
+                      flightReturn.travelerPricings[0].fareDetailsBySegment[0]
+                        .cabin
+                    }
+                  </p>
+                  <p className="flight-name">{cityDesName[0].cityName}</p>
+                  <p>
+                    {flightReturn.itineraries[0].segments[0].departure.iataCode}
+                  </p>
+                  <p>Departure: {formattedDateTimeReturnDepart}</p>
+                  <p className="flight-name"> {cityOriginName.cityName}</p>
+                  <p>
+                    {flightReturn.itineraries[0].segments[0].arrival.iataCode}
+                  </p>
+                  <p>Arrival: {formattedDateTimeReturnArrival} </p>
                 </div>
               </div>
               <div className="button-container">
-                <button className="booking-button">Change Flight</button>
+                <Link to={"/master_table"} className="booking-button">
+                  Change Flight
+                </Link>
               </div>
             </div>
             <div className="hotel-card">
@@ -63,13 +199,15 @@ const Booking = () => {
                 <h3 className="column-title">Stay</h3>
               </div>
               <div className="hotel-container">
-                <p className="hotel-name">Aloft New York Brooklyn</p>
-                <p>Brooklyn, NY</p>
-                <p>Check In: April 11, 2024</p>
-                <p>Check Out: April 18, 2024</p>
+                <p className="hotel-name">{hotelOffers.data[0].hotel.name}</p>
+                <p>{hotelOffers.data[0].hotel.cityCode}</p>
+                <p>Check In: {hotelOffers.data[0].offers[0].checkInDate}</p>
+                <p>Check Out: {hotelOffers.data[0].offers[0].checkOutDate}</p>
               </div>
               <div className="button-container">
-                <button className="booking-button">Change Stay</button>
+                <Link to={"/master_table"} className="booking-button">
+                  Change Stay
+                </Link>
               </div>
             </div>
             <div className="cost-container">
@@ -77,15 +215,23 @@ const Booking = () => {
                 <h3 className="cost-heading">Cost Details</h3>
               </div>
               <div className="cost-detail-container">
+                <p>Order Date: {flightDeparture.lastTicketingDate}</p>
                 <table className="cost-table">
                   <tbody className="cost-table-body">
                     <tr className="cost-table-row">
                       <td className="item-data">Flights</td>
-                      <td className="cost-data">$1,200</td>
+                      <td className="cost-data">
+                        {flightDeparture.travelerPricings[0].price.total >=
+                        flightReturn.travelerPricings[0].price.total
+                          ? `$${flightDeparture.travelerPricings[0].price.total}`
+                          : `$${flightReturn.travelerPricings[0].price.total}`}
+                      </td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Stay</td>
-                      <td className="cost-data">$2,100</td>
+                      <td className="cost-data">
+                        ${hotelOffers.data[0].offers[0].price.total}
+                      </td>
                     </tr>
                     <tr className="cost-table-row">
                       <td className="item-data">Savings</td>
@@ -93,13 +239,21 @@ const Booking = () => {
                     </tr>
                     <tr className="cost-table-row">
                       <td className="total-name">Total</td>
-                      <td className="total-data">$2,880</td>
+                      <td className="total-data">
+                        {" "}
+                        ${totalAfterSavings.toFixed(2)}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div className="button-container">
-                <Link to={'/bookingdetails'} className="booking-button">Booking Details</Link>
+                <button
+                  onClick={handleBookButtonClick}
+                  className="booking-button"
+                >
+                  Booking Details
+                </button>
               </div>
             </div>
           </div>

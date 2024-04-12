@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 const NodeCache = require('node-cache');
+
 const cache = new NodeCache();
 
-module.exports = duration => (req, res, next) => {
+module.exports = (duration) => (req, res, next) => {
   if (req.method !== 'GET') {
     return res.status(405).send('Method Not Allowed');
   }
@@ -15,12 +17,12 @@ module.exports = duration => (req, res, next) => {
   }
 
   console.log(`Cache miss for ${key}`);
-  
+
   const originalSend = res.send;
-  res.send = body => {
+  res.send = (body) => {
     originalSend.call(res, body);
     cache.set(key, body, duration);
   };
-  
+
   next();
 };

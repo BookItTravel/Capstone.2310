@@ -1,15 +1,15 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-throw-literal */
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-useless-catch */
 const client = require('./index');
 
 // User Methods
 
 // Add a new user
-const addUser = async ({
-  username,
-  password,
-  email,
- 
-}) => {
-  
+const addUser = async ({ username, password, email }) => {
   try {
     const {
       rows: [user],
@@ -20,11 +20,7 @@ const addUser = async ({
             ON CONFLICT (username) DO NOTHING
             RETURNING *;
         `,
-      [
-        username,
-        password,
-        email,
-      ]
+      [username, password, email],
     );
   } catch (error) {
     throw error;
@@ -36,7 +32,7 @@ const updateUser = async (user_id, fields = {}) => {
   // build the set string
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
-    .join(", ");
+    .join(', ');
 
   // return early if this is called without fields
   if (setString.length === 0) {
@@ -53,7 +49,7 @@ const updateUser = async (user_id, fields = {}) => {
       WHERE id=${user_id}
       RETURNING *;
     `,
-      Object.values(fields)
+      Object.values(fields),
     );
 
     return user;
@@ -88,8 +84,8 @@ const getUserById = async (user_id) => {
 
     if (!user) {
       throw {
-        name: "UserNotFoundError",
-        message: "A user with that id does not exist",
+        name: 'UserNotFoundError',
+        message: 'A user with that id does not exist',
       };
     }
     return user;
@@ -109,9 +105,8 @@ const getUserByUsername = async (username) => {
             FROM users
             WHERE username=$1
         `,
-      [username]
+      [username],
     );
-    console.log(user);
     return user;
   } catch (error) {
     throw error;
@@ -127,7 +122,7 @@ const deleteUser = async (username) => {
             WHERE username=$1
             RETURNING *
         `,
-      [username]
+      [username],
     );
     // Check if the user was deleted successfully
     if (result.rowCount === 0) {
@@ -143,7 +138,12 @@ const deleteUser = async (username) => {
 // Traveler Methods
 
 const addTraveler = async ({
-   firstname, lastname, date_of_birth, email, passportNumber, user_id
+  firstname,
+  lastname,
+  date_of_birth,
+  email,
+  passportNumber,
+  user_id,
 }) => {
   try {
     const {
@@ -153,74 +153,72 @@ const addTraveler = async ({
       VALUES($1, $2, $3, $4, $5, $6)
       RETURNING *
       `,
-      [firstname, lastname, date_of_birth, email, passportNumber, user_id]
-    )
-  return traveler
-    } catch (error) {
-      throw (error)
-    }
-}
+      [firstname, lastname, date_of_birth, email, passportNumber, user_id],
+    );
+    return traveler;
+  } catch (error) {
+    throw error;
+  }
+};
 
 // Shopping Cart Methods
 
 // Add a traveler to the cart
 const addToCart = async (user_id, traveler_id, quantity) => {
-    try {
-        const {
-          rows: [cartItem],
-        } = await client.query(
-          `
+  try {
+    const {
+      rows: [cartItem],
+    } = await client.query(
+      `
                 INSERT INTO shopping_cart(user_id, traveler_id, quantity)
                 VALUES($1, $2, $3)
                 RETURNING *;
             `,
-          [
-            user_id, traveler_id, quantity
-          ]
-        );
-        return cartItem;
-      } catch (error) {
-        throw error;
-      }
+      [user_id, traveler_id, quantity],
+    );
+    return cartItem;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Remove a traveler from the cart
 const removeFromCart = async (user_id, traveler_id) => {
-    try {
-        const {
-          rows: [cartItem],
-        } = await client.query(
-          `
+  try {
+    const {
+      rows: [cartItem],
+    } = await client.query(
+      `
                 DELETE FROM shopping_cart
                 WHERE user_id=$1 AND traveler_id=$2
                 RETURNING *;
             `,
-          [user_id, traveler_id]
-        );
-        return cartItem;
-      } catch (error) {
-        throw error;
-      }
+      [user_id, traveler_id],
+    );
+    return cartItem;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Update the cart
 const updateCart = async (user_id, traveler_id, newQuantity) => {
-    try {
-        const {
-          rows: [cartItem],
-        } = await client.query(
-          `
+  try {
+    const {
+      rows: [cartItem],
+    } = await client.query(
+      `
                 UPDATE shopping_cart
                 SET quantity=$1
                 WHERE user_id=$2 AND traveler_id=$3
                 RETURNING *;
             `,
-          [newQuantity, user_id, traveler_id]
-        );
-        return cartItem;
-      } catch (error) {
-        throw error;
-      }
+      [newQuantity, user_id, traveler_id],
+    );
+    return cartItem;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Retrieve a cart by user id number
@@ -236,8 +234,8 @@ const getCartByUserId = async (user_id) => {
 
     if (!user) {
       throw {
-        name: "UserNotFoundError",
-        message: "A user with that id does not exist",
+        name: 'UserNotFoundError',
+        message: 'A user with that id does not exist',
       };
     }
     return user;
@@ -250,30 +248,38 @@ const getCartByUserId = async (user_id) => {
 
 // Place an order
 const placeOrder = async (user_id, traveler_id, quantity) => {
-    try {
-        const { rows: [order] } = await client.query(`
+  try {
+    const {
+      rows: [order],
+    } = await client.query(
+      `
             INSERT INTO order (user_id, traveler_id, quantity)
             VALUES ($1, $2, $3)
             RETURNING *;
-        `, [user_id, traveler_id, quantity]);
-        return order;
-    } catch (error) {
-        throw error;
-    }
+        `,
+      [user_id, traveler_id, quantity],
+    );
+    return order;
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Retrieve order history based on user_id
 const getOrderHistoryByUserId = async (user_id) => {
-    try {
-        const { rows } = await client.query(`
+  try {
+    const { rows } = await client.query(
+      `
             SELECT *
             FROM orders
             WHERE user_id=$1;
-        `, [user_id]);
-        return rows;
-    } catch (error) {
-        throw error;
-    }
+        `,
+      [user_id],
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = {
@@ -289,5 +295,5 @@ module.exports = {
   getCartByUserId,
   placeOrder,
   getOrderHistoryByUserId,
-  addTraveler
+  addTraveler,
 };

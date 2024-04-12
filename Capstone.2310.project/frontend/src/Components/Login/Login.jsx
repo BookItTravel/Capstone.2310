@@ -32,17 +32,13 @@ const Login = () => {
     try {
       const response = await login(user, pwd);
 
+      const { token } = response.data;
 
-      // Check if the response is successful
-      
-        const { token } = response.data;
-
-        setAuth({ user, pwd, accessToken: token });
-        setUser("");
-        setPwd("");
-        setSuccess(true);
-        navigate(from, { replace: true });
-      
+      setAuth({ user, pwd, accessToken: token });
+      setUser("");
+      setPwd("");
+      setSuccess(true);
+      navigate(from, { replace: true });
     } catch (err) {
       console.error(err);
       setErrMsg("Login Failed");
@@ -70,7 +66,7 @@ const Login = () => {
             >
               {errMsg}
             </p>
-            <h1>Sign In</h1>
+            <h1 className="login-heading">Sign In</h1>
             <form onSubmit={handleSubmit}>
               <label htmlFor="username">Username:</label>
               <input
@@ -81,6 +77,7 @@ const Login = () => {
                 onChange={(e) => setUser(e.target.value)}
                 value={user}
                 required
+                className="loginInput"
               />
 
               <label htmlFor="password">Password:</label>
@@ -90,8 +87,14 @@ const Login = () => {
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
-              />
-              <button className="login-button">Sign In</button>
+                className="loginInput"
+              />              
+              <button type="submit" className="login-button">
+                Sign In
+              </button>
+              <Link to="/master_table">
+                <button className="guest-button">Book as Guest</button>
+              </Link>
             </form>
             <p>
               Need an Account?

@@ -1,101 +1,116 @@
 .register-main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .register-home {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    overflow: hidden; 
-    background-image: url('../../assets/booking_bgd.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  background-image: url("../../assets/booking_bgd.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .regSection {
-    width: 35%;
-    background-color: #ffffff;
-    padding: 20px 20px 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 4.5%;
-    position: relative;
-    z-index: 1; 
+  width: 35%;
+  background-color: var(--cardBG);
+  padding: 20px 20px 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 4.5%;
+  position: relative;
+  z-index: 1;
+  margin-right: 25%;
+}
+
+.register-heading {
+  text-align: center;
 }
 
 label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #0077cc;
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0077cc;
 }
 
 input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #b3d4f1;
-    border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #b3d4f1;
+  border-radius: 4px;
+}
+
+.registerInput {
+  background-color: var(--whiteColor);
+  color: var(--textColor);
+  border: 1px solid var(--blackColor);
 }
 
 .register-button {
-    padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    color: var(--whiteColor);
-    font-weight: bolder;
-    text-transform: uppercase;
+  padding: 0.7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
 button:disabled {
-    background-color: #b3d4f1;
-    cursor: not-allowed;
+  background-color: #b3d4f1;
+  cursor: not-allowed;
+}
+
+.registerQuestion {
+  color: var(--textColor);
 }
 
 .invalid {
-    color: #ff4d4f;
-    margin-left: 0.25rem;
+  color: #ff4d4f;
+  margin-left: 0.25rem;
 }
 
 .valid {
-    color: #52c41a;
-    margin-left: 0.25rem;
+  color: #52c41a;
+  margin-left: 0.25rem;
 }
 
 .instructions {
-    color: #0077cc;
+  color: #0077cc;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-}  
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
 .flexGrow {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }

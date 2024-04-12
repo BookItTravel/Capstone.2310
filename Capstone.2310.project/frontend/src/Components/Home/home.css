@@ -1,312 +1,340 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 /* Shared styles for Main and Home components */
 .home-container {
-    font-variant: var(--whiteColor);
-    background: var(--bodyColor);
+  font-variant: var(--whiteColor);
+  background: var(--bodyColor);
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
-    list-style: none;
-    cursor: pointer;
+  list-style: none;
+  cursor: pointer;
 }
 
 .section {
-    padding: 4rem 0 2rem;
+  padding: 4rem 0 2rem;
 }
 
 .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .icon {
-    font-size: 2rem;
-    cursor: pointer;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .none {
-    display: none;
+  display: none;
 }
 
 .flex {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .grid {
-    display: grid;
-    align-items: center;
+  display: grid;
+  align-items: center;
 }
 
 .btn {
-    padding: .7rem 1.5rem;
-    background: var(--PrimaryColor);
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    cursor: pointer;
-    color: var(--whiteColor);
+  padding: 0.7rem 1.5rem;
+  background: var(--PrimaryColor);
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  color: var(--whiteColor);
 }
 
 .btn a {
-    color: var(--whiteColor);
-    font-weight: 500;
+  color: var(--whiteColor);
+  font-weight: 500;
 }
 
 .btn:hover {
-    background: var(--PrimaryColor);
+  background: var(--PrimaryColor);
 }
 
 img,
 video {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 input {
-    font-size: 100%;
-    color: var(--greyText);
+  font-size: 100%;
+  color: var(--greyText);
 }
 
 p {
-    font-size: 13px;
-    color: var(--greyText);
-    line-height: 22px;
+  font-size: 13px;
+  color: var(--greyText);
+  line-height: 22px;
 }
 
 h4 {
-    padding: 1rem 0;
-    font-weight: 700;
-    color: var(--blackColor);
+  padding: 1rem 0;
+  font-weight: 700;
+  color: var(--blackColor);
 }
 
 h2 {
-    font-size: 25px;
-    padding: 1rem 0;
-    color: var(--blackColor);
+  font-size: 25px;
+  padding: 1rem 0;
+  color: var(--blackColor);
 }
 
 .poppins-light {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Main component styles */
 .main-container {
-    --PrimaryColor: hsl(199, 100%, 33%);
-    --SecondaryColor: hsl(187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
-    --whiteColor: hsl(0, 0%, 100%);
-    --blackColor: hsl(201, 33%, 16%);
-    --textColor: hsl(240, 4%, 36%);
-    --whiteColorDream: hsl(0, 0%, 93%);
-    --greyText: rgb(190, 190, 190);
-    --inputColor: rgb(239, 239, 239);
-    --bodyColor: rgb(240, 240, 246);
-    --cardBG: rgb(225, 225, 235);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(
+    to right,
+    hsl(187, 85%, 43%),
+    hsl(199, 100%, 33%)
+  );
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDream: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
 }
 
 :root {
-    --PrimaryColor: hsl(199, 100%, 33%);
-    --SecondaryColor: hsl(187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
-    --whiteColor: hsl(0, 0%, 100%);
-    --blackColor: hsl(201, 33%, 16%);
-    --textColor: hsl(240, 4%, 36%);
-    --whiteColorDream: hsl(0, 0%, 93%);
-    --greyText: rgb(190, 190, 190);
-    --inputColor: rgb(239, 239, 239);
-    --bodyColor: rgb(240, 240, 246);
-    --cardBG: rgb(225, 225, 235);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(
+    to right,
+    hsl(187, 85%, 43%),
+    hsl(199, 100%, 33%)
+  );
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDream: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
 }
 
 .home {
-    width: 100%;
-    height: 90vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 .home .overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: rgba(86, 192, 231, 0.235);
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    mix-blend-mode: hard-light;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(86, 192, 231, 0.235);
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  mix-blend-mode: hard-light;
 }
 
 .home video {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    object-fit: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
 }
 
 .home .homeContent {
-    width: 100%;
-    height: max-content;
-    padding: 8rem 1.5rem 3rem;
-    display: flex;
-    row-gap: 3rem;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    margin: var(--whiteColor);
-    color: white;
-    z-index: 100;
+  width: 100%;
+  height: max-content;
+  padding: 8rem 1.5rem 3rem;
+  display: flex;
+  row-gap: 1rem;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  margin: var(--whiteColor);
+  color: white;
+  z-index: 100;
 }
 
 .home .homeContent .textDiv {
-    padding: 2rem 0;
+  padding: 2rem 0;
 }
 
 .home .homeContent .textDiv .smallText {
-    font-size: 13px;
-    text-transform: uppercase;
-    color: white;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: white;
 }
 
 .home .homeContent .textDiv .homeTitle {
-    position: relative;
-    font-size: 1.8rem;
+  position: relative;
+  font-size: 2.5rem;
 }
 
 .home .homeContent .cardDiv {
-    display: grid;
-    /* Adjust the template columns to fit the "Number of Travelers" and "Search Flights" in the same row */
-    grid-template-columns: repeat(4, 1fr) auto;
-    /* This assumes 4 equal columns for the other inputs and auto for the search button, adjust as needed */
-    gap: 1rem;
-    align-items: center;
-    padding: 1.5rem 1rem;
-    background: var(--whiteColor);
-    border-radius: 10px;
+  display: grid;
+  /* Adjust the template columns to fit the "Number of Travelers" and "Search Flights" in the same row */
+  grid-template-columns: repeat(4, 1fr) auto;
+  /* This assumes 4 equal columns for the other inputs and auto for the search button, adjust as needed */
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background: var(--whiteColor);
+  border-radius: 10px;
 }
 
 .home .homeContent .cardDiv label {
-    display: block;
-    color: var(--textColor);
-    padding-bottom: 10px;
-    font-size: 13px;
-    font-weight: 500;
+  display: block;
+  color: var(--textColor);
+  padding-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .home .homeContent .cardDiv .label_total {
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .home .homeContent .cardDiv .label_total .total {
-    color: var(--textColor);
-    font-size: 18px;
-    padding-bottom: 10px;
+  color: var(--textColor);
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
 .home .homeContent .cardDiv .input {
-    height: 40px;
-    padding: 0 1rem;
-    background: var(--cardBG);
-    border-radius: 3rem;
+  height: 40px;
+  padding: 0 1rem;
+  background: var(--cardBG);
+  border-radius: 3rem;
 }
 
 .home .homeContent .cardDiv .input input {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 13px;
-    font-weight: 500;
-
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .home .homeContent .cardDiv .input input::placeholder {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .home .homeContent .cardDiv .input .icon {
-    font-size: 18px;
-    color: var(--PrimaryColor);
-    margin-left: 10px;
+  font-size: 18px;
+  color: var(--PrimaryColor);
+  margin-left: 10px;
 }
 
-.home .homeContent .cardDiv .input .input[type=range] {
-    background: blue;
+.home .homeContent .cardDiv .input .input[type="range"] {
+  background: blue;
+}
+
+.searchLabel {
+  text-align: center;
 }
 
 .home .homeContent .cardDiv .searchOptions {
-    /* Adjust or remove absolute positioning */
-    /* position: absolute; */
-    /* Consider removing or adjusting these lines */
-    /* bottom: -0.7rem; */
-    /* left: 50%; */
-    /* transform: translate(-50%); */
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 1rem;
-    border-radius: 3rem;
-    background: var(--gradientColor);
-    cursor: pointer; */
-    position: absolute;
-    background: var(--gradientColor);
-    width: max-content;
-    bottom: -1.3rem;
-    column-gap: .8rem;
-    padding: 5px 2rem;
-    border-radius: 3rem;
-    left: 50%;
-    transform: translate(-50%);
-    justify-content: center;
-    cursor: pointer;
+  position: absolute;
+  background: var(--gradientColor);
+  width: max-content;
+  bottom: -1.3rem;
+  column-gap: 0.8rem;
+  padding: 5px 2rem;
+  border-radius: 3rem;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  cursor: pointer;
 }
 
 .travelerinput .input {
-    /* For example, limit its max-width if it's too wide */
-    max-width: 70%;
-    /* Adjust as needed */
-    margin: 0 auto;
-    /* Center the input in its grid column */
+  /* For example, limit its max-width if it's too wide */
+  max-width: 70%;
+  /* Adjust as needed */
+  margin: 0 auto;
+  /* Center the input in its grid column */
 }
 
-
 .home .homeContent .icon {
-    font-size: 20px;
-    margin: 0 5px;
-    color: var(--whiteColor);
-    font-weight: 600;
+  font-size: 20px;
+  margin: 0 5px;
+  color: var(--whiteColor);
+  font-weight: 600;
 }
 
 .home .homeContent .icon:hover {
-    color: var(--PrimaryColor);
+  color: var(--PrimaryColor);
+}
+
+.homeSearchButton-container {
+  padding: 0;
+}
+
+.homeSearchButton {
+  background: var(--gradientColor);
+  width: max-content;
+  column-gap: 0.8rem;
+  padding: 5px 2rem;
+  border-radius: 3rem;
+  width: 200px;
+  display: block;
+  margin-bottom: 1.5rem;
+  margin-top: -1rem;
+  cursor: pointer;
+  border: 0px;
+  color: var(--whiteColor);
+  height: 3.5rem;
+  width: 11rem;
+  font-size: 23px;
+  border: 1px solid white;
+  transition: all 0.3s ease;
+  /* Add transition for smooth animation */
+}
+
+.homeSearchButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  /* Scale up the button by 10% */
 }
