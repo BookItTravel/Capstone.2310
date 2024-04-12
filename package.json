@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite frontend --force",
     "start": "node ./Capstone.2310.project/backend/index.js",
-    "build": "vite build /Capstone.2310.project/frontend",
+    "build": "vite build ./Capstone.2310.project/frontend",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest"
