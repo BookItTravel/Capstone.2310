@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite frontend --force",
+    "start": "node ./backend/index.js",
     "build": "vite build frontend",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
