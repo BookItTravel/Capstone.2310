@@ -9,7 +9,8 @@
     "build": "vite build ./Capstone.2310.project/frontend",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "seed": "node ./Capstone.2310.project/backend/db/seed.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
