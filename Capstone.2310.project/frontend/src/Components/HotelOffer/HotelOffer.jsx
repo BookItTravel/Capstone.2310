@@ -35,7 +35,7 @@ const HotelOffer = ({
     const hotelData = async () => {
       try {
         const responseHotelOffer = await fetch(
-          `http://localhost:3000/api/hotels`,
+          `api/hotels`,
           {
             method: "POST",
             headers: {
