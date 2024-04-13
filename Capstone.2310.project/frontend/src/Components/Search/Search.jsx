@@ -1,4 +1,4 @@
-User
+
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { GrLocation } from "react-icons/gr";
