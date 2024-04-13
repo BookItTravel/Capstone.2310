@@ -38,7 +38,7 @@ app.use((req, _res, next) => {
 });
 
 // Apply stripe checkout session for a cart checkout
-app.post('/create-checkout-session', async (req, res) => {
+app.post('create-checkout-session', async (req, res) => {
   const { amount } = req.body;
   const cart = [
     {
@@ -55,8 +55,8 @@ app.post('/create-checkout-session', async (req, res) => {
   ];
   const session = await stripe.checkout.sessions.create({
     // ui_mode: 'embedded',
-    success_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `confirmation?session_id={CHECKOUT_SESSION_ID}`,
     line_items: cart,
     mode: 'payment',
     // eslint-disable-next-line max-len
@@ -67,7 +67,7 @@ app.post('/create-checkout-session', async (req, res) => {
   res.send({ url: session.url });
 });
 
-app.get('/session-status', async (req, res) => {
+app.get('session-status', async (req, res) => {
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
 
   res.send({
