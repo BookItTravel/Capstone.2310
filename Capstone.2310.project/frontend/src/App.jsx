@@ -38,7 +38,7 @@ function App() {
               }
             />
             <Route path="/bookingdetails" element={<BookingDetails />} />
-            <Route path="/confirmattion" element={<Confirmation />} />
+            <Route path="/confirmation" element={<Confirmation />} />
             <Route
               path="/master_table"
               element={
