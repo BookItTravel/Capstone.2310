@@ -14,7 +14,7 @@ const router = require('./api/router');
 const {
   PORT = 3000,
   JWT_SECRET = 'placeholder secret',
-  DEPLOYED_URL = 'http://localhost:5173',
+  DEPLOYED_URL = 'http://travelapp-3da1f049e629.herokuapp.com',
 } = process.env;
 
 // Apply JSON parsing middleware
@@ -55,8 +55,8 @@ app.post('/create-checkout-session', async (req, res) => {
   ];
   const session = await stripe.checkout.sessions.create({
     // ui_mode: 'embedded',
-    success_url: `confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
     line_items: cart,
     mode: 'payment',
     // eslint-disable-next-line max-len
