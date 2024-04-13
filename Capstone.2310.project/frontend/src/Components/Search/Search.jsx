@@ -1,3 +1,4 @@
+User
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { GrLocation } from "react-icons/gr";
@@ -5,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "./Search.css";
-import { fetchOriginLocation, fetchDestinationLocation, fetchFlightData } from "../../api/index";
 
 const Search = ({
   setFlightData,
@@ -34,11 +34,45 @@ const Search = ({
     e.preventDefault();
 
     try {
-      const cityOriginNames = await fetchOriginLocation(originLocationCode);
+      const responseOrigin = await fetch(
+        `api/search/${originLocationCode}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!responseOrigin.ok) {
+        throw new Error("Unsuccessful");
+      }
+      const resDataOrigin = await responseOrigin.json();
+      const cityOriginNames = resDataOrigin.data.reduce((obj, cur) => {
+        if (cur.address) {
+          return { ...cur.address };
+        }
+      }, {});
       setCityOriginName(cityOriginNames);
 
-      const destinationCode = await fetchDestinationLocation(destinationLocationCode);
-      setCityDesName(destinationCode.map(location => location.address));
+      const responseDes = await fetch(
+        `/api/search/${destinationLocationCode}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!responseDes.ok) {
+        throw new Error("Unsuccessful");
+      }
+      const resDes = await responseDes.json();
+      const destinationCode = resDes.data.reduce((obj, cur) => {
+        if (cur.address) {
+          return { ...cur.address };
+        }
+      }, {});
+      setCityDesName(resDes.data.map((location) => location.address));
 
       const params = {
         originLocationCode: cityOriginNames.cityCode,
@@ -46,7 +80,6 @@ const Search = ({
         departureDate: departureDate,
         adults: adults,
       };
-
       setAdult(adults);
       setDepartDate(departureDate);
       setDestinationCode(destinationCode.cityCode);
@@ -54,7 +87,17 @@ const Search = ({
       setReturnsDate(returnDate);
       setReturnLocation(destinationCode.cityCode);
 
-      const responseData = await fetchFlightData(params);
+      const responseTwo = await fetch(`flight-search`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(params),
+      });
+      if (!responseTwo.ok) {
+        throw new Error("Unsuccessful");
+      }
+      const responseData = await responseTwo.json();
 
       setFlightData(responseData);
       handleShowDepartureTable();
