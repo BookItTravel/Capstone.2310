@@ -20,7 +20,7 @@ const Confirmation = () => {
         setStatus(data.status);
         setCustomerEmail(data.customer_email);
       });
-
+    console.log("sesssonIDs",sessionId)
     // Function to generate a random alphanumeric code
     const generateConfirmationCode = () => {
       const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
