@@ -14,13 +14,13 @@ const Confirmation = () => {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
 
+    console.log("sesssonIDs",sessionId)
     fetch(`/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
         setCustomerEmail(data.customer_email);
       });
-    console.log("sesssonIDs",sessionId)
     // Function to generate a random alphanumeric code
     const generateConfirmationCode = () => {
       const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
