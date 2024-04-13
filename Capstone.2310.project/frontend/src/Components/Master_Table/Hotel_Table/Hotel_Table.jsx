@@ -27,7 +27,7 @@ const Hotel_Table = ({
     const fetchHotels = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/city-hotels?cityCode=${destinationCode}`,
+          `city-hotels?cityCode=${destinationCode}`,
           {
             method: "GET",
             headers: {

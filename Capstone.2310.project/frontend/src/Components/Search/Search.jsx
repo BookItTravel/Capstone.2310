@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "./Search.css";
+import { fetchOriginLocation, fetchDestinationLocation, fetchFlightData } from "./api";
 
 const Search = ({
   setFlightData,
@@ -33,45 +34,11 @@ const Search = ({
     e.preventDefault();
 
     try {
-      const responseOrigin = await fetch(
-        `http://localhost:3000/api/search/${originLocationCode}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (!responseOrigin.ok) {
-        throw new Error("Unsuccessful");
-      }
-      const resDataOrigin = await responseOrigin.json();
-      const cityOriginNames = resDataOrigin.data.reduce((obj, cur) => {
-        if (cur.address) {
-          return { ...cur.address };
-        }
-      }, {});
+      const cityOriginNames = await fetchOriginLocation(originLocationCode);
       setCityOriginName(cityOriginNames);
 
-      const responseDes = await fetch(
-        `http://localhost:3000/api/search/${destinationLocationCode}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (!responseDes.ok) {
-        throw new Error("Unsuccessful");
-      }
-      const resDes = await responseDes.json();
-      const destinationCode = resDes.data.reduce((obj, cur) => {
-        if (cur.address) {
-          return { ...cur.address };
-        }
-      }, {});
-      setCityDesName(resDes.data.map((location) => location.address));
+      const destinationCode = await fetchDestinationLocation(destinationLocationCode);
+      setCityDesName(destinationCode.map(location => location.address));
 
       const params = {
         originLocationCode: cityOriginNames.cityCode,
@@ -79,6 +46,7 @@ const Search = ({
         departureDate: departureDate,
         adults: adults,
       };
+
       setAdult(adults);
       setDepartDate(departureDate);
       setDestinationCode(destinationCode.cityCode);
@@ -86,17 +54,7 @@ const Search = ({
       setReturnsDate(returnDate);
       setReturnLocation(destinationCode.cityCode);
 
-      const responseTwo = await fetch(`http://localhost:3000/flight-search`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(params),
-      });
-      if (!responseTwo.ok) {
-        throw new Error("Unsuccessful");
-      }
-      const responseData = await responseTwo.json();
+      const responseData = await fetchFlightData(params);
 
       setFlightData(responseData);
       handleShowDepartureTable();

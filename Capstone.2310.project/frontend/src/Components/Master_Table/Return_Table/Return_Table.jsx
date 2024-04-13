@@ -24,7 +24,7 @@ const Return_Table = ({
       };
 
       try {
-        const response = await fetch(`http://localhost:3000/flight-search`, {
+        const response = await fetch(`flight-search`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

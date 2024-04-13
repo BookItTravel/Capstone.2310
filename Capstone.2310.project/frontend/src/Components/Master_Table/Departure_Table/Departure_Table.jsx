@@ -13,7 +13,7 @@ const Departure_Table = ({
   const [selectedRow, setSelectedRow] = useState(null);
 
   const fetchData = (value) => {
-    fetch(`http://localhost:3000/city-and-airport-search/${input}`)
+    fetch(`city-and-airport-search/${input}`)
       .then((response) => response.json())
       .then((json) => {
         const result = json;
