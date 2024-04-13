@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "./Search.css";
-import { fetchOriginLocation, fetchDestinationLocation, fetchFlightData } from "./api";
+import { fetchOriginLocation, fetchDestinationLocation, fetchFlightData } from "../../api/index";
 
 const Search = ({
   setFlightData,
