@@ -12,10 +12,10 @@ const Confirmation = () => {
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const sessionId = urlParams.get("session_id");
+    const session_id = urlParams.get("session_id");
 
-    console.log("sesssonIDs",sessionId)
-    fetch(`/session-status?session_id=${sessionId}`)
+
+    fetch(`/session-status?session_id=${session_id}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
