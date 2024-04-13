@@ -142,7 +142,7 @@ const BookingDetails = () => {
   const fetchClientSecret = useCallback(async () => {
     try {
       // Create a Checkout Session
-      const res = await fetch("create-checkout-session", {
+      const res = await fetch("/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: amount * 100 }),

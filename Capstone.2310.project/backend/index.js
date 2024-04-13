@@ -38,7 +38,7 @@ app.use((req, _res, next) => {
 });
 
 // Apply stripe checkout session for a cart checkout
-app.post('create-checkout-session', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
   const { amount } = req.body;
   const cart = [
     {
@@ -67,7 +67,7 @@ app.post('create-checkout-session', async (req, res) => {
   res.send({ url: session.url });
 });
 
-app.get('session-status', async (req, res) => {
+app.get('/session-status', async (req, res) => {
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
 
   res.send({
