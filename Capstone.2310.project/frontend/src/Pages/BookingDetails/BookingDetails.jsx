@@ -30,9 +30,6 @@ const BookingDetails = () => {
     cityCodeOrigin,
   } = location.state;
 
-  //const cityCodeOrigin = cityOriginName?.[0]?.cityName;
-  console.log("dates chekc HOtel", departDate, returnsDate);
-  console.log("cityName in BookingD", cityCodeOrigin);
 
   const amount = totalAfterSavings.toFixed(2);
   // State variables to hold form data
