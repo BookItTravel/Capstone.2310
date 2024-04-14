@@ -14,12 +14,7 @@ const Booking = () => {
     departDate,
     returnsDate,
   } = location.state;
-  console.log("booking prop departure", flightDeparture);
-  console.log("booking prop return", flightReturn);
-  console.log("Data hotel Offer Card in booking", hotelOffers);
-  console.log("Data desName in booking", cityDesName);
-  console.log("Data originName in booking", cityOriginName);
-  console.log("dates check hotel in Booking", departDate, returnsDate);
+
 
   const cityCodeOrigin = cityOriginName ? cityOriginName.cityName : null;
   const cityCodeDestination = cityDesName?.[0]?.cityName;
