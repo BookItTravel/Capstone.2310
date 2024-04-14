@@ -10,7 +10,8 @@ The Book It Travel Application was developed as a minimalist user friendly trave
 4. Contributing
 5. License
 6. Contact
-7. Acknowledgements
+7. Deployed URL
+8. Acknowledgements
 
 ## About The Project
 
@@ -123,7 +124,8 @@ Distributed under the MIT License. See LICENSE for more information.
 - Lilianne Tavarez
 - Portia Williams
 
-Deployed Link
+### Deployed URL
+https://travelapp-3da1f049e629.herokuapp.com/
 
 ### Acknowledgements
 
