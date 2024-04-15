@@ -55,6 +55,8 @@ app.post('/create-checkout-session', async (req, res) => {
     },
 
   ];
+
+  
   const session = await stripe.checkout.sessions.create({
     success_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${DEPLOYED_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
@@ -77,6 +79,10 @@ app.get('/session-status', async (req, res) => {
   });
 });
 
+
+app.get('/confirmation', (req, res) =>{
+  res.redirect('/confirmation')
+})
 // Apply router
 app.use('/', router);
 app.use('/users', require('./api/users'));
