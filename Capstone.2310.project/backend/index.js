@@ -80,9 +80,9 @@ app.get('/session-status', async (req, res) => {
 });
 
 
-app.get('/confirmation', (req, res) =>{
-  res.redirect('/confirmation')
-})
+// app.get('/confirmation', (req, res) =>{
+//   res.redirect('/confirmation')
+// })
 // Apply router
 app.use('/', router);
 app.use('/users', require('./api/users'));
