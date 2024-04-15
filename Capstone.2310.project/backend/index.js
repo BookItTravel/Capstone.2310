@@ -105,7 +105,9 @@ app.use((err, _req, res, _next) => {
 //   res.status(404).send('Not found.');
 // });
 
-
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend/dist', 'index.html'))
+})
 
 // Serving app on defined PORT
 app.listen(PORT, () => {
