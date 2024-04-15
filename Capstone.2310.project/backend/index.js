@@ -14,7 +14,7 @@ const router = require('./api/router');
 const {
   PORT = 3000,
   JWT_SECRET = 'placeholder secret',
-  DEPLOYED_URL = 'https://travelapp-3da1f049e629.herokuapp.com/'
+  DEPLOYED_URL = 'https://travelapp-3da1f049e629.herokuapp.com'
 } = process.env;
 
 // Apply JSON parsing middleware
@@ -38,7 +38,7 @@ app.use((req, _res, next) => {
 });
 
 // Apply stripe checkout session for a cart checkout
-app.post('create-checkout-session', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
   const { amount } = req.body;
   const cart = [
     {
