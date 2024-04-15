@@ -95,9 +95,11 @@ app.use((err, _req, res, _next) => {
     .send(err.message || 'Internal server error.');
 });
 
-app.use('*', (_req, res) => {
-  res.status(404).send('Not found.');
-});
+// app.use('*', (_req, res) => {
+//   res.status(404).send('Not found.');
+// });
+
+
 
 // Serving app on defined PORT
 app.listen(PORT, () => {
