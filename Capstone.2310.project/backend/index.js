@@ -39,7 +39,7 @@ app.use((req, _res, next) => {
 
 // Apply stripe checkout session for a cart checkout
 app.post('/create-checkout-session', async (req, res) => {
-  console.log("Databaseurl", DATABASE_URL)
+
   const { amount } = req.body;
   const cart = [
     {
