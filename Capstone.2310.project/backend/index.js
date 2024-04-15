@@ -80,9 +80,6 @@ app.get('/session-status', async (req, res) => {
 });
 
 
-// app.get('/confirmation', (req, res) =>{
-//   res.redirect('/confirmation')
-// })
 // Apply router
 app.use('/', router);
 app.use('/users', require('./api/users'));
@@ -100,10 +97,6 @@ app.use((err, _req, res, _next) => {
     .sendStatus(err.status || 500)
     .send(err.message || 'Internal server error.');
 });
-
-// app.use('*', (_req, res) => {
-//   res.status(404).send('Not found.');
-// });
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend/dist', 'index.html'))
