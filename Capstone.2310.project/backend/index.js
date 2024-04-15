@@ -14,7 +14,7 @@ const router = require('./api/router');
 const {
   PORT = 3000,
   JWT_SECRET = 'placeholder secret',
-  DEPLOYED_URL = 'http://localhost:5173'
+  DEPLOYED_URL = 'https://travelapp-3da1f049e629.herokuapp.com/'
 } = process.env;
 
 // Apply JSON parsing middleware
